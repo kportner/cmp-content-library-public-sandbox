@@ -1,0 +1,65 @@
+{
+    "action_input_default_values": [],
+    "action_inputs": [
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": null,
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": true,
+            "id": "CF-rkswbuzp",
+            "label": "Parm1",
+            "name": "parm1",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        },
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": null,
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": true,
+            "id": "CF-cbkuqbpp",
+            "label": "Parm2",
+            "name": "parm2",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        }
+    ],
+    "allow_parallel_jobs": false,
+    "changelog": [
+        {
+            "author": "Kotter",
+            "date": "2026-10-15",
+            "note": "Init"
+        }
+    ],
+    "create_date": "2026-10-15 14:01:23.382331",
+    "dependencies": {
+        "hook": "plugins/OHK-og42wovn"
+    },
+    "description": "",
+    "enabled": true,
+    "icon": "auggy.png",
+    "id": "RJB-m37y8s0h",
+    "last_run": null,
+    "last_updated": null,
+    "name": "My Generate Options Action (1)",
+    "schedule": "",
+    "tags": [],
+    "type": "orchestration_hook"
+}
