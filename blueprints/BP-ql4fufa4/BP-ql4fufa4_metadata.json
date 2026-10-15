@@ -6,6 +6,11 @@
             "author": "Kotter",
             "date": "2026-10-15",
             "note": "Some note"
+        },
+        {
+            "author": "Kotter",
+            "date": "2026-10-15",
+            "note": "Another change"
         }
     ],
     "deployment_items": [
@@ -82,7 +87,8 @@
     "sequence": 0,
     "show_recipient_field_on_order_form": false,
     "tags": [
-        "mytag"
+        "mytag",
+        "mytag2"
     ],
     "teardown_items": []
 }
