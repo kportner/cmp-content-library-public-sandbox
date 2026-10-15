@@ -1,0 +1,75 @@
+{
+    "action_input_default_values": [
+        {
+            "label": "Server Hostname",
+            "name": "server_hostname_a267",
+            "value": "1"
+        }
+    ],
+    "action_inputs": [
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": "",
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": true,
+            "id": "CF-kummh7n3",
+            "label": "Server Hostname",
+            "name": "server_hostname",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        }
+    ],
+    "allow_scheduling": true,
+    "always_allow_to_run": false,
+    "auto_submit_order": true,
+    "changelog": [
+        {
+            "author": "Kotter",
+            "date": "2026-10-15",
+            "note": "asdf"
+        },
+        {
+            "author": "Kotter",
+            "date": "2026-10-15",
+            "note": "asdf"
+        }
+    ],
+    "dangerous": false,
+    "dependencies": {
+        "hook": "plugins/OHK-z6ur0udb"
+    },
+    "dialog_message": "",
+    "dialog_title_template": "Run {{action.label}} on {{server.hostname}}",
+    "enabled": true,
+    "extra_classes": "fas fa-bolt",
+    "hide_from_mcp": false,
+    "icon": "error.gif",
+    "id": "SVA-ukqo6kbf",
+    "is_synchronous": false,
+    "label": "My Server Action",
+    "last_updated": null,
+    "list_view_visible": true,
+    "mcp_destructive_hint": null,
+    "mcp_idempotent_hint": null,
+    "mcp_open_world_hint": null,
+    "mcp_read_only_hint": null,
+    "mcp_tool_description": "",
+    "mcp_tool_name": "",
+    "mcp_tool_title": "",
+    "new_tab_url": null,
+    "requires_approval": true,
+    "sequence": null,
+    "submit_button_label": "",
+    "tags": [
+        "mytag",
+        "mytag2"
+    ]
+}
