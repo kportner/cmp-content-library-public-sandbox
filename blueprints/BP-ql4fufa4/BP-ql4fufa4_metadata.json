@@ -6,6 +6,16 @@
             "author": "Kotter",
             "date": "2026-10-15",
             "note": "Some note"
+        },
+        {
+            "author": "Kotter",
+            "date": "2026-10-15",
+            "note": "Another change"
+        },
+        {
+            "author": "Kotter",
+            "date": "2026-10-16",
+            "note": "README update"
         }
     ],
     "deployment_items": [
@@ -39,7 +49,7 @@
     "id": "BP-ql4fufa4",
     "is_orderable": true,
     "labels": [],
-    "last_updated": "2026-10-15",
+    "last_updated": "2026-10-16",
     "management_actions": [],
     "metadata_version": "2026.1.0",
     "name": "vCenter - CS (2)",
