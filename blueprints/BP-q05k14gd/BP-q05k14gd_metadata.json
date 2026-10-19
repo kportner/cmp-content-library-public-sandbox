@@ -6,6 +6,11 @@
             "author": "Karl Portner",
             "date": "2026-10-19",
             "note": "Test"
+        },
+        {
+            "author": "Karl Portner",
+            "date": "2026-10-19",
+            "note": "Updated the name."
         }
     ],
     "dependencies": {
@@ -31,7 +36,7 @@
         }
     ],
     "deployment_permissions": [],
-    "description": "",
+    "description": "Updated the name.",
     "favorited": false,
     "has_custom_form": true,
     "icon": "plugin.png",
@@ -41,7 +46,7 @@
     "last_updated": "2026-10-19",
     "management_actions": [],
     "metadata_version": "2026.1.0",
-    "name": "Simple Teste",
+    "name": "Simple Test",
     "parameters": [
         {
             "allow_multiple": false,
