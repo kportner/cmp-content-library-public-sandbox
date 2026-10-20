@@ -1,0 +1,11 @@
+{
+    "description": "\n        Collects telemetry data on virtual machines for all capable resource handlers and\n        sends it to the CloudBolt Platform.\n        ",
+    "id": "OHK-vuk419cz",
+    "max_retries": 0,
+    "name": "Mira Performance Collector",
+    "resource_technologies": [],
+    "script_filename": "OHK-vuk419cz_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}
