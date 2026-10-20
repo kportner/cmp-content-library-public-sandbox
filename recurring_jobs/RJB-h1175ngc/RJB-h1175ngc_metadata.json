@@ -1,0 +1,25 @@
+{
+    "action_input_default_values": [],
+    "allow_parallel_jobs": false,
+    "changelog": [
+        {
+            "author": "Kotter",
+            "date": "2026-10-20",
+            "note": "afasfadsf"
+        }
+    ],
+    "create_date": "2026-10-02 16:51:40.012123",
+    "dependencies": {
+        "hook": "plugins/OHK-gdsmo229"
+    },
+    "description": "Connect Networks associated with a Resource Handler (ResourceNetwork) with an IP Address Mamagement (IPAM) CIDR.",
+    "enabled": false,
+    "icon": "Circle-icons-art.png",
+    "id": "RJB-h1175ngc",
+    "last_run": null,
+    "last_updated": null,
+    "name": "Associate IPAM Networks",
+    "schedule": "",
+    "tags": [],
+    "type": "orchestration_hook"
+}
