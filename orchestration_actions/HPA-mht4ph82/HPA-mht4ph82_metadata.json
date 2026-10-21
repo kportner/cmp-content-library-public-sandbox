@@ -32,6 +32,11 @@
             "author": "Karl Portner",
             "date": "2026-10-21",
             "note": "qawerweqr"
+        },
+        {
+            "author": "Karl Portner",
+            "date": "2026-10-21",
+            "note": "Updated Icon to Auggy"
         }
     ],
     "continue_on_failure": false,
@@ -41,7 +46,7 @@
     "description": null,
     "enabled": false,
     "hook_point": "Pre-Provision",
-    "icon": "node.png",
+    "icon": "auggy.png",
     "id": "HPA-mht4ph82",
     "last_updated": null,
     "name": "Sample Per-User Server Limits Action",
