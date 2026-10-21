@@ -1,0 +1,53 @@
+{
+    "action_input_default_values": [
+        {
+            "label": "Max Servers Per User",
+            "name": "max_servers_per_user_a51",
+            "value": "10"
+        }
+    ],
+    "action_inputs": [
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": "The maximum number of servers each user should be allowed to own in CloudBolt",
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": true,
+            "id": "CF-7w5ld4io",
+            "label": "Max Servers Per User",
+            "name": "max_servers_per_user",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "INT",
+            "value-pattern-string": null
+        }
+    ],
+    "changelog": [
+        {
+            "author": "Karl Portner",
+            "date": "2026-10-21",
+            "note": "qawerweqr"
+        }
+    ],
+    "continue_on_failure": false,
+    "dependencies": {
+        "hook": "plugins/OHK-cxdnqkgh"
+    },
+    "description": null,
+    "enabled": false,
+    "hook_point": "Pre-Provision",
+    "icon": "node.png",
+    "id": "HPA-mht4ph82",
+    "last_updated": null,
+    "name": "Sample Per-User Server Limits Action",
+    "run_on_statuses": "",
+    "run_seq": 1,
+    "tags": [
+        "OrchestrationAction"
+    ]
+}

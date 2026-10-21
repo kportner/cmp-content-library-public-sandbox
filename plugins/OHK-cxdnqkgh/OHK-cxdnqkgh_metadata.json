@@ -1,0 +1,35 @@
+{
+    "action_inputs": [
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "The maximum number of servers each user should be allowed to own in CloudBolt",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": true,
+            "id": "CF-7w5ld4io",
+            "label": "Max Servers Per User",
+            "name": "max_servers_per_user",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "INT",
+            "value_pattern_string": null
+        }
+    ],
+    "action_inputs_sequence": [
+        "max_servers_per_user"
+    ],
+    "description": "A sample pre-provision action that prevents a user from provisioning when doing so would cause the number of servers they own to exceed the given limit.",
+    "id": "OHK-cxdnqkgh",
+    "max_retries": 0,
+    "name": "Sample Per-User Server Limits Action",
+    "resource_technologies": [],
+    "script_filename": "OHK-cxdnqkgh_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}
