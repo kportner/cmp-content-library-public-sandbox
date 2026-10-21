@@ -1,5 +1,5 @@
 {
-    "any_group_can_deploy": false,
+    "any_group_can_deploy": true,
     "auto_historical_resources": false,
     "changelog": [
         {
@@ -11,11 +11,13 @@
             "author": "Karl Portner",
             "date": "2026-10-19",
             "note": "Updated the name."
+        },
+        {
+            "author": "Karl Portner",
+            "date": "2026-10-21",
+            "note": "Update Icon"
         }
     ],
-    "dependencies": {
-        "custom_form": "forms/FRM-fetxeql8"
-    },
     "deployment_items": [
         {
             "action_name": "Simple Plugin",
@@ -38,15 +40,14 @@
     "deployment_permissions": [],
     "description": "Updated the name.",
     "favorited": false,
-    "has_custom_form": true,
-    "icon": "plugin.png",
+    "icon": "auggy.png",
     "id": "BP-q05k14gd",
     "is_orderable": true,
     "labels": [],
-    "last_updated": "2026-10-19",
+    "last_updated": "2026-10-21",
     "management_actions": [],
     "metadata_version": "2026.1.0",
-    "name": "Simple Test",
+    "name": "Simple Test Renamed",
     "parameters": [
         {
             "allow_multiple": false,
