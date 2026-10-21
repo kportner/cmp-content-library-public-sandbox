@@ -1,0 +1,65 @@
+{
+    "action_inputs": [
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": null,
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": true,
+            "id": "CF-z7trbbw5",
+            "label": "Description",
+            "name": "description",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": false,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": null,
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": true,
+            "id": "CF-6kh2cd8s",
+            "label": "Snapshot Name",
+            "name": "snapshot_name",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        }
+    ],
+    "action_inputs_sequence": [
+        "snapshot_name",
+        "description"
+    ],
+    "description": "Server Action to create snapshot for a server instance.",
+    "id": "OHK-7ew9h0fz",
+    "max_retries": 0,
+    "name": "create_snapshot",
+    "resource_technologies": [
+        "VMware vCenter",
+        "Amazon Web Services",
+        "OpenStack",
+        "Azure",
+        "Nutanix Acropolis",
+        "Oracle Linux Virtualization Manager",
+        "SCVMM",
+        "OpenShift Virtualization",
+        "H3C CAS"
+    ],
+    "script_filename": "OHK-7ew9h0fz_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}
