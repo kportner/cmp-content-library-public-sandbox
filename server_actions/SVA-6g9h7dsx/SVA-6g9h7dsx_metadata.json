@@ -48,6 +48,11 @@
             "author": "Karl Portner",
             "date": "2026-10-21",
             "note": "test"
+        },
+        {
+            "author": "Karl Portner",
+            "date": "2026-10-21",
+            "note": "Update Icon"
         }
     ],
     "dangerous": false,
@@ -60,7 +65,7 @@
     "enabled": true,
     "extra_classes": "bi bi-camera",
     "hide_from_mcp": false,
-    "icon": "node.png",
+    "icon": "auggy.png",
     "id": "SVA-6g9h7dsx",
     "is_synchronous": false,
     "label": "Create Snapshot",
