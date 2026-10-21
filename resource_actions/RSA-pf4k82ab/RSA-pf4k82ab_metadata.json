@@ -223,6 +223,11 @@
             "author": "Karl Portner",
             "date": "2026-10-21",
             "note": "Test"
+        },
+        {
+            "author": "Karl Portner",
+            "date": "2026-10-21",
+            "note": "Update Icon"
         }
     ],
     "dangerous": false,
@@ -234,7 +239,7 @@
     "enabled": true,
     "extra_classes": "glyphicon glyphicon-play",
     "hide_from_mcp": false,
-    "icon": "plugin.png",
+    "icon": "auggy.png",
     "id": "RSA-pf4k82ab",
     "is_synchronous": false,
     "label": "Run Task",
