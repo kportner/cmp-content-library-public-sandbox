@@ -6,6 +6,11 @@
             "author": "Karl Portner",
             "date": "2026-10-21",
             "note": "Test"
+        },
+        {
+            "author": "Karl Portner",
+            "date": "2026-10-21",
+            "note": "Update Icon"
         }
     ],
     "create_date": "2026-10-07 20:49:00.035102",
@@ -14,7 +19,7 @@
     },
     "description": "Find servers that have expired and execute appropriate orchestration action",
     "enabled": false,
-    "icon": "plugin.png",
+    "icon": "auggy.png",
     "id": "RJB-tdukzv8x",
     "last_run": null,
     "last_updated": null,
