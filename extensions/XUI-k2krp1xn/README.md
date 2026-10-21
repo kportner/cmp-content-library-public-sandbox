@@ -1,4 +1,4 @@
-# Markdown Preview Validation - UI Extension
+# Markdown Preview Validation - UI Extension UPDATED
 
 Tests for `fenced_code`, `codehilite`, `tables`, `nl2br`, `sane_lists`, and `footnotes`.
 
