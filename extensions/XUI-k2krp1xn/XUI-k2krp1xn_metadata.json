@@ -24,11 +24,16 @@
             "author": "Karl Portner",
             "date": "2026-10-21",
             "note": "Updated"
+        },
+        {
+            "author": "Karl Portner",
+            "date": "2026-10-21",
+            "note": "Update Icon"
         }
     ],
     "description": "\nSample Tab Extension\n\nAdds a \"Sample\" tab to the detail view of every model that supports tab\nextensions:  Server, Environment, Resource, Group, UserProfile,\nResourceHandler, and ServiceBlueprint.\n\nThis XUI is intended as a starting point for extension authors.  Each\ntab simply renders a short message confirming which object is being viewed.\n\nUpdated for testing the Content Library update-detection flow.\n",
     "enabled": true,
-    "icon": "connect.png",
+    "icon": "auggy.png",
     "id": "XUI-k2krp1xn",
     "label": "Sample Extension",
     "last_updated": "2026-10-21",
