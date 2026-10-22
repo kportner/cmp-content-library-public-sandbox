@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-8k0b7vv9",
+    "max_retries": 0,
+    "name": "delete_all_resources_of_ha",
+    "resource_technologies": [],
+    "script_filename": "OHK-8k0b7vv9_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

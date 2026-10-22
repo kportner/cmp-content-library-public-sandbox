@@ -1,0 +1,11 @@
+{
+    "description": "Deletes an Amazon FSx file system.",
+    "id": "OHK-ompxslt5",
+    "max_retries": 0,
+    "name": "Delete Amazon FSx file system",
+    "resource_technologies": [],
+    "script_filename": "OHK-ompxslt5_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

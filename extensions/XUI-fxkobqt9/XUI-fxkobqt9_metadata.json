@@ -1,0 +1,22 @@
+{
+    "description": "\n###### Setting Up:\n- Import the UI extension from the Content Library, then enable it on the *UI Extensions* page.\n- As root on the appliance, run the bundled installer (idempotent, safe to re-run): **``sudo bash /var/opt/cloudbolt/proserv/xui/jupyter_notebook/install.sh``**. It configures ``jupyterd`` for JupyterLab, applies the security minimums, restarts the service and self-verifies.\n- Restart the web service once: **``sudo systemctl restart httpd``**.\n\n###### Accessing Jupyter Notebook:\n- *All Admin* \u2192 *Admin Extensions* \u2192 Jupyter Notebooks. CB admins also get a *Django Notebook* entry in the Bookmarks menu automatically.\n###### Additional Information:\n- Requires CloudBolt CMP 2026.3.25 or later. See the bundled README for uninstall and troubleshooting.\n- [Jupyter XUI user guide](https://cloudboltsoftware.github.io/cloudbolt-forge/sites/NewJupyterXUI/jupyter.html).<hr>\n",
+    "enabled": true,
+    "icon": "jupyter_notebook.png",
+    "id": "XUI-fxkobqt9",
+    "label": "Jupyter Notebook",
+    "last_updated": "2026-09-15",
+    "maximum_version_required": "",
+    "minimum_version_required": "2026.2.29",
+    "name": "jupyter_notebook",
+    "package_contents": [
+        "urls.py",
+        "views.py",
+        "__init__.py",
+        "jupyter_server_config.py",
+        "README.md",
+        "templates/django-notebook.html",
+        "install.sh",
+        "uninstall.sh"
+    ],
+    "version": "2.0"
+}

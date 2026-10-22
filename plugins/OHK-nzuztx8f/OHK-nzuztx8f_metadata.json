@@ -1,0 +1,14 @@
+{
+    "description": "Get all Blob storages in all the added Azure accounts",
+    "id": "OHK-nzuztx8f",
+    "max_retries": 0,
+    "name": "Sync Azure Blob storages",
+    "resource_technologies": [
+        "Azure",
+        "Azure Stack"
+    ],
+    "script_filename": "OHK-nzuztx8f_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

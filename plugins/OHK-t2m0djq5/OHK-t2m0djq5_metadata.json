@@ -1,0 +1,477 @@
+{
+    "action_inputs": [
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Select the EKS-optimized Amazon Machine Image for nodes.",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "subnet_2_a727"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "ami_type_a727"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [
+                {
+                    "controlling-field": {
+                        "name": "ami_type_a727"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "instance_type_a727"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-st0yyeiu",
+            "label": "Ami Type",
+            "name": "ami_type",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Not editable after creation.\r\nEnter a unique name for this cluster.",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-f744qwc2",
+            "label": "Cluster Name",
+            "name": "cluster_name",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Set the desired number of nodes that the group should launch with initially. <b>Desired nodes count should not be grater than the min and max nodes. Example If Desired node count is 3 then Min = 1,2 and Max = 3, 4 ...etc</b>",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-bhbod4wx",
+            "label": "Desired Nodes",
+            "maximum": "100.00",
+            "minimum": "2.00",
+            "name": "desired_nodes",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "INT",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Select the size of the attached EBS volume for each node. <b>Disk size for instance should be equal or grater than 5 GiB. Always select the disk size depending on the instance type selection, good to select more than the mentioned in instance type</b>",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-xxtp4uee",
+            "label": "Disk Size",
+            "maximum": "1000.00",
+            "minimum": "20.00",
+            "name": "disk_size",
+            "placeholder": null,
+            "regex_constraint": "^[0-9]+$",
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "INT",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [
+                {
+                    "controlling-field": {
+                        "name": "env_id_a727"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "security_groups_a727"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                },
+                {
+                    "controlling-field": {
+                        "name": "env_id_a727"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "subnet_type_a727"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-1fthwd5d",
+            "label": "Region",
+            "name": "env_id",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Select instance types you prefer for this node group.",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "ami_type_a727"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "instance_type_a727"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-d0np2ric",
+            "label": "Instance Type",
+            "name": "instance_type",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "The Kubernetes project is rapidly evolving with new features, design updates, and bug fixes. The community releases new Kubernetes minor versions (1.XX), as generally available approximately every three months, and each minor version is supported for approximately nine months after it is first released.",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [
+                "1.32",
+                "1.33",
+                "1.34",
+                "1.35",
+                "1.36"
+            ],
+            "hide_if_default_value": false,
+            "id": "CF-chmphh1p",
+            "label": "Kubernetes Version",
+            "name": "k8s_version",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Set the maximum number of nodes that the group can scale out to. <b>Max node count should be equal or greater than the Desired nodes. For example if Desired Nodes = 3 then Max node should be 3 or greater than 3.</b>",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-idxym4vr",
+            "label": "Max Nodes",
+            "maximum": "100.00",
+            "minimum": "2.00",
+            "name": "max_nodes",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "INT",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Set the minimum number of nodes that the group can scale in to.\\r\\n<b>Minimum nodes could be equal to desired size nodes but not grater than Desired node.Example. Desired node = 3, then Min Node= 1, 2 and max will be 4, 5 etc..</b>",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-h0m9fzpm",
+            "label": "Min Nodes",
+            "maximum": "100.00",
+            "minimum": "2.00",
+            "name": "min_nodes",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "INT",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Assign a unique name for this node group.",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-qw9ai2wb",
+            "label": "Node Group Name",
+            "name": "nodegroup_name",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Choose the security groups to apply to the EKS-managed Elastic Network Interfaces that are created in your worker node subnets.",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "env_id_a727"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "security_groups_a727"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-0a5zof1e",
+            "label": "Security Groups",
+            "name": "security_groups",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "EKS deployments require at least 2 different subnets.\r\nChoose the subnets in your VPC where the control plane may place elastic network interfaces (ENIs) to facilitate communication with your cluster.",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "subnet_type_a727"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "subnet_1_a727"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [
+                {
+                    "controlling-field": {
+                        "name": "subnet_1_a727"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "subnet_2_a727"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-1daeep21",
+            "label": "Subnet 1",
+            "name": "subnet_1",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "EKS deployments require at least 2 different subnets.\r\nChoose the subnets in your VPC where the control plane may place elastic network interfaces (ENIs) to facilitate communication with your cluster.",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "subnet_1_a727"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "subnet_2_a727"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [
+                {
+                    "controlling-field": {
+                        "name": "subnet_2_a727"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "ami_type_a727"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-s4oy2bpr",
+            "label": "Subnet 2",
+            "name": "subnet_2",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": null,
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "env_id_a727"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "subnet_type_a727"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [
+                {
+                    "controlling-field": {
+                        "name": "subnet_type_a727"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "subnet_1_a727"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global_options": [],
+            "hide_if_default_value": true,
+            "id": "CF-khf0nizd",
+            "label": "Subnet Type",
+            "name": "subnet_type",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        }
+    ],
+    "action_inputs_sequence": [
+        "cluster_name",
+        "env_id",
+        "subnet_type",
+        "security_groups",
+        "subnet_1",
+        "subnet_2",
+        "k8s_version",
+        "nodegroup_name",
+        "ami_type",
+        "instance_type",
+        "disk_size",
+        "desired_nodes",
+        "min_nodes",
+        "max_nodes"
+    ],
+    "description": "Create EKS blueprint",
+    "id": "OHK-t2m0djq5",
+    "max_retries": 0,
+    "name": "Create EKS Cluster",
+    "resource_technologies": [],
+    "script_filename": "OHK-t2m0djq5_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

@@ -1,0 +1,102 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Create AWS EBS Storage Volume",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-8tc7jf2f"
+            },
+            "deploy_seq": 1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-axviuv8o",
+            "name": "Create AWS EBS Storage Volume",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Creates and manages Amazon Elastic Block Store (EBS) storage volumes.",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-jh8kelzd"
+        },
+        "href": "/api/v3/cmp/actions/OHK-jh8kelzd/",
+        "title": "AWS EBS Storage Discovery"
+    },
+    "favorited": false,
+    "icon": "AWS-EBS-LOGO_HFpEyV7_tdaK15p.jpg",
+    "id": "BP-60dnmlwe",
+    "is_orderable": true,
+    "labels": [],
+    "last_updated": "2026-09-15",
+    "management_actions": [
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-0rgk2r1d"
+            },
+            "enabled": true,
+            "label": "Take Snapshot"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-oe2jeh4g"
+            },
+            "enabled": true,
+            "label": "Attach to Instance"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-ymsg1ecl"
+            },
+            "enabled": true,
+            "label": "Discover Snapshots"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-obw4vman"
+            },
+            "enabled": true,
+            "label": "Detach Volume From Instance"
+        }
+    ],
+    "metadata_version": "2026.1.0",
+    "name": "AWS EBS Storage",
+    "resource_name_template": null,
+    "resource_type": {
+        "icon": "fas fa-box",
+        "id": "RT-acp5jvcg",
+        "internal_only": false,
+        "label": "Storage",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "storage",
+        "plural_label": "Storage"
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Delete AWS EBS Storage Volume",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-gswcigze"
+            },
+            "deploy_seq": -1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-yrbnytea",
+            "name": "Delete AWS EBS Storage Volume",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

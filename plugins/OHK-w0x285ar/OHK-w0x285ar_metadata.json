@@ -1,0 +1,11 @@
+{
+    "description": "\n            Checks for updates in the Amazon Web Services and Google Compute Engine rates.\n            If there are updates on either, will download the rate files and update rates on servers\n            from the new rate data.\n            ** For this job to be able to compute rates on your servers, you must have rate hooks enabled.\n            To check, go to 'Admin' > 'Orchestration Actions', select Job/Process = 'Other' and scroll to the section\n            'Compute Server Rates'. From here, you can enable the AWS and GCE rate hooks.**\n        ",
+    "id": "OHK-w0x285ar",
+    "max_retries": 0,
+    "name": "Refresh Server Rates",
+    "resource_technologies": [],
+    "script_filename": "OHK-w0x285ar_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

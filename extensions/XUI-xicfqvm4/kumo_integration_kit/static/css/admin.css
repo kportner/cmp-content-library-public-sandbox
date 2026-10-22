@@ -1,0 +1,370 @@
+#admin-tab .cur-ver {
+    margin-left: 10px;
+    font-size: 24px;
+}
+
+#admin-tab .ul-links li {
+    width: 50%;
+}
+
+#admin-tab .form-horizontal .control-label {
+    padding-top: 5px;
+    margin-bottom: 0;
+    text-align: left;
+}
+
+#admin-tab .form-horizontal #saveCredsForm {
+    margin-top: 40px;
+}
+
+#admin-tab .form-horizontal #saveConfigForm,
+#admin-tab .form-horizontal #saveRecurringJobStatusForm,
+#admin-tab .form-horizontal #refreshPageForm,
+#admin-tab .form-horizontal #currencyConversionForm,
+#admin-tab .form-horizontal #saveDefaultCurrencyJobStatusForm {
+    margin-top: 30px;
+}
+
+#admin-tab .yes-creds {
+    display: none;
+}
+
+#admin-tab .modal-dialog{
+    text-align: center;
+    margin: 45px 0px 45px 0px;
+    padding: 0;
+}
+
+#admin-tab .panel-title{
+    display: inline-block;
+    width: 100%;
+}
+
+#admin-tab .modal-dialog{
+    text-align: center;
+    margin: 45px 0px 45px 0px;
+    padding: 0;
+}
+
+#admin-tab #yes-edit, #cust-edit, #edit-setting,
+#edit-conv-rate {
+    cursor: pointer;
+    color: gray;
+    font-weight: 200;
+    margin-left: 7px;
+    border-bottom: none;
+}
+
+#admin-tab .slider {
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+
+#admin-tab .slider {
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+
+#admin-tab .slides {
+    display: flex;
+    overflow-x: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+#admin-tab .slides label {
+    font-size: 16px;
+    padding-inline: 15px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+#admin-tab .slides .guide-label {
+    display: contents;
+}
+
+#admin-tab .slides img {
+    width:85%;
+    height: 100%;
+    border-radius: 6px;
+}
+
+#admin-tab .slides::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+#admin-tab .slides::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 10px;
+}
+
+#admin-tab .slides::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#admin-tab .slides > div {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    margin-right: 50px;
+    border-radius: 10px;
+    background: #eee;
+    transform-origin: center center;
+    transform: scale(1);
+    transition: transform 0.5s;
+    position: relative;
+    display: flex;
+    font-size: 100px;
+    flex-direction: column;
+    align-items: center;
+}
+
+#admin-tab .author-info {
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 0.75rem;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+}
+
+#admin-tab .author-info a {
+    color: white;
+}
+
+#admin-tab .slider > a {
+    display: inline-flex;
+    width: 22px;
+    height: 22px;
+    background: #bab9b9;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 10px 0 0 0;
+    position: relative;
+    color: white;
+    font-weight: 700;
+}
+
+#admin-tab .slider > a:active {
+    top: 1px;
+}
+
+#admin-tab .slider > a:focus {
+    background: #000;
+}
+
+/* Don't need button navigation */
+@supports (scroll-snap-type) {
+    .slider > a {
+        display: none;
+    }
+}
+
+#admin-tab .panel-title .switch {
+    position: relative;
+    display: inline-block;
+    width: 76px;
+    height: 25px;
+    margin-left: 30px;
+}
+
+#admin-tab .panel-title .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+#admin-tab .panel-title .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+#admin-tab .panel-title .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+#admin-tab .panel-title input:checked + .slider {
+    background-color: limegreen;
+}
+
+#admin-tab .panel-title input:focus + .slider {
+    box-shadow: 0 0 1px limegreen;
+}
+
+#admin-tab .panel-title input:checked + .slider:before {
+    -webkit-transform: translateX(50px);
+    -ms-transform: translateX(50px);
+    transform: translateX(50px);
+}
+
+/* Rounded sliders */
+#admin-tab .panel-title .slider.round {
+    border-radius: 34px;
+}
+
+#admin-tab .panel-title .slider.round:before {
+    border-radius: 50%;
+}
+
+#admin-tab #saveConfigForm input[type="number"] {
+    width: 55px;
+    font-size: 14px;
+    line-height: 0px;
+    margin-inline: 5px;
+    text-align: end;
+}
+
+#admin-tab #currencyConversionForm input[type="number"] {
+    font-size: 14px;
+    line-height: 26px;
+    text-align: end;
+}
+
+#admin-tab #rds-no-of-days, #volume-no-of-days,
+#idle-running-no-of-days, #idle-stopped-no-of-days {
+    width: 85px;
+}
+
+#admin-tab #saveConfigForm .combo {
+    margin-bottom: 30px;
+}
+
+#admin-tab #saveConfigForm .setting-group,
+#admin-tab #saveConfigForm .setting-group-aws,
+#admin-tab #saveConfigForm .setting-group-azure {
+    display: flex;
+}
+
+#admin-tab #saveConfigForm .sub-combo {
+    margin-bottom: 5px;
+}
+
+#admin-tab .sub-headings label {
+    font-weight: 700;
+}
+
+#admin-tab #saveConfigForm input,
+#admin-tab #currencyConversionForm input {
+    border-radius: 4px;
+    border: 1px solid #bbb;
+}
+
+#admin-tab .panel-title {
+    vertical-align: middle !important;
+}
+
+#admin-tab .fa-chevron-right {
+    font-size: 20px;
+    color: #2c447c;
+    cursor: pointer;
+}
+
+#admin-tab .modal-body .fa-chevron-left,
+#admin-tab .modal-body .fa-chevron-right {
+    font-size: 30px;
+    color: #3db5de;
+    cursor: pointer;
+    margin-inline: 20px;
+    align-self: center;
+}
+
+#admin-tab .fa-chevron-down {
+    font-size: 20px;
+    color: #2c447c;
+    cursor: pointer;
+}
+
+#admin-tab .section-name {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#admin-tab .form-control {
+    display: block;
+    height: 30px;
+    padding: 0px 5px;
+    font-size: 14px;
+    line-height: 1.428571;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+#admin-tab hr {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+#admin-tab #refreshPageForm li {
+    list-style: circle !important;
+}
+
+#admin-tab .modal-header {
+    margin: 0;
+    padding: 15px 0;
+    display: flex;
+    align-items: center!important;
+    border-bottom: none;
+}
+
+#admin-tab .modal-header input {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+#admin-tab .modal-footer {
+    margin: 0;
+    border-top: none;
+}
+
+#admin-tab .modal-body {
+    min-height: auto;
+    height: auto;
+    display: flex;
+    padding: 0;
+}
+
+#admin-tab .cc-avail {
+    margin-left: 15px;
+    color: green;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#admin-tab .cc-not-avail {
+    margin-left: 15px;
+    color: red;
+    font-size: 14px;
+    font-weight: 400;
+}

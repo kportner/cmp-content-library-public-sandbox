@@ -1,0 +1,19 @@
+{
+    "description": "OpenStack limit and usage summary report for CloudBolt environments using the openstacksdk-based OpenStack resource handler (Python 3.12 / modern CMP). Install alongside or instead of the legacy OpenStack Usage Summary XUI.",
+    "enabled": true,
+    "icon": "OpenStack_3FpCqyt.png",
+    "id": "XUI-os312kx9",
+    "label": "OpenStack Usage Summary",
+    "last_updated": "2026-09-15",
+    "maximum_version_required": "",
+    "minimum_version_required": "2026.2.29",
+    "name": "openstack_usage_summary",
+    "package_contents": [
+        "OpenStack.png",
+        "static/images/openstack_limit_summary.png",
+        "__init__.py",
+        "views.py",
+        "reports/summary.html"
+    ],
+    "version": "1.0"
+}

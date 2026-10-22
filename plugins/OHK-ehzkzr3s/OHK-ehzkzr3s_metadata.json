@@ -1,0 +1,19 @@
+{
+    "commandline_args": null,
+    "credentials": "YOUR_CREDENTIALS",
+    "description": "Restarts the MSSql serve.\r\nSince the restart command doesn't return any output, the status command is executed after the restart to show that the server is running.",
+    "execution_timeout": 120,
+    "id": "OHK-ehzkzr3s",
+    "max_retries": 0,
+    "name": "Restart MSSql server",
+    "remove_after_run": true,
+    "resource_technologies": [],
+    "run_with_sudo": false,
+    "script_filename": "OHK-ehzkzr3s_script.sh",
+    "shared": false,
+    "target_os_families": [
+        "Linux -> Oracle Enterprise Linux",
+        "Linux -> Red Hat"
+    ],
+    "type": "Remote Script"
+}

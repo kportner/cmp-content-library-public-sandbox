@@ -1,0 +1,110 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Create AWS RDS Instance",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-u5698edi"
+            },
+            "deploy_seq": 1,
+            "description": "This plugin will create an RDS Instance on AWS Cloud and resource on the CMP Instance.",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-4tdnv5qm",
+            "name": "Create AWS RDS Instance",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": false,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Create a relational database in AWS.\r\n\r\nThis blueprint illustrates a few techniques that make it easier for end users to use:\r\n\r\nAction inputs such as Storage Allocation and DB Name are constrained to appropriate values as required by AWS.\r\n\r\nThe create action supplies \"generated options\" functions for several action inputs: AWS Environment, RDS Engine, and Instance Class. Without these, users would have to type exact values like \"db.m4.10xlarge\", an error-prone proposition.\r\n\r\nThis blueprint will work on CloudBolt 7.2.2 or later.",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-5vtc85pw"
+        },
+        "href": "/api/v3/cmp/actions/OHK-5vtc85pw/",
+        "title": "AWS RDS Instance Discovery"
+    },
+    "favorited": false,
+    "icon": "aws_rds_instance_f3fjoAB_RghZKkw.png",
+    "id": "BP-isuii63t",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-6spb5ltg",
+            "image": null,
+            "name": "AWS",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-j60l5vvc"
+            },
+            "enabled": true,
+            "label": "Refresh AWS RDS Instance Data"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-18phlspw"
+            },
+            "enabled": true,
+            "label": "Start AWS RDS Instance"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-p1tjz3kn"
+            },
+            "enabled": true,
+            "label": "Stop AWS RDS Instance"
+        }
+    ],
+    "metadata_version": "2026.1.0",
+    "name": "AWS RDS Instance",
+    "resource_name_template": "AWS RDS Service 00X",
+    "resource_type": {
+        "icon": "fas fa-database",
+        "id": "RT-h0npsxst",
+        "internal_only": false,
+        "label": "Database",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "database",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Delete AWS RDS Instance",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-omh52xlx"
+            },
+            "deploy_seq": -1,
+            "description": "This plugin will delete an RDS Instance from AWS Cloud and resource from the CMP Instance.",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-b9ox9of0",
+            "name": "Delete AWS RDS Instance",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

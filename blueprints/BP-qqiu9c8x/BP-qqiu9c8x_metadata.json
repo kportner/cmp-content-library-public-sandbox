@@ -1,0 +1,146 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "container image",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-4l0zl83w"
+            },
+            "deploy_seq": 1,
+            "description": "Deploy an existing Image from an Image registry or Image stream tag",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-obvnp27e",
+            "name": "Container Image",
+            "parameter_defaults": [
+                {
+                    "label": "Container Orchestrator",
+                    "name": "container_orchestrator_id_a674",
+                    "value": "49"
+                },
+                {
+                    "label": "Image Name",
+                    "name": "image_name_a674",
+                    "value": "bitnami/nginx"
+                },
+                {
+                    "label": "Replicas",
+                    "name": "replicas_a674",
+                    "value": "1"
+                }
+            ],
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": false,
+            "tier_type": "plugin"
+        },
+        {
+            "action_name": "Advanced options",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-0mwzd5vh"
+            },
+            "deploy_seq": 2,
+            "description": "",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-qqhjn8x3",
+            "name": "Advanced options",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": false,
+            "tier_type": "plugin"
+        },
+        {
+            "action_name": "Provision Deployments",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-ro3aknu7"
+            },
+            "deploy_seq": 3,
+            "description": "",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-hc4jiu69",
+            "name": "Provision Deployments",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": false,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Deploy an existing Image from an Image registry (Internal and External)",
+    "favorited": false,
+    "icon": "download_5e05I4z.png",
+    "id": "BP-qqiu9c8x",
+    "is_orderable": true,
+    "labels": [],
+    "last_updated": "2026-09-15",
+    "management_actions": [
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-2zlpc01a"
+            },
+            "enabled": true,
+            "label": "Environment Variables"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-74y9ov63"
+            },
+            "enabled": true,
+            "label": "Update Container Route"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-q54qchl6"
+            },
+            "enabled": true,
+            "label": "Update Replicas Count"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-8c4vl3f5"
+            },
+            "enabled": true,
+            "label": "Resource Limits"
+        }
+    ],
+    "metadata_version": "2026.1.0",
+    "name": "Openshift Deployment with Container Image",
+    "resource_name_template": null,
+    "resource_type": {
+        "icon": "",
+        "id": "RT-wtoyrbjm",
+        "internal_only": false,
+        "label": "Service",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "service",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "delete container application",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-ygq3rnhi"
+            },
+            "deploy_seq": -1,
+            "description": "",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-9m2elotk",
+            "name": "delete container application",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": false,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

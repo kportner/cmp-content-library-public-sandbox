@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-qhpaazra",
+    "max_retries": 0,
+    "name": "Example post-sync VMs Plugin",
+    "resource_technologies": [],
+    "script_filename": "OHK-qhpaazra_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

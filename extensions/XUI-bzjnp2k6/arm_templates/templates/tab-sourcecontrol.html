@@ -1,0 +1,53 @@
+
+
+<div class="container-fluid">
+    <small class="float-end">
+                <a href="{% url 'connectioninfo_list' %}">Connection Info List</a>
+    </small>
+    <h5 class="mb-3">Connection Info List</h5>
+            <div class="btn-toolbar gap-2 mb-3">
+                <a class="btn btn-light open-dialog" href="{% url 'arm_ci_create' %}"><span class="icon-add"></span> Create new Connection Info</a>
+            </div>
+            {% if connection_infos %}
+                <div class="card cb-surface-card">
+                    <div class="card-body pt-4">
+                        <p>List of Connection Infos used for Azure ARM Template Source Control (has <code>github</code> in <b>Labels</b> field).</p>
+                        <table class="dataTable no-footer table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Protocol</th>
+                                    <th>IP/Hostname</th>
+                                    <th>Port</th>
+                                    <th>Username</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for ci in connection_infos %}
+                                <tr>
+                                    <td>{{ci.name}}</td>
+                                    <td>{{ci.protocol}}</td>
+                                    <td>{{ci.ip}}</td>
+                                    <td>{{ci.port}}</td>
+                                    <td>{{ci.username}}</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a class="icon-edit btn btn-light btn-sm open-dialog"
+                                                href="{% url 'arm_ci_edit' ci.id %}"></a>
+                                            <a class="icon-delete btn btn-light btn-sm open-dialog"
+                                                href="{% url 'arm_ci_delete' ci.id %}"></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            {% else %}
+                <div class="alert alert-info w-75">
+                    <p><i class="fas fa-info-circle me-2"></i> Create a new Connection Info for Source Repository. Add <code>github</code> in <b>Labels</b> field.</p>
+                </div>
+            {% endif %}
+</div>

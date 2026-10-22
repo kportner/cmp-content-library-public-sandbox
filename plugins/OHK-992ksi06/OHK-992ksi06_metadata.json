@@ -1,0 +1,15 @@
+{
+    "description": "Sets new Windows password on this instance for the user running the action. Then retrieves the password and stores it on the local server record to enable connectivity from CloudBolt.",
+    "id": "OHK-992ksi06",
+    "max_retries": 0,
+    "name": "Generate Windows Password on GCE",
+    "resource_technologies": [
+        "Google Compute Engine"
+    ],
+    "script_filename": "OHK-992ksi06_script.py",
+    "shared": true,
+    "target_os_families": [
+        "Windows"
+    ],
+    "type": "CloudBolt Plug-in"
+}

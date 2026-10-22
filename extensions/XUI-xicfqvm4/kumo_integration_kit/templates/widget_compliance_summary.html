@@ -1,0 +1,316 @@
+{% extends "kumo_integration_kit/templates/widget_base_page.html" %}
+{% load static %}
+{% block card_id %}compliance-summary{% endblock %}
+
+{% block heading %}Compliance Summary{% endblock %}
+
+{% block child_div %}
+<div id="compliance_summary_whole_content">
+    <div class="col-sm-12">
+        <p class="dropdown-label col-sm-4">Select Resource Handler</p>
+        <select class="col-sm-6 form-control custom-select" id="resource_handler_selections" style="width: 50% !important;">
+            <option class="rh-options" value="all">All</option>
+            {% for resource_handler in resource_handlers %}
+                {% if resource_handler.resource_technology.type_slug == "aws" or resource_handler.resource_technology.type_slug == "awsjit" %}
+                    <option class="rh-options" value="{{resource_handler.id}}">{{resource_handler.name}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="col-sm-12 main-div">
+    <!-- CIS -->
+        <div class="col-sm-6 padding-class">
+            <div class="col-sm-5" style="margin-top: 20px;">
+                <img width="115" id="CIS_img" height="60" src="{% static 'kumo_integration_kit/images/cis.png' %}">
+            </div>
+            <div class="col-sm-7 padding-class">
+                <div class="col-sm-12" style="margin-top: 15px;display: flex;align-items: center; margin-bottom: 5px;">
+                    <div class="col-sm-4 padding-class overall-percent">
+                        <h3 id="CIS_compliance_progress">82%</h3>
+                    </div>
+                    <div class="square" style="background-color: #dd3838;"></div>
+                    <div class="col-sm-8 compliant-class">
+                        <div>
+                            <label>Not Compliant</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="progress">
+                        <div class="progress-bar" id="CIS_progress_bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="background-color: #dd3838; font-weight: 600; width: 18%"></div>
+                    </div>
+                </div>
+                <div class="col-sm-12" style="margin-top: -15px;display: flex;align-items: center;">
+                    <div class="col-sm-4 padding-class overall-percent">
+                        <h3 id="CIS_fail_count_by_resource">595</h3>
+                    </div>
+                    <div class="col-sm-8 compliant-class">
+                        <div>
+                            <label>Resources Not in Compliance</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- PCI -->
+        <div class="col-sm-6 padding-class">
+            <div class="col-sm-5" style="margin-top: 20px;">
+                <img width="115" id="PCI_img" height="60" src="{% static 'kumo_integration_kit/images/pci.png' %}">
+            </div>
+            <div class="col-sm-7 padding-class">
+                <div class="col-sm-12" style="margin-top: 15px;display: flex;align-items: center; margin-bottom: 5px;">
+                    <div class="col-sm-4 padding-class overall-percent">
+                        <h3 id="PCI_compliance_progress">27%</h3>
+                    </div>
+                    <div class="square" style="background-color: #dd3838;"></div>
+                    <div class="col-sm-8 compliant-class">
+                        <div>
+                            <label>Not Compliant</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="progress">
+                        <div class="progress-bar" id="PCI_progress_bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="background-color: #dd3838; font-weight: 600; width: 73%"></div>
+                    </div>
+                </div>
+                <div class="col-sm-12" style="margin-top: -15px;display: flex;align-items: center;">
+                    <div class="col-sm-4 padding-class overall-percent">
+                        <h3 id="PCI_fail_count_by_resource">595</h3>
+                    </div>
+                    <div class="col-sm-8 compliant-class">
+                        <div>
+                            <label>Resources Not in Compliance</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 main-div">
+    <!-- NIST -->
+        <div class="col-sm-6 padding-class">
+            <div class="col-sm-5" style="margin-top: 20px;">
+                <img width="115" id="NIST_img" height="60" src="{% static 'kumo_integration_kit/images/nist.png' %}">
+            </div>
+            <div class="col-sm-7 padding-class">
+                <div class="col-sm-12" style="margin-top: 15px;display: flex;align-items: center; margin-bottom: 5px;">
+                    <div class="col-sm-4 padding-class overall-percent">
+                        <h3 id="NIST_compliance_progress">59%</h3>
+                    </div>
+                    <div class="square" style="background-color: #dd3838;"></div>
+                    <div class="col-sm-8 compliant-class">
+                        <div>
+                            <label>Not Compliant</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="progress">
+                        <div class="progress-bar" id="NIST_progress_bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="background-color: #dd3838; font-weight: 600; width: 41%"></div>
+                    </div>
+                </div>
+                <div class="col-sm-12" style="margin-top: -15px;display: flex;align-items: center;">
+                    <div class="col-sm-4 padding-class overall-percent">
+                        <h3 id="NIST_fail_count_by_resource">1454</h3>
+                    </div>
+                    <div class="col-sm-8 compliant-class">
+                        <div>
+                            <label>Resources Not in Compliance</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- HPAA -->
+        <div class="col-sm-6 padding-class">
+            <div class="col-sm-5" style="margin-top: 20px;">
+                <img width="115" id="HIPAA_img" height="60" src="{% static 'kumo_integration_kit/images/hipaa.png' %}">
+            </div>
+            <div class="col-sm-7 padding-class">
+                <div class="col-sm-12" style="margin-top: 15px;display: flex;align-items: center; margin-bottom: 5px;">
+                    <div class="col-sm-4 padding-class overall-percent">
+                        <h3 id="HIPAA_compliance_progress">82%</h3>
+                    </div>
+                    <div class="square" style="background-color: #dd3838;"></div>
+                    <div class="col-sm-8 compliant-class">
+                        <div>
+                            <label>Not Compliant</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="progress">
+                        <div class="progress-bar" id="HIPAA_progress_bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="background-color: #dd3838; font-weight: 600; width: 18%"></div>
+                    </div>
+                </div>
+                <div class="col-sm-12" style="margin-top: -15px;display: flex;align-items: center;">
+                    <div class="col-sm-4 padding-class overall-percent">
+                        <h3 id="HIPAA_fail_count_by_resource">4942</h3>
+                    </div>
+                    <div class="col-sm-8 compliant-class">
+                        <div>
+                            <label>Resources Not in Compliance</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 main-div" style="border-bottom: 0;">
+    <!-- AWS -->
+        <div class="col-sm-6 padding-class">
+            <div class="col-sm-5" style="margin-top: 20px;">
+                <img width="115" id="AWSWA_img" height="60" src="{% static 'kumo_integration_kit/images/awswa.png' %}">
+            </div>
+            <div class="col-sm-7 padding-class">
+                <div class="col-sm-12" style="margin-top: 15px;display: flex;align-items: center; margin-bottom: 5px;">
+                    <div class="col-sm-4 padding-class overall-percent">
+                        <h3 id="AWSWA_compliance_progress">48%</h3>
+                    </div>
+                    <div class="square" style="background-color: #dd3838;"></div>
+                    <div class="col-sm-8 compliant-class">
+                        <div>
+                            <label>Not Compliant</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="progress">
+                        <div class="progress-bar" id="AWSWA_progress_bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="background-color: #dd3838; font-weight: 600; width: 52%"></div>
+                    </div>
+                </div>
+                <div class="col-sm-12" style="margin-top: -15px;display: flex;align-items: center;">
+                    <div class="col-sm-4 padding-class overall-percent">
+                        <h3 id="AWSWA_fail_count_by_resource">1766</h3>
+                    </div>
+                    <div class="col-sm-8 compliant-class">
+                        <div>
+                            <label>Resources Not in Compliance</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="compliance_summary_exception_message">
+    <img src="{% static 'kumo_integration_kit/images/compliance_summary.png' %}" class="grayed-out-images">
+    <div class="error-container-nodata">
+        <div class="col-sm-12">
+            <i class="fas fa-exclamation-triangle"></i>
+            Please sync to gather data!
+            <a class="spend_recurring_link" href="/recurring_jobs/{{ job_id_coms }}" target="_blank">Sync</a>
+         </div>
+    </div>
+</div>
+<div id="compliance_summary_currency_message" class="col-sm-12" style="position: relative;">
+    <div class="error-container-noconv">
+        <div class="col-sm-12">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span id="comsCurrencyText">* Conversion rates not set for all resource handlers.</span>
+            <a href="/extensions/admin/kumo_integration_kit/display_admin" class="set-rates" id="comsSetRates" target="_blank">Set Rates</a>
+         </div>
+    </div>
+</div>
+
+<script>
+
+    $("#compliance_summary_whole_content").hide();
+    $("#compliance_summary_exception_message").show();
+    $("#compliance_summary_currency_message").hide();
+
+    async function getData(rh_id_coms) {
+        const URL = "/xui/get_compliance_data/";
+        let payload = {
+            'id': rh_id_coms
+        };
+        await $.post(URL, payload, (response) => {
+            var result = response.result;
+            var message_status_coms = response.message_status;
+            var job_id_coms = response.job_id;
+            var first_run_coms = response.first_run;
+            var last_job_status_coms = response.last_job_status;
+
+            if ((message_status_coms == false) && (last_job_status_coms == "")) {
+                $("#compliance_summary_whole_content").show();
+                $("#compliance_summary_exception_message").hide();
+                Object.keys(result).forEach(k => {
+                    let threat_count = result[k].threat_count;
+                    let total_count = result[k].total_count;
+                    let final_percent = 0
+                    if(rh_id_coms == "all"){
+                        final_percent = Math.round(100-parseInt((threat_count/total_count)*100));
+                    }
+                    else{
+                        final_percent = Math.round(100-result[k].compliance_progress);
+                    }
+                    $("#"+k+"_compliance_progress").text(final_percent+"%");
+                    $("#"+k+"_fail_count_by_resource").text(result[k].fail_count_by_resource);
+                    $("#"+k+"_progress_bar").css({"width": final_percent+"%"});
+                });
+
+
+                let all_rh_in_dropdown = $("#resource_handler_selections option").map(function() {return $(this).val();}).get().slice(1,);
+
+                all_rh_in_dropdown.forEach(rh => {
+                    if (!response.rh_ids_with_data.includes(rh)) {
+                        $(`#resource_handler_selections option[value='${rh}']`).remove();
+                    }
+                });
+            }
+            else {
+                if ((first_run_coms == "True") || (message_status_coms == true)) {
+                    $("#compliance_summary_whole_content").hide();
+                    $("#compliance_summary_exception_message").show();
+                    $("#compliance_summary_currency_message").hide();
+                    $(".spend_recurring_link").attr({"href": "/recurring_jobs/"+job_id_coms+"/"});
+                }
+                else {
+                    if (last_job_status_coms != "") {
+                        Object.keys(result).forEach(k => {
+                            let threat_count = result[k].threat_count;
+                            let total_count = result[k].total_count;
+                            let final_percent = 0
+                            if(rh_id_coms == "all"){
+                                final_percent = Math.round(100-((threat_count/total_count)*100));
+                            }
+                            else{
+                                final_percent = Math.round(100-result[k].compliance_progress);
+                            }
+                            $("#"+k+"_compliance_progress").text(final_percent+"%");
+                            $("#"+k+"_fail_count_by_resource").text(result[k].fail_count_by_resource);
+                            $("#"+k+"_progress_bar").css({"width": final_percent+"%"});
+                        });
+
+
+                        let all_rh_in_dropdown = $("#resource_handler_selections option").map(function() {return $(this).val();}).get().slice(1,);
+
+                        all_rh_in_dropdown.forEach(rh => {
+                            if (!response.rh_ids_with_data.includes(rh)) {
+                                $(`#resource_handler_selections option[value='${rh}']`).remove();
+                            }
+                        });
+                        $("#compliance_summary_whole_content").show();
+                        $("#compliance_summary_exception_message").hide();
+                        $("#compliance_summary_currency_message").show();
+                        $("#comsCurrencyText").text(`* Data last updated on ${last_job_status_coms}, Sync job failed.`);
+                        $("#comsSetRates").text("See Job");
+                        $("#comsSetRates").attr({"href": "/recurring_jobs/"+job_id_coms+"/"});
+                    }
+                }
+            }
+        })
+    }
+
+    $(document).ready(function(){
+        getData("all");
+        $("#resource_handler_selections").on('change', function(){
+            var rh_id_coms = $(this).val();
+            getData(rh_id_coms);
+        });
+    });
+
+</script>
+{% endblock child_div %}

@@ -1,0 +1,17 @@
+{
+    "action_input_default_values": [],
+    "allow_parallel_jobs": false,
+    "create_date": "2025-03-09 20:19:03.847042",
+    "dependencies": {
+        "hook": "plugins/OHK-i5iq8oae"
+    },
+    "description": "Download the latest rate card from Azure for all Azure ARM Resource Handlers.",
+    "enabled": true,
+    "icon": "azure.jpeg",
+    "id": "RJB-q2rh13xi",
+    "last_run": null,
+    "last_updated": null,
+    "name": "Download Azure rate card",
+    "schedule": "15 1 * * *",
+    "type": "orchestration_hook"
+}

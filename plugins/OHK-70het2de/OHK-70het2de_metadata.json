@@ -1,0 +1,32 @@
+{
+    "action_inputs": [
+        {
+            "allow_multiple": true,
+            "available_all_servers": false,
+            "description": "",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-036ofse2",
+            "label": "Nodes",
+            "name": "nodes",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        }
+    ],
+    "description": "",
+    "id": "OHK-70het2de",
+    "max_retries": 0,
+    "name": "Reboot Cache Node",
+    "resource_technologies": [],
+    "script_filename": "OHK-70het2de_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

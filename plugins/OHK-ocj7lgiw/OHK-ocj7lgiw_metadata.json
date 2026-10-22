@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-ocj7lgiw",
+    "max_retries": 0,
+    "name": "List Node Group",
+    "resource_technologies": [],
+    "script_filename": "OHK-ocj7lgiw_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

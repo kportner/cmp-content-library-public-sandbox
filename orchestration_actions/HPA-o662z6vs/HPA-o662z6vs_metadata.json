@@ -1,0 +1,16 @@
+{
+    "action_input_default_values": [],
+    "continue_on_failure": false,
+    "dependencies": {
+        "hook": "plugins/OHK-hjwnhisq"
+    },
+    "description": "Calculates the on-demand rate for the chosen AWS instance type and CB Admin defined rate for Software, Parameter and Application per environment.",
+    "enabled": false,
+    "hook_point": "Compute Server Rate",
+    "icon": "aws_ObH4Q5H.png",
+    "id": "HPA-o662z6vs",
+    "last_updated": null,
+    "name": "AWS Rate Hook With CB Configured Rate",
+    "run_on_statuses": "",
+    "run_seq": 5
+}

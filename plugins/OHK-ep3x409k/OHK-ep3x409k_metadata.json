@@ -1,0 +1,11 @@
+{
+    "description": "List AWS MariaDB database snapshots.",
+    "id": "OHK-ep3x409k",
+    "max_retries": 0,
+    "name": "List Snapshots",
+    "resource_technologies": [],
+    "script_filename": "OHK-ep3x409k_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

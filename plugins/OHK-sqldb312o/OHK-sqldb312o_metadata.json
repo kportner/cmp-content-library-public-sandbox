@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-sqldb312o",
+    "max_retries": 0,
+    "name": "Azure SQL Database Discovery",
+    "resource_technologies": [],
+    "script_filename": "OHK-sqldb312o_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

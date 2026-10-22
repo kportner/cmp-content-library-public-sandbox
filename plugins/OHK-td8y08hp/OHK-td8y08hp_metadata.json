@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-td8y08hp",
+    "max_retries": 0,
+    "name": "Delete GKE Cluster (3) (1) (2) (1)",
+    "resource_technologies": [],
+    "script_filename": "OHK-td8y08hp_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

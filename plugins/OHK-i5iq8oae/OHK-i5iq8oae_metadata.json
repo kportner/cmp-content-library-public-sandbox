@@ -1,0 +1,11 @@
+{
+    "description": "Download the latest rate card for Azure pricing information",
+    "id": "OHK-i5iq8oae",
+    "max_retries": 0,
+    "name": "Download Azure rate card",
+    "resource_technologies": [],
+    "script_filename": "OHK-i5iq8oae_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

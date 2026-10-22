@@ -1,0 +1,11 @@
+{
+    "description": "Teardown plugin will delete the eks cluster and kubernets object",
+    "id": "OHK-341jpqsf",
+    "max_retries": 0,
+    "name": "Delete EKS Cluster (1)",
+    "resource_technologies": [],
+    "script_filename": "OHK-341jpqsf_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

@@ -1,0 +1,33 @@
+{
+    "description": "\nVeeam backup integration. This integration allows for server backups, and\nrestoration to AWS and Azure.\n",
+    "enabled": true,
+    "icon": "Veeam List Image_LoE2sCm_SBAF0PO_vbV7G4H.png",
+    "id": "XUI-zmsnofdh",
+    "label": "Veeam",
+    "last_updated": "2026-09-15",
+    "maximum_version_required": "",
+    "minimum_version_required": "2026.2.29",
+    "name": "veeam",
+    "package_contents": [
+        "forms.py",
+        "__init__.py",
+        "install_agent.py",
+        "restore_backup.py",
+        "restore_backup_to_azure.py",
+        "restore_backup_to_ec2.py",
+        "take_backup.py",
+        "urls.py",
+        "veeam_admin.py",
+        "veeam_choices.py",
+        "veeam_scripts.py",
+        "views.py",
+        "templates/admin_page.html",
+        "templates/sample_tab.html",
+        "templates/server_tab.html",
+        "templates/tab-backups.html",
+        "templates/tab-configuration.html",
+        "templates/tab-dashboard.html",
+        "templates/tab-jobs.html"
+    ],
+    "version": ""
+}

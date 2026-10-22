@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-lwuytmzm",
+    "max_retries": 0,
+    "name": "sync_servers_and_add_sshkey",
+    "resource_technologies": [],
+    "script_filename": "OHK-lwuytmzm_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

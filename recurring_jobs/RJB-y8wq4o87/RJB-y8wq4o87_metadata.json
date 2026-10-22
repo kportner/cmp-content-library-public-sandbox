@@ -1,0 +1,168 @@
+{
+    "action_input_default_values": [
+        {
+            "label": "Run Period",
+            "name": "run_period_a131",
+            "value": "30"
+        },
+        {
+            "label": "Target Group",
+            "name": "target_group_a131",
+            "value": "0"
+        }
+    ],
+    "action_inputs": [
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": "End date should be greater than Start Date.",
+            "field-dependency-controlling-set": [
+                {
+                    "controlling-field": {
+                        "name": "run_period_a131"
+                    },
+                    "custom-field-options": [
+                        "0"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "end_date_a131"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": true,
+            "id": "CF-5c0i1iqe",
+            "label": "End Date",
+            "name": "end_date",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": false,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "DT",
+            "value-pattern-string": null
+        },
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": "Specify the period for which the group cost report to be cached.\r\nIf 'Custom Dates' is selected but Start Date and End Date not specified then Group cost data of last month will be cached.",
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [
+                {
+                    "controlling-field": {
+                        "name": "run_period_a131"
+                    },
+                    "custom-field-options": [
+                        "0"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "end_date_a131"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                },
+                {
+                    "controlling-field": {
+                        "name": "run_period_a131"
+                    },
+                    "custom-field-options": [
+                        "0"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "start_date_a131"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global-options": [],
+            "hide-if-default-value": true,
+            "id": "CF-bpw25dfe",
+            "label": "Run Period",
+            "name": "run_period",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        },
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": "",
+            "field-dependency-controlling-set": [
+                {
+                    "controlling-field": {
+                        "name": "run_period_a131"
+                    },
+                    "custom-field-options": [
+                        "0"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "start_date_a131"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": true,
+            "id": "CF-us75o3bl",
+            "label": "Start Date",
+            "name": "start_date",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": false,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "DT",
+            "value-pattern-string": null
+        },
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": null,
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": true,
+            "id": "CF-u6suga07",
+            "label": "Target Group",
+            "name": "target_group",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        }
+    ],
+    "allow_parallel_jobs": false,
+    "create_date": "2025-03-09 20:19:03.902173",
+    "dependencies": {
+        "hook": "plugins/OHK-1rj0f2x0"
+    },
+    "description": "",
+    "enabled": false,
+    "id": "RJB-y8wq4o87",
+    "last_run": null,
+    "last_updated": null,
+    "name": "Cache Group Cost Report Data",
+    "schedule": "0 18 1 * *",
+    "type": "orchestration_hook"
+}

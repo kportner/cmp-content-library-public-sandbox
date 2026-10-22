@@ -1,0 +1,11 @@
+{
+    "description": "Overrides CloudBolt's standard Order Approval workflow.\r\n\r\nThis Orchestration Action checks if an Order crosses specified quota limits, and requires different number of approvals depending on the cost.\r\n\r\nIf no threshold is exceeded, the Order is automatically approved. If any of the configured values exceed 50%, but less than 90%, of the Group's quota, we required one approver. If the configured values exceed 90% of the Group's quota, we require that one user from the IT Group and one user from the Finance Group approve the order.",
+    "id": "OHK-7sefc43i",
+    "max_retries": 0,
+    "name": "Threshold Check (Post-Order Approval)",
+    "resource_technologies": [],
+    "script_filename": "OHK-7sefc43i_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

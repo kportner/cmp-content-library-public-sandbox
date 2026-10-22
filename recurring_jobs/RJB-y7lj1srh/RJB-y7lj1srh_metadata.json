@@ -1,0 +1,17 @@
+{
+    "action_input_default_values": [],
+    "allow_parallel_jobs": false,
+    "create_date": "2025-03-09 20:19:03.829385",
+    "dependencies": {
+        "hook": "plugins/OHK-ynp2t83o"
+    },
+    "description": "\n            Execute any action whose name starts with \"Refresh Utilization \". Updates server\n            utilization stats used in reports. See sample action \"Refresh Utilization for VMware\n            Servers\".\n        ",
+    "enabled": false,
+    "icon": "refresh_Z7H2Kol.png",
+    "id": "RJB-y7lj1srh",
+    "last_run": null,
+    "last_updated": null,
+    "name": "Refresh All Server Utilization",
+    "schedule": "45 3 * * *",
+    "type": "orchestration_hook"
+}

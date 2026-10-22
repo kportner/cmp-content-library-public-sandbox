@@ -1,0 +1,80 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Create Route 53 DNS Record",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-jqp3voy7"
+            },
+            "deploy_seq": 1,
+            "description": "",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-hqp4ii4w",
+            "name": "Create Route 53 DNS Record",
+            "parameter_defaults": [
+                {
+                    "label": "Record Type",
+                    "name": "record_type_a524",
+                    "value": "A"
+                }
+            ],
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": false,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Create, delete and synchronise AWS Route 53 DNS Records",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-zbq7xbrq"
+        },
+        "href": "/api/v3/cmp/actions/OHK-zbq7xbrq/",
+        "title": "Sync AWS Route 53 DNS Records"
+    },
+    "favorited": false,
+    "icon": "AWS_ROUTE_53_DNS_RECORD_NEW_LOGO_tuXScx6_hyfSd72.png",
+    "id": "BP-xfurbb34",
+    "is_orderable": true,
+    "labels": [],
+    "last_updated": "2026-09-15",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "AWS Route 53 DNS Record",
+    "resource_name_template": null,
+    "resource_type": {
+        "icon": "",
+        "id": "RT-zx7kvbuo",
+        "internal_only": false,
+        "label": "Route 53 DNS",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "route_53_dns",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Teardown Route 53 DNS Record",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-zunwb8di"
+            },
+            "deploy_seq": 2,
+            "description": "",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-16pcexih",
+            "name": "Teardown Route 53 DNS Record",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": false,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

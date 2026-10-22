@@ -1,0 +1,32 @@
+{
+    "action_inputs": [
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Replicas are scaled manually based on CPU usage.\r\nThe number of instances of your Image.",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-u0wczpa6",
+            "label": "Replicas",
+            "name": "replicas",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "INT",
+            "value_pattern_string": null
+        }
+    ],
+    "description": "",
+    "id": "OHK-moitdcb1",
+    "max_retries": 0,
+    "name": "Update Replicas Count",
+    "resource_technologies": [],
+    "script_filename": "OHK-moitdcb1_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

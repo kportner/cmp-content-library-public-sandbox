@@ -1,0 +1,17 @@
+{
+    "description": "A CloudBolt Server Cost Details shows cost summary and cost details of Hardware, Software, and Extra cost.",
+    "enabled": true,
+    "icon_url": "",
+    "id": "XUI-x9cnt3th",
+    "label": "Server Cost Details",
+    "last_updated": "2026-09-15",
+    "maximum_version_required": "",
+    "minimum_version_required": "2026.2.29",
+    "name": "server_cost_details",
+    "package_contents": [
+        "__init__.py",
+        "views.py",
+        "templates/cost_details.html"
+    ],
+    "version": ""
+}

@@ -1,0 +1,88 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "S3 Bucket Create Service",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-rslnd84c"
+            },
+            "deploy_seq": 1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-3hxvwlrd",
+            "name": "Create S3 Bucket",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Creates an AWS S3 bucket. Deleting the resultant service deletes the bucket.",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-yuk1mpv7"
+        },
+        "href": "/api/v3/cmp/actions/OHK-yuk1mpv7/",
+        "title": "Discover S3 Buckets"
+    },
+    "favorited": false,
+    "icon": "aws_s3_logo_FCrN6Oz.png",
+    "id": "BP-mytqkxou",
+    "is_orderable": true,
+    "labels": [],
+    "last_updated": "2026-09-15",
+    "management_actions": [
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-05s8tmu5"
+            },
+            "enabled": true,
+            "label": "Delete Object"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-p8sdo03a"
+            },
+            "enabled": true,
+            "label": "List Objects"
+        }
+    ],
+    "metadata_version": "2026.1.0",
+    "name": "AWS S3 Bucket",
+    "resource_name_template": "S3 Bucket",
+    "resource_type": {
+        "icon": "",
+        "id": "RT-mhdvbemy",
+        "internal_only": false,
+        "label": "S3 Bucket",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "s3_bucket",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "S3 Bucket Delete Service",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-ef90bh84"
+            },
+            "deploy_seq": -1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-weue4ihy",
+            "name": "Delete S3 Bucket From Service",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

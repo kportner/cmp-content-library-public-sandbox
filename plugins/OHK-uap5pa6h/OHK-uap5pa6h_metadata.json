@@ -1,0 +1,13 @@
+{
+    "description": "",
+    "id": "OHK-uap5pa6h",
+    "max_retries": 0,
+    "name": "Teardown for AWS Redshift cluster",
+    "resource_technologies": [
+        "Amazon Web Services"
+    ],
+    "script_filename": "OHK-uap5pa6h_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

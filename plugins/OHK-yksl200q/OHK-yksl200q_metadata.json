@@ -1,0 +1,11 @@
+{
+    "description": "A plugin to discover all instances using aurora engine",
+    "id": "OHK-yksl200q",
+    "max_retries": 0,
+    "name": "Aurora Discovery",
+    "resource_technologies": [],
+    "script_filename": "OHK-yksl200q_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

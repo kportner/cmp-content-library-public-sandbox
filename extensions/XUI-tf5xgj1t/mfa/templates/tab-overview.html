@@ -1,0 +1,71 @@
+{% load i18n %}
+{% load tag_tags %}
+{% load helper_tags %}
+
+
+<div class="row">
+    <div class="col-sm-4">
+        <dl class="vertical">
+            <dt>Enabled Users:</dt>
+            {% if mfa_enabled %}
+            {% for account in mfa_enabled %}
+
+            <div role="listitem">
+                <form action="{% url 'mfa_delete' %}" method="POST">
+                {% csrf_token %}
+                <input name="user_id" type="hidden" value="{{ account.id }}">
+                    {{account.username}}
+                <button class="btn btn-danger" type="submit">Disable</button>
+            </form>
+            </div>
+
+            {% empty %}
+            <dd>None</dd>
+            {% endfor %}
+
+            {% endif %}
+        </dl>
+    </div>
+
+    <div class="col-sm-4">
+        <dl class="vertical">
+
+            <dt> Enforced</dt>
+            {% if mfa_disabled is not '[]' %}
+            {% for account in mfa_enforced %}
+            <div role="listitem">
+                <form action="{% url 'mfa_delete' %}" method="POST">
+                {% csrf_token %}
+                <input id="id_user_id" name="user_id" type="hidden" value="{{ account.id }}">
+                    {{account.username}}
+                <button class="btn btn-danger" type="submit">Disable</button>
+                </form>
+            </div>
+            {% empty %}
+            <dd>None</dd>
+            {% endfor %}
+
+            {% endif %}
+        </dl>
+    </div>
+
+    <div class="col-sm-4">
+        <dl class="vertical">
+            <dt> Disabled Users</dt>
+            {% if mfa_disabled %}
+            {% for account in mfa_disabled %}
+            <div role="listitem">
+                <form action="{% url 'mfa_enable' %}" method="POST">
+                {% csrf_token %}
+                <input name="user_id" type="hidden" value="{{ account.id }}">
+                    {{account.username}}
+                <button class="btn btn-success" type="submit">Enforce</button>
+                </form>
+            </div>
+            {% empty %}
+            <dd>None</dd>
+            {% endfor %}
+            {% endif %}
+        </dl>
+    </div>
+</div>

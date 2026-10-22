@@ -1,0 +1,185 @@
+#compliance-tab .cmpl-std-head {
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+#compliance-tab .small-progress-bars {
+    padding-left: 10px !important;
+}
+
+/* #compliance-tab img {
+    width: 75%;
+    height: 100%;
+} */
+
+#compliance-tab .progress-bar {
+    width: 25%;
+}
+
+#compliance-tab .inner-progress .progress {
+    height: 10px;
+    margin-bottom: 0px !important;
+    overflow: hidden;
+    /* background-color: #f5f5f5; */
+    border-radius: 3px;
+    margin-top: 5px;
+    /* box-shadow: inset 0 1px 2px rgba(0,0,0,.1); */
+}
+
+#compliance-tab .risk-severity {
+    display: flex;
+    border-bottom: 1px solid lightgray;
+}
+
+#compliance-tab .risk-severity .col-sm-9,
+#compliance-tab  .risk-severity-last .col-sm-9 {
+    text-align: start;
+    margin-left: 10px;
+}
+
+#compliance-tab .risk-severity .control-label,
+#compliance-tab  .risk-severity-last .control-label {
+    font-weight: bold;
+    margin-bottom: 0px !important;
+}
+
+#compliance-tab .risk-severity .square,
+#compliance-tab  .risk-severity-last .square {
+    height: 10px;
+    width: 10px;
+    border-radius: 2px;
+    margin-left: 10px;
+    margin-top: 4px;
+}
+
+#compliance-tab .inner-progress {
+    font-size: 12px !important;
+    padding-inline: 0px;
+    padding-left: 15px;
+}
+
+
+#compliance-tab .risk-severity > div,
+.risk-severity-last > div {
+    padding-inline: 0px;
+    text-align: end;
+} 
+
+#compliance-tab .cmpl-std-head hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 0;
+    border-top: 2px solid #eee;
+}
+
+#compliance-tab .cmpl-std-head h3 {
+    margin-bottom: 0px;
+}
+
+#compliance-tab #reportrange {
+    background: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    width: 65%;
+    font-size: 16px;
+    line-height: 22px;
+    border-radius: 4px;
+}
+
+#compliance-tab .overall-percent h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#compliance-tab .overall-percent {
+    padding-right: 0px;
+}
+
+#compliance-tab .side-percent h3 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#compliance-tab .side-percent label {
+    font-size: 12px;
+    color: gray;
+    margin-bottom: 0px !important;
+}
+
+#compliance-tab .side-percent {
+    padding-inline: 0px !important;
+}
+
+#compliance-tab .overall-percent {
+    padding-left: 0px;
+}
+
+#compliance-tab .by-categories h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#compliance-tab .compliance-image {
+    margin-top: 20px;
+    margin-right: 40px;
+}
+
+#compliance-tab .fa-calendar {
+    float: right;
+    margin-top: 3px;
+}
+
+#compliance-tab .total-days {
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}
+
+#compliance-tab .severity-head,
+#compliance-tab .by-categories .control-label {
+    font-weight: 400;
+    color: gray;
+    font-size: 12px;
+}
+
+#compliance-tab .by-categories .control-label {
+    margin-bottom: 0px !important;
+}
+
+#compliance-tab .by-categories {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4px;
+}
+
+#compliance-tab .dailyMonthlyState .btn-primary {
+    background-color: #335b83 !important;
+}
+
+#compliance-tab .square {
+    height: 10px;
+    width: 10px;
+    border-radius: 2px;
+    margin-inline: 5px;
+}
+
+#compliance-tab .nc-pb {
+    background-color: #E10000;
+    font-weight: 600;
+    width: 0%;
+    text-align: center;
+}
+
+#compliance-tab .cv-verbose {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* .daterangepicker {
+    top: 247.172px !important;
+    left: 955px !important;
+    right: 88px !important;
+} */

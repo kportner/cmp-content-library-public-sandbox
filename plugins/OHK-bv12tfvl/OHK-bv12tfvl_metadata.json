@@ -1,0 +1,32 @@
+{
+    "action_inputs": [
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "If this list is empty then there are no files present inside the bucket.",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-zitje65i",
+            "label": "Object Name",
+            "name": "obj_name",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        }
+    ],
+    "description": "Delete AWS S3 bucket object",
+    "id": "OHK-bv12tfvl",
+    "max_retries": 0,
+    "name": "Delete Object",
+    "resource_technologies": [],
+    "script_filename": "OHK-bv12tfvl_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

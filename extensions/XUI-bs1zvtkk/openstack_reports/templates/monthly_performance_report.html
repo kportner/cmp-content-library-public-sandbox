@@ -1,0 +1,152 @@
+{% extends "reports/simple_base.html" %}
+{% load helper_tags %}
+{% load infrastructure_tags %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}OpenStack Reports{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'openstack_reports/css/monthly_performance_report.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'openstack_reports/css/common.css' %}">
+<script src="{% static 'openstack_reports/js/jspdf.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'openstack_reports/js/html2canvas.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'openstack_reports/js/jspdf.plugin.autotable.min.js' %}" type="text/javascript"></script>
+{% endblock %}
+
+{% block report_content %}
+<div class="ostack-mp-report">
+    <h3>VM Basic Inventory</h3>
+    <div>
+        <table id="basic-vm-inventory" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>CPU</th>
+                    <th>Utilization (Peak)</th>
+                    <th>Utilization (Avg)</th>
+                    <th>Memory</th>
+                    <th>Utilization (Peak)</th>
+                    <th>Utilization (Avg)</th>
+                    <th>Disk</th>
+                    <th>Read Utilization (Peak)</th>
+                    <th>Read Utilization (Avg)</th>
+                    <th>Write Utilization (Peak)</th>
+                    <th>Write Utilization (Avg)</th>
+                    <th>vNIC</th>
+                    <th>Incoming Utilization (Peak)</th>
+                    <th>Incoming Utilization (Avg)</th>
+                    <th>Outgoing Utilization (Peak)</th>
+                    <th>Outgoing Utilization (Avg)</th>
+                    <th>Guest OS</th>
+                    <th>Age in Days</th>
+                    <th>Age in Hours</th>
+                    <th>Age in Minutes</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in servers %}
+                <tr>
+                    <td>{{ row.name }}</td>
+                    <td>{{ row.cpu }}</td>
+                    <td>{{ row.cpu_utilization_peak }}</td>
+                    <td>{{ row.cpu_utilization_avg }}</td>
+                    <td>{{ row.memory|render_size_field:"mem_size" }}</td>
+                    <td>{{ row.memory_utilization_peak }}</td>
+                    <td>{{ row.memory_utilization_avg }}</td>
+                    <td>{{ row.disk|default:'-' }} GB</td>
+                    <td>{{ row.disk_read_utilization_peak|default:'-' }}</td>
+                    <td>{{ row.disk_read_utilization_avg|default:'-' }}</td>
+                    <td>{{ row.disk_write_utilization_peak|default:'-' }}</td>
+                    <td>{{ row.disk_write_utilization_avg|default:'-' }}</td>
+                    <td>{{ row.nics }}</td>
+                    <td>{{ row.network_incoming_utilization_peak|default:'-' }}</td>
+                    <td>{{ row.network_incoming_utilization_avg|default:'-' }}</td>
+                    <td>{{ row.network_outgoing_utilization_peak|default:'-' }}</td>
+                    <td>{{ row.network_outgoing_utilization_avg|default:'-' }}</td>
+                    <td>{{ row.os }}</td>
+                    <td>{{ row.uptime_in_days }}</td>
+                    <td>{{ row.uptime_in_hours }}</td>
+                    <td>{{ row.uptime_in_minutes }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% if server_errors %}
+    <p>*There could be problems with some of your servers when retrieving metric data as a result, they have been excluded from the list.</p>
+    {% endif %}
+    <div class="card mb-3">
+        <chart-group>
+            {% include 'openstack_reports/templates/_cbloader.html' %}
+        </chart-group>
+        <div class="card-body">
+            <h3>Filters</h3>
+            <div class="row mb-3">
+                <div class="controls col-lg-3">
+                    <label for="select-vm" class="form-label">Select VM</label>
+                    <select class="form-control" id="select-vm">
+                        {% for server in servers %}
+                        <option value="{{ server.id }}" data-name="{{ server.name }}">{{ server.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="controls col-lg-3">
+                    <label for="start_date" class="form-label">Start Date</label>
+                    <input type="text" name="start_date" id="start_date" value="{{ start_date|date:'Y-m-d' }}"
+                        class="render_as_datepicker textinput textInput form-control">
+                </div>
+                <div class="controls col-lg-3">
+                    <label for="end_date" class="form-label">End Date</label>
+                    <input type="text" name="end_date" id="end_date" value="{{ end_date|date:'Y-m-d' }}"
+                        class="render_as_datepicker textinput textInput form-control">
+                </div>
+                <div class="controls col-lg-3">
+                    <button id="plot-graph" class="btn btn-primary plot-btn"
+                        data-url="{% url 'get_utilization_report_data' %}">
+                        <i class="fas fa-play"></i> Plot Graph
+                    </button>
+                    <button id="pdf-report" class="btn btn-light plot-btn">
+                        <i class="fas fa-download"></i> Export as PDF
+                    </button>
+                </div>
+            </div>
+            <p class="error-message" id="error-message"></p>
+        </div>
+    </div>
+    <div class="chart-group" id="chart-group">
+        <div class="col-sm-8 chart-div">
+            <h3>VM CPU Utilization</h3>
+            <div id="cpu-container">
+
+            </div>
+        </div>
+
+        <div class="col-sm-8 chart-div">
+            <h3>VM Memory Utilization</h3>
+            <div id="mem-container">
+
+            </div>
+        </div>
+
+        <div class="col-sm-8 chart-div">
+            <h3>VM Network Incoming Utilization</h3>
+            <div id="net-container">
+
+            </div>
+        </div>
+        <div class="col-sm-8 chart-div">
+            <h3>VM Network Outgoing Utilization</h3>
+            <div id="net-outgoing-container">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="{% static 'openstack_reports/js/monthly_performance_report.js' %}"></script>
+
+<script>
+</script>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{
+    "description": "",
+    "id": "OHK-z2k97epw",
+    "last_updated": "2023-08-02",
+    "max_retries": 0,
+    "maximum_version_required": "2026.1.74",
+    "minimum_version_required": "2024.3.93",
+    "name": "NSX-T Distributed Firewall Policy Teardown",
+    "resource_technologies": [],
+    "script_filename": "teardown_nsxt_dfw_policy.py",
+    "shared": true,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

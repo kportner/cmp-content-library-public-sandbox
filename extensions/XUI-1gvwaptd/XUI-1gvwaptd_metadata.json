@@ -1,0 +1,19 @@
+{
+    "description": null,
+    "enabled": true,
+    "icon": "content_export_8dNnNUJ_vZPVqYH.png",
+    "id": "XUI-1gvwaptd",
+    "label": "Content Export",
+    "last_updated": "2026-09-15",
+    "maximum_version_required": "",
+    "minimum_version_required": "2026.2.29",
+    "name": "content_export",
+    "package_contents": [
+        "content_helper.py",
+        "forms.py",
+        "urls.py",
+        "views.py",
+        "templates/list.html"
+    ],
+    "version": ""
+}

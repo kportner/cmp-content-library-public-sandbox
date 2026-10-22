@@ -1,0 +1,19 @@
+{
+    "commandline_args": null,
+    "credentials": "YOUR_CREDENTIALS",
+    "description": "",
+    "execution_timeout": 2000,
+    "id": "OHK-vlwlybto",
+    "max_retries": 0,
+    "name": "Deploy MERN Stack Web App",
+    "remove_after_run": true,
+    "resource_technologies": [],
+    "run_with_sudo": true,
+    "script_filename": "OHK-vlwlybto_script.sh",
+    "shared": false,
+    "target_os_families": [
+        "Linux -> CentOS",
+        "Linux -> Red Hat"
+    ],
+    "type": "Remote Script"
+}

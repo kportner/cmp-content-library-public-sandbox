@@ -1,0 +1,11 @@
+{
+    "description": "Overrides CloudBolt's standard Order Approval workflow.\r\n\r\nThis Orchestration Action requires users from two separate Groups approve an Order before it becomes Active.",
+    "id": "OHK-6xkftd64",
+    "max_retries": 0,
+    "name": "Multiple Group Approval",
+    "resource_technologies": [],
+    "script_filename": "OHK-6xkftd64_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

@@ -1,0 +1,11 @@
+{
+    "description": "Download last month's billing data for the pub cloud providers and add any server-related costs to the CB DB.",
+    "id": "OHK-nd0nh7oy",
+    "max_retries": 0,
+    "name": "Import Public Cloud Billing Data",
+    "resource_technologies": [],
+    "script_filename": "OHK-nd0nh7oy_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

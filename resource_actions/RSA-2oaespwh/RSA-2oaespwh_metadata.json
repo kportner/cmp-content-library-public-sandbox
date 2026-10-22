@@ -1,0 +1,99 @@
+{
+    "action_input_default_values": [],
+    "action_inputs": [
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": null,
+            "field-dependency-controlling-set": [
+                {
+                    "controlling-field": {
+                        "name": "nodegroup_resource_status_a482"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "delete_nodegroup_a482"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": false,
+            "id": "CF-ct3f0wdk",
+            "label": "Delete Nodegroup",
+            "name": "delete_nodegroup",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        },
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": null,
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [
+                {
+                    "controlling-field": {
+                        "name": "nodegroup_resource_status_a482"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "delete_nodegroup_a482"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global-options": [],
+            "hide-if-default-value": false,
+            "id": "CF-et5arszj",
+            "label": "Nodegroup Resource Status",
+            "name": "nodegroup_resource_status",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        }
+    ],
+    "allow_scheduling": false,
+    "always_allow_to_run": false,
+    "auto_submit_order": false,
+    "dangerous": false,
+    "dependencies": {
+        "hook": "plugins/OHK-41y2y9n6"
+    },
+    "dialog_message": "",
+    "dialog_title_template": "",
+    "enabled": true,
+    "extra_classes": "icon-delete",
+    "hide_from_mcp": false,
+    "id": "RSA-2oaespwh",
+    "is_synchronous": false,
+    "label": "Delete EKS Node Group",
+    "last_updated": null,
+    "list_view_visible": true,
+    "mcp_destructive_hint": null,
+    "mcp_idempotent_hint": null,
+    "mcp_open_world_hint": null,
+    "mcp_read_only_hint": null,
+    "mcp_tool_description": "",
+    "mcp_tool_name": "",
+    "mcp_tool_title": "",
+    "new_tab_url": null,
+    "requires_approval": false,
+    "sequence": 4,
+    "submit_button_label": ""
+}

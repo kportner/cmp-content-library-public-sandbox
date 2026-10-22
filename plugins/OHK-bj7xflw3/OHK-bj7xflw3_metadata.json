@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-bj7xflw3",
+    "max_retries": 0,
+    "name": "Unlock Workspace",
+    "resource_technologies": [],
+    "script_filename": "OHK-bj7xflw3_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

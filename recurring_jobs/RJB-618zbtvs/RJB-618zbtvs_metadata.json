@@ -1,0 +1,17 @@
+{
+    "action_input_default_values": [],
+    "allow_parallel_jobs": false,
+    "create_date": "2026-09-10 17:50:58.728812",
+    "dependencies": {
+        "hook": "plugins/OHK-0itvi9aq"
+    },
+    "description": "View and Cleanup temporary .zip files in CloudBolt server.",
+    "enabled": false,
+    "icon": "View-and-Cleanup-Temporary-Files-in-Windows-10.jpg",
+    "id": "RJB-618zbtvs",
+    "last_run": null,
+    "last_updated": null,
+    "name": "Cleanup .zip files from tmp folder in CB",
+    "schedule": "",
+    "type": "orchestration_hook"
+}

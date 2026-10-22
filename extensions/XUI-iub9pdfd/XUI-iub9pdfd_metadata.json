@@ -1,0 +1,27 @@
+{
+    "description": "CloudEndure in CloudBolt is an automated IT resilience solution that lets you recover your environment from unexpected infrastructure or application outages, data corruption, ransomware, or other malicious attacks.",
+    "enabled": true,
+    "icon": "cloudendure_k4vMIMT.jpg",
+    "id": "XUI-iub9pdfd",
+    "label": "CloudEndure",
+    "last_updated": "2026-09-15",
+    "maximum_version_required": "",
+    "minimum_version_required": "2026.2.29",
+    "name": "cloudendure",
+    "package_contents": [
+        "cloudendure_admin.py",
+        "cloudendure_scripts.py",
+        "forms.py",
+        "install_agent.py",
+        "urls.py",
+        "views.py",
+        "templates/tab-jobs.html",
+        "templates/tab-projects.html",
+        "templates/tab-servers.html",
+        "templates/admin_page.html",
+        "templates/server_tab.html",
+        "templates/tab-dashboard.html",
+        "static/images/cloudendure_logo.jpg"
+    ],
+    "version": ""
+}

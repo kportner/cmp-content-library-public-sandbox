@@ -1,0 +1,119 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "all_environments_enabled": true,
+            "allowed_os_families": [
+                "Oracle Enterprise Linux",
+                "Red Hat"
+            ],
+            "applications": null,
+            "deploy_seq": 1,
+            "description": "",
+            "environment_selection_orchestration": null,
+            "execute_in_parallel": false,
+            "hostname_template": "",
+            "id": "BDI-nvezvidm",
+            "name": "Postgres SQL Server",
+            "os_build": null,
+            "rate": null,
+            "restrict_applications": false,
+            "show_on_order_form": false,
+            "tier_type": "server"
+        },
+        {
+            "action_name": "Install PostgreSQL On OEL8 and RHEL8",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-rhdk5j02"
+            },
+            "deploy_seq": 3,
+            "description": "",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-s2o2dvk1",
+            "name": "Install Postgres",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "script"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Installs Postgres on provisioned machines on VMware.\r\nCurrently, this will only work in OEL8 and RHEL8.",
+    "favorited": false,
+    "icon": "postgres_vW4OFU1_nf1RGYM_wA5fiyQ_M6eKtev_XiSQDWx_6cwoIzJ.png",
+    "id": "BP-qkuk1tm5",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-1t9g772y",
+            "image": null,
+            "name": "Oracle Linux",
+            "sequence": 0
+        },
+        {
+            "color": null,
+            "id": "TAG-slf059e8",
+            "image": null,
+            "name": "PostgreSQL",
+            "parent": {
+                "color": null,
+                "id": "TAG-fpdjl8eu",
+                "image": null,
+                "name": "Databases",
+                "parent": {
+                    "color": null,
+                    "id": "TAG-d7rehwzt",
+                    "image": null,
+                    "name": "Public Cloud Services",
+                    "sequence": 0
+                },
+                "sequence": 0
+            },
+            "sequence": 0
+        },
+        {
+            "color": null,
+            "id": "TAG-5x1ownnp",
+            "image": null,
+            "name": "RedHat",
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-qohoydip"
+            },
+            "enabled": true,
+            "label": "Stop PostgreSQL Server"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-89cqu6li"
+            },
+            "enabled": true,
+            "label": "Restart PostgreSql server"
+        }
+    ],
+    "metadata_version": "2026.1.0",
+    "name": "PostgreSQL on OEL or RedHat",
+    "resource_name_template": null,
+    "resource_type": {
+        "icon": "fas fa-database",
+        "id": "RT-h0npsxst",
+        "internal_only": false,
+        "label": "Database",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "database",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": []
+}

@@ -1,0 +1,52 @@
+{
+    "action_inputs": [
+        {
+            "allow_multiple": true,
+            "available_all_servers": false,
+            "description": "",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "label": "Nsxt Groups",
+            "name": "nsxt_groups",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": false,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": true,
+            "available_all_servers": false,
+            "description": "",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "label": "Nsxt Segments",
+            "name": "nsxt_segments",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": false,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        }
+    ],
+    "description": "Change the Membership of an NSX-T Group",
+    "id": "OHK-xap5b3z2",
+    "last_updated": "2023-08-29",
+    "max_retries": 0,
+    "maximum_version_required": "2026.1.74",
+    "minimum_version_required": "2024.3.93",
+    "name": "Change NSX-T Group Members",
+    "resource_technologies": [],
+    "script_filename": "change_members.py",
+    "shared": true,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

@@ -1,0 +1,287 @@
+{% extends "reports/simple_base.html" %}
+{% load helper_tags %}
+{% load static %}
+
+{% block report_content %}
+<style type="text/css" media="all">
+	.row {
+		padding-left: 20px;
+	}
+
+	.first-row {
+		padding-top: 20px;
+	}
+
+	.row-label {
+		font-size: 18px;
+		font-weight: 700;
+
+	}
+
+	#instances,
+	#vcpus,
+	#ram,
+	#volumes,
+	#snapshots,
+	#storage,
+	#floating_ips,
+	#groups,
+	#rules,
+	#networks,
+	#ports,
+	#routers {
+		margin: 0px !important;
+		padding: 0px !important;
+		min-width: 250px !important;
+		height: 260px !important;
+		max-width: 400px !important;
+		margin: 0 auto !important;
+
+	}
+
+
+	#chartLabel {
+		position: absolute;
+		padding: 11px !important;
+		z-index: 100;
+		margin-left: 148px !important;
+		font-weight: 600;
+	}
+</style>
+
+<div class="card">
+<div class="card-body">
+
+<div class="row row-label first-row">
+	<div class="btn-toolbar col-md-4">
+		<div class='float-start'>
+			<label for="Filter OpenStackRH" style="font-weight: 600;"> Filter OpenStack RH </label>
+			<select class="col-sm--12 col-md--12 col-lg--6 form-control custom-select handlers"
+				aria-label=".form-select-lg handlers" id="handlers">
+				{% for key, value in handlers.items %}
+				<option value="{{key}}" {% if  rh_id != None and key == rh_id %}selected="selected" {% endif %}>
+					{{value}}
+				</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+	<div class="btn-toolbar col-md-4">
+		<div class='float-start'>
+			<label for="Filter Projects" style="font-weight: 600;"> Filter Projects </label>
+			<select class="col-sm--12 col-md--12 col-lg--6 form-control custom-select projects"
+				aria-label=".form-select-lg projects" id="projects">
+				{% for key, value in projects.items %}
+					<option value="{{ key }}" {% if proj_id != None and key == proj_id %}selected="selected" {% endif %}>
+						{{ value }}
+					</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+</div>
+
+<div class="row row-label">
+	Compute
+</div>
+
+<div class="row">
+	<div class="col-sm-3 instances" id="instances"></div>
+	<div class="col-sm-3 vcpus" id="vcpus"></div>
+	<div class="col-sm-3 ram" id="ram"></div>
+</div>
+
+<div class="row row-label">
+	Volume
+</div>
+
+
+<div class="row">
+	<div class="col-sm-3 volumes" id="volumes">
+	</div>
+	<div class="col-sm-3 snapshots" id="snapshots">
+	</div>
+	<div class="col-sm-3 storage" id="storage">
+	</div>
+</div>
+
+<div class="row row-label">
+	Network
+</div>
+<div class="row">
+	<div class="col-sm-3 floating_ips" id="floating_ips">
+	</div>
+	<div class="col-sm-3 groups" id="groups">
+	</div>
+	<!-- <div class="col-sm-3 rules" id="rules">
+	</div>
+	<div class="col-sm-3 networks" id="networks">
+	</div>
+	<div class="col-sm-3 ports" id="ports">
+	</div>
+	<div class="col-sm-3 routers" id="routers">
+	</div> -->
+</div>
+
+</div>
+</div>
+
+<script type="text/javascript">
+	function draw_pie_chart(volume_data, network_data, compute_data) {
+		var chart = {
+			plotBackgroundColor: null,
+			plotBorderWidth: null,
+			plotShadow: false,
+			type: 'pie'
+		};
+
+		var tooltip = {
+			pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+		};
+
+		var accessibility = {
+			point: {
+				valueSuffix: '%'
+			}
+		};
+
+		var plotOptions = {
+			pie: {
+				shadow: false,
+				center: ['50%', '50%'],
+				allowPointSelect: false,
+				showInLegend: true,
+				cursor: 'pointer',
+				dataLabels: {
+					enabled: false,
+					format: '<b>{point.name}</b>'
+				},
+				size: '60%',
+				point: {
+					events: {
+						legendItemClick: function(e) {
+							e.preventDefault();
+						}
+					}
+				},
+				colors: ['#eee', '#428bca']
+			}
+		}
+
+		function create_chart_object(title, total, used, sub_title) {
+			var char_json = {
+				chart: chart,
+				title: {
+					text: title,
+					align: 'center'
+				},
+				subtitle: {
+					text: sub_title,
+					align: 'center'
+				},
+				series: [{
+					colorByPoint: true,
+					name: title,
+					data: [{
+						name: 'available',
+						y: total,
+						sliced: false,
+						selected: false
+					}, {
+						y: used,
+						name: 'used'
+					}]
+				}],
+				tooltip: tooltip,
+				accessibility: accessibility,
+				plotOptions: plotOptions,
+				credits: false,
+				exporting: false
+			}
+
+			return char_json
+
+		}
+
+		$('#instances').highcharts(
+			create_chart_object('Instances', compute_data.Instances.total-compute_data.Instances.used, compute_data.Instances.used,
+				"Used " + compute_data.Instances.used + " of " + compute_data.Instances.total)
+		);
+
+		$('#vcpus').highcharts(
+			create_chart_object('VCPUs', compute_data.VCPUs.total-compute_data.VCPUs.used, compute_data.VCPUs.used,
+			"Used " + compute_data.VCPUs.used + " of " + compute_data.VCPUs.total)
+		);
+
+		$('#ram').highcharts(
+			create_chart_object('RAM', compute_data.RAM.total-compute_data.RAM.used, compute_data.RAM.used,
+			"Used " + compute_data.RAM.used + "GB of " + compute_data.RAM.total+"GB")
+		);
+
+		$('#volumes').highcharts(
+			create_chart_object('Volumes', volume_data.Volumes.total-volume_data.Volumes.used, volume_data.Volumes.used,
+			"Used " + volume_data.Volumes.used + " of " + volume_data.Volumes.total)
+		);
+
+		$('#snapshots').highcharts(
+			create_chart_object('Volume Snapshots', volume_data.Snapshots.total-volume_data.Snapshots.used, volume_data.Snapshots.used,
+			"Used " + volume_data.Snapshots.used + " of " + volume_data.Snapshots.total)
+		);
+
+		$('#storage').highcharts(
+			create_chart_object('Volume Storage', volume_data.Storage.total-volume_data.Storage.used, volume_data.Storage.used,
+			"Used " + volume_data.Storage.used + "GB of " + volume_data.Storage.total+"GB")
+		);
+
+		$('#floating_ips').highcharts(
+			create_chart_object('Floating IPs', network_data.FloatingIPs.total-network_data.FloatingIPs.used, network_data.FloatingIPs.used,
+			"Used " + network_data.FloatingIPs.used + " of " + network_data.FloatingIPs.total)
+		);
+
+		$('#groups').highcharts(
+			create_chart_object('Security Groups', network_data.SecurityGroups.total-network_data.SecurityGroups.used, network_data.SecurityGroups.used,
+			"Used " + network_data.SecurityGroups.used + " of " + network_data.SecurityGroups.total)
+		);
+
+		// $('#rules').highcharts(
+		// 	create_chart_object('Security Group Rules', network_data.SecurityGroupRules.total-network_data.SecurityGroupRules.used,
+		// 	network_data.SecurityGroupRules.used,
+		// 	"Used " + network_data.SecurityGroupRules.used + " of " + network_data.SecurityGroupRules.total)
+		// );
+
+		// $('#networks').highcharts(
+		// 	create_chart_object('Networks', network_data.Networks.total-network_data.Networks.used, network_data.Networks.used,
+		// 	"Used " + network_data.Networks.used + " of " + network_data.Networks.total)
+		// );
+
+		// $('#ports').highcharts(
+		// 	create_chart_object('Ports', network_data.Ports.total-network_data.Ports.used, network_data.Ports.used,
+		// 	"Used " + network_data.Ports.used + " of " + network_data.Ports.total)
+		// );
+
+		// $('#routers').highcharts(
+		// 	create_chart_object('Routers', network_data.Routers.total-network_data.Routers.used, network_data.Routers.used,
+		// 	"Used " + network_data.Routers.used + " of " + network_data.Routers.total)
+		// );
+	}
+
+	$(document).ready(function () {
+		const volume_data = {{ volume | to_json	}}
+		const network_data = {{ network | to_json}}
+		const compute_data = {{ compute | to_json}}
+		draw_pie_chart(volume_data, network_data, compute_data)
+	})
+
+	$('#projects').on('change', function () {
+		var selectedText = $(this).find('option:selected').text().trim();
+		var selectedProject = $(this).val();
+		window.location.href = window.location.href.split("?")[0] + "?proj_id=" + selectedProject + "&rh_id=" + document.getElementById("handlers").value + "&proj_name=" + selectedText
+	});
+	$('#handlers').on('change', function () {
+		var selectedRH = $(this).val();
+		window.location.href = window.location.href.split("?")[0] + "?rh_id=" + document.getElementById("handlers").value
+	});
+
+
+</script>
+{% endblock %}

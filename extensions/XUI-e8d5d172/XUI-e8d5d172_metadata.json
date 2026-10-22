@@ -1,0 +1,26 @@
+{
+    "description": "SolarWinds in CloudBolt is network monitoring software enabling you to quickly detect, diagnose, and resolve network performance problems and outages.",
+    "enabled": true,
+    "icon": "solar-winds_0NQQNsz.jpg",
+    "id": "XUI-e8d5d172",
+    "label": "SolarWinds",
+    "last_updated": "2026-09-15",
+    "maximum_version_required": "",
+    "minimum_version_required": "2026.2.29",
+    "name": "solar_winds",
+    "package_contents": [
+        "forms.py",
+        "__init__.py",
+        "install_agent.py",
+        "solar_winds_helper.py",
+        "solar_winds_scripts.py",
+        "urls.py",
+        "views.py",
+        "templates/admin_page.html",
+        "templates/server_tab.html",
+        "templates/tab-dashboard.html",
+        "templates/tab-servers.html",
+        "static/images/solar_winds_logo.jpg"
+    ],
+    "version": ""
+}

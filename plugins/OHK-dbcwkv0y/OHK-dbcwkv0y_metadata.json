@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-dbcwkv0y",
+    "max_retries": 0,
+    "name": "Discover ElastiCache Clusters",
+    "resource_technologies": [],
+    "script_filename": "OHK-dbcwkv0y_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

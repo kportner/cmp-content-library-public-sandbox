@@ -1,0 +1,11 @@
+{
+    "description": "Discovers all Amazon FSx in all environments",
+    "id": "OHK-cag0x7nf",
+    "max_retries": 0,
+    "name": "Discover Amazon FSx file systems",
+    "resource_technologies": [],
+    "script_filename": "OHK-cag0x7nf_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block title %}S3 File Manager{% endblock %}
+{% block topnav %}S3 File Manager{% endblock %}
+{% block breadcrumb-item %}S3 File Manager{% endblock %}
+
+{% block content %}
+<p class="text-body-secondary">
+    Administration page for the <strong>S3 File Manager</strong> XUI
+    (<code>xui/s3_file_manager/</code>).
+</p>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="card-title mb-0">Authorization</h5>
+    </div>
+    <div class="card-body">
+        <p class="text-body-secondary">
+            Super admins can always change bucket permissions and request
+            bucket deletion. Grant the same abilities to members of specific
+            CMP groups here — the lists are stored in the
+            <strong>{{ connection_info_name }}</strong> Connection Info record.
+            Users still only see buckets belonging to their own groups.
+        </p>
+        <form method="post" action="{% url 's3_mgmt_admin_settings' %}">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-lg-6 mb-3">
+                    <label class="form-label" for="s3b-perm-groups">
+                        Groups that may change bucket permissions
+                    </label>
+                    <select id="s3b-perm-groups" name="permissions_edit_groups"
+                            multiple class="form-select">
+                        {% for group in all_groups %}
+                        <option value="{{ group.id }}"
+                            {% if group.id in permissions_edit_group_ids %}selected{% endif %}>
+                            {{ group.name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <div class="form-text">
+                        Bucket policy, ACL and Block Public Access changes.
+                        Leave empty to restrict to super admins only.
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-3">
+                    <label class="form-label" for="s3b-delete-groups">
+                        Groups that may request bucket deletion
+                    </label>
+                    <select id="s3b-delete-groups" name="delete_bucket_groups"
+                            multiple class="form-select">
+                        {% for group in all_groups %}
+                        <option value="{{ group.id }}"
+                            {% if group.id in delete_bucket_group_ids %}selected{% endif %}>
+                            {{ group.name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <div class="form-text">
+                        Deletion creates a CloudBolt order that follows the
+                        normal approval process — nothing is deleted directly.
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Authorization</button>
+        </form>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="card-title mb-0">Configuration</h5>
+    </div>
+    <div class="card-body">
+        <p class="text-body-secondary">
+            Defined at the top of <code>xui/s3_file_manager/models.py</code>.
+            Edit the file and restart Apache (<code>systemctl restart httpd</code>)
+            to change these values.
+        </p>
+        <div class="table-responsive">
+            <table class="table table-sm align-middle">
+                <thead>
+                    <tr><th>Constant</th><th>Value</th><th>What it does</th></tr>
+                </thead>
+                <tbody>
+                    {% for name, value, description in config %}
+                    <tr>
+                        <td><code class="text-nowrap">{{ name }}</code></td>
+                        <td><code class="text-nowrap">{{ value }}</code></td>
+                        <td class="text-body-secondary">{{ description }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="card-title mb-0">S3 Bucket Inventory</h5>
+    </div>
+    <div class="card-body">
+        {% if buckets %}
+        <div class="table-responsive">
+            <table class="table table-sm table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th>Bucket</th>
+                        <th>Group</th>
+                        <th>AWS Handler</th>
+                        <th>Region Field</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in buckets %}
+                    <tr>
+                        <td>
+                            <a href="{{ entry.resource.get_absolute_url }}">
+                                {{ entry.resource.name }}
+                            </a>
+                        </td>
+                        <td>{{ entry.resource.group|default:"—" }}</td>
+                        <td>
+                            {% if entry.handler %}
+                                {{ entry.handler.name }}
+                            {% else %}
+                                <span class="text-danger">missing ({{ entry.resource.aws_rh_id|default:"not set" }})</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ entry.region|default:"(bucket location lookup)" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="text-body-secondary mb-0">No active S3 bucket resources found.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block c2script %}
+    {# CMP's own chip/token multi-select — the widget the Roles picker uses. #}
+    $("#s3b-perm-groups, #s3b-delete-groups").each(function () {
+        c2.selectize(this, {
+            plugins: ["remove_button"],
+            placeholder: "Super admins only"
+        });
+    });
+{% endblock %}

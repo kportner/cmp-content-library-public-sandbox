@@ -1,0 +1,19 @@
+{
+    "commandline_args": null,
+    "credentials": "YOUR_CREDENTIALS",
+    "description": "",
+    "execution_timeout": 1200,
+    "id": "OHK-gm8yew5a",
+    "max_retries": 0,
+    "name": "Install MySQL",
+    "remove_after_run": true,
+    "resource_technologies": [],
+    "run_with_sudo": true,
+    "script_filename": "OHK-gm8yew5a_script.sh",
+    "shared": false,
+    "target_os_families": [
+        "Linux -> Oracle Enterprise Linux",
+        "Linux -> Red Hat"
+    ],
+    "type": "Remote Script"
+}

@@ -1,0 +1,81 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Boot Instance from Volume",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-s0lqetu5"
+            },
+            "deploy_seq": 1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-prgphw4d",
+            "name": "Boot Instance from Volume",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Creates an OpenStack instance from a bootable volume.\r\n\r\nConnectionInfo with the name 'Openstack' has to be added before ordering this blueprint.",
+    "favorited": false,
+    "icon": "RedhatOpenstackLogo_zMRP5uo_2vNWrxM_LCwpkgg_sDDdDx9.png",
+    "id": "BP-otmyedmv",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-jte5jp4a",
+            "image": null,
+            "name": "OpenStack",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "OpenStack Volume Instance",
+    "resource_name_template": null,
+    "resource_type": {
+        "icon": "",
+        "id": "RT-ri5rtalb",
+        "internal_only": false,
+        "label": "Volume Instance",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "volume_instance",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Delete Volume Instance",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-a8y56hdm"
+            },
+            "deploy_seq": 2,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-3p8e1l05",
+            "name": "Delete Volume Instances",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

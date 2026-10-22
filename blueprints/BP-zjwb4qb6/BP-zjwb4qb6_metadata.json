@@ -1,0 +1,131 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Create AWS PostgreSQL Database",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-gfrx97ao"
+            },
+            "deploy_seq": 1,
+            "description": "This plugin will create a PostgreSQL Database on AWS Cloud and resource on the CMP Instance.",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-i3cey4p7",
+            "name": "Create AWS PostgreSQL Database",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Create, delete and synchronize AWS PostgreSQL Database Instance",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-y4t8shdg"
+        },
+        "href": "/api/v3/cmp/actions/OHK-y4t8shdg/",
+        "title": "Sync AWS PostgreSQL Database"
+    },
+    "favorited": false,
+    "icon": "aws_psql_swAAdHR_GsHJod7_J03Zy7C.png",
+    "id": "BP-zjwb4qb6",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-6spb5ltg",
+            "image": null,
+            "name": "AWS",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        },
+        {
+            "color": null,
+            "id": "TAG-slf059e8",
+            "image": null,
+            "name": "PostgreSQL",
+            "parent": {
+                "color": null,
+                "id": "TAG-fpdjl8eu",
+                "image": null,
+                "name": "Databases",
+                "parent": {
+                    "color": null,
+                    "id": "TAG-d7rehwzt",
+                    "image": null,
+                    "name": "Public Cloud Services",
+                    "sequence": 0
+                },
+                "sequence": 0
+            },
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-5bipytgv"
+            },
+            "enabled": true,
+            "label": "Start PostgreSQL Database"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-bg85vlxj"
+            },
+            "enabled": true,
+            "label": "Stop PostgreSQL Database"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-nbsf4y8q"
+            },
+            "enabled": true,
+            "label": "Refresh PostgreSQL Database Connection Info"
+        }
+    ],
+    "metadata_version": "2026.1.0",
+    "name": "AWS PostgreSQL",
+    "resource_name_template": null,
+    "resource_type": {
+        "icon": "fas fa-database",
+        "id": "RT-h0npsxst",
+        "internal_only": false,
+        "label": "Database",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "database",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Delete AWS PostgreSQL Database",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-d8uyhhug"
+            },
+            "deploy_seq": 2,
+            "description": "This plugin will delete a PostgreSQL Database from AWS Cloud and resource from the CMP Instance.",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-fze7kisb",
+            "name": "Delete AWS PostgreSQL Database",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

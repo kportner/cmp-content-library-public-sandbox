@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-o5cinhd4",
+    "max_retries": 0,
+    "name": "update_auto_scaling_group_template",
+    "resource_technologies": [],
+    "script_filename": "OHK-o5cinhd4_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

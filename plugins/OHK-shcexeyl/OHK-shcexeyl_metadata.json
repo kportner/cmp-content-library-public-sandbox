@@ -1,0 +1,11 @@
+{
+    "description": "Server Action to extend the expiration date of a Server by 30 days and notify Approvers in the Server's Group.",
+    "id": "OHK-shcexeyl",
+    "max_retries": 0,
+    "name": "Extend Expiration Date",
+    "resource_technologies": [],
+    "script_filename": "OHK-shcexeyl_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

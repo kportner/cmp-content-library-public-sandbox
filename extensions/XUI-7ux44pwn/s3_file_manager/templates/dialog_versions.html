@@ -1,0 +1,51 @@
+{# Read-only version history for one object, shown inside the versions dialog. #}
+<div class="table-responsive">
+    <table class="table table-sm align-middle">
+        <thead>
+            <tr>
+                <th></th><th>Version ID</th><th>Type</th>
+                <th>Last modified</th><th>Size</th><th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for version in versions %}
+            <tr{% if version.is_delete_marker %} class="opacity-50"{% endif %}>
+                <td>
+                    {% if version.is_latest %}
+                        <span class="badge text-bg-success">latest</span>
+                    {% endif %}
+                </td>
+                <td><code>{{ version.version_id }}</code></td>
+                <td>{{ version.type }}</td>
+                <td>{{ version.last_modified }}</td>
+                <td>{{ version.size }}</td>
+                <td>
+                    {% if not version.is_delete_marker %}
+                        <a class="btn btn-sm btn-light" title="Download"
+                           href="{{ download_url }}?key={{ key|urlencode }}&amp;version_id={{ version.version_id|urlencode }}">
+                            <i class="bi bi-download"></i>
+                        </a>
+                        {% if not version.is_latest %}
+                        <form method="post" class="d-inline"
+                              action="{{ objects_url }}?action=promote-version&amp;s3path={{ prefix|urlencode }}">
+                            {% csrf_token %}
+                            <input type="hidden" name="key" value="{{ key }}">
+                            <input type="hidden" name="version_id" value="{{ version.version_id }}">
+                            <button class="btn btn-sm btn-light" title="Promote to latest">
+                                <i class="bi bi-arrow-up"></i>
+                            </button>
+                        </form>
+                        {% endif %}
+                    {% endif %}
+                    <a class="btn btn-sm btn-light open-dialog" title="Delete this version permanently"
+                       href="{{ dialog_url }}?action=delete-version&amp;key={{ key|urlencode }}&amp;version_id={{ version.version_id|urlencode }}&amp;path={{ prefix|urlencode }}">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="6" class="text-body-secondary">No versions found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

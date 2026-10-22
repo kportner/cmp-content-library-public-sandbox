@@ -1,0 +1,33 @@
+{
+    "action_inputs": [
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "IPv4 network address for the VPC, in CIDR notation.",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-5d4zh6em",
+            "label": "VPC CIDR",
+            "name": "vpc_cidr",
+            "placeholder": "Example :- 172.64.0.0/16 (Note :- Block From /16 to /24 allowed)",
+            "regex_constraint": "^(((\\d)|(\\d\\d)|([0-1]\\d\\d)|([2][0,5][0-4]))\\.){3}(((\\d)|(\\d\\d)|([0-1]\\d\\d)|([2][0,5][0-4])))(/(16|17|18|19|20|21|22|23|24))$",
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        }
+    ],
+    "description": "",
+    "id": "OHK-inv8e8n5",
+    "max_retries": 0,
+    "name": "aws_vpc_and_security_group",
+    "resource_technologies": [],
+    "script_filename": "OHK-inv8e8n5_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

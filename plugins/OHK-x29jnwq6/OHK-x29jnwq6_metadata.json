@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-x29jnwq6",
+    "max_retries": 0,
+    "name": "Deploy Grafana Web Service",
+    "resource_technologies": [],
+    "script_filename": "OHK-x29jnwq6_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

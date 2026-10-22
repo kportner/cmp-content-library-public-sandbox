@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-hm435klp",
+    "max_retries": 0,
+    "name": "Delete ElastiCache Cluster",
+    "resource_technologies": [],
+    "script_filename": "OHK-hm435klp_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

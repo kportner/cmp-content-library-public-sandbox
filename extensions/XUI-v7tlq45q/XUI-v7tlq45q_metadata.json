@@ -1,0 +1,20 @@
+{
+    "description": "A Cloudbolt Openshift Xui helps you to configure Redhat openshift cluster inside CMP",
+    "enabled": true,
+    "icon": "openshift_logo_nTVDcsg.png",
+    "id": "XUI-v7tlq45q",
+    "label": "OpenShift",
+    "last_updated": "2026-09-15",
+    "maximum_version_required": "",
+    "minimum_version_required": "2026.2.29",
+    "name": "openshift",
+    "package_contents": [
+        "forms.py",
+        "openshiftmanager.py",
+        "urls.py",
+        "views.py",
+        "templates/admin_page.html",
+        "templates/tab-dashboard.html"
+    ],
+    "version": ""
+}

@@ -1,0 +1,70 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "blueprint_image": "/static/uploads/blueprints/vmware_nsx_featured_9TwdXMN_xuCsWS5_K17Z6PX.jpg",
+    "deployment_items": [
+        {
+            "action_name": "NSX-T Group Build",
+            "continue_on_failure": false,
+            "deploy_seq": 1,
+            "description": null,
+            "execute_in_parallel": false,
+            "id": "BDI-sw9gd2dm",
+            "name": "NSX-T Group Build",
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "description": "Create an Infrastructure Group in NSX-T",
+    "favorited": false,
+    "icon": "vmware_nsx_featured_9TwdXMN_xuCsWS5_K17Z6PX.jpg",
+    "id": "BP-ci3t51c8",
+    "is_manageable": true,
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-i7za52gb",
+            "image": null,
+            "name": "NSX-T",
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2023-08-29",
+    "management_actions": [
+        {
+            "enabled": true,
+            "label": "Change NSX-T Group Members"
+        }
+    ],
+    "maximum_version_required": "2026.1.74",
+    "minimum_version_required": "2024.3.93",
+    "name": "NSX-T Group",
+    "resource_name_template": "",
+    "resource_type": {
+        "icon": "glyphicon glyphicon-th",
+        "id": "RT-4x8kv3wo",
+        "label": "NSX-T Group",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "nsxt_group",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "NSX-T Group Teardown",
+            "continue_on_failure": false,
+            "deploy_seq": -1,
+            "description": null,
+            "execute_in_parallel": false,
+            "id": "BDI-cepl5y8i",
+            "name": "NSX-T Group Teardown",
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

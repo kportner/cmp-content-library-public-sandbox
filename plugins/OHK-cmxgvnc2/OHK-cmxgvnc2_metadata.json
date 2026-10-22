@@ -1,0 +1,359 @@
+{
+    "action_inputs": [
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Git configuration -The Azure DevOps project name where the repo is located",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "configure_repository_type_a564"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "azure_devops_project_name_a564"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-ysipaj7d",
+            "label": "Devops Project Name",
+            "name": "azure_devops_project_name",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": false,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Location for all resources",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [
+                {
+                    "controlling-field": {
+                        "name": "azure_region_a564"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "resource_group_a564"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-osxlnuas",
+            "label": "Azure Region",
+            "name": "azure_region",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Git configuration - The hosting service of your repository",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [
+                {
+                    "controlling-field": {
+                        "name": "configure_repository_type_a564"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "azure_devops_project_name_a564"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                },
+                {
+                    "controlling-field": {
+                        "name": "configure_repository_type_a564"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "github_account_name_a564"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                },
+                {
+                    "controlling-field": {
+                        "name": "configure_repository_type_a564"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "repository_name_a564"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                },
+                {
+                    "controlling-field": {
+                        "name": "configure_repository_type_a564"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "repository_branch_name_a564"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                },
+                {
+                    "controlling-field": {
+                        "name": "configure_repository_type_a564"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "repository_root_folder_a564"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-5qmm7l62",
+            "label": "Configure Repository Type",
+            "name": "configure_repository_type",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": false,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "The name of the Azure Data factory to create, It should be unique.",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-mhetta1y",
+            "label": "Data Factory Name",
+            "name": "data_factory_name",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Git configuration - Account Name (Azure DevOps account or GitHub account)",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "configure_repository_type_a564"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "github_account_name_a564"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-l8xlu36k",
+            "label": "Github Account Name",
+            "name": "github_account_name",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Git configuration -The name of an existing branch that will be used for collaboration (usually master)",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "configure_repository_type_a564"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "repository_branch_name_a564"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-2rium3xz",
+            "label": "Repository Branch Name",
+            "name": "repository_branch_name",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Git configuration - The name of an existing Git repository, ex. myRepository",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "configure_repository_type_a564"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "repository_name_a564"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-ykhr8qrg",
+            "label": "Repository Name",
+            "name": "repository_name",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Git configuration - Folder in the collaboration branch where Factory's entities will be stored. For ex: '/factorydata'. '/' would indicate the root folder.",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "configure_repository_type_a564"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "repository_root_folder_a564"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-rdlijhfn",
+            "label": "Repository Root Folder",
+            "name": "repository_root_folder",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": null,
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "azure_region_a564"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "resource_group_a564"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-v7s2fiur",
+            "label": "Resource Group",
+            "name": "resource_group",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        }
+    ],
+    "action_inputs_sequence": [
+        "azure_region",
+        "resource_group",
+        "data_factory_name",
+        "configure_repository_type",
+        "github_account_name",
+        "repository_name",
+        "repository_branch_name",
+        "repository_root_folder",
+        "azure_devops_project_name"
+    ],
+    "description": "",
+    "id": "OHK-cmxgvnc2",
+    "max_retries": 0,
+    "name": "Create Data Factory Workspace",
+    "resource_technologies": [],
+    "script_filename": "OHK-cmxgvnc2_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

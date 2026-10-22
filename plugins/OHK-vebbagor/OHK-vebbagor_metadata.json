@@ -1,0 +1,152 @@
+{
+    "action_inputs": [
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Database Name must begin with a letter and contain only alphanumeric characters.",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-x8h7sjh1",
+            "label": "Database Name",
+            "name": "database_name",
+            "placeholder": "Must begin with a letter and contain only alphanumeric characters.",
+            "regex_constraint": "^[A-Za-z][A-Za-z0-9]{0,39}$",
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": null,
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "max_capacity_a621"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "engine_version_a621"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-gqbkaw3o",
+            "label": "Engine Version",
+            "name": "engine_version",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "The maximum number of Aurora capacity units (ACUs) for a DB instance in an Aurora Serverless v2 cluster.",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [
+                {
+                    "controlling-field": {
+                        "name": "max_capacity_a621"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "engine_version_a621"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-mwohbdop",
+            "label": "Aurora Capacity",
+            "maximum": "127.00",
+            "minimum": "2.00",
+            "name": "max_capacity",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "INT",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Password must be at least 8 character long. It would be combination of alphanumeric and allowed special characters are ( - , _ , # )",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-s08rbwwm",
+            "label": "Pasword",
+            "maximum": "30.00",
+            "minimum": "8.00",
+            "name": "pasword",
+            "placeholder": "Password must be combination of alphanumeric and special characters (-,_,#)",
+            "regex_constraint": "^(?!-)(?!.*\\/,',\\\",@)[A-Za-z0-9-#_]+(?<!-)$",
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "PWD",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Username must begin with a letter and contain only alphanumeric characters.",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-4kjpmqg1",
+            "label": "Username",
+            "maximum": "16.00",
+            "minimum": "1.00",
+            "name": "username",
+            "placeholder": "Username must begin with a letter and contain only alphanumeric characters.",
+            "regex_constraint": "^(?!-)(?!.*admin)(?!.*Admin)(?!.*ADMIN)[A-Za-z][A-Za-z0-9]+(?<!-)$",
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        }
+    ],
+    "action_inputs_sequence": [
+        "max_capacity",
+        "engine_version",
+        "database_name",
+        "username",
+        "pasword"
+    ],
+    "description": "",
+    "id": "OHK-vebbagor",
+    "max_retries": 0,
+    "name": "aurora_multi_az_db",
+    "resource_technologies": [],
+    "script_filename": "OHK-vebbagor_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

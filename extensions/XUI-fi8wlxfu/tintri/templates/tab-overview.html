@@ -1,0 +1,44 @@
+{% load i18n %}
+
+<div class="btn-toolbar gap-2 mb-3">
+            {% if endpoint %}
+                <a class="open-dialog btn btn-light"
+                   href="/tintri/edit_endpoint/{{ endpoint.id }}/">
+                    <span class="icon-edit"></span>
+                    Settings
+                </a>
+                <a class="btn btn-light open-dialog"
+                    href="/tintri/verify_endpoint/">
+                    <span class="icon-verify-connection"></span>
+                    Verify Connection
+                </a>
+                <a class="btn btn-light open-dialog"
+                    href="/tintri/delete_endpoint/">
+                    <span class="icon-delete"></span>
+                    Delete&hellip;
+                </a>
+            {% else %}
+                <a class="open-dialog btn btn-light"
+                    href="/tintri/create_endpoint/">
+                    <span class="icon-add"></span>
+                    Endpoint
+                </a>
+            {% endif %}
+</div>
+
+        {% if endpoint %}
+<div class="card cb-surface-card">
+    <div class="card-body pt-4">
+        <dl>
+            <dt>{% trans "URL" %}:</dt>
+            <dd>{{ endpoint.protocol }}://{{ endpoint.ip }}:{{ endpoint.port }}</dd>
+            <dt>{% trans "Username" %}:</dt>
+            <dd>{{ endpoint.username }} </dd>
+        </dl>
+    </div>
+</div>
+        {% else %}
+<div class="alert alert-info w-75">
+    <p><i class="fas fa-info-circle me-2"></i> No Tintri Connection Endpoint configured.</p>
+</div>
+        {% endif %}

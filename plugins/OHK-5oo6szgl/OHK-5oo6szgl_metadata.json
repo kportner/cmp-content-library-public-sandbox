@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-5oo6szgl",
+    "max_retries": 0,
+    "name": "Stop MySQL Database Instance",
+    "resource_technologies": [],
+    "script_filename": "OHK-5oo6szgl_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

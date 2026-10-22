@@ -1,0 +1,399 @@
+{
+    "action_inputs": [
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "A \u2013 Routes traffic to an IPv4 address and some AWS resources",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "record_type_a524"
+                    },
+                    "custom-field-options": [
+                        "A"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "a_value_a524"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-9jl8dlsu",
+            "label": "A Value",
+            "name": "a_value",
+            "placeholder": "192.0.2.235",
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "AAAA \u2013 Routes traffic to an IPv6 address and some AWS resources",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "record_type_a524"
+                    },
+                    "custom-field-options": [
+                        "AAAA"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "aaaa_value_a524"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-bheem1rc",
+            "label": "Aaaa Value",
+            "name": "aaaa_value",
+            "placeholder": "2001:0db8::8a2e:0370:bab5",
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": null,
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [
+                {
+                    "controlling-field": {
+                        "name": "aws_id_a524"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "zone_id_a524"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-v59trdjf",
+            "label": "Aws Id",
+            "name": "aws_id",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "CNAME \u2013 Routes traffic to another domain name and to some AWS resources",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "record_type_a524"
+                    },
+                    "custom-field-options": [
+                        "CNAME"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "cname_value_a524"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-386ywzgm",
+            "label": "Cname Value",
+            "name": "cname_value",
+            "placeholder": "www.example.com",
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "MX \u2013 Specifies mail servers",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "record_type_a524"
+                    },
+                    "custom-field-options": [
+                        "MX"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "mx_value_a524"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-917ihq71",
+            "label": "Mx Value",
+            "name": "mx_value",
+            "placeholder": "10 mailserver.example.com",
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "NS - Name Servers for Hosted Zone",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "record_type_a524"
+                    },
+                    "custom-field-options": [
+                        "NS"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "ns_value_a524"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-ohbuhh4z",
+            "label": "Ns Value",
+            "name": "ns_value",
+            "placeholder": "ns-1228.exampledns-25.org",
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "To route traffic for www.example.com, Enter full www.example.com. Where example.com refers to <zone_id>",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-tss3081e",
+            "label": "R53 Recordset Name",
+            "name": "r53_recordset_name",
+            "placeholder": "www.example.com",
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": null,
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [
+                {
+                    "controlling-field": {
+                        "name": "record_type_a524"
+                    },
+                    "custom-field-options": [
+                        "AAAA"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "aaaa_value_a524"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                },
+                {
+                    "controlling-field": {
+                        "name": "record_type_a524"
+                    },
+                    "custom-field-options": [
+                        "A"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "a_value_a524"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                },
+                {
+                    "controlling-field": {
+                        "name": "record_type_a524"
+                    },
+                    "custom-field-options": [
+                        "CNAME"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "cname_value_a524"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                },
+                {
+                    "controlling-field": {
+                        "name": "record_type_a524"
+                    },
+                    "custom-field-options": [
+                        "MX"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "mx_value_a524"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                },
+                {
+                    "controlling-field": {
+                        "name": "record_type_a524"
+                    },
+                    "custom-field-options": [
+                        "NS"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "ns_value_a524"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-ykmy9sqp",
+            "label": "Record Type",
+            "name": "record_type",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "TTL (time to live) in Seconds",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-4s769tsa",
+            "label": "Ttl",
+            "name": "ttl",
+            "placeholder": "300",
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": null,
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "aws_id_a524"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "zone_id_a524"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-ht1exz5q",
+            "label": "Zone Id",
+            "name": "zone_id",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        }
+    ],
+    "action_inputs_sequence": [
+        "aws_id",
+        "zone_id",
+        "r53_recordset_name",
+        "record_type",
+        "aaaa_value",
+        "a_value",
+        "cname_value",
+        "mx_value",
+        "ns_value",
+        "ttl"
+    ],
+    "description": "",
+    "id": "OHK-jqp3voy7",
+    "max_retries": 0,
+    "name": "Create Route 53 DNS Record",
+    "resource_technologies": [],
+    "script_filename": "OHK-jqp3voy7_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

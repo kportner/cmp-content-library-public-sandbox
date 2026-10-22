@@ -1,0 +1,192 @@
+{
+    "action_inputs": [
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Select the EKS-optimized Amazon Machine Image for nodes.",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [
+                {
+                    "controlling-field": {
+                        "name": "ami_type_a485"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "instance_type_a485"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-6gi53sa5",
+            "label": "Ami Type",
+            "name": "ami_type",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Set the desired number of nodes that the group should launch with initially.",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-pkzbg97p",
+            "label": "Desired Nodes",
+            "maximum": "100.00",
+            "minimum": "2.00",
+            "name": "desired_nodes",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "INT",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Disk Size depends on AMI and Instance Type. The root device disk size (in GiB) for your node group instances. The default disk size is 20 GiB.",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-gjxl2xtu",
+            "label": "Disk Size",
+            "maximum": "500.00",
+            "minimum": "20.00",
+            "name": "disk_size",
+            "placeholder": null,
+            "regex_constraint": "^[0-9]+$",
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "INT",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Select instance types you prefer for this node group.",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "ami_type_a485"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "instance_type_a485"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-m1g413np",
+            "label": "Instance Type",
+            "name": "instance_type",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Set the maximum number of nodes that the group can scale out to.",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-c98loh5q",
+            "label": "Max Nodes",
+            "maximum": "100.00",
+            "minimum": "2.00",
+            "name": "max_nodes",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "INT",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Set the minimum number of nodes that the group can scale in to.",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-5zh8hbqo",
+            "label": "Min Nodes",
+            "maximum": "100.00",
+            "minimum": "2.00",
+            "name": "min_nodes",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "INT",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Assign a unique name for this node group.",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-tptb8u2n",
+            "label": "Nodegroup Name",
+            "name": "nodegroup_name",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        }
+    ],
+    "action_inputs_sequence": [
+        "nodegroup_name",
+        "ami_type",
+        "instance_type",
+        "disk_size",
+        "desired_nodes",
+        "min_nodes",
+        "max_nodes"
+    ],
+    "description": "",
+    "id": "OHK-1tefdlwb",
+    "max_retries": 0,
+    "name": "Add EKS Node Group",
+    "resource_technologies": [],
+    "script_filename": "OHK-1tefdlwb_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

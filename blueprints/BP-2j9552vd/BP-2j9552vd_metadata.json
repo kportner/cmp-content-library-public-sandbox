@@ -1,0 +1,66 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Provision Prometheus",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-pnl6s5h4"
+            },
+            "deploy_seq": 1,
+            "description": "",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-v8ch9m33",
+            "name": "Provision Prometheus",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": false,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Prometheus is an open-source systems monitoring and alerting toolkit.\r\nIts monitoring lets you run flexible queries and configure real-time notifications.\r\nit offers a set of API endpoints to query metadata about series and their labels.",
+    "favorited": false,
+    "icon": "images_p6mja72_5HYSfye.jpeg",
+    "id": "BP-2j9552vd",
+    "is_orderable": true,
+    "labels": [],
+    "last_updated": "2026-09-15",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "Prometheus Portal",
+    "resource_name_template": "prometheus-00X",
+    "resource_type": {
+        "icon": "",
+        "id": "RT-wtoyrbjm",
+        "internal_only": false,
+        "label": "Service",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "service",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Teardown Prometheus",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-6m1ubsez"
+            },
+            "deploy_seq": -1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-71bdava1",
+            "name": "Teardown Prometheus",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": false,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

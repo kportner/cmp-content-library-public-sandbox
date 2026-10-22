@@ -1,0 +1,81 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Create OpenShift Project",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-kk17mslu"
+            },
+            "deploy_seq": 1,
+            "description": "",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-8aycdx07",
+            "name": "Create OpenShift Project",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Creates OpenShift project",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-nzy8t8uu"
+        },
+        "href": "/api/v3/cmp/actions/OHK-nzy8t8uu/",
+        "title": "Discover OpenShift Projects"
+    },
+    "favorited": false,
+    "icon": "openshift_yse9oMV_6OFNZ2v.png",
+    "id": "BP-hkec5id2",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-fv8jvesd",
+            "image": null,
+            "name": "OpenShift",
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "OpenShift Project",
+    "resource_name_template": null,
+    "resource_type": {
+        "icon": "",
+        "id": "RT-wtoyrbjm",
+        "internal_only": false,
+        "label": "Service",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "service",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Delete OpenShift Project",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-th6e7j3f"
+            },
+            "deploy_seq": -1,
+            "description": "",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-95tapwf6",
+            "name": "Delete OpenShift Project",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

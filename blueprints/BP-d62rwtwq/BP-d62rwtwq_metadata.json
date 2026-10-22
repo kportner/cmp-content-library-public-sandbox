@@ -1,0 +1,145 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Create AWS ECS Cluster Service",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-h8fkldo6"
+            },
+            "deploy_seq": 1,
+            "description": "This plugin will create an ECS Cluster Service on AWS Cloud and resource on the CMP Instance.",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-03ybwp8i",
+            "name": "Create AWS ECS Cluster Service",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Create, delete and synchronise Amazon Elastic Container Services",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-irvm3sp0"
+        },
+        "href": "/api/v3/cmp/actions/OHK-irvm3sp0/",
+        "title": "Discover AWS ECS Cluster Service"
+    },
+    "favorited": false,
+    "icon": "aws_ecs_0CrARpd_RW4ww9E.png",
+    "id": "BP-d62rwtwq",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-6spb5ltg",
+            "image": null,
+            "name": "AWS",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        },
+        {
+            "color": null,
+            "id": "TAG-i8c78zbl",
+            "image": null,
+            "name": "New in 8.7",
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-aome24t5"
+            },
+            "enabled": true,
+            "label": "Sync Container Service"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-59gvjhhh"
+            },
+            "enabled": true,
+            "label": "Deregister Task Definition"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-ttlu4u7t"
+            },
+            "enabled": true,
+            "label": "Register Task Definition"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-9hlh26sg"
+            },
+            "enabled": true,
+            "label": "Delete Container Service"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-fgtug3je"
+            },
+            "enabled": true,
+            "label": "Create Container Service"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-e9fk6w3e"
+            },
+            "enabled": true,
+            "label": "Stop Task"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-pf4k82ab"
+            },
+            "enabled": true,
+            "label": "Run Task"
+        }
+    ],
+    "metadata_version": "2026.1.0",
+    "name": "Amazon ECS",
+    "resource_name_template": null,
+    "resource_type": {
+        "icon": "",
+        "id": "RT-t3u2amy4",
+        "internal_only": false,
+        "label": "Cluster",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "cluster",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Teardown for AWS ECS Cluster Service",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-hz7170l7"
+            },
+            "deploy_seq": 2,
+            "description": "This plugin will delete an ECS Cluster Service from AWS Cloud and resource from the CMP Instance.",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-39qbtuvf",
+            "name": "Teardown for AWS ECS Cluster Service",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

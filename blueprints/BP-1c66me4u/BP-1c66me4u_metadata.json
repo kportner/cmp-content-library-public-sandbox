@@ -1,0 +1,88 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Google Cloud Firewall Build",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-m15uumso"
+            },
+            "deploy_seq": 1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-03h6vctl",
+            "name": "Google Cloud Firewall Build",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-2abe9231"
+        },
+        "href": "/api/v3/cmp/actions/OHK-2abe9231/",
+        "title": "Google Cloud Firewall Sync"
+    },
+    "favorited": false,
+    "icon": "google_cloud_QTkrI0e_SmOXMSG.png",
+    "id": "BP-1c66me4u",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-skmuqdvr",
+            "image": null,
+            "name": "GCP",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "Google Cloud Firewall",
+    "resource_name_template": "",
+    "resource_type": {
+        "icon": "fa fa-shield-alt",
+        "id": "RT-6rx6jaha",
+        "internal_only": false,
+        "label": "Firewall Rule",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "firewall_rule",
+        "plural_label": "Firewall Rules"
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Google Cloud Firewall Teardown",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-zk3sravl"
+            },
+            "deploy_seq": 2,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-s1922xh2",
+            "name": "Google Cloud Firewall Teardown",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

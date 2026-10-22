@@ -1,0 +1,11 @@
+{
+    "description": "\n            Run any action whose name starts with \"Refresh Utilization \".\n            This action can be set up to run periodically via Admin > Recurring Jobs.\n        ",
+    "id": "OHK-ynp2t83o",
+    "max_retries": 0,
+    "name": "Refresh All Server Utilization",
+    "resource_technologies": [],
+    "script_filename": "OHK-ynp2t83o_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

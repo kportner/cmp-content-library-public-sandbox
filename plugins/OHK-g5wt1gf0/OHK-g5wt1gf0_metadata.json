@@ -1,0 +1,19 @@
+{
+    "commandline_args": null,
+    "credentials": "YOUR_CREDENTIALS",
+    "description": "Stop PostgreSQL Server",
+    "execution_timeout": 120,
+    "id": "OHK-g5wt1gf0",
+    "max_retries": 0,
+    "name": "Stop PostgreSQL Server",
+    "remove_after_run": true,
+    "resource_technologies": [],
+    "run_with_sudo": false,
+    "script_filename": "OHK-g5wt1gf0_script.sh",
+    "shared": false,
+    "target_os_families": [
+        "Linux -> Oracle Enterprise Linux",
+        "Linux -> Red Hat"
+    ],
+    "type": "Remote Script"
+}

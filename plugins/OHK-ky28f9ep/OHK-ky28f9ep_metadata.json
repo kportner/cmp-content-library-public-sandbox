@@ -1,0 +1,13 @@
+{
+    "description": "",
+    "id": "OHK-ky28f9ep",
+    "max_retries": 0,
+    "name": "Discover AWS Redshift Clusters",
+    "resource_technologies": [
+        "Amazon Web Services"
+    ],
+    "script_filename": "OHK-ky28f9ep_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

@@ -1,0 +1,7 @@
+{
+    "asynchronous": false,
+    "code": "function autoSelectSingleChoice(params) {\r\n    const questionName = params[0];\r\n    const question = this.survey.getQuestionByName(questionName);\r\n\r\n    if (!question) {\r\n        return \"\";\r\n    }\r\n\r\n    const choices = question.choices || [];\r\n\r\n    if (choices.length === 1) {\r\n        question.value = choices[0].value;\r\n        return choices[0].value;\r\n    }\r\n\r\n    return question.value || \"\";\r\n}",
+    "description": "",
+    "id": "FJS-r7yvti4f",
+    "name": "autoSelectSingleChoice"
+}

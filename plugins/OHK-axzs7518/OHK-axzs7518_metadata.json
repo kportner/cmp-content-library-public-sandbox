@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-axzs7518",
+    "max_retries": 0,
+    "name": "Cat-alog",
+    "resource_technologies": [],
+    "script_filename": "OHK-axzs7518_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

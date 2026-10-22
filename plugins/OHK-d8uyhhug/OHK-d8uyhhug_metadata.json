@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-d8uyhhug",
+    "max_retries": 0,
+    "name": "Delete AWS PostgreSQL Database",
+    "resource_technologies": [],
+    "script_filename": "OHK-d8uyhhug_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

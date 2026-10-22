@@ -1,0 +1,64 @@
+{% load i18n %}
+
+<div class="btn-toolbar gap-2 mb-3">
+            {% if endpoint %}
+                <a class="open-dialog btn btn-light"
+                   href="/veeam/edit_endpoint/{{ endpoint.id }}/">
+                    <span class="icon-edit"></span>
+                    Settings
+                </a>
+                <a class="btn btn-light open-dialog"
+                    href="/veeam/verify_endpoint/">
+                    <span class="icon-verify-connection"></span>
+                    Verify Connection
+                </a>
+                <a class="btn btn-light open-dialog"
+                    href="/veeam/delete_endpoint/">
+                    <span class="icon-delete"></span>
+                    Delete&hellip;
+                </a>
+            {% else %}
+                <a class="open-dialog btn btn-light"
+                    href="/veeam/create_endpoint/">
+                    <span class="icon-add"></span>
+                    Endpoint
+                </a>
+            {% endif %}
+</div>
+
+        {% if endpoint %}
+<div class="card cb-surface-card mb-3">
+    <div class="card-body pt-4">
+        <dl>
+            <dt>{% trans "URL" %}:</dt>
+            <dd>{{ endpoint.protocol }}://{{ endpoint.ip }}:{{ endpoint.port }}</dd>
+            <dt>{% trans "Username" %}:</dt>
+            <dd>{{ endpoint.username }} </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="card cb-surface-card mb-3">
+    <div class="card-header">Summary</div>
+    <div class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Backup servers
+              <span class="badge rounded-pill text-bg-primary">{{backup_servers}}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Jobs
+              <span class="badge rounded-pill text-bg-primary">{{total_jobs}}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Backups
+                <span class="badge rounded-pill text-bg-primary">{{total_backups}}</span>
+              </li>
+          </ul>
+    </div>
+</div>
+        {% else %}
+<div class="alert alert-info w-75">
+    <p><i class="fas fa-info-circle me-2"></i> No Veeam Server Management Endpoint configured.</p>
+</div>
+        {% endif %}

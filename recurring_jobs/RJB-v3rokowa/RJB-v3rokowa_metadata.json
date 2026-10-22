@@ -1,0 +1,17 @@
+{
+    "action_input_default_values": [],
+    "allow_parallel_jobs": false,
+    "create_date": "2026-09-10 17:50:58.647632",
+    "dependencies": {
+        "hook": "plugins/OHK-axzs7518"
+    },
+    "description": "Meow! If any blueprints don't have an image, set a random cat picture as the image.",
+    "enabled": false,
+    "icon": "cat_api.png",
+    "id": "RJB-v3rokowa",
+    "last_run": null,
+    "last_updated": null,
+    "name": "Cat-alog",
+    "schedule": "",
+    "type": "orchestration_hook"
+}

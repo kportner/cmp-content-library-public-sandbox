@@ -1,0 +1,81 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Create Cisco UCS Service Profile (1)",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-d9rew2y0"
+            },
+            "deploy_seq": 1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-ikz6n3fm",
+            "name": "Create Cisco UCS Service Profile",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "This blueprint will create a UCS service profile either from an existing UCS service profile template or without using any template. In order to use the blueprint the following prerequisites must be met. <br><br>\r\n\r\nThe ucsmsdk and ucscsdk python libraries need to be installed manually on the CloudBolt appliance using pip. (i.e pip install ucsmsdk && pip install ucscsdk)<br><br>\r\n\r\nIn CloudBolt, in Admin \u2192 Connection Info, you need to create a Connection Info called \u201cCisco UCS\u201d which contains IP address, username, and password to Cisco UCS.",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-1ghpdt9v"
+        },
+        "href": "/api/v3/cmp/actions/OHK-1ghpdt9v/",
+        "title": "Discover Cisco UCS service profiles"
+    },
+    "favorited": false,
+    "icon": "Cisco_UCS_25K9VJu_KFm3jQB_0MON9yC_xu1kcfW_YYpLd8H.png",
+    "id": "BP-6pqouzz4",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-y2zp29er",
+            "image": null,
+            "name": "Cisco UCS",
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "Cisco UCS",
+    "resource_name_template": "",
+    "resource_type": {
+        "icon": "",
+        "id": "RT-wtoyrbjm",
+        "internal_only": false,
+        "label": "Service",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "service",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Delete UCS Service profile (1)",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-k7c6i9u6"
+            },
+            "deploy_seq": 2,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-6mk8z6p9",
+            "name": "Delete UCS Service profile",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

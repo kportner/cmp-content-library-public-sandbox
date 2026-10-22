@@ -1,0 +1,15 @@
+{
+    "description": "",
+    "id": "OHK-yhn3hrat",
+    "max_retries": 0,
+    "name": "AWS Security Group",
+    "resource_technologies": [
+        "Amazon Web Services",
+        "AWS GovCloud (US)",
+        " AWS China - \u4e9a\u9a6c\u900a"
+    ],
+    "script_filename": "OHK-yhn3hrat_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

@@ -1,0 +1,95 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Create Azure Queue",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-k703obmr"
+            },
+            "deploy_seq": 3,
+            "description": "",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-pl9a517g",
+            "name": "Azure Queue Create",
+            "parameter_defaults": [
+                {
+                    "label": "Env Id",
+                    "name": "env_id_a586",
+                    "value": "2"
+                }
+            ],
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-kbvxmxax"
+        },
+        "href": "/api/v3/cmp/actions/OHK-kbvxmxax/",
+        "title": "Azure Storage Queue Discovery"
+    },
+    "favorited": false,
+    "icon": "azurequeue_1H9Wik7_1hPlM2N_aMLOrQk_CsDV6Jr_TggPono_ltA1T5D_e8OPdwm_7uSXhy0_VjhhHKe.png",
+    "id": "BP-4jfkfvwu",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-wh49tcv0",
+            "image": null,
+            "name": "Azure",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "Azure Queues",
+    "resource_name_template": null,
+    "resource_type": {
+        "icon": "",
+        "id": "RT-wtoyrbjm",
+        "internal_only": false,
+        "label": "Service",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "service",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Azure Queues Teardown",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-vv1jvzu4"
+            },
+            "deploy_seq": 2,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-pos9iexy",
+            "name": "Azure Queues Teardown",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

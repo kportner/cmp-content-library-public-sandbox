@@ -1,0 +1,59 @@
+
+
+<div class="container-fluid">
+    {% if contents %}
+        <div class="btn-toolbar gap-2 mb-3">
+            <a class="btn btn-light open-dialog"
+               data-bs-toggle="modal" data-bs-target="#dialog-modal"
+               title="Create a new git commit for multiple CloudBolt {{content_label}}"
+               href="{% url 'export_multiple' content_type=content_type %}"
+            ><span class="fas fa-file-export"></span> Commit Multiple {{content_label}}</a>
+        </div>
+        <div class="card cb-surface-card">
+            <div class="card-body pt-4">
+                <p>List of CloudBolt {{content_label}} </p>
+                <table class="dataTable no-footer table table-hover">
+                    <thead>
+                        <tr>
+                            {%  for header in columns %}
+                            <th>{{ header }}</th>
+                            {%  endfor %}
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for content in contents %}
+                        <tr>
+                            <td>{{ content.label }}</td>
+                            <td>{{ content.global_id }}</td>
+                            {%  if content.column_1_data %}
+                            <td>{{ content.column_1_data }}</td>
+                            {%  endif %}
+                            {%  if content.column_2_data %}
+                            <td>{{ content.column_2_data }}</td>
+                            {%  endif %}
+                            {%  if content.column_3_data %}
+                            <td>{{ content.column_3_data }}</td>
+                            {%  endif %}
+                            {%  if content.column_4_data %}
+                            <td>{{ content.column_4_data }}</td>
+                            {%  endif %}
+                            <td>
+                                <a class="btn btn-light btn-sm open-dialog" data-bs-toggle="tooltip"
+                                   title="Create a new git commit for CloudBolt {{content_label}}"
+                                    href="{% url 'git_commit_create' content_type=content_type content_id=content.global_id %}">
+                                    <span class="fas fa-file-export"></span>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-info w-75">
+            <p><i class="fas fa-info-circle me-2"></i> No git eligible {{content_label}} are currently deployed in the environment.</p>
+        </div>
+    {% endif %}
+</div>

@@ -1,0 +1,43 @@
+{
+    "action_input_default_values": [
+        {
+            "label": "Filesystem Mount Point",
+            "name": "filesystem_mount_point_a690",
+            "value": "/data"
+        }
+    ],
+    "action_inputs": [
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": null,
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": false,
+            "id": "CF-bsmk0qui",
+            "label": "Filesystem Mount Point",
+            "name": "filesystem_mount_point",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        }
+    ],
+    "continue_on_failure": false,
+    "dependencies": {
+        "hook": "plugins/OHK-zzqe5lkv"
+    },
+    "description": "",
+    "enabled": true,
+    "hook_point": "During Resource Provisioning",
+    "icon": "maas-logo.png",
+    "id": "HPA-mzo7uyom",
+    "last_updated": null,
+    "name": "Create MaaS RAID",
+    "run_on_statuses": "",
+    "run_seq": 1
+}

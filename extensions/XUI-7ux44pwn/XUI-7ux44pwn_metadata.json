@@ -1,0 +1,24 @@
+{
+    "description": "\nS3 File Manager XUI: an AWS-console-style browser tab on every s3_bucket\nResource, plus a super-admin admin page.\n\nThe tab's table is CMP DataTables fed by objects.json; every write is a\nCloudBolt dialog (@dialog_view + C2Form) run through one dispatcher that also\nwrites a ResourceHistory row per action. AWS work and the ConnectionInfo-backed\nauthorization live in models.py; bucket deletion goes through an approval Order.\n",
+    "enabled": true,
+    "icon_url": "",
+    "id": "XUI-7ux44pwn",
+    "label": "S3 File Manager",
+    "last_updated": "2026-09-15",
+    "maximum_version_required": "",
+    "minimum_version_required": "2026.2.29",
+    "name": "s3_file_manager",
+    "package_contents": [
+        "__init__.py",
+        "forms.py",
+        "models.py",
+        "urls.py",
+        "views.py",
+        "templates/admin_panel.html",
+        "templates/browser_panel.html",
+        "templates/dashboard_widget.html",
+        "templates/dialog_permissions.html",
+        "templates/dialog_versions.html"
+    ],
+    "version": "4"
+}

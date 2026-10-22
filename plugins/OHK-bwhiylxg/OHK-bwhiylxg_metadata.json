@@ -1,0 +1,13 @@
+{
+    "description": "Shuts down a VMware guest, takes a snapshot, upgrades VM Tools and the hardware version to 8, and finally restarts the server.",
+    "id": "OHK-bwhiylxg",
+    "max_retries": 0,
+    "name": "Upgrade VM Tools and Hardware Version",
+    "resource_technologies": [
+        "VMware vCenter"
+    ],
+    "script_filename": "OHK-bwhiylxg_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

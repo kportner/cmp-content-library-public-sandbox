@@ -1,0 +1,81 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Create Sagemaker Notebook Instance",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-apfl66ny"
+            },
+            "deploy_seq": 1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-pcapctom",
+            "name": "Create Sagemaker Notebook Instance",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Amazon Sagemaker AI Engine",
+    "favorited": false,
+    "icon": "sagemaker-logo_YKgQfwM_LrrgJGk.png",
+    "id": "BP-c0rua40t",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-6spb5ltg",
+            "image": null,
+            "name": "AWS",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "Amazon Sagemaker",
+    "resource_name_template": "AWS-Sagemaker-00X",
+    "resource_type": {
+        "icon": "",
+        "id": "RT-wtoyrbjm",
+        "internal_only": false,
+        "label": "Service",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "service",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Sagemaker Notebook instance delete",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-9id3umdh"
+            },
+            "deploy_seq": 2,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-trjfs6ff",
+            "name": "Sagemaker Notebook instance delete",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

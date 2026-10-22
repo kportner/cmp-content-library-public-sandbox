@@ -1,0 +1,43 @@
+{
+    "action_input_default_values": [
+        {
+            "label": "Bridge Type",
+            "name": "bridge_type_a689",
+            "value": "standard"
+        }
+    ],
+    "action_inputs": [
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": null,
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": false,
+            "id": "CF-74pn3tjs",
+            "label": "Bridge Type",
+            "name": "bridge_type",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        }
+    ],
+    "continue_on_failure": false,
+    "dependencies": {
+        "hook": "plugins/OHK-c76vyxnb"
+    },
+    "description": "",
+    "enabled": true,
+    "hook_point": "During Resource Provisioning",
+    "icon": "maas-logo.png",
+    "id": "HPA-gwxstreh",
+    "last_updated": null,
+    "name": "Create MaaS Bridge",
+    "run_on_statuses": "",
+    "run_seq": 2
+}

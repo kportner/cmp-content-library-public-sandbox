@@ -1,0 +1,88 @@
+{
+    "any_group_can_deploy": false,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Create Google Cloud SQL Database (1) (4) (3)",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-66akwgui"
+            },
+            "deploy_seq": 1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-ffnfq97u",
+            "name": "Create Google SQL Database",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Creates and manages sql instances in Google cloud.  Note that every CloudBolt service account that handles this Blueprint will require the Cloud SQL Admin Permission. Run this Blueprint once before setting permissions if you are unsure which service account needs permissions.",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-jcyfl6rs"
+        },
+        "href": "/api/v3/cmp/actions/OHK-jcyfl6rs/",
+        "title": "Sync Google MySQL DB (1) (1) (4) (3)"
+    },
+    "favorited": false,
+    "icon": "google_cloud2_e7DpaQu_gJOwd22_NRGy0Y3_0Ca8g2H_xYsdJMG.png",
+    "id": "BP-tcgk2zr6",
+    "is_orderable": true,
+    "labels": [],
+    "last_updated": "2026-09-15",
+    "management_actions": [
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-2r81l6js"
+            },
+            "enabled": true,
+            "label": "Create Database (1) (4) (3)"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-vya8ijgm"
+            },
+            "enabled": true,
+            "label": "Delete Database (1) (4) (3)"
+        }
+    ],
+    "metadata_version": "2026.1.0",
+    "name": "Google Cloud SQL Database",
+    "resource_name_template": "",
+    "resource_type": {
+        "icon": "fas fa-database",
+        "id": "RT-h0npsxst",
+        "internal_only": false,
+        "label": "Database",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "database",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Delete Google MySQL Database (1) (1) (4) (3)",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-k3td1scq"
+            },
+            "deploy_seq": 1,
+            "description": "",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-45jsa0pi",
+            "name": "Delete Google MySQL Database",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

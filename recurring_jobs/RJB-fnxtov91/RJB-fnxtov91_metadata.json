@@ -1,0 +1,17 @@
+{
+    "action_input_default_values": [],
+    "allow_parallel_jobs": false,
+    "create_date": "2025-03-09 20:19:03.858902",
+    "dependencies": {
+        "hook": "plugins/OHK-0y3033ug"
+    },
+    "description": "For any Blueprint that has a Discovery Plug-in specified, use that logic to discover and sync Resources of the type described by that Blueprint.",
+    "enabled": false,
+    "icon": "Icon_Sync-512.png",
+    "id": "RJB-fnxtov91",
+    "last_run": null,
+    "last_updated": null,
+    "name": "Sync Resources",
+    "schedule": "15 1 * * *",
+    "type": "orchestration_hook"
+}

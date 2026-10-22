@@ -1,0 +1,19 @@
+{
+    "commandline_args": null,
+    "credentials": "YOUR_CREDENTIALS",
+    "description": "Install PostgreSQL on OEL8.\r\nThis installation uses the OEL8 AND RHEL8 repositories since it contains PostgreSQL.",
+    "execution_timeout": 1200,
+    "id": "OHK-rhdk5j02",
+    "max_retries": 0,
+    "name": "Install PostgreSQL On OEL8 and RHEL8",
+    "remove_after_run": true,
+    "resource_technologies": [],
+    "run_with_sudo": false,
+    "script_filename": "OHK-rhdk5j02_script.sh",
+    "shared": true,
+    "target_os_families": [
+        "Linux -> Oracle Enterprise Linux",
+        "Linux -> Red Hat"
+    ],
+    "type": "Remote Script"
+}

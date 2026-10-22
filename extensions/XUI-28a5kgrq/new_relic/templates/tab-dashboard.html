@@ -1,0 +1,39 @@
+{% load i18n %}
+
+<div class="btn-toolbar gap-2 mb-3">
+    {% if new_relic_ci %}
+        <a class="open-dialog btn btn-light" href="{% url 'edit_new_relic_credentials' %}">
+            <span class="icon-edit"></span>
+            Edit Credentials
+        </a>
+        <a class="btn btn-light open-dialog" href="{% url 'verify_new_relic_credentials' %}">
+            <span class="icon-verify-connection"></span>
+            Verify Connection
+        </a>
+        <a class="btn btn-light open-dialog" href="{% url 'delete_new_relic_credentials' %}">
+            <span class="icon-delete"></span>
+            Delete Credentials
+        </a>
+    {% else %}
+         <a class="open-dialog btn btn-light" href="{% url 'add_new_relic_credentials' %}">
+                <span class="icon-add"></span>
+                Add Credentials
+        </a>
+    {% endif %}
+</div>
+{% if new_relic_ci %}
+<div class="card cb-surface-card">
+    <div class="card-body pt-4">
+        <dl>
+            <dt>{% trans "URL" %}:</dt>
+            <dd>{{ new_relic_ci.protocol }}://{{ new_relic_ci.ip }}:{{ new_relic_ci.port }}</dd>
+            <dt>{% trans "Headers" %}:</dt>
+            <dd>{{ new_relic_ci.headers }}</dd>
+        </dl>
+    </div>
+</div>
+{% else %}
+<div class="alert alert-info w-75">
+    <p><i class="fas fa-info-circle me-2"></i> No New Relic credentials configured.</p>
+</div>
+{% endif %}

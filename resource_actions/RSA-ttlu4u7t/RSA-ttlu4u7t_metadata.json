@@ -1,0 +1,430 @@
+{
+    "action_input_default_values": [
+        {
+            "label": "Create Service",
+            "name": "create_service_a545",
+            "value": "True"
+        },
+        {
+            "label": "Essential",
+            "name": "essential_a545",
+            "value": "True"
+        },
+        {
+            "label": "Launch Type Capabilities",
+            "name": "launch_type_capabilities_a545",
+            "value": "FARGATE"
+        },
+        {
+            "label": "Network Mode",
+            "name": "networkMode_a545",
+            "value": "none"
+        },
+        {
+            "label": "Protocol",
+            "name": "protocol_a545",
+            "value": "TCP"
+        }
+    ],
+    "action_inputs": [
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": "",
+            "field-dependency-controlling-set": [
+                {
+                    "controlling-field": {
+                        "name": "networkMode_a545"
+                    },
+                    "custom-field-options": [
+                        "none"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "aws_security_group_a545"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": false,
+            "id": "CF-xt3r59s6",
+            "label": "Security Group",
+            "name": "aws_security_group",
+            "placeholder": "-- select the security group --",
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        },
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": "",
+            "field-dependency-controlling-set": [
+                {
+                    "controlling-field": {
+                        "name": "networkMode_a545"
+                    },
+                    "custom-field-options": [
+                        "none"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "aws_subnet_a545"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": false,
+            "id": "CF-as0bxhe0",
+            "label": "Subnet",
+            "name": "aws_subnet",
+            "placeholder": "-- select the subnet --",
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        },
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": "The port number on the container that is bound to the user-specified or automatically assigned host port. e.g. 80",
+            "field-dependency-controlling-set": [
+                {
+                    "controlling-field": {
+                        "name": "networkMode_a545"
+                    },
+                    "custom-field-options": [
+                        "none",
+                        "bridge",
+                        "host"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "containerPort_a545"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": false,
+            "id": "CF-7x2jwlq2",
+            "label": "Container Port",
+            "name": "containerPort",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "INT",
+            "value-pattern-string": null
+        },
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": "The name of a container",
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": false,
+            "id": "CF-hoffy5sz",
+            "label": "Container Name",
+            "maximum": "255.00",
+            "name": "container_name",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        },
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": null,
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": false,
+            "id": "CF-f4njua10",
+            "label": "Create Service",
+            "name": "create_service",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        },
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": "The image used to start a container, e.g. -  nginx:latest, httpd:2.4, tomcat",
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": false,
+            "id": "CF-ght6il3h",
+            "label": "Docker Image",
+            "name": "docker_image",
+            "placeholder": "e.g. -  nginx:latest, httpd:2.4, tomcat",
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        },
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": "Determines what happens if this container fails or stops for any reason. If essential is true then all other containers that are part of the task are stopped.",
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": false,
+            "id": "CF-ltbk8nwo",
+            "label": "Essential",
+            "name": "essential",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "BOOL",
+            "value-pattern-string": null
+        },
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": "A name for this task definition",
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": false,
+            "id": "CF-bk2m7jfk",
+            "label": "Task Definition Name",
+            "name": "family_name",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        },
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": null,
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [
+                {
+                    "controlling-field": {
+                        "name": "launch_type_capabilities_a545"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "networkMode_a545"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global-options": [],
+            "hide-if-default-value": false,
+            "id": "CF-2dv95zcs",
+            "label": "Launch Type Capabilities",
+            "name": "launch_type_capabilities",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        },
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": "The Docker networking mode to use for the containers in this task.",
+            "field-dependency-controlling-set": [
+                {
+                    "controlling-field": {
+                        "name": "launch_type_capabilities_a545"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "networkMode_a545"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field-dependency-dependent-set": [
+                {
+                    "controlling-field": {
+                        "name": "networkMode_a545"
+                    },
+                    "custom-field-options": [
+                        "none"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "aws_security_group_a545"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                },
+                {
+                    "controlling-field": {
+                        "name": "networkMode_a545"
+                    },
+                    "custom-field-options": [
+                        "none"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "aws_subnet_a545"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                },
+                {
+                    "controlling-field": {
+                        "name": "networkMode_a545"
+                    },
+                    "custom-field-options": [
+                        "none",
+                        "bridge",
+                        "host"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "containerPort_a545"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                },
+                {
+                    "controlling-field": {
+                        "name": "networkMode_a545"
+                    },
+                    "custom-field-options": [
+                        "none",
+                        "bridge",
+                        "host"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "protocol_a545"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global-options": [],
+            "hide-if-default-value": false,
+            "id": "CF-iamq0tf8",
+            "label": "Network Mode",
+            "name": "networkMode",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        },
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": "The protocol used for the port mapping.",
+            "field-dependency-controlling-set": [
+                {
+                    "controlling-field": {
+                        "name": "networkMode_a545"
+                    },
+                    "custom-field-options": [
+                        "none",
+                        "bridge",
+                        "host"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "protocol_a545"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": false,
+            "id": "CF-y8d9j43a",
+            "label": "Protocol",
+            "name": "protocol",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        }
+    ],
+    "allow_scheduling": false,
+    "always_allow_to_run": false,
+    "auto_submit_order": false,
+    "dangerous": false,
+    "dependencies": {
+        "hook": "plugins/OHK-8hmyfmzo"
+    },
+    "dialog_message": "",
+    "dialog_title_template": "",
+    "enabled": true,
+    "extra_classes": "glyphicon glyphicon-plus",
+    "hide_from_mcp": false,
+    "id": "RSA-ttlu4u7t",
+    "is_synchronous": false,
+    "label": "Register Task Definition",
+    "last_updated": null,
+    "list_view_visible": true,
+    "mcp_destructive_hint": null,
+    "mcp_idempotent_hint": null,
+    "mcp_open_world_hint": null,
+    "mcp_read_only_hint": null,
+    "mcp_tool_description": "",
+    "mcp_tool_name": "",
+    "mcp_tool_title": "",
+    "new_tab_url": null,
+    "requires_approval": false,
+    "sequence": null,
+    "submit_button_label": ""
+}

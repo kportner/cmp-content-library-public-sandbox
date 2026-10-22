@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2023-04-18 09:51:59">
+<wf_workflow_version action="INSERT_OR_UPDATE">
+<active>true</active>
+<activity_stages>{"subflows":[],"stages":{},"activities":{},"ends":["b99519d50a0a0b3434eaee26bf2e812a"]}</activity_stages>
+<after_business_rules>false</after_business_rules>
+<checked_out/>
+<checked_out_by display_value=""/>
+<column_renderer display_value=""/>
+<condition table="sc_request"/>
+<condition_type>run_match</condition_type>
+<description/>
+<expected_sequences/>
+<expected_time>1970-01-03 00:00:00</expected_time>
+<expected_time_type/>
+<full_sequences/>
+<journal/>
+<max_activity_count>100</max_activity_count>
+<name>Service Catalog Request</name>
+<not_cacheable>false</not_cacheable>
+<on_cancel/>
+<order>100</order>
+<pin_type/>
+<published>true</published>
+<relative_duration display_value=""/>
+<requires_ert>false</requires_ert>
+<run_multiple>false</run_multiple>
+<schedule display_value=""/>
+<stage_field/>
+<stage_order/>
+<start display_value="Begin">b99518ba0a0a0b3434eaee2681c9bf5b</start>
+<sys_created_by>glide.maint</sys_created_by>
+<sys_created_on>2009-01-09 04:10:02</sys_created_on>
+<sys_id>b98a7cfd0a0a0b342c2de25a5bfe4588</sys_id>
+<sys_mod_count>8</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-04-17 14:04:36</sys_updated_on>
+<table>sc_request</table>
+<timezone/>
+<validated>true</validated>
+<workflow display_value="Service Catalog Request">b99518770a0a0b3472c1802342a11fbf</workflow>
+</wf_workflow_version>
+</unload>

@@ -1,0 +1,88 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Create Azure Storage Blob",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-zodhu4cb"
+            },
+            "deploy_seq": 1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-mh26foy0",
+            "name": "Create Azure Storage Blob",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Azure Blob storage is Microsoft's object storage solution for the cloud. Blob storage is optimised for storing massive amounts of unstructured data. Unstructured data is data that does not adhere to a particular data model or definition, such as text or binary data. This blueprint adds this functionality to CloudBolt.",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-nzuztx8f"
+        },
+        "href": "/api/v3/cmp/actions/OHK-nzuztx8f/",
+        "title": "Sync Azure Blob storages"
+    },
+    "favorited": false,
+    "icon": "azure_blob_storage_TMcHkNe_R7TaAMi_N3gbxFE_MycMFED_MljKfrQ.png",
+    "id": "BP-l7xobkfb",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-wh49tcv0",
+            "image": null,
+            "name": "Azure",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "Azure Blob Storage",
+    "resource_name_template": "",
+    "resource_type": {
+        "icon": "",
+        "id": "RT-wtoyrbjm",
+        "internal_only": false,
+        "label": "Service",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "service",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Delete Azure Blob Storage Account",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-snpgod6r"
+            },
+            "deploy_seq": 2,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-muyvve3t",
+            "name": "Delete Azure Blob Storage Account",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

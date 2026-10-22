@@ -1,0 +1,32 @@
+{
+    "action_inputs": [
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": null,
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-fpluhdp3",
+            "label": "Tintri Snapshot Name",
+            "name": "tintri_snapshot_name",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        }
+    ],
+    "description": "This plugin is required as part of the Tintri UI Extension. It provides one of\r\nthe actions exposed on a Tintri server tab.\r\n\r\nPrompts user for one runtime input: snapshot name.",
+    "id": "OHK-rhl7lh08",
+    "max_retries": 0,
+    "name": "Take a Tintri Snapshot",
+    "resource_technologies": [],
+    "script_filename": "OHK-rhl7lh08_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

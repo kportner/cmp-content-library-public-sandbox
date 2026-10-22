@@ -1,0 +1,19 @@
+{
+    "description": "\nThis extension adds up to 4 additional tabs on Servers to show OS-level information:\nUsers, Services, Disks, and Cron. Automatically creates these 6 parameters\nneeded to store OS-specific data: os_cron, os_partition, os_disks_physical,\nos_disks_logical, os_users, os_services.\n",
+    "enabled": true,
+    "icon": "os_info_ext.png",
+    "id": "XUI-4a390ll9",
+    "label": "OS Info Extension",
+    "last_updated": "2026-09-15",
+    "maximum_version_required": "",
+    "minimum_version_required": "2026.2.29",
+    "name": "os_info_ext",
+    "package_contents": [
+        "os_info_helpers.py",
+        "views.py",
+        "__init__.py",
+        "templates/tables.html",
+        "templates/table.html"
+    ],
+    "version": ""
+}

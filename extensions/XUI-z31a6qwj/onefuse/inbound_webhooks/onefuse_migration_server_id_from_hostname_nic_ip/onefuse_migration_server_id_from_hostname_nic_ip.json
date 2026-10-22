@@ -1,0 +1,9 @@
+{
+    "action_input_default_values": [],
+    "base_action_name": "OneFuse Migration - Server ID from Hostname Nic IP",
+    "id": "IWH-p1et2ir8",
+    "label": "OneFuse Migration - Server ID from Hostname Nic IP",
+    "last_updated": "2023-01-10",
+    "maximum_version_required": "2026.1.74",
+    "minimum_version_required": "2024.3.93"
+}

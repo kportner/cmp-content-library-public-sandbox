@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-cxwfjxc3",
+    "max_retries": 0,
+    "name": "Teardown Auto Scaling Group",
+    "resource_technologies": [],
+    "script_filename": "OHK-cxwfjxc3_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

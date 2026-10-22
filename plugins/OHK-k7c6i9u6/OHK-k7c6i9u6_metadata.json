@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-k7c6i9u6",
+    "max_retries": 0,
+    "name": "Delete UCS Service profile (1)",
+    "resource_technologies": [],
+    "script_filename": "OHK-k7c6i9u6_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

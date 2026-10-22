@@ -1,0 +1,22 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [],
+    "deployment_permissions": [],
+    "description": "A Quick introduction to CloudBolt: \r\n<a href=\"https://www.youtube.com/watch?v=GV0Hb75nxHM\" target=\"_blank\">CloudBolt Product Overview</a>",
+    "favorited": false,
+    "icon": "cloudbolt_OJp10l1_74TNnTp_5eAQ126_E016W1Z.png",
+    "id": "BP-p1tzbr1a",
+    "is_orderable": true,
+    "labels": [],
+    "last_updated": "2026-09-15",
+    "management_actions": [],
+    "maximum_version_required": "2026.2.110",
+    "metadata_version": "2026.1.0",
+    "minimum_version_required": "2026.2.0",
+    "name": "A CloudBolt Intro",
+    "resource_name_template": null,
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": []
+}

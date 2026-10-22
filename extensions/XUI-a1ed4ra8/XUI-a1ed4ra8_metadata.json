@@ -1,0 +1,19 @@
+{
+    "description": "Using Sample Use Of Dialog, you can add Sample messages on Dialog Sample Tab.",
+    "enabled": true,
+    "icon": "sample_use_of_dialog_zi57VBT.jpg",
+    "id": "XUI-a1ed4ra8",
+    "label": "Sample Use Of Dialog",
+    "last_updated": "2026-09-15",
+    "maximum_version_required": "",
+    "minimum_version_required": "2026.2.29",
+    "name": "sample_use_of_dialog",
+    "package_contents": [
+        "__init__.py",
+        "forms.py",
+        "urls.py",
+        "views.py",
+        "templates/sample_tab.html"
+    ],
+    "version": ""
+}

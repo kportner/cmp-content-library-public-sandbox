@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% load helper_tags %}
+{% load tab_tags %}
+{% block topnav %}CloudEndure admin page {% endblock %}
+
+{% block title %}  CloudEndure admin {% endblock %}
+
+{% block uplink %}<li class="breadcrumb-item flex-shrink-0"><a href="{% url 'admin_home' %}">Admin</a></li>{% endblock uplink %}
+{% block breadcrumb-item %}<h1>CloudEndure Admin Page</h1>{% endblock breadcrumb-item %}
+
+{% block content %}
+    {% draw_tabs tabs %}
+{% endblock content %}

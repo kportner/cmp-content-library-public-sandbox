@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-z6ki30bx",
+    "max_retries": 0,
+    "name": "Discover Databricks Workspace",
+    "resource_technologies": [],
+    "script_filename": "OHK-z6ki30bx_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

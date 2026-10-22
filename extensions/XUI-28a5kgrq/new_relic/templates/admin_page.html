@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load helper_tags %}
+{% load tab_tags %}
+{% block topnav %}New Relic admin page {% endblock %}
+
+{% block title %} New Relic admin {% endblock %}
+
+{% block uplink %}
+<li class="breadcrumb-item flex-shrink-0">
+    <a href="{% url 'admin_home' %}">Admin</a>
+</li>
+{% endblock uplink %}
+
+{% block breadcrumb-item %}
+<h1>New Relic Admin Page</h1>
+{% endblock breadcrumb-item %}
+
+{% block content %}
+{% draw_tabs tabs %}
+{% endblock content %}

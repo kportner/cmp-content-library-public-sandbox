@@ -1,0 +1,11 @@
+{
+    "description": "\n        Refreshes the search index that enables the global search feature.\n        ",
+    "id": "OHK-m0wukfur",
+    "max_retries": 0,
+    "name": "Update Search Index",
+    "resource_technologies": [],
+    "script_filename": "OHK-m0wukfur_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

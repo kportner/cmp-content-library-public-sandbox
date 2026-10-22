@@ -1,0 +1,131 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Create AWS MySQL Database Service",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-76gh90ro"
+            },
+            "deploy_seq": 1,
+            "description": "This plugin will create a MySQL Database on AWS Cloud and resource on the CMP Instance.",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-nlnth1rk",
+            "name": "Create AWS MySQL Database Service",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Create, delete and synchronise AWS MySQL Database Instance.\r\n\r\n*Note : AWS MySQL Service is only available in below regions*\r\n\r\n**'af-south-1', \r\n 'ap-east-1',\r\n 'ap-northeast-1',\r\n 'ap-northeast-2',\r\n 'ap-northeast-3',\r\n 'ap-south-2',\r\n 'ap-southeast-1',\r\n 'ap-southeast-2',\r\n 'ap-southeast-3',\r\n 'ap-southeast-4',\r\n 'ca-central-1',\r\n 'eu-central-1',\r\n 'eu-central-2',\r\n 'eu-north-1',\r\n 'eu-south-1',\r\n 'eu-south-2',\r\n 'eu-west-1',\r\n 'eu-west-2',\r\n 'eu-west-3',\r\n 'il-central-1',\r\n 'me-central-1',\r\n 'me-south-1',\r\n 'sa-east-1',\r\n 'us-east-1',\r\n 'us-east-2',\r\n 'us-west-1',\r\n 'us-west-2'**",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-yrhkm1la"
+        },
+        "href": "/api/v3/cmp/actions/OHK-yrhkm1la/",
+        "title": "Discover AWS MySQL"
+    },
+    "favorited": false,
+    "icon": "aws_mysql_db_RMeZeqx_oOSGiVn.png",
+    "id": "BP-dsbw28sm",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-6spb5ltg",
+            "image": null,
+            "name": "AWS",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        },
+        {
+            "color": null,
+            "id": "TAG-8kys5183",
+            "image": null,
+            "name": "MySQL",
+            "parent": {
+                "color": null,
+                "id": "TAG-fpdjl8eu",
+                "image": null,
+                "name": "Databases",
+                "parent": {
+                    "color": null,
+                    "id": "TAG-d7rehwzt",
+                    "image": null,
+                    "name": "Public Cloud Services",
+                    "sequence": 0
+                },
+                "sequence": 0
+            },
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-b37w8pwy"
+            },
+            "enabled": true,
+            "label": "Refresh MySQL Database Connection Info"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-nrzr1jot"
+            },
+            "enabled": true,
+            "label": "Stop MySQL Database Instance"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-qguvr7k7"
+            },
+            "enabled": true,
+            "label": "Start MySQL Database Instance"
+        }
+    ],
+    "metadata_version": "2026.1.0",
+    "name": "AWS MySQL",
+    "resource_name_template": "MySQL Database",
+    "resource_type": {
+        "icon": "fas fa-database",
+        "id": "RT-h0npsxst",
+        "internal_only": false,
+        "label": "Database",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "database",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Delete AWS MySQL Database Service",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-0nfdetz7"
+            },
+            "deploy_seq": 2,
+            "description": "This plugin will delete a MySQL Database from AWS Cloud and resource from the CMP Instance.",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-xo3xsopu",
+            "name": "Delete AWS MySQL Database Service",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

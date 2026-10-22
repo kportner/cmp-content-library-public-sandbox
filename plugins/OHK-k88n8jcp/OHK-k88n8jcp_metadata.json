@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-k88n8jcp",
+    "max_retries": 0,
+    "name": "Delete AWS EKS Cluster",
+    "resource_technologies": [],
+    "script_filename": "OHK-k88n8jcp_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

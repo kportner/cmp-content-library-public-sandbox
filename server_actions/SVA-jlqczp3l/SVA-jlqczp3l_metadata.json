@@ -1,0 +1,85 @@
+{
+    "action_input_default_values": [
+        {
+            "label": "OS Build Name",
+            "name": "os_build_name_a713",
+            "value": "{{ server.os_family.os_build_set.first }}"
+        },
+        {
+            "label": "New Template Name",
+            "name": "template_name_a713",
+            "value": "template-from-vm-{{ server.hostname }}"
+        }
+    ],
+    "action_inputs": [
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": "",
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": false,
+            "id": "CF-ghvn5hz5",
+            "label": "OS Build Name",
+            "maximum": "1000.00",
+            "minimum": "3.00",
+            "name": "os_build_name",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        },
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": "",
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": false,
+            "id": "CF-q11jjaea",
+            "label": "New Template Name",
+            "name": "template_name",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": false,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        }
+    ],
+    "allow_scheduling": false,
+    "always_allow_to_run": false,
+    "auto_submit_order": false,
+    "dangerous": false,
+    "dependencies": {
+        "hook": "plugins/OHK-vsvol4f2"
+    },
+    "dialog_message": "Clone this VM to a template and import it as an OS Build choice for this environment.",
+    "dialog_title_template": "",
+    "enabled": true,
+    "extra_classes": "far fa-clone",
+    "hide_from_mcp": false,
+    "icon": "vm_iieXwZh.png",
+    "id": "SVA-jlqczp3l",
+    "is_synchronous": false,
+    "label": "Clone VM to Template",
+    "last_updated": null,
+    "list_view_visible": true,
+    "mcp_destructive_hint": null,
+    "mcp_idempotent_hint": null,
+    "mcp_open_world_hint": null,
+    "mcp_read_only_hint": null,
+    "mcp_tool_description": "",
+    "mcp_tool_name": "",
+    "mcp_tool_title": "",
+    "new_tab_url": null,
+    "requires_approval": false,
+    "sequence": null,
+    "submit_button_label": "Clone to Template"
+}

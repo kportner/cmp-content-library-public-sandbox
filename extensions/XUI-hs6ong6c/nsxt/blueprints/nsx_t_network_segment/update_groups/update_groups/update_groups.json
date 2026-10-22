@@ -1,0 +1,52 @@
+{
+    "action_inputs": [
+        {
+            "allow_multiple": true,
+            "available_all_servers": false,
+            "description": "",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "label": "Groups To Add",
+            "name": "groups_to_add",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": false,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": ""
+        },
+        {
+            "allow_multiple": true,
+            "available_all_servers": false,
+            "description": "",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "label": "Groups To Remove",
+            "name": "groups_to_remove",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": false,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": ""
+        }
+    ],
+    "description": "Update the Groups that are able to request this network in CloudBolt",
+    "id": "OHK-osbqpu81",
+    "last_updated": "2023-08-03",
+    "max_retries": 0,
+    "maximum_version_required": "2026.1.74",
+    "minimum_version_required": "2024.3.93",
+    "name": "Update Groups",
+    "resource_technologies": [],
+    "script_filename": "change_groups.py",
+    "shared": true,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}
