@@ -1,0 +1,13 @@
+{
+    "description": "",
+    "id": "OHK-3wfz0vbf",
+    "max_retries": 0,
+    "name": "Delete AWS Aurora Database",
+    "resource_technologies": [
+        "Amazon Web Services"
+    ],
+    "script_filename": "OHK-3wfz0vbf_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

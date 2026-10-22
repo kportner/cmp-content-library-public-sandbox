@@ -1,0 +1,53 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Deploy Azure Resource Manager Template (1)",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-q0683jyk"
+            },
+            "deploy_seq": 2,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-vgzuk9s4",
+            "name": "Deploy Azure Resource Manager Template",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Deploy Azure resources using an ARM template. Documentation is available from Microsoft here: https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates.\r\n\r\nThis uses an example template from https://github.com/Azure/azure-quickstart-templates, which is expected to be downloaded and placed in /var/opt/cloudbolt/proserv/arm_templates/.\r\n\r\nInstall the split ARM deployments package in the application Python environment: pip install azure-mgmt-resource-deployments==1.0.0b1",
+    "favorited": false,
+    "icon": "cropped-Microsoft-Azure_MpFPi38_XywOBJq_6DCrZz2_2IhR4E4_XfjbdyO.png",
+    "id": "BP-yy398mbh",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-wh49tcv0",
+            "image": null,
+            "name": "Azure",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "Azure Resource Manager Template",
+    "resource_name_template": "",
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": []
+}

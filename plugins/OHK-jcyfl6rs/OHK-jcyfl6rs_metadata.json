@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-jcyfl6rs",
+    "max_retries": 0,
+    "name": "Sync Google MySQL DB (1) (1) (4) (3)",
+    "resource_technologies": [],
+    "script_filename": "OHK-jcyfl6rs_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

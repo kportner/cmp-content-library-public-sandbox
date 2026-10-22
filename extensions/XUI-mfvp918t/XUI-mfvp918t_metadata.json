@@ -1,0 +1,18 @@
+{
+    "description": "Display logged-in CMP users as a Dashboard widget",
+    "enabled": true,
+    "icon": "user-icon.png",
+    "id": "XUI-mfvp918t",
+    "label": "Logged-in Users Widget",
+    "last_updated": "2026-09-15",
+    "maximum_version_required": "",
+    "minimum_version_required": "2026.2.29",
+    "name": "io_cloudbolt_users_widget",
+    "package_contents": [
+        "views.py",
+        "__init__.py",
+        "templates/loggedin_users.html",
+        "user-icon.png"
+    ],
+    "version": "1.0"
+}

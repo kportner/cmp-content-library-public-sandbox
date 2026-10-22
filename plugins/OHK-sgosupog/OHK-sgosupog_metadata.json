@@ -1,0 +1,11 @@
+{
+    "description": "Power on a server(s)",
+    "id": "OHK-sgosupog",
+    "max_retries": 0,
+    "name": "Asynchronously Power ON Resource",
+    "resource_technologies": [],
+    "script_filename": "OHK-sgosupog_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

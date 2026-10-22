@@ -1,0 +1,103 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "AWS Aurora Database Create Service",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-slx0fcrt"
+            },
+            "deploy_seq": 1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-b75mbt8c",
+            "name": "AWS Aurora Database Create Service",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "- Creates an AWS RDS Aurora Database with Serverless or Provisioned cluster with Reader and Writer Multiple instances.\r\n- Supported Engine Modes - Provisioned and Serverless.\r\n- For Provision Engine Mode all Versions are supported.\r\n- For Engine Aurora - Supported Engine version for Serverless V1 - 5.6.10a.\r\n- For Engine Aurora Mysql - Supported Engine version for Serverless V1- 2.07.1, Serverless V2-3.02.0.\r\n- For Engine Aurora Postgresql - Supported Engine version for Serverless V1 10.14, 10.18.\r\n- For Engine Aurora Postgresql - Supported Engine version for Serverless V2 13.6, 13.7, 14.3.",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-yksl200q"
+        },
+        "href": "/api/v3/cmp/actions/OHK-yksl200q/",
+        "title": "Aurora Discovery"
+    },
+    "favorited": false,
+    "icon": "aws_aurora_logo_cEy5kpN_k6bQ5mv.png",
+    "id": "BP-fryc2h8e",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-6spb5ltg",
+            "image": null,
+            "name": "AWS",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-z35ed87f"
+            },
+            "enabled": true,
+            "label": "Start AWS RDS Aurora Database Cluster"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-aj3xp8fx"
+            },
+            "enabled": true,
+            "label": "Stop AWS RDS Aurora Database Cluster"
+        }
+    ],
+    "metadata_version": "2026.1.0",
+    "name": "Amazon Aurora",
+    "resource_name_template": "RDS Aurora Database",
+    "resource_type": {
+        "icon": "fas fa-database",
+        "id": "RT-h0npsxst",
+        "internal_only": false,
+        "label": "Database",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "database",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Delete AWS Aurora Database",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-3wfz0vbf"
+            },
+            "deploy_seq": -1,
+            "description": "",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-lr7ems6t",
+            "name": "Delete AWS Aurora Database",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

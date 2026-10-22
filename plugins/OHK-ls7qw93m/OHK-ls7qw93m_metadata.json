@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-ls7qw93m",
+    "max_retries": 0,
+    "name": "Nginx Deployment",
+    "resource_technologies": [],
+    "script_filename": "OHK-ls7qw93m_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

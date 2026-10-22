@@ -1,0 +1,2 @@
+###OneFuse CloudBolt Upstream Provider XaaS Files
+Note: The files in this directory are a work in progress and are provided as part of this XUI as examples only. They are not imported with the OneFuse Setup script and will need to be manually mapped to be used.

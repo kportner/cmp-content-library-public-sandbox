@@ -1,0 +1,91 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "all_environments_enabled": true,
+            "allowed_os_families": [
+                "Oracle Enterprise Linux",
+                "Red Hat"
+            ],
+            "applications": null,
+            "deploy_seq": 1,
+            "description": "The action provision a VM, will support OEL and RHEL, no check for version as of now but the next action support only RHEL8/OEL8 on VMWare",
+            "environment_selection_orchestration": null,
+            "execute_in_parallel": false,
+            "hostname_template": "",
+            "id": "BDI-7redkbik",
+            "name": "MySQL VM on VMWare",
+            "os_build": null,
+            "rate": null,
+            "restrict_applications": false,
+            "show_on_order_form": false,
+            "tier_type": "server"
+        },
+        {
+            "action_name": "Install MySQL",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-gm8yew5a"
+            },
+            "deploy_seq": 3,
+            "description": "Installs  SQL Server on the provisioned machine.",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-xwmuq6zr",
+            "name": "Install SQL Server",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "script"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "This blueprint supports only OEL8 or RHEL8 as of now.\r\nInstall Community based MYSQL (provided by OEL 8 or RHEL8 repos).\r\n\r\nInstalls mysql-shell which provides Multi-language support, Admin API with support of NoSQL JSON documents inside MySQL without writing standard SQL queries.\"\r\nInstallation Open Database Connectivity (ODBC) framework.\r\nCreates a master user and master password with a check on password validation",
+    "favorited": false,
+    "icon": "mssql_ZT1ceRj_rekfCPx_pdTYR7L_Tvyz1JR_uBpNFOt.png",
+    "id": "BP-dva7sj42",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-ulz7csup",
+            "image": null,
+            "name": "Content Library BPs",
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-7vgi7k3g"
+            },
+            "enabled": true,
+            "label": "Restart MSSql server"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-heit538b"
+            },
+            "enabled": true,
+            "label": "Stop MSSql Server"
+        }
+    ],
+    "metadata_version": "2026.1.0",
+    "name": "MSSQL Server On OEL8 or RHEL8",
+    "resource_name_template": null,
+    "resource_type": {
+        "icon": "fas fa-database",
+        "id": "RT-h0npsxst",
+        "internal_only": false,
+        "label": "Database",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "database",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": []
+}

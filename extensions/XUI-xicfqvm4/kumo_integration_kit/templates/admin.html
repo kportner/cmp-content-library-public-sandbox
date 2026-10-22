@@ -1,0 +1,396 @@
+{% extends "base.html" %}
+
+{% load helper_tags %}
+{% load static %}
+{% block topnav %}Cost and Security Management{% endblock %}
+{% block title %}Cost and Security Management{% endblock %}
+
+{% block uplink %}
+<li class="breadcrumb-item flex-shrink-0"><a href="{% url 'admin_home' %}">Admin</a></li>
+{% endblock uplink %}
+
+{% block breadcrumb-item %}
+<h1>Cost and Security Management</h1>
+{% endblock breadcrumb-item %}
+
+{% block content %}
+
+<head>
+    <meta id="handler_details_admin" data-handler="{{ handler_type }}" data-handlerid="{{ rh_id }}" data-handlerhost="{{ domain }}">
+    <link rel="stylesheet" type="text/css" href="{% static 'kumo_integration_kit/css/admin.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'kumo_integration_kit/css/common.css' %}">
+</head>
+
+<body>
+    <div id="admin-tab">
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-xl">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title api-key-guide d-none">CSMP API Key Generation Guide</h4>
+                        <h4 class="modal-title adapter-guide d-none">CSMP resource handler (Adapter) creation process for
+                            <input type="radio" id="aws-adapter" name="which-adapter" value="AWS" checked><label for="aws-adapter">AWS</label>
+                            <input type="radio" id="azure-adapter" name="which-adapter" value="Azure"><label for="azure-adapter">Azure</label>
+                        </h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    {% include 'kumo_integration_kit/templates/_guides.html' %}
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" style="position: relative;">
+            <admin-tab>
+                {% include 'kumo_integration_kit/templates/_cbloader.html' %}
+            </admin-tab>
+            <div id="getting-started" class="tab-pane active">
+                <h3><img src="{% static 'kumo_integration_kit/images/cb-cloud-blue.svg' %}" width="3%"> Welcome to Cost and Security Management Platform!{% if current_version != '' %}<span class="cur-ver">[{{ current_version }}]</span>{% endif %}
+                </h3>
+                <div id="alert-box-invali-creds" class="col-sm-12" style="position: relative; margin-left: -15px; display: none;">
+                    <div class="alert alert-dismissable alert-danger" style="opacity: 1;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Your API key is expired, Please edit <strong>Integration Setting</strong> below & update the <strong>CSMP API Key</strong>!</div>
+                </div>
+                <div class="show-refresh" style="display: none;">
+                    <form id="refreshPageForm">
+                        <div class="row mb-3">
+                            <div class="col-sm-12">
+                                <p>Please restart the Apache server MANUALLY to get started with this UI Extension.</p>
+                                <p>Kindly follow the below steps to do it:</p>
+                                <ul>
+                                    <li>SSH to each web node in your CloudBolt appliance.</li>
+                                    <li>Run command: <strong>systemctl restart httpd</strong> in each web node.</li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-12" style="top: 20px;">
+                                <button class="btn btn-success" id="refresh-page" type="submit">Refresh Page</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                {% comment %}
+                ============ SECTION 1: CB/CSMP Integration Settings =============
+                {% endcomment %}
+
+                <div class="hide-refresh" style="display: none;">
+                    <form id="saveCredsForm">
+                        <div class="row mb-3">
+                            <label class="form-label col-sm-7 section-name">Integration
+                                Setting<i class="fas fa-edit" id="yes-edit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="Edit this setting!"></i></label>
+                            <div class="col-sm-5"></div>
+                            <span ></span>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="form-label col-sm-4">CSMP domain URL *:</label>
+                            <div class="col-sm-5 input-group no-creds">
+                                <!-- <span class="input-group-text site-start">https://</span> -->
+                                <input class="form-control" name="kumo-domain-url" maxlength="255"
+                                    placeholder="Enter Your CSMP Account URL here" type="text" required>
+                                <!-- <span class="input-group-text site-end">.kumolus.net</span> -->
+                            </div>
+                            <div class="col-sm-5 mb-3 yes-creds">
+                                <input class="form-control site-host disabled" type="text" disabled>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="form-label col-sm-4">CSMP API Key *:</label>
+                            <div class="col-sm-5 input-group no-creds" style="margin-bottom: 15px;">
+                                <input class="form-control" type="password" name="kumo-api-key"
+                                    placeholder="Enter the API key" required>
+                            </div>
+                            <label class="form-label no-creds col-sm-4"></label>
+                            <span class="no-creds"><i class="fas fa-info-circle"></i> If you want help in <strong>How
+                                    to create API key in CSMP</strong>, Please <a class="no-creds" data-bs-toggle="modal"
+                                    data-bs-target="#myModal">click here</a>!</span>
+                            <div class="col-sm-5 mb-3 yes-creds">
+                                <input class="form-control api-key disabled" type="password" rows="5" disabled>
+                            </div>
+                        </div>
+                        <div class="row mb-3 hide-button">
+                            <label class="form-label col-sm-4"></label>
+                            <div class="col-sm-5 mb-3">
+                                <button class="btn btn-success validate" type="submit">Validate</button>
+                                <label id="validationStatus"></label>
+                            </div>
+                        </div>
+                        <div class="row mb-3 hide-button" style="display: inline-flex;">
+                            <div class="col-sm-12">
+                                <button class="btn btn-light save-creds disabled" type="button" disabled>Save
+                                    Credentials
+                                </button>
+                                <label id="savingStatus"></label>
+                            </div>
+                            <div class="col-sm-12">
+                                <button class="btn btn-success" type="button" id="cancel-edit">Cancel Edit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <hr style="display: none;">
+
+                {% comment %}
+                ============ SECTION 2: Form Customization Settings =============
+                {% endcomment %}
+
+                <div class="hide-refresh" style="display: none;">
+                    <form id="saveCustomizationsForm">
+
+                        <div class="row mb-3">
+                            <label class="form-label col-sm-7 section-name">Form Customization
+                                <i class="fas fa-edit" id="cust-edit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="Edit this setting!"> </i></label>
+                            <div class="col-sm-5"></div>
+                            <span ></span>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-sm-12 sub-headings">
+                                <label class="form-label" style="margin-bottom: 10px;">Server Cost Tab:</label>
+                            </div>
+
+                            <label class="form-label col-sm-4" >Rightsizing documentation url:</label>
+
+                            <div class="col-sm-5">
+                                <input class="form-control" type="text" id="rightsizing_docs_url" disabled
+                                value="{{ rightsizing_docs_url }}" placeholder="Enter Your Website Name" >
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 hide-button-cust" style="display: inline-flex;">
+                            <div class="col-sm-12">
+                                <button class="btn btn-light save-cust" type="button" disabled>Save
+                                    Customizations
+                                </button>
+                                <label id="savingCust"></label>
+                            </div>
+                            <div class="col-sm-12">
+                                <button class="btn btn-success" type="button" id="cancel-cust-edit">Cancel Edit</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <hr style="display: none;">
+
+                {% comment %}
+                ============ SECTION 3: Cost Service Adviser Configuration Settings =============
+                {% endcomment %}
+
+                <div class="hide-refresh" style="display: none;">
+                    <form id="saveConfigForm">
+                        <div class="row mb-3">
+                            <label class="form-label col-sm-7 section-name">Efficiency (Cost Service Adviser) Configuration<i class="fas fa-edit" id="edit-setting" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="Edit this setting!"></i></label>
+                            <div class="col-sm-5"></div>
+                        </div>
+
+                        <div class="setting-group">
+                            <div class="row mb-3 combo">
+                                <div class="col-sm-12 sub-headings">
+                                    <label>RightSizing:</label>
+                                </div>
+                                <div class="col-sm-12 sub-combo">
+                                    <label class="form-label"><input class="form-check-input enabling" type="checkbox" id="idle_running_rs" disabled> Show IDLE Running Services in RightSizing</label>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label class="form-label"><input class="form-check-input enabling" type="checkbox" id="idle_stopped_rs" disabled> Show IDLE Stopped Services in RightSizing</label>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3 combo">
+                                <div class="col-sm-12 sub-headings">
+                                    <label>RDS Snapshots:</label>
+                                </div>
+                                <div class="col-sm-12 sub-combo">
+                                    <label class="form-label"><input class="form-check-input enabling" type="checkbox" id="rds_snapshot_no" disabled> Show RDS Snapshot with no RDS</label>
+                                </div>
+                                <div class="col-sm-12" style="display: flex;">
+                                    <label class="form-label">RDS Snapshot older than</label>
+                                    <input class="enabling" type="number" min="0" id="rds_snapshot_after" disabled>
+                                    <select class="form-select enabling" id="rds-no-of-days" disabled>
+                                        <option value="1">Days</option>
+                                        <option value="30">Months</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3 combo">
+                                <div class="col-sm-12 sub-headings">
+                                    <label>Volume Snapshots:</label>
+                                </div>
+                                <div class="col-sm-12 sub-combo">
+                                    <label class="form-label"><input class="form-check-input enabling" type="checkbox" id="volume_snapshot_no" disabled> Show Volume Snapshot with no volume</label>
+                                </div>
+                                <div class="col-sm-12" style="display: flex;">
+                                    <label class="form-label">Volume Snapshot older than</label>
+                                    <input class="enabling" type="number" min="0" id="volume_snapshot_after" disabled>
+                                    <select class="form-select enabling" id="volume-no-of-days" disabled>
+                                        <option value="1">Days</option>
+                                        <option value="30">Months</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="setting-group">
+                            <div class="row mb-3 combo">
+                                <div class="col-sm-12 sub-headings">
+                                    <label>IDLE Services:</label>
+                                </div>
+                                <div class="col-sm-12 sub-combo" style="display: flex;">
+                                    <label class="form-label">Running Services IDLE older than</label>
+                                    <input class="enabling" type="number" min="0" id="idle_running_after" disabled>
+                                    <select class="form-select enabling" id="idle-running-no-of-days" disabled>
+                                        <option value="1">Days</option>
+                                        <option value="30">Months</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-12" style="display: flex;">
+                                    <label class="form-label">Stopped Services IDLE older than</label>
+                                    <input class="enabling" type="number" min="0" id="idle_stopped_after" disabled>
+                                    <select class="form-select enabling" id="idle-stopped-no-of-days" disabled>
+                                        <option value="1">Days</option>
+                                        <option value="30">Months</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 hide-button-edit" style="display: inline-flex;">
+                            <div class="col-sm-12">
+                                <button class="btn btn-light" type="button" id="update-config">Update Configuration</button>
+                                <label id="update-configuration"></label>
+                            </div>
+                            <div class="col-sm-12">
+                                <button class="btn btn-success" type="button" id="cancel-edit-config">Cancel Edit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <hr style="display: none;">
+                {% if rh_currency_rj_status %}
+                <div class="hide-refresh" style="display: none;">
+                    <form id="saveDefaultCurrencyJobStatusForm">
+                        <div class="row mb-3">
+                            <label class="form-label col-sm-7 section-name">Recurring Jobs</label>
+                            <div class="col-sm-5"></div>
+                        </div>
+                        <p style="margin-top: -10px; margin-bottom: 20px;">(Please run the following recurring jobs in sequence TOP -> BOTTOM, one by one)</p>
+                        <div class="setting-group">
+                            <div class="mb-3 combo clearfix">
+                                <div class="col-sm-12 sub-headings"></div>
+                                <div class="form-check form-switch" style="margin-left: 15px;float: left;">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="rh-currency-rj-status-toggle" name="enabled" data-post-url="/xui/kumo/api/change_rh_currency_rj_status/" checked>
+                                    <label class="form-check-label" for="rh-currency-rj-status-toggle">Enabled</label>
+                                </div>
+                                <div class="sub-combo" style="margin-left: 15px;float: left;">
+                                    <label class="form-label"><a href="/recurring_jobs/{{ rh_currency_rj_id }}/">CSMP Resource Handler Data Caching </a><span class="infotip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="In order to see unified currency acros dashboard widgets, Enable this recurring job to store data for default currency from CSMP"></span></label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                {% endif %}
+                {% if rj_status %}
+                <div class="hide-refresh" style="display: none;">
+                    <form id="saveRecurringJobStatusForm">
+                        <div class="setting-group">
+                            <div class="mb-3 combo clearfix">
+                                <div class="col-sm-12 sub-headings"></div>
+                                <div class="form-check form-switch" style="margin-left: 15px;float: left;">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="rj-status-toggle" name="enabled" data-post-url="/xui/kumo/api/change_rj_status/" checked>
+                                    <label class="form-check-label" for="rj-status-toggle">Enabled</label>
+                                </div>
+                                <div class="sub-combo" style="margin-left: 15px;float: left;">
+                                    <label class="form-label"><a href="/recurring_jobs/{{ rj_id }}/">CSMP Dashboard Widget Data Caching </a><span class="infotip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="In order to see dashboard widget's data, you have to Enable this setting which will add one recurring job to store data for widgets"></span></label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                {% endif %}
+                <hr style="display: none;">
+                <div class="hide-refresh" style="display: none;">
+                    <form id="currencyConversionForm">
+                        <div class="row mb-3">
+                            <label class="form-label col-sm-7 section-name">Dashboard Widget's Currency
+                                <span class="infotip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="Below preferred currency will only applicable to values under Dashboard Widgets and not any other place in this UI Extension components. Also stored in CMP and not CSMP account."></span>
+                            </label>
+                            <div class="col-sm-5"></div>
+                        </div>
+                        <div class="row" style="margin-bottom: 0;">
+                            <div class="col-sm-12 no-data-cc"></div>
+                        </div>
+                        <div class="setting-group">
+                            <div class="combo currency-preference clearfix" style="margin-bottom: 20px;">
+                                <div class="col-sm-12 sub-headings"></div>
+                                <div class="sub-combo" style="margin-left: 15px;float: left;">
+                                    <label class="form-label">Preferred Currency <i>(eg. EUR, GBP, USD, etc)</i></label>
+                                </div>
+                                <div style="margin-left: 15px;float: left;display: flex;">
+                                    <input type="text" id="pref-curr" name="pref-curr" minlength="3" maxlength="3" pattern="^([A-Z])+$" disabled required>
+                                    <!-- <select class="form-control selectize" id="pref-curr" disabled>
+                                        <option value="" selected disabled>Select Preferred Currency</option>
+                                    </select> -->
+                                    <i class="fas fa-edit fa-lg" id="edit-pref-curr" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="Edit this setting!" style="padding-top: 7px;padding-left: 10px;border-bottom: 0;font-weight: 100;cursor: pointer;"></i>
+                                    <div class="d-none" style="display: flex;">
+                                        <button class="btn btn-success" type="submit" id="save-pref-curr" style="margin-inline: 10px;">Save</button>
+                                        <button class="btn btn-light cancel-save-pref-curr" type="button">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pref-curr-label d-none">
+                                <label>Please create currency conversion to set Preferred Currency!</label>
+                            </div>
+                        </div>
+                        <div class="setting-currency-conversion"></div>
+                    </form>
+                    <!-- <div>
+                        <button class="btn btn-info" type="button" id="currency-conversion-new" style="margin-top: 10px;">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>
+                    </div> -->
+                </div>
+
+                <hr style="display: none;">
+                <div class="hide-refresh" id="resource-handlers" style="margin-top: 30px; display: none;">
+                    <div class="row mb-3">
+                        <label class="form-label col-sm-7 section-name">Common Resource Handlers from CMP & CSMP</label>
+                        <div class="col-sm-5"></div>
+                        <div class="col-sm-12" style="position: relative; margin-top: 10px;">
+                            <div class="alert alert-dismissable alert-info" style="opacity: 1; margin-bottom: 0px;">
+                                <i class="fas fa-info-circle" style="margin-right: 5px;"></i>
+                                Currency conversion rates mentioned below (if exists) are fetched from & synced into CSMP account only.
+                            </div>
+                        </div>
+                        <div id="alert-box-rj-info" class="col-sm-12" style="position: relative; margin-top: 10px; display: none;">
+                            <div class="alert alert-dismissable alert-info" style="opacity: 1; margin-bottom: 0px;">
+                                <i class="fas fa-info-circle" style="margin-right: 5px;"></i>
+                                If you have recently added/updated the currency conversion rate, Please run the
+                                <a id="rj-info" href="/recurring_jobs/{{ rj_id }}/" target="_blank"><strong>Sync Job</strong></a>
+                                to get the widget data in preferred currency.
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <form id="rhStatusForm">
+                            <div>
+                                <span class="d-none" id="no-rh-list"></span>
+                                <div class="accordion rh-list-group">
+
+                                </div>
+                                <span class="rh-absent d-none"><i class="fas fa-info-circle"></i> To add, Please refer <a class="rh-absent" data-bs-toggle="modal" data-bs-target="#myModal">Guide to add resource handlers (Adapters) in CSMP Account!</a></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="{% static 'kumo_integration_kit/js/admin.js' %}"></script>
+</body>
+
+{% endblock content %}

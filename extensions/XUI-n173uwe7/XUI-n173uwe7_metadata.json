@@ -1,0 +1,28 @@
+{
+    "description": null,
+    "enabled": true,
+    "icon": "git_management_WyjgbdD.png",
+    "id": "XUI-n173uwe7",
+    "label": "Git Management",
+    "last_updated": "2026-09-15",
+    "maximum_version_required": "2026.2.110",
+    "minimum_version_required": "2026.2.29",
+    "name": "git_management",
+    "package_contents": [
+        "__init__.py",
+        "config.py",
+        "forms.py",
+        "urls.py",
+        "utilities.py",
+        "views.py",
+        "templates/admin_page.html",
+        "templates/tab-config.html",
+        "templates/tab-content.html",
+        "templates/tab-docs.html",
+        "templates/tab-orchestration_actions.html",
+        "templates/tab-recurring_jobs.html",
+        "templates/tab-server_actions.html",
+        "templates/tab-ui_extensions.html"
+    ],
+    "version": ""
+}

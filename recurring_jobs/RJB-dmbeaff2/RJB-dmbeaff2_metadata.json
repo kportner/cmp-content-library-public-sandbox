@@ -1,0 +1,57 @@
+{
+    "action_input_default_values": [],
+    "action_inputs": [
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": null,
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": true,
+            "id": "CF-522ks7di",
+            "label": "Sync Job Threshold Days",
+            "name": "sync_job_threshold_days",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        },
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": null,
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": true,
+            "id": "CF-lds7qpjc",
+            "label": "Threshold Days",
+            "name": "threshold_days",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        }
+    ],
+    "allow_parallel_jobs": false,
+    "create_date": "2025-03-09 20:19:03.842092",
+    "dependencies": {
+        "hook": "plugins/OHK-c9o9lmiw"
+    },
+    "description": "Find any job record in the database older than the threshold and delete it, also removing its log file from disk.",
+    "enabled": true,
+    "icon": "cloudbolt_exI5cac.jpg",
+    "id": "RJB-dmbeaff2",
+    "last_run": "2026-08-13 02:15:00.731208",
+    "last_updated": null,
+    "name": "Delete Old Job Records",
+    "schedule": "15 2 * * *",
+    "type": "orchestration_hook"
+}

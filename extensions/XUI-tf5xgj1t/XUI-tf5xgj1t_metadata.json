@@ -1,0 +1,28 @@
+{
+    "description": null,
+    "enabled": true,
+    "icon_url": "",
+    "id": "XUI-tf5xgj1t",
+    "label": "Multi Factor Authentication",
+    "last_updated": "2026-09-15",
+    "maximum_version_required": "2026.2.110",
+    "minimum_version_required": "2026.2.29",
+    "name": "mfa",
+    "package_contents": [
+        "__init__.py",
+        "forms.py",
+        "middleware.py",
+        "totp.py",
+        "urls.py",
+        "utils.py",
+        "views.py",
+        "xui_settings.py",
+        "templates/admin_page.html",
+        "templates/configure.html",
+        "templates/mfa_management_tab.html",
+        "templates/tab-overview.html",
+        "templates/verify_second_factor_totp.html",
+        "static/logos/cb-cloud-white.png"
+    ],
+    "version": ""
+}

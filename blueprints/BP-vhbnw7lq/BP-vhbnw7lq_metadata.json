@@ -1,0 +1,38 @@
+{
+    "any_group_can_deploy": false,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Deploy VM from .ova (1)",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-v7xj3yh6"
+            },
+            "deploy_seq": 1,
+            "description": "",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-dtj6z9z6",
+            "name": "Deploy VM from .ova",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Provided with a URL to an .ova file that is accessible to the CB server, CB will deploy a VM to VMware from this .ova.\r\ndeploy a new VM on VMware from a .ova file that\r\nis accessible from a URL.\r\n\r\nPrerequisites:\r\n * ovftool needs to be installed on a server that is under CB management (this can be the CB\r\n server itself)\r\n * CB 8.3-alpha5 or newer",
+    "favorited": false,
+    "icon": "ova_nsmBe1I_BlAOJNH_szmPbWj.jpeg",
+    "id": "BP-vhbnw7lq",
+    "is_orderable": true,
+    "labels": [],
+    "last_updated": "2026-09-15",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "Deploy VM from .ova",
+    "resource_name_template": "",
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": []
+}

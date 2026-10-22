@@ -1,0 +1,14 @@
+{
+    "description": "Deletes the specified blob storage account",
+    "id": "OHK-snpgod6r",
+    "max_retries": 0,
+    "name": "Delete Azure Blob Storage Account",
+    "resource_technologies": [
+        "Azure",
+        "Azure Stack"
+    ],
+    "script_filename": "OHK-snpgod6r_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

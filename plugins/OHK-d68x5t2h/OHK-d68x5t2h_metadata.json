@@ -1,0 +1,11 @@
+{
+    "description": "Detach an EBS volume from an instance.",
+    "id": "OHK-d68x5t2h",
+    "max_retries": 0,
+    "name": "detach-volume-from-instance",
+    "resource_technologies": [],
+    "script_filename": "OHK-d68x5t2h_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

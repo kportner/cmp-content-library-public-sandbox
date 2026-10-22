@@ -1,0 +1,96 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "AWS Elastic File System Create",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-jar6k8ir"
+            },
+            "deploy_seq": 1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-p5sru86c",
+            "name": "AWS Elastic File System Create",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Blueprint for creating and managing AWS ECs Elastic File Systems (EFS).",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-ph4mpg5y"
+        },
+        "href": "/api/v3/cmp/actions/OHK-ph4mpg5y/",
+        "title": "EFS Discovery"
+    },
+    "favorited": false,
+    "icon": "AwsElasticFileSystem_yqZNkDb_9XKlVed.png",
+    "id": "BP-5s5zqcrh",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-6spb5ltg",
+            "image": null,
+            "name": "AWS",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-2y06lppq"
+            },
+            "enabled": true,
+            "label": "Create mount target"
+        }
+    ],
+    "metadata_version": "2026.1.0",
+    "name": "AWS Elastic File System",
+    "resource_name_template": null,
+    "resource_type": {
+        "icon": "fas fa-box",
+        "id": "RT-acp5jvcg",
+        "internal_only": false,
+        "label": "Storage",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "storage",
+        "plural_label": "Storage"
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Delete AWS Elastic File System",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-7yv2iwpo"
+            },
+            "deploy_seq": -1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-7hesta5r",
+            "name": "Delete AWS Elastic File System",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

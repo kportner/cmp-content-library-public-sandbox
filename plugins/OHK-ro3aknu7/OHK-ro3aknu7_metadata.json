@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-ro3aknu7",
+    "max_retries": 0,
+    "name": "Provision Deployments",
+    "resource_technologies": [],
+    "script_filename": "OHK-ro3aknu7_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

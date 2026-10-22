@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-qm6nymbq",
+    "max_retries": 0,
+    "name": "Deletes Storage Account from Azure",
+    "resource_technologies": [],
+    "script_filename": "OHK-qm6nymbq_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

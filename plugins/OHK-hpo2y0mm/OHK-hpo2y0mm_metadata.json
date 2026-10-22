@@ -1,0 +1,18 @@
+{
+    "commandline_args": null,
+    "credentials": "YOUR_CREDENTIALS",
+    "description": "Restarts the apache process on the server",
+    "execution_timeout": 120,
+    "id": "OHK-hpo2y0mm",
+    "max_retries": 0,
+    "name": "Restart Apache",
+    "remove_after_run": true,
+    "resource_technologies": [],
+    "run_with_sudo": true,
+    "script_filename": "OHK-hpo2y0mm_script.sh",
+    "shared": false,
+    "target_os_families": [
+        "Linux"
+    ],
+    "type": "Remote Script"
+}

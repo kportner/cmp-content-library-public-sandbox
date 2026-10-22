@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-ph4mpg5y",
+    "max_retries": 0,
+    "name": "EFS Discovery",
+    "resource_technologies": [],
+    "script_filename": "OHK-ph4mpg5y_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

@@ -1,0 +1,697 @@
+{
+    "action_inputs": [
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": null,
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [
+                {
+                    "controlling-field": {
+                        "name": "aws_region_a535"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "engine_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-3orjhd4f",
+            "label": "Aws Region",
+            "name": "aws_region",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "For Engine Aurora - Supported Engine version for Serverless V1 - 5.6.10a.\r\nFor Engine Aurora Mysql - Supported Engine version for Serverless V1- 2.07.1, Serverless V2-3.02.0.\r\nFor Engine Aurora Postgresql - Supported Engine version for Serverless V1 10.14, 10.18.\r\nFor Engine Aurora Postgresql - Supported Engine version for Serverless V2 13.6, 13.7, 14.3.",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "engine_a535"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "db_engine_version_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [
+                {
+                    "controlling-field": {
+                        "name": "db_engine_version_a535"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "instance_class_type_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-ix52fbra",
+            "label": "Db Engine Version",
+            "name": "db_engine_version",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Enter a name for your DB cluster. The name must be unique across all DB clusters owned by your AWS account in the current AWS Region.",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-ttf7s9hm",
+            "label": "Db Identifier",
+            "name": "db_identifier",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Specify an alphanumeric string that defines the login ID for the master user. You use the master user login to start defining all users, objects, and permissions in the databases of your DB instance. Master Username must start with a letter, as in \"awsuser\".",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-qv3vjx5j",
+            "label": "Db Master Username",
+            "name": "db_master_username",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": null,
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "aws_region_a535"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "engine_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [
+                {
+                    "controlling-field": {
+                        "name": "engine_a535"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "db_engine_version_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-gqtosdh4",
+            "label": "Engine",
+            "name": "engine",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": null,
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "instance_class_a535"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "engine_mode_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [
+                {
+                    "controlling-field": {
+                        "name": "engine_mode_a535"
+                    },
+                    "custom-field-options": [
+                        "provisioned"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "number_of_instances_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-39sdgigq",
+            "label": "Engine Mode",
+            "name": "engine_mode",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "For Serverless Mode - Select Serverless v1or v2\r\nFor Provision Mode - select r or t type classes",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "instance_class_type_a535"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "instance_class_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [
+                {
+                    "controlling-field": {
+                        "name": "instance_class_a535"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "engine_mode_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                },
+                {
+                    "controlling-field": {
+                        "name": "instance_class_a535"
+                    },
+                    "custom-field-options": [
+                        "serverlessv1"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "serverless_min_capacity_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                },
+                {
+                    "controlling-field": {
+                        "name": "instance_class_a535"
+                    },
+                    "custom-field-options": [
+                        "serverlessv1"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "serverless_max_capacity_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                },
+                {
+                    "controlling-field": {
+                        "name": "instance_class_a535"
+                    },
+                    "custom-field-options": [
+                        "postgressv1"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "max_capacity_for_postgress_serverless_v1_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                },
+                {
+                    "controlling-field": {
+                        "name": "instance_class_a535"
+                    },
+                    "custom-field-options": [
+                        "postgressv1"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "min_capacity_for_postgress_serverless_v1_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                },
+                {
+                    "controlling-field": {
+                        "name": "instance_class_a535"
+                    },
+                    "custom-field-options": [
+                        "Serverlessv2"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "min_capacity_for_serverless_v2_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                },
+                {
+                    "controlling-field": {
+                        "name": "instance_class_a535"
+                    },
+                    "custom-field-options": [
+                        "Serverlessv2"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "max_capacity_for_serverless_v2_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-yplqom0i",
+            "label": "Instance Class",
+            "name": "instance_class",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Select 'r' or 't' for Provision Mode.\r\nBased on supported engine version serverless mode will appear.\r\nSelect Serverless for  Serverless Mode",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "db_engine_version_a535"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "instance_class_type_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [
+                {
+                    "controlling-field": {
+                        "name": "instance_class_type_a535"
+                    },
+                    "custom-field-options": [],
+                    "dependency-type": "REGENOPTIONS",
+                    "dependent-field": {
+                        "name": "instance_class_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-rrn9cc5p",
+            "label": "Instance Class Type",
+            "name": "instance_class_type",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Specify a string that defines the password for the master user. Master Password must be at least eight characters long, as in \"mypassword\". Can't contain any of the following: / (slash), '(single quote), \"(double quote) and @ (at sign).",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-p1jogkaw",
+            "label": "Master Password",
+            "name": "master_password",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Max capacity in ACU. Provides value for Engine aurora-postgress.\r\nDatabase capacity is measured in Aurora Capacity Units (ACUs). 1 ACU provides 2 GiB of memory and corresponding compute and networking.",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "instance_class_a535"
+                    },
+                    "custom-field-options": [
+                        "postgressv1"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "max_capacity_for_postgress_serverless_v1_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-sa03m36s",
+            "label": "Max Capacity For Postgress Serverless V1",
+            "name": "max_capacity_for_postgress_serverless_v1",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Max capacity in ACU. Provides value for engine aurora-mysql & aurora-postgres Serverless V2. 1 ACU provides 2 GiB of memory and corresponding compute and networking.",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "instance_class_a535"
+                    },
+                    "custom-field-options": [
+                        "Serverlessv2"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "max_capacity_for_serverless_v2_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-mfpr1nmn",
+            "label": "Max Capacity For Serverless V2",
+            "maximum": "128.00",
+            "minimum": "1.00",
+            "name": "max_capacity_for_serverless_v2",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "INT",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Max capacity in ACU. Provides value for Engine aurora-postgress.\r\nDatabase capacity is measured in Aurora Capacity Units (ACUs). 1 ACU provides 2 GiB of memory and corresponding compute and networking.",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "instance_class_a535"
+                    },
+                    "custom-field-options": [
+                        "postgressv1"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "min_capacity_for_postgress_serverless_v1_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-w1p1t9s7",
+            "label": "Min Capacity For Postgress Serverless V1",
+            "name": "min_capacity_for_postgress_serverless_v1",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Min capacity in ACU.  provides value for engine  aurora-mysql & aurora-postgress Serverless V2. 1 ACU provides 2 GiB of memory and corresponding compute and networking.",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "instance_class_a535"
+                    },
+                    "custom-field-options": [
+                        "Serverlessv2"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "min_capacity_for_serverless_v2_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-21whc10o",
+            "label": "Min Capacity For Serverless V2",
+            "maximum": "128.00",
+            "minimum": "1.00",
+            "name": "min_capacity_for_serverless_v2",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "INT",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Specify Number of Instances to be created inside Cluster. Eg : 1 , 2 etc",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "engine_mode_a535"
+                    },
+                    "custom-field-options": [
+                        "provisioned"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "number_of_instances_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-0ikijs0s",
+            "label": "Number Of Instances",
+            "name": "number_of_instances",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": null,
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "instance_class_a535"
+                    },
+                    "custom-field-options": [
+                        "serverlessv1"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "serverless_max_capacity_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-gfe50hrt",
+            "label": "Serverless Max Capacity",
+            "name": "serverless_max_capacity",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": null,
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "instance_class_a535"
+                    },
+                    "custom-field-options": [
+                        "serverlessv1"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "serverless_min_capacity_a535"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-0wzagvth",
+            "label": "Serverless Min Capacity",
+            "name": "serverless_min_capacity",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        }
+    ],
+    "action_inputs_sequence": [
+        "db_identifier",
+        "aws_region",
+        "engine",
+        "db_engine_version",
+        "instance_class_type",
+        "instance_class",
+        "engine_mode",
+        "number_of_instances",
+        "serverless_min_capacity",
+        "serverless_max_capacity",
+        "min_capacity_for_serverless_v2",
+        "max_capacity_for_serverless_v2",
+        "min_capacity_for_postgress_serverless_v1",
+        "max_capacity_for_postgress_serverless_v1",
+        "db_master_username",
+        "master_password"
+    ],
+    "description": "",
+    "id": "OHK-slx0fcrt",
+    "max_retries": 0,
+    "name": "AWS Aurora Database Create Service",
+    "resource_technologies": [],
+    "script_filename": "OHK-slx0fcrt_script.py",
+    "shared": true,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

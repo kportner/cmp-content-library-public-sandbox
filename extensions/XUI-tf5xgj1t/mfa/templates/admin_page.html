@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% load helper_tags %}
+{% load tab_tags %}
+{% load i18n %}
+
+{% block topnav %}Multi-factor Administration {% endblock %}
+
+{% block title %}  Multi-factor Authentication Administration {% endblock %}
+
+{% block uplink %}<li class="breadcrumb-item flex-shrink-0"><a href="{% url 'admin_home' %}">Admin</a></li>{% endblock uplink %}
+{% block breadcrumb-item %}<h1>Multi-factor Authentication Management</h1>{% endblock breadcrumb-item %}
+
+{% block content %}
+<table id="mfaUsersTable"
+    data-table-sort-disabled="0, 1, 5"
+    data-table-source="/mfa/users/json/">
+  <thead>
+    <tr>
+      <th>
+        <input type="checkbox" class="check-column" />
+      </th>
+      <th>{% trans "MFA" %}</th>
+      <th>{% trans "Email" %}</th>
+      <th>{% trans "Name" %}</th>
+      <th>{% trans "Domain" %}</th>
+      <th>{% trans "Actions" %}
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<div id="mfaTableToolbar" style="display:none" class="btn-toolbar" role="toolbar">
+  <div class="btn-group">
+    {% include 'common/datatable-selection-info-dropdown.html' %}
+
+    <button class="btn btn-light selection-action disabled" data-bs-toggle="tooltip"
+        data-dialog-width="800px"
+        title="{% trans "Enable MFA For Select Users" %}"
+        data-href="/mfa/enable/">
+        <span class="fa fa-shield"></span>
+    </button>
+
+    <button class="btn btn-light selection-action disabled" data-bs-toggle="tooltip"
+        data-dialog-width="800px"
+        title="{% trans "Reset MFA For Select Users" %}"
+        data-href="/mfa/enable/?force=1">
+        <span class="fa fa-exclamation-circle"></span>
+    </button>
+
+    <button class="btn btn-light selection-action disabled" data-bs-toggle="tooltip"
+        data-dialog-width="800px"
+        title="{% trans "Disable MFA For Select Users" %}"
+        data-href="/mfa/disable/">
+        <span class="fa fa-ban"></span>
+    </button>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+  var $table = $('#mfaUsersTable');
+
+  $table.attr('data-table', 'clickable');
+
+  // Prepare our custom toolbar DOM fragment with all client-side
+  // behavior and pass it along to the c2 DataTable API.
+  var $toolbar = $('#mfaTableToolbar');
+  c2.dataTables.setupToolbarBehavior($table, $toolbar);
+  $table.data('table-toolbar', $toolbar);
+
+  c2.dataTables.init('#mfaUsersTable');
+</script>
+
+{% endblock content %}

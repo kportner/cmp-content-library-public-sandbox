@@ -1,0 +1,13 @@
+{
+    "description": "If there is a snapshot initiated by CloudBolt for this server, deletes it. Does not affect snapshots created directly in VMware.\r\n\r\nThis plugin may be exposed as a Server Action to make it available to server owners, or configured as part of an automated workflow such as an Orchestration Action or Rule.",
+    "id": "OHK-6qicrha3",
+    "max_retries": 0,
+    "name": "Delete snapshot created by CloudBolt",
+    "resource_technologies": [
+        "VMware vCenter"
+    ],
+    "script_filename": "OHK-6qicrha3_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

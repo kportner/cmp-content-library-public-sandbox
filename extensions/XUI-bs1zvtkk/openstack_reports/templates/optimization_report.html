@@ -1,0 +1,56 @@
+{% extends "reports/simple_base.html" %}
+{% load helper_tags %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}OpenStack Reports{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'openstack_reports/css/common.css' %}">
+<script src="{% static 'openstack_reports/js/jspdf.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'openstack_reports/js/jspdf.plugin.autotable.min.js' %}" type="text/javascript"></script>
+{% endblock %}
+
+{% block report_content %}
+<div class="btn-toolbar gap-2 mb-3 justify-content-end">
+    <button id="pdf-report" class="btn btn-light">
+        <i class="fas fa-download"></i> Export as PDF
+    </button>
+</div>
+<div class="card cb-surface-card">
+    <div class="card-body pt-4">
+        <table id="optimization-report" class="dataTable no-footer table table-hover" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Snapshot Space (GB)</th>
+                    <th>Snapshot Age (Days)</th>
+                    <th>Parent Project</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in snapshots %}
+                <tr>
+                    <td>{{ row.name }}</td>
+                    <td>{{ row.snapshot_size }} GB</td>
+                    <td>{{ row.snapshot_age }} Days</td>
+                    <td>{{ row.parent_project }}</td>
+                    <td>
+                        {% if row.status == "available" %}
+                            <span class="badge bg-success">{{ row.status|title }}</span>
+                        {% elif "error" in row.status %}
+                            <span class="badge bg-danger">{{ row.status|title }}</span>
+                        {% else %}
+                            <span class="badge bg-warning text-dark">{{ row.status|title }}</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="module" src="{% static 'openstack_reports/js/optimization_report.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-et4spkgl",
+    "max_retries": 0,
+    "name": "Sync Azure Storage Container",
+    "resource_technologies": [],
+    "script_filename": "OHK-et4spkgl_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

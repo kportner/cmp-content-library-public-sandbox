@@ -1,0 +1,39 @@
+{% extends "v5/default/body.html" %}
+
+{% block title %}{{ pagetitle }}{% endblock %}
+
+{% block breadcrumb-item %}Jupyter Notebooks{% endblock %}
+
+{% block inlinecss %}
+/* Full-bleed notebook: let the main content area flex and give the iframe
+   every remaining pixel, with or without the side navigation. */
+main#content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-height: 0;
+}
+#django-notebook-frame {
+    flex-grow: 1;
+    width: 100%;
+    border: 0;
+    min-height: 480px;
+}
+{% endblock %}
+
+{% block security_message %}
+{# .security-message has no rule in the v5 stylesheet, so use BS5 alert classes to stay visible #}
+{% if gp.security_message %}
+<div class="alert alert-warning text-center mb-0 security-message"> {{ gp.security_message|safe }} </div>
+{% endif %}
+<div class="alert alert-warning text-center mb-0 security-message">
+    Please only use the Django Jupyter Notebook when given specific direction to do so by CloudBolt
+    support.
+    <br />If you cannot determine how to accomplish your goals without using the Django Jupyter Notebook, please let us
+    know.
+</div>
+{% endblock security_message %}
+
+{% block content %}
+<iframe id="django-notebook-frame" src="{{ notebook_uri }}" title="JupyterLab"></iframe>
+{% endblock content %}

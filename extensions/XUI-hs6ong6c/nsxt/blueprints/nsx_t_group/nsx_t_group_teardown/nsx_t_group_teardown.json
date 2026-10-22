@@ -1,0 +1,14 @@
+{
+    "description": "",
+    "id": "OHK-0i1w611e",
+    "last_updated": "2023-08-29",
+    "max_retries": 0,
+    "maximum_version_required": "2026.1.74",
+    "minimum_version_required": "2024.3.93",
+    "name": "NSX-T Group Teardown",
+    "resource_technologies": [],
+    "script_filename": "teardown_nsxt_group.py",
+    "shared": true,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

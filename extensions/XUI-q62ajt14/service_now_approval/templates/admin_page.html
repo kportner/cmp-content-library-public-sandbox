@@ -1,0 +1,928 @@
+{% extends "base.html" %}
+{% comment %}
+only cb admins or global viewers should see this page
+{% endcomment %}
+{% load i18n %}
+{% load helper_tags %}
+{% load itsm_tags %}
+{% load static %}
+{% block topnav %}ServiceNow Approvals{% endblock %}
+{% block title %}ServiceNow Approvals{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'service_now_approval/css/common.css' %}">
+{% endblock %}
+
+{% block uplink %}
+<li class="breadcrumb-item"><a href="{% url 'admin_home' %}">Admin</a></li>
+{% endblock uplink %}
+
+{% block breadcrumb-item %}
+<h1>ServiceNow Approval</h1>
+{% endblock %}
+
+{% block content %}
+<div id="servicenow-approval-xui">
+    <div class="card card-body mb-3">
+        <section class="intro" style="flex: 1 1 50%; margin-right: 2em;">
+            <p class="mb-0">
+                {% blocktrans %}
+                CloudBolt ServiceNow Approval UI Extension is a tool which allows CloudBolt servers to configure things from ServiceNow to help the process of approval to be synced up with CloudBolt CMP.
+                {% endblocktrans %}
+            </p>
+        </section>
+    </div>
+
+    {% if not service_now_approvals or service_now_approvals.count == 0 %}
+    <div class="alert alert-warning">
+        <h4>{% trans 'Next Steps' %}</h4>
+        {% blocktrans %}
+        To start using ServiceNow in CloudBolt, click the <b>Add ServiceNow Connection</b> link below to create your
+        first IP Address Manager.
+        {% endblocktrans %}
+    </div>
+    {% endif %}
+
+    <div class="btn-toolbar">
+        <a class="btn btn-light open-dialog" href="{% url 'add_service_now_approval_connection' %}" id="snow_new">
+            <span class="icon-add"></span>
+            {% trans 'Add ServiceNow Connection' %}
+        </a>
+        <button type="button" class="btn btn-light add-wf-config" data-bs-toggle="modal" data-bs-target="#add-workflow-modal">
+            <span class="icon-add"></span>
+            Add Workflow Configuration
+        </button>
+    </div>
+
+    <div class="modal fade" id="add-workflow-modal" tabindex="-1" role="dialog" aria-labelledby="add-workflow-modal-label"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form id="add-workflow-form">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="add-workflow-modal-label">Add ServiceNow Workflow</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3 row add-snow-workflow">
+                            <div class="controls col-lg-12 snow-dropdowns">
+                                <label for="servicenow_connector" class="form-label">ServiceNow Connector</label>
+                                <select class="form-control sn-selectize selectize" id="servicenow_connector" required>
+                                    <option value="" selected disabled>Select Connectors</option>
+                                    {% if service_now_approvals %}
+                                        {% for servicenow in service_now_approvals %}
+                                            <option value="{{ servicenow.id }}" data-name="{{ servicenow.name }}">{{servicenow.name }}</option>
+                                        {% endfor %}
+                                    {% endif %}
+
+                                </select>
+                                <span class="add-workflow-error-message"><strong>This field is required.</strong></span>
+                            </div>
+                            <div class="controls col-lg-12 snow-dropdowns">
+                                <label for="request_type" class="form-label">Request Type</label>
+                                <select class="form-control sn-selectize selectize" id="request_type" required>
+                                    <option value="" selected disabled>Select type</option>
+                                    <option value="sc_request" data-name="Service Request">Service Request</option>
+                                    <option value="change_request" data-name="Change Request">Change Request</option>
+                                </select>
+                                <span class="add-workflow-error-message"><strong>This field is required.</strong></span>
+                            </div>
+                            <div class="controls col-lg-12 snow-dropdowns">
+                                <label for="workflow_name" class="form-label">Workflow Name</label>
+                                <select class="form-control sn-selectize selectize" id="workflow_name" required>
+                                    <option value="" selected disabled>Select Connection to fetch Workflow </option>
+                                </select>
+                                <div class="blocker fade wf_val">
+                                    <div class="dead-center-container">
+                                        <div class="dead-center-content">
+                                            <div class="spinner-inline">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="add-workflow-error-message"><strong>This field is required.</strong></span>
+                            </div>
+                            <div class="controls col-lg-12 snow-dropdowns">
+                                <label for="servicenow_blueprint" class="form-label">Blueprints</label>
+                                <select class="form-control sn-selectize selectize select-all" id="servicenow_blueprint" multiple required>
+                                    <option value="" selected disabled>Select Blueprint</option>
+                                    {% if blueprints %}
+                                        {% for blueprint in blueprints %}
+                                            <option value="{{ blueprint.id }}" data-name="{{ blueprint.name }}">{{blueprint.name }}</option>
+                                        {% endfor %}
+                                    {% endif %}
+
+                                </select>
+                                <span class="add-workflow-error-message"><strong>This field is required.</strong></span>
+                            </div>
+                            <div class="controls col-lg-12 snow-dropdowns">
+                                <label for="service_now_table" class="form-label">ServiceNow Table</label>
+                                <select class="form-control sn-selectize selectize" id="service_now_table" required>
+                                    <option value="" selected disabled>Select ServiceNow Table </option>
+                                </select>
+                                <div class="blocker fade snt_val">
+                                    <div class="dead-center-container">
+                                        <div class="dead-center-content">
+                                            <div class="spinner-inline">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="add-workflow-error-message"><strong>This field is required.</strong></span>
+                            </div>
+                            <div class="controls col-lg-12 snow-dropdowns">
+                                <label for="approval_field_name" class="form-label">Approval Field Name</label>
+                                <select class="form-control sn-selectize selectize" id="approval_field_name" required>
+                                    <option value="" selected disabled>Select Approval Field Name</option>
+                                </select>
+                                <div class="blocker fade af_val">
+                                    <div class="dead-center-container">
+                                        <div class="dead-center-content">
+                                            <div class="spinner-inline">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="add-workflow-error-message"><strong>This field is required.</strong></span>
+                            </div>
+                            <div class="controls col-lg-12 snow-dropdowns">
+                                <label for="approval_field_value" class="form-label">Approval Field Value</label>
+                                <select class="form-control sn-selectize selectize" id="approval_field_value" multiple required>
+                                    <option value="" selected disabled>Select Approval Field Value</option>
+                                </select>
+                                <div class="blocker fade app_val">
+                                    <div class="dead-center-container">
+                                        <div class="dead-center-content">
+                                            <div class="spinner-inline">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="add-workflow-error-message"><strong>This field is required.</strong></span>
+                            </div>
+                            <div class="controls col-lg-12 snow-dropdowns">
+                                <label for="rejection_field_value" class="form-label">Rejection Field Value</label>
+                                <select class="form-control sn-selectize selectize" id="rejection_field_value" multiple required>
+                                    <option value="" selected disabled>Select Rejection Field Value</option>
+                                </select>
+                                <div class="blocker fade rej_val">
+                                    <div class="dead-center-container">
+                                        <div class="dead-center-content">
+                                            <div class="spinner-inline">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="add-workflow-error-message"><strong>This field is required.</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" id="submit-workflow-form" class="btn btn-primary" {% if not service_now_approvals %} disabled {% endif %}>Save changes</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <h3>ServiceNow Connections</h3>
+    <table id="itsms" data-table>
+        <thead>
+            <tr>
+                <th>{% trans 'Name' %}</th>
+                <th>{% trans 'IP Address' %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for servicenow in service_now_approvals %}
+            <tr>
+                <td><a href="{% url 'itsm_detail' servicenow.id %}">{{ servicenow.name}}</a></td>
+                <td>{{ servicenow.ip }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="workflow-img-div clearfix">
+        <div class="workflow-intro-title-bar" style="margin-top: 20px;">
+            <h3>Sample ServiceNow WorkFlow</h3>
+            <a href="{% static 'service_now_approval/files/service_catalog_request.xml' %}" download="Service Catalog Request">
+                <button id="download-workflow" class="btn btn-light plot-btn" style="float: right;">
+                    <i class="fas fa-download"></i> Download Sample WorkFlow
+                </button>
+            </a>
+        </div>
+        <div style="display: flex;">
+            <div class="alert alert-info">
+                Workflow provides a drag-and-drop interface for automating multi-step processes across the platform.
+                <ul>
+                    <li>Each workflow consists of a sequence of activities, such as generating records, notifying users of pending approvals, or running scripts.</li>
+                    <li>The graphical Workflow Editor represents workflows visually as a type of flowchart.</li>
+                    <li>It shows activities as boxes labeled with information about that activity and transitions from one activity to the next as lines connecting the boxes.</li>
+                </ul>
+                <p>
+                    You can import the sample workflow in <span style="font-weight: 600;">ServiceNow Portal > Service Level Management > Administration > Workflow Editor > Click on Column > Import XML > Choose Workflow > Upload</span>.
+                    <br>Note: 
+                    <ul>
+                        <li>If you don't see the Import XML option in the dropdown, try elevating your privileges.</li>
+                        <li>If the workflow already exists on the ServiceNow portal, it will not override and can't create a duplicate workflow.</li>
+                    </ul>
+                </p>
+            </div>
+            <div>
+                <img src="{% static 'service_now_approval/images/image.png' %}" class="workflow-img" id="workflow-img" alt="WorkFlow">
+            </div>
+        </div>
+    </div>
+    <div class="workflow-intro-title-bar" style="margin-top: 20px;">
+        <h3>ServiceNow Workflow Configurations</h3>
+        {% if is_default_present %} 
+            <button id="change-default" class="btn btn-light plot-btn" style="float: right;">
+                Change Default
+            </button>
+        {% endif %}
+    </div>
+    <table id="workflows" data-table>
+        <thead>
+            <tr>
+                <th>{% trans 'ServiceNow Connector' %}</th>
+                <th>{% trans 'Request Type' %}</th>
+                <th>{% trans 'Workflow Name' %}</th>
+                <th>{% trans 'Blueprints' %}</th>
+                <th>{% trans 'ServiceNow Table' %}</th>
+                <th>{% trans 'Field Name' %}</th>
+                <th>{% trans 'Approval Field Value' %}</th>
+                <th>{% trans 'Rejected Field Value' %}</th>
+                <th>{% trans 'Default' %}</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for workflow in workflows %}
+            <tr id="{{ workflow.snow_id }}">
+                <td>{{ workflow.servicenow_connector_name }}</td>
+                <td>{{ workflow.request_type }}</td>
+                <td>{{ workflow.workflow_name }}</td>
+                <td>{{ workflow.blueprint_name }}</td>
+                <td>{{ workflow.table_name }}</td>
+                <td>{{ workflow.approval_field_name }}</td>
+                <td>{{ workflow.approval_field_value_text }}</td>
+                <td>{{ workflow.rejection_field_value_text }}</td>
+                {% if workflow.change_default %}
+                    {% if workflow.default == False or workflow.default == null %}
+                        <td>
+                            <button class="btn btn-light plot-btn make-default-wf">
+                                Make Default
+                            </button>
+                        </td>
+                    {% else %}
+                        <td> <span class="text-success" style="font-size: 200%;">
+                            &#10004;</span>
+                        </td>
+                    {% endif %}
+                {% else %}
+                    {% if is_default_present %} 
+                        {% if workflow.default == True %}
+                            <td> <span class="text-success" style="font-size: 200%;">
+                                &#10004;</span>
+                            </td>
+                        {% else %}
+                        <td></td>
+                        {% endif %}  
+                    {% else %}
+                        <td>
+                            <button class="btn btn-light plot-btn make-default-wf">
+                                Make Default
+                            </button>
+                        </td>
+                    {% endif %}
+                {% endif %}
+                <td>
+                    <button id="edit-data-{{ workflow.snow_id }}" class="btn btn-light plot-btn edit-default-data" data-bs-toggle="modal" data-bs-target="#edit-default-data-modal">
+                        Payload
+                    </button>
+                </td>
+                <td>
+                    <a class="delete-wf-config" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#delete-workflow-modal"><i class="icon-delete"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="modal fade" id="delete-workflow-modal" tabindex="-1" role="dialog" aria-labelledby="delete-workflow-modal-label"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 id="modal-dialog-title" class="modal-title">Remove Workflow Configuration</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" title="Close this dialog" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you wish to remove the workflow configuration?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-light" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                    <button id="delete-workflow-btn" class="btn btn-primary" data-key-name="" data-loading-text="Submitting…">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p id="snow-configuration-message" style="margin-top: -15px;">If you want to edit the configuration, delete it and add new one.</p>
+
+    <div class="modal fade" id="edit-default-data-modal" tabindex="-1" role="dialog" aria-labelledby="add-data-modal-label"
+        aria-hidden="true">
+        <div class="modal-dialog add-default-data-modal" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="add-data-modal-label">Modify data sent with request</h5>
+                    <button type="button" class="btn btn-secondary reset-dd-table-btn" style="margin-right: 10px;">
+                        Reset to defaults
+                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary dynamic-save-button" id="save-data-{{workflow.snow_id}}">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    var workflows_default_data = JSON.parse(`{{ json_data | to_json }}`);
+    var default_data = JSON.parse(`{{ default_data | to_json }}`);
+
+    Selectize.define('select_remove_all_options', function (options) {
+        if (this.settings.mode === 'single') return;
+
+        var self = this;
+
+        self.setup = (function () {
+            var original = self.setup;
+            return function () {
+            original.apply(this, arguments);
+
+            var allBtn = $('<button type="button" class="select-all-options btn btn-light btn-sm" data-bs-toggle="tooltip" title="" data-original-title="Select all items"><i class="fas fa-asterisk"></i></button>');
+            var clearBtn = $('<button type="button" class="select-no-options btn btn-light btn-sm" data-bs-toggle="tooltip" title="" data-original-title="Clear selection"><i class="fas fa-times"></i></button>');
+            var btnGrp = $('<div class="selectize-toolbar btn-group"></div>');
+            btnGrp.append(allBtn, clearBtn);
+
+            allBtn.on('click', function () {
+                self.setValue($.map(self.options, function (v, k) {
+                return k
+                }));
+            });
+            clearBtn.on('click', function () {
+                self.setValue([]);
+            });
+
+            this.$wrapper.append(btnGrp)
+            };
+        })();
+    });
+
+    // Selectize Methods
+    function initializeSelectize(dropdown_id, placeHolder, value_options, plugins){
+        if (value_options.length > 0){
+            $(`#${dropdown_id}`).selectize({
+                maxOptions: 1000000,
+                valueField: 'id',
+                labelField: 'title',
+                sortField: 'title',
+                searchField: 'title',
+                options: value_options,
+                placeholder: placeHolder,
+                plugins: plugins
+            });
+        }
+        else{
+            $(`#${dropdown_id}`).selectize({
+                maxOptions: 1000000,
+                valueField: 'id',
+                labelField: 'title',
+                sortField: 'title',
+                searchField: 'title',
+                placeholder: placeHolder,
+                plugins: plugins
+            });
+        }
+        return true
+    }
+
+    function destroySelectize(dropdown_id){
+        $(`#${dropdown_id}`).selectize()[0].selectize.destroy();
+        return true
+    }
+
+    function clearSelectize(dropdown_id){
+        $(`#${dropdown_id}`).selectize()[0].selectize.clear();
+        return true
+    }
+
+    function getSelectizeText(dropdown_id, value){
+        if(typeof(value) === "string"){
+            return $(`#${dropdown_id}`).selectize()[0].selectize.getItem(value)[0].innerText;
+        }
+        else if(typeof(value) === "object"){
+            let values = [];
+            value.forEach(function(item){
+                values.push($(`#${dropdown_id}`).selectize()[0].selectize.getItem(item)[0].innerText);
+            })
+            return values
+        }
+    }
+
+    // API calls to fetch servicenow details
+    function get_workflow_choices(snow_id) {
+        $('.wf_val').addClass("show");
+        $.ajax({
+            url: "/xui/service_now_approval/get_workflow_choices/",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                body: JSON.stringify({
+                    snow_id: snow_id
+                })
+            },
+            success: function (response) {
+                let value_options = [];
+                if (response['result'].length > 0) {
+                    response['result'].forEach(function (item) {
+                        value_options.push({
+                            id: item[0],
+                            title: item[1]
+                        })
+                    })
+                    let dropdown_ids = ['workflow_name']
+                    dropdown_ids.forEach(function (item) {
+                        let placeHolder = "Select " + $('label[for="' + item + '"]').html();
+                        let plugins = ['remove_button']
+                        destroySelectize(item)
+                        initializeSelectize(item, placeHolder, value_options, plugins)
+                    })
+                }
+                $('.wf_val').removeClass("show");
+            },
+            error: function () {
+                alert('Error occurred while fetching workflow choices');
+            }
+        });
+    }
+
+    function get_field_choices(snow_id) {
+        $('.af_val').addClass("show");
+        $.ajax({
+            url: "/xui/service_now_approval/get_field_choices/",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                body: JSON.stringify({
+                    snow_id: snow_id
+                })
+            },
+            success: function (response) {
+                let value_options = [];
+                if (response['result'].length > 0) {
+                    response['result'].forEach(function (item) {
+                        value_options.push({
+                            id: item[0],
+                            title: item[1]
+                        })
+                    })
+                    let dropdown_ids = ['approval_field_name']
+                    dropdown_ids.forEach(function (item) {
+                        let placeHolder = "Select " + $('label[for="' + item + '"]').html();
+                        let plugins = ['remove_button']
+                        destroySelectize(item)
+                        initializeSelectize(item, placeHolder, value_options, plugins)
+                    })
+                }
+                $('.af_val').removeClass("show");
+                let approval_field_name = $('#approval_field_name').val();
+                if (approval_field_name) {
+                    get_field_value_choices(snow_id, approval_field_name);
+                }
+            },
+            error: function () {
+                alert('Error occurred while fetching workflow choices');
+            }
+        });
+    }
+
+    function get_service_now_tables(snow_id){
+        $('.snt_val').addClass("show");
+        $.ajax({
+            url: "/xui/service_now_approval/get_service_now_tables/",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                body: JSON.stringify({
+                    snow_id: snow_id
+                })
+            },
+            success: function (response) {
+                let value_options = [];
+                if (response['result'].length > 0) {
+                    response['result'].forEach(function (item) {
+                        value_options.push({
+                            id: item["value"],
+                            title: item["label"] + " (" + item["value"] + ")"
+                        })
+                    })
+                    let dropdown_ids = ['service_now_table']
+                    dropdown_ids.forEach(function (item) {
+                        let placeHolder = "Select " + $('label[for="' + item + '"]').html();
+                        let plugins = ['remove_button']
+                        destroySelectize(item)
+                        initializeSelectize(item, placeHolder, value_options, plugins)
+                    })
+                }
+                $('.snt_val').removeClass("show");
+            },
+            error: function () {
+                alert('Error occurred while fetching workflow choices');
+            }
+        });
+    }
+
+    function get_field_value_choices(snow_id, approval_field_name) {
+        $('.app_val').addClass("show");
+        $('.rej_val').addClass("show");
+        $.ajax({
+            url: "/xui/service_now_approval/get_field_value_choices/",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                body: JSON.stringify({
+                    snow_id: snow_id,
+                    approval_field_name: approval_field_name
+                })
+            },
+            success: function (response) {
+                let value_options = [];
+                response['result'].forEach(function (item) {
+                    value_options.push({
+                        id: item[0],
+                        title: item[1]
+                    })
+                })
+                let dropdown_ids = ['approval_field_value', 'rejection_field_value']
+                dropdown_ids.forEach(function (item) {
+                    let placeHolder = "Select " + $('label[for="' + item + '"]').html();
+                    let plugins = ['remove_button']
+                    destroySelectize(item)
+                    initializeSelectize(item, placeHolder, value_options, plugins)
+                })
+                $('.app_val').removeClass("show");
+                $('.rej_val').removeClass("show");
+            },
+            error: function () {
+                alert('Error occurred while fetching workflow choices');
+            }
+        });
+    }
+
+    // Ready Function
+    $(document).ready(function () {
+        var servicenows = '{{service_nows_count | safe}}'
+        var workflowscount = '{{workflows_count | safe}}'
+        if (servicenows == 0) {
+            $('.add-wf-config').addClass('disabled');
+            $('.add-wf-config').removeClass('open-dialog');
+        }
+
+        if (workflowscount >= 1) {
+            $("#snow-configuration-message").show();
+        }
+        else {
+            $("#snow-configuration-message").hide();
+        }
+
+        //Initialising the selectize dropdowns
+        $(".sn-selectize").each(function(i) {
+            let dropdown_id = this.id;
+            let placeholder = "Select " + $('label[for="' + dropdown_id + '"]').html();
+            let plugins = ['remove_button']
+            if($(this).hasClass("select-all")){
+                plugins = ['remove_button', 'select_remove_all_options']
+            }
+            initializeSelectize(dropdown_id, placeholder, [], plugins)
+        });
+
+        //ServiceNow Connectors on change 
+        $("#servicenow_connector").on("change", function () {
+            let snow_id = $("#servicenow_connector").val();
+            if (snow_id !== "") {
+                get_workflow_choices(snow_id);
+                get_service_now_tables(snow_id);
+            }
+        });
+
+        //WorkFlow Name on change
+        $("#workflow_name").on("change", function () {
+            let snow_id = $("#servicenow_connector").val();
+            if (snow_id !== "") {
+                get_field_choices(snow_id)
+            }
+
+        });
+
+        //Approval Field Name on change
+        $("#approval_field_name").on("change", function () {
+            let snow_id = $("#servicenow_connector").val();
+            let approval_field_name = $(this).val();
+            if (snow_id !== "" && approval_field_name !== "") {
+                get_field_value_choices(snow_id, approval_field_name);
+            }
+
+        });
+
+        $("#submit-workflow-form").on("click", function(){
+            $('#add-workflow-modal select').each(function() {
+                let value = $(this).val();
+                if (value == '' && typeof(value) === "string") {
+                    $(this).siblings().find(".selectize-input").css({"border": "1px solid #a94442"});
+                    $(this).siblings(".add-workflow-error-message").css({"display": "block"});
+                }
+                else if (value.length === 0 && typeof(value) === "object") {
+                    $(this).siblings().find(".selectize-input").css({"border": "1px solid #a94442"});
+                    $(this).siblings(".add-workflow-error-message").css({"display": "block"});
+                }
+                else{
+                    $(this).siblings().find(".selectize-input").css({"border": "1px solid #ccc"});
+                    $(this).siblings(".add-workflow-error-message").css({"display": "none"});
+                }
+            });
+        })
+
+        //Submitting the WorkFlow configurations
+        $("#add-workflow-form").on("submit", function (e) {
+            e.preventDefault();
+            $("#submit-workflow-form").text("Submitting...");
+            let servicenow_connector = $("#servicenow_connector").val();
+            let servicenow_connector_name = getSelectizeText("servicenow_connector", servicenow_connector);
+            let request_type = getSelectizeText("request_type", $("#request_type").val());
+            let workflow_id = $("#workflow_name").val();
+            let workflow_name = getSelectizeText("workflow_name", workflow_id);
+            let blueprint_id = $("#servicenow_blueprint").val();
+            let blueprint_name = getSelectizeText("servicenow_blueprint", blueprint_id);
+            let table_id = $("#service_now_table").val();
+            let table_name = getSelectizeText("service_now_table", table_id);
+            let approval_field_name = $("#approval_field_name").val();
+            let approval_field_value = $("#approval_field_value").val();
+            let approval_field_value_text = getSelectizeText("approval_field_value", approval_field_value);
+            let rejection_field_value = $("#rejection_field_value").val();
+            let rejection_field_value_text = getSelectizeText("rejection_field_value", rejection_field_value);
+            
+            $.ajax({
+                url: "/xui/service_now_approval/save_snow_workflow/",
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    body: JSON.stringify({
+                        servicenow_connector: servicenow_connector,
+                        servicenow_connector_name: servicenow_connector_name,
+                        request_type: request_type,
+                        workflow_id: workflow_id,
+                        workflow_name: workflow_name,
+                        blueprint_id: blueprint_id,
+                        blueprint_name: blueprint_name,
+                        table_id: table_id,
+                        table_name: table_name,
+                        approval_field_name: approval_field_name,
+                        approval_field_value: approval_field_value,
+                        approval_field_value_text: approval_field_value_text,
+                        rejection_field_value: rejection_field_value,
+                        rejection_field_value_text: rejection_field_value_text,
+                    })
+                },
+                success: function (response) {
+                    if (response['success'] == true) {
+                        window.location.reload();
+                    }
+                },
+                error: function () {
+                    alert("Error occurred while saving ITSM Values");
+                }
+            });
+        });
+
+        //Clearing data on closing the configuration pop modal 
+        $('#add-workflow-modal').on('hidden.bs.modal', function (e) {
+            $(".sn-selectize").each(function(i) {
+                let dropdown_id = this.id;
+                if(dropdown_id !== ""){
+                    clearSelectize(dropdown_id);
+                }
+            });
+        })
+
+        //Deleting the WorkFlow configurations
+        $(".delete-wf-config").on("click", function (e) {
+            let sib_elements = $(e.currentTarget).parent().siblings();
+            let key_name = $($(e.currentTarget).closest("tr")).attr('id');
+            $("#delete-workflow-btn").attr({"data-key-name": key_name});
+        });
+
+        $("#delete-workflow-btn").on("click", function (e) {
+            $("#delete-workflow-btn").text("Submitting...");
+            let key_name = $(this).data('key-name');
+            $.ajax({
+                url: "/xui/service_now_approval/delete_snow_workflow/",
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    body: JSON.stringify({
+                        file_key_id: key_name
+                    })
+                },
+                success: function (response) {
+                    // $(e.relatedTarget).parent().parent().remove();
+                    window.location.reload();
+                },
+                error: function () {
+                    alert('Error occurred while deleting workflow configuration');
+                }
+            });
+        });
+
+        //Making default the WorkFlow
+        $(".make-default-wf").on("click", function (e) {
+            let sib_elements = $(e.currentTarget).parent().siblings();
+            let key_name = $($(e.currentTarget).closest("tr")).attr('id');
+            let text = "Make Default configuration for '" + $(sib_elements[0]).text() + "' from the list?";
+            // if (confirm(text) == true) {
+            $.ajax({
+                url: "/xui/service_now_approval/make_default_snow_workflow/",
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    body: JSON.stringify({
+                        file_key_id: key_name
+                    })
+                },
+                success: function (response) {
+                    window.location.reload();
+                },
+                error: function () {
+                    alert('Error occurred while making default workflow configuration');
+                }
+            });
+            // }
+        });
+
+        $("#change-default").on("click", function (e) {
+            $.ajax({
+                url: "/xui/service_now_approval/change_default_snow_workflow/",
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                },
+                success: function (response) {
+                    window.location.reload();
+                },
+                error: function () {
+                    alert('Error occurred while changing default workflow configuration');
+                }
+            });
+            // }
+        });
+        
+        $(document).on("click", ".remove-data-row", function (e) {
+            $(e.currentTarget).closest("tr").remove();
+        } );
+
+        $(document).on("click", ".reset-dd-table-btn", function(e) {
+            e.preventDefault();
+            $(".default-data-tables tbody").empty();
+            let key_name = e.currentTarget.id;
+            key_name = key_name.slice(11);
+            for (let [key, value] of Object.entries(default_data)) {
+                $(`#default-data-${key_name}`).append(`<tr><td><input type="text" class="form-control clearable" value="${key}" /></td><td><input type="text" class="form-control clearable" value="${value}" /></td><td><button type="button" class="btn-close remove-data-row" aria-label="Close"></button></td></tr>`);
+            }
+            // let table = $(`#default-data-${key_name}`).DataTable(); 
+            // // Sort by columns 1 and 2 and redraw
+            // table.order( [ 0, 'asc' ] ).draw();
+        });
+
+        //Display default data into the workflow
+        $(".edit-default-data").on("click", function (e) {
+            let sib_elements = $(e.currentTarget).parent().siblings();
+            let key_name = $($(e.currentTarget).closest("tr")).attr('id');
+            let sample_str = "";
+            $(".add-default-data-modal .modal-body").empty()
+            if(key_name in workflows_default_data === true)
+            {
+                let default_data = workflows_default_data[key_name]['data'];
+                sample_str = sample_str + `<table class="default-data-tables" id="default-data-${workflows_default_data[key_name].snow_id}" style="width: 100%;" data-table>
+                        <thead>
+                            <tr>
+                                <th style="width: 30%">{% trans 'Key Name' %}</th>
+                                <th style="width: 60%">{% trans 'Value' %}</th>
+                                <th style="width: 10%"></th>
+                            </tr>
+                        </thead>
+                        <tbody>`
+                for (const [key, value] of Object.entries(default_data))
+                {
+                    sample_str = sample_str + `
+                    <tr>
+                        <td><input type="text" class="form-control clearable" value="${key}" /></td>
+                        <td><input type="text" class="form-control clearable" value="${value}" /></td>
+                        <td>
+                            <button type="button" class="btn-close remove-data-row" aria-label="Close"></button>
+                        </td>
+                    </tr>`
+                }
+                sample_str = sample_str + `
+                        </tbody>
+                        </table>
+                        <button type="button" class="default-add-btn"><i class="fa fa-plus"></i></button>`
+                
+                $(".add-default-data-modal .modal-body").append(sample_str);
+                $(`#default-data-${workflows_default_data[key_name].snow_id}`).dataTable({searching: false});
+                $(`.dynamic-save-button`).attr('id', `save-data-${workflows_default_data[key_name].snow_id}`)
+                $(`.reset-dd-table-btn`).attr('id', `reset-data-${workflows_default_data[key_name].snow_id}`)
+            }
+
+        });
+
+        $(document).on("click", ".default-add-btn", function(e) {
+            let table_name = $(e.currentTarget).siblings()[0].id 
+            $(`#${table_name} tbody`).append(`<tr><td><input type="text" class="form-control clearable" value="" /></td><td><input type="text" class="form-control clearable" value="" /></td><td><button type="button" class="btn-close remove-data-row" aria-label="Close"></button></td></tr>`);
+        });
+        
+        //Adding default data into the workflow
+        $(".dynamic-save-button").on("click", function (e) {
+            $(this).text("Submitting...");
+            let key_name = e.currentTarget.id;
+            key_name = key_name.slice(10);
+            const data = {}
+            const rows = document.getElementById(`default-data-${workflows_default_data[key_name].snow_id}`).querySelectorAll('tr')
+            for (let index = 1; index < rows.length; index++) {
+                const element1 = rows[index].cells[0].children[0]?.value || ""
+                const element2 = rows[index].cells[1].children[0]?.value || ""
+
+                if (element1.trim().length != 0)
+                {
+                    const obj = {}
+                    data[element1] = element2
+                }
+            }
+            $.ajax({
+                url: "/xui/service_now_approval/add_default_data/",
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    body: JSON.stringify({
+                        file_key_id: key_name,
+                        data: data
+                    })
+                },
+                success: function (response) {
+                    if (response['success'] == true) {
+                        window.location.reload();
+                    }
+                },
+                error: function () {
+                    alert("Error occurred while saving ITSM Values");
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

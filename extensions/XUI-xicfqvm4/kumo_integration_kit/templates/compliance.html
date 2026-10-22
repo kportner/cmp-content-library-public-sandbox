@@ -1,0 +1,419 @@
+{% load static %}
+
+{% block content %}
+
+<head>
+  <meta id="handler_details_compliance" data-handler="{{ handler_type }}" data-handlerid="{{ rh_id }}"
+    data-normaladapter="{{ normal_adapter_id }}" data-normalid="{{ handler_normal_id }}"
+    data-acurrency="{{ acc_currency }}" data-validation="{{ validation }}">
+  <meta id="host_details" data-host="{{ KUMO_WEB_HOST }}">
+  <link rel="stylesheet" type="text/css" href="{% static 'kumo_integration_kit/css/compliance.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'kumo_integration_kit/css/common.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'kumo_integration_kit/css/daterangepicker.css' %}">
+  <script src="{% static 'kumo_integration_kit/js/jspdf.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'kumo_integration_kit/js/jquery.daterangepicker.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'kumo_integration_kit/js/moment.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'kumo_integration_kit/js/canvg.js' %}" type="text/javascript"></script>
+  <script src="{% static 'kumo_integration_kit/js/jspdf.plugin.autotable.min.js' %}" type="text/javascript"></script>
+</head>
+
+<body>
+  <div id="compliance-tab" style="position: relative;">
+
+    <!-- Modal -->
+    <div class="errorMessageModal modal fade" tabindex="-1" role="dialog" aria-labelledby="errorMessageModalTitle" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static" style="position: absolute;">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          {% include 'kumo_integration_kit/templates/_error.html' %}
+        </div>
+      </div>
+    </div>
+
+    <compliance-tab>
+      {% include 'kumo_integration_kit/templates/_cbloader.html' %}
+    </compliance-tab>
+
+    <div id="complianceTabDiv" style="display: flex;margin-top: 15px;">
+        <div class="col-sm-12" style="padding-inline: 0px;">
+            <div class="col-sm-7">
+                <div class="col-sm-12 cmpl-std-head">
+                    <div class="col-sm-2 compliance-image">
+                        <img width="125" height="60" src="{% static 'kumo_integration_kit/images/cis.png' %}">
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="col-sm-12" style="margin-top: 15px;display: flex;align-items: center; margin-bottom: 5px;">
+                            <div class="col-sm-3 overall-percent">
+                                <h3 id="cis_prog">0%</h3>
+                            </div>
+                            <div class="square" style="background-color: #002F52;"></div>
+                            <div class="col-sm-9 side-percent">
+                                <div>
+                                    <label>Compliant</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="progress">
+                                <div class="progress-bar" id="cis_prog_percent" role="progressbar" style="background-color: #002F52; font-weight: 600; width: 0%"></div>
+                                <div class="progress-bar nc-pb" id="cis_prog_percent_nc" role="progressbar"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="margin-top: -15px;display: flex;align-items: center;">
+                            <div class="col-sm-3 overall-percent">
+                                <h3 id="cis_prog_nc">0%</h3>
+                            </div>
+                            <div class="square" style="background-color: #E10000;"></div>
+                            <div class="col-sm-9 side-percent">
+                                <div>
+                                    <label>Not Compliant</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 by-categories">
+                        <div>
+                            <h3 id="cis_by_type">0</h3>
+                            <label class="form-label">Control violiations</label>
+                        </div>
+                        <hr>
+                        <div>
+                            <h3 id="cis_by_resource">0</h3>
+                            <label class="form-label">Resources not in compliance</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 inner-progress">
+                        <div>
+                            <label class="form-label severity-head">Control violiations by severity</label>
+                        </div>
+                        {% if handler_type == "AWS" %}
+                            <div class="risk-severity">
+                                <div class="col-sm-2"><label class="form-label" id="cis_very_high">0</label></div>
+                                <div class="col-sm-9"><label class="form-label">Very High</label></div>
+                            </div>
+                        {% endif %}
+                        <div class="risk-severity">
+                            <div class="col-sm-2"><label class="form-label" id="cis_high">0</label></div>
+                            <div class="col-sm-9"><label class="form-label">High</label></div>
+                        </div>
+                        <div class="risk-severity">
+                            <div class="col-sm-2"><label class="form-label" id="cis_medium">0</label></div>
+                            <div class="col-sm-9"><label class="form-label">Medium</label></div>
+                        </div>
+                        <div class="risk-severity-last" style="display: flex;">
+                            <div class="col-sm-2"><label class="form-label" id="cis_low">0</label></div>
+                            <div class="col-sm-9"><label class="form-label">Low</label></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 cmpl-std-head">
+                    <div class="col-sm-2 compliance-image">
+                        <img width="125" height="60" src="{% static 'kumo_integration_kit/images/pci.png' %}">
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="col-sm-12" style="margin-top: 15px;display: flex;align-items: center; margin-bottom: 5px;">
+                            <div class="col-sm-3 overall-percent">
+                                <h3 id="pci_prog">0%</h3>
+                            </div>
+                            <div class="square" style="background-color: #25AA41;"></div>
+                            <div class="col-sm-9 side-percent">
+                                <div>
+                                    <label>Compliant</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="progress">
+                                <div class="progress-bar" id="pci_prog_percent" role="progressbar" style="background-color: #25AA41; font-weight: 600; width: 0%"></div>
+                                <div class="progress-bar nc-pb" id="pci_prog_percent_nc" role="progressbar"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="margin-top: -15px;display: flex;align-items: center;">
+                            <div class="col-sm-3 overall-percent">
+                                <h3 id="pci_prog_nc">0%</h3>
+                            </div>
+                            <div class="square" style="background-color: #E10000;"></div>
+                            <div class="col-sm-9 side-percent">
+                                <div>
+                                    <label>Not Compliant</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 by-categories">
+                        <div>
+                            <h3 id="pci_by_type">0</h3>
+                            <label class="form-label">Control violiations</label>
+                        </div>
+                        <hr>
+                        <div>
+                            <h3 id="pci_by_resource">0</h3>
+                            <label class="form-label">Resources not in compliance</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 inner-progress">
+                        <div>
+                            <label class="form-label severity-head">Control violiations by severity</label>
+                        </div>
+                        {% if handler_type == "AWS" %}
+                            <div class="risk-severity">
+                                <div class="col-sm-2"><label class="form-label" id="pci_very_high">0</label></div>
+                                <div class="col-sm-9"><label class="form-label">Very High</label></div>
+                            </div>
+                        {% endif %}
+                        <div class="risk-severity">
+                            <div class="col-sm-2"><label class="form-label" id="pci_high">0</label></div>
+                            <div class="col-sm-9"><label class="form-label">High</label></div>
+                        </div>
+                        <div class="risk-severity">
+                            <div class="col-sm-2"><label class="form-label" id="pci_medium">0</label></div>
+                            <div class="col-sm-9"><label class="form-label">Medium</label></div>
+                        </div>
+                        <div class="risk-severity-last" style="display: flex;">
+                            <div class="col-sm-2"><label class="form-label" id="pci_low">0</label></div>
+                            <div class="col-sm-9"><label class="form-label">Low</label></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 cmpl-std-head">
+                    <div class="col-sm-2 compliance-image">
+                        <img width="125" height="60" src="{% static 'kumo_integration_kit/images/nist.png' %}">
+                    </div>
+                   <div class="col-sm-4">
+                        <div class="col-sm-12" style="margin-top: 15px;display: flex;align-items: center; margin-bottom: 5px;">
+                            <div class="col-sm-3 overall-percent">
+                                <h3 id="nist_prog">0%</h3>
+                            </div>
+                            <div class="square" style="background-color: #818C96;"></div>
+                            <div class="col-sm-9 side-percent">
+                                <div>
+                                    <label>Compliant</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="progress">
+                                <div class="progress-bar" id="nist_prog_percent" role="progressbar" style="background-color: #818C96; font-weight: 600; width: 0%"></div>
+                                <div class="progress-bar nc-pb" id="nist_prog_percent_nc" role="progressbar"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="margin-top: -15px;display: flex;align-items: center;">
+                            <div class="col-sm-3 overall-percent">
+                                <h3 id="nist_prog_nc">0%</h3>
+                            </div>
+                            <div class="square" style="background-color: #E10000;"></div>
+                            <div class="col-sm-9 side-percent">
+                                <div>
+                                    <label>Not Compliant</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 by-categories">
+                        <div>
+                            <h3 id="nist_by_type">0</h3
+                            ><label class="form-label">Control violiations</label>
+                        </div>
+                        <hr>
+                        <div>
+                            <h3 id="nist_by_resource">0</h3>
+                            <label class="form-label">Resources not in compliance</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 inner-progress">
+                        <div>
+                            <label class="form-label severity-head">Control violiations by severity</label>
+                        </div>
+                        {% if handler_type == "AWS" %}
+                            <div class="risk-severity">
+                                <div class="col-sm-2"><label class="form-label" id="nist_very_high">0</label></div>
+                                <div class="col-sm-9"><label class="form-label">Very High</label></div>
+                            </div>
+                        {% endif %}
+                        <div class="risk-severity">
+                            <div class="col-sm-2"><label class="form-label" id="nist_high">0</label></div>
+                            <div class="col-sm-9"><label class="form-label">High</label></div>
+                        </div>
+                        <div class="risk-severity">
+                            <div class="col-sm-2"><label class="form-label" id="nist_medium">0</label></div>
+                            <div class="col-sm-9"><label class="form-label">Medium</label></div>
+                        </div>
+                        <div class="risk-severity-last" style="display: flex;">
+                            <div class="col-sm-2"><label class="form-label" id="nist_low">0</label></div>
+                            <div class="col-sm-9"><label class="form-label">Low</label></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 cmpl-std-head">
+                    <div class="col-sm-2 compliance-image">
+                        <img width="125" height="60" src="{% static 'kumo_integration_kit/images/hipaa.png' %}">
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="col-sm-12" style="margin-top: 15px;display: flex;align-items: center; margin-bottom: 5px;">
+                            <div class="col-sm-3 overall-percent">
+                                <h3 id="hipaa_prog">0%</h3>
+                            </div>
+                            <div class="square" style="background-color: #18A0FD;"></div>
+                            <div class="col-sm-9 side-percent">
+                                <div>
+                                    <label>Compliant</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="progress">
+                                <div class="progress-bar" id="hipaa_prog_percent" role="progressbar" style="background-color: #18A0FD; font-weight: 600; width: 0%"></div>
+                                <div class="progress-bar nc-pb" id="hipaa_prog_percent_nc" role="progressbar"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="margin-top: -15px;display: flex;align-items: center;">
+                            <div class="col-sm-3 overall-percent">
+                                <h3 id="hipaa_prog_nc">0%</h3>
+                            </div>
+                            <div class="square" style="background-color: #E10000;"></div>
+                            <div class="col-sm-9 side-percent">
+                                <div>
+                                    <label>Not Compliant</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 by-categories">
+                        <div>
+                            <h3 id="hipaa_by_type">0</h3>
+                            <label class="form-label">Control violiations</label>
+                        </div>
+                        <hr>
+                        <div>
+                            <h3 id="hipaa_by_resource">0</h3>
+                            <label class="form-label">Resources not in compliance</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 inner-progress">
+                        <div>
+                            <label class="form-label severity-head">Control violiations by severity</label>
+                        </div>
+                        {% if handler_type == "AWS" %}
+                            <div class="risk-severity">
+                                <div class="col-sm-2"><label class="form-label" id="hipaa_very_high">0</label></div>
+                                <div class="col-sm-9"><label class="form-label">Very High</label></div>
+                            </div>
+                        {% endif %}
+                        <div class="risk-severity">
+                            <div class="col-sm-2"><label class="form-label" id="hipaa_high">0</label></div>
+                            <div class="col-sm-9"><label class="form-label">High</label></div>
+                        </div>
+                        <div class="risk-severity">
+                            <div class="col-sm-2"><label class="form-label" id="hipaa_medium">0</label></div>
+                            <div class="col-sm-9"><label class="form-label">Medium</label></div>
+                        </div>
+                        <div class="risk-severity-last" style="display: flex;">
+                            <div class="col-sm-2"><label class="form-label" id="hipaa_low">0</label></div>
+                            <div class="col-sm-9"><label class="form-label">Low</label></div>
+                        </div>
+                    </div>
+                </div>
+                {% if handler_type == "AWS" %}
+                <div class="col-sm-12 cmpl-std-head">
+                    <div class="col-sm-2 compliance-image">
+                        <img width="125" height="60" src="{% static 'kumo_integration_kit/images/awswa.png' %}">
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="col-sm-12" style="margin-top: 15px;display: flex;align-items: center; margin-bottom: 5px;">
+                            <div class="col-sm-3 overall-percent">
+                                <h3 id="awswa_prog">0%</h3>
+                            </div>
+                            <div class="square" style="background-color: #FFBF2F;"></div>
+                            <div class="col-sm-9 side-percent">
+                                <div>
+                                    <label>Compliant</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="progress">
+                                <div class="progress-bar" id="awswa_prog_percent" role="progressbar" style="background-color: #FFBF2F; font-weight: 600; width: 0%"></div>
+                                <div class="progress-bar nc-pb" id="awswa_prog_percent_nc" role="progressbar"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="margin-top: -15px;display: flex;align-items: center;">
+                            <div class="col-sm-3 overall-percent">
+                                <h3 id="awswa_prog_nc">0%</h3>
+                            </div>
+                            <div class="square" style="background-color: #E10000;"></div>
+                            <div class="col-sm-9 side-percent">
+                                <div>
+                                    <label>Not Compliant</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 by-categories">
+                        <div>
+                            <h3 id="awswa_by_type">0</h3>
+                            <label class="form-label">Control violiations</label>
+                        </div>
+                        <hr>
+                        <div>
+                            <h3 id="awswa_by_resource">0</h3>
+                            <label class="form-label">Resources not in compliance</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 inner-progress">
+                        <div>
+                            <label class="form-label severity-head">Control violiations by severity</label>
+                        </div>
+                        {% if handler_type == "AWS" %}
+                            <div class="risk-severity">
+                                <div class="col-sm-2"><label class="form-label" id="awswa_very_high">0</label></div>
+                                <div class="col-sm-9"><label class="form-label">Very High</label></div>
+                            </div>
+                        {% endif %}
+                        <div class="risk-severity">
+                            <div class="col-sm-2"><label class="form-label" id="awswa_high">0</label></div>
+                            <div class="col-sm-9"><label class="form-label">High</label></div>
+                        </div>
+                        <div class="risk-severity">
+                            <div class="col-sm-2"><label class="form-label" id="awswa_medium">0</label></div>
+                            <div class="col-sm-9"><label class="form-label">Medium</label></div>
+                        </div>
+                        <div class="risk-severity-last" style="display: flex;">
+                            <div class="col-sm-2"><label class="form-label" id="awswa_low">0</label></div>
+                            <div class="col-sm-9"><label class="form-label">Low</label></div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-sm-5">
+                <div style="margin-bottom: 20px;">
+                    <h4 style="margin-bottom: 8px;">Date Range</h4>
+                    <div style="display:flex;justify-content: space-between;">
+                        <div id="reportrange" name="daterange-compliance">
+                            <a class="total-days">30 days</a>
+                            <a style="border-right: 1px solid lightgray;margin-inline: 5px;"></a>
+                            <span style="margin-left:5px;"></span>
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <div class="dailyMonthlyState btn-group btn-toggle" style="margin-right: 15px;">
+                            <button class="btn btn-s btn-primary active">Daily</button>
+                            <button class="btn btn-s btn-default">Monthly</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="line-chart-div">
+
+                </div>
+                <hr>
+                <div id="area-chart-div">
+
+                </div>
+            </div>
+        </div>
+        <div id="mylog"></div>
+    </div>
+  </div>
+
+  <script type="module" src="{% static 'kumo_integration_kit/js/compliance.js' %}"></script>
+</body>
+
+{% endblock content %}

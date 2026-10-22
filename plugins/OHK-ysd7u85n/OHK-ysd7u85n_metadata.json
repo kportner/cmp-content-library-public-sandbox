@@ -1,0 +1,32 @@
+{
+    "action_inputs": [
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "If set to True, only the default portal will be changed. Otherwise the colors for all portals on this CB will be changed.",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-2brrsrxu",
+            "label": "Only Change Default Portal",
+            "name": "only_change_default_portal",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "BOOL",
+            "value_pattern_string": null
+        }
+    ],
+    "description": "Not extremely practical, except for learning a bit about interacting with Django's Object Relational Model (ORM), which underlies CloudBolt, and for punking your friends' CloudBolt's on April 1st.",
+    "id": "OHK-ysd7u85n",
+    "max_retries": 0,
+    "name": "Randomly Change CloudBolt Colors",
+    "resource_technologies": [],
+    "script_filename": "OHK-ysd7u85n_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

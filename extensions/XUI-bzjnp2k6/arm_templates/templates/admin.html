@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% load helper_tags %}
+{% load tab_tags %}
+{% block topnav %}Azure ARM Template Library{% endblock %}
+{% block title %}Azure ARM Template Library{% endblock %}
+​
+{% block uplink %}<li class="breadcrumb-item flex-shrink-0"><a href="{% url 'admin_home' %}">Admin</a></li>{% endblock uplink %}
+{% block breadcrumb-item %}<h1>Azure ARM Template Library</h1>{% endblock breadcrumb-item %}
+
+{% block content %}
+    <blockquote>The Azure ARM Template XUI for CloudBolt allows you to manage a set of CloudBolt blueprints backed by Azure Resource Manager Templates.</blockquote>
+    {% draw_tabs tabs %}
+{% endblock content %}

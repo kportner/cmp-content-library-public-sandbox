@@ -1,0 +1,17 @@
+{
+    "action_input_default_values": [],
+    "allow_parallel_jobs": false,
+    "create_date": "2025-03-09 20:19:03.849425",
+    "dependencies": {
+        "hook": "plugins/OHK-gdsmo229"
+    },
+    "description": "Connect Networks associated with a Resource Handler (ResourceNetwork) with an IP Address Mamagement (IPAM) CIDR.",
+    "enabled": false,
+    "icon": "Circle-icons-art.png",
+    "id": "RJB-vcyqxwol",
+    "last_run": null,
+    "last_updated": null,
+    "name": "Associate IPAM Networks",
+    "schedule": "",
+    "type": "orchestration_hook"
+}

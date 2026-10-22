@@ -1,0 +1,13 @@
+{
+    "description": "",
+    "id": "OHK-c2kkr739",
+    "max_retries": 0,
+    "name": "Discover AWS DynamoDb Tables",
+    "resource_technologies": [
+        "Amazon Web Services"
+    ],
+    "script_filename": "OHK-c2kkr739_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

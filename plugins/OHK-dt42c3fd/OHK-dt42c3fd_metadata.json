@@ -1,0 +1,32 @@
+{
+    "action_inputs": [
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": null,
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-izbal9lc",
+            "label": "Tintri Clone Name",
+            "name": "tintri_clone_name",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        }
+    ],
+    "description": "Using the Tintri store to clone this VM is almost instant compared to hypervisor-native cloning.",
+    "id": "OHK-dt42c3fd",
+    "max_retries": 0,
+    "name": "Clone VM using Tintri (2)",
+    "resource_technologies": [],
+    "script_filename": "OHK-dt42c3fd_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

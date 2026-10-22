@@ -1,0 +1,17 @@
+{
+    "action_input_default_values": [],
+    "allow_parallel_jobs": false,
+    "create_date": "2025-03-09 20:19:03.861216",
+    "dependencies": {
+        "hook": "plugins/OHK-mo9np0cb"
+    },
+    "description": "For any Blueprint that is configured to be populated from a definition stored in a remote source location, refresh that Blueprint using the Remote Source URL that is set on it. This is an automated alternative to using the manual refresh button on each such Blueprint.",
+    "enabled": false,
+    "icon": "blueprint-logo.png",
+    "id": "RJB-uwi1piss",
+    "last_run": null,
+    "last_updated": null,
+    "name": "Refresh Blueprints from Remote Source",
+    "schedule": "15 * * * *",
+    "type": "orchestration_hook"
+}

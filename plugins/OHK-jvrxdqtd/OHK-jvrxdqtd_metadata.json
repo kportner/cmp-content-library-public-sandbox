@@ -1,0 +1,11 @@
+{
+    "description": "List AWS S3 bukcet objects",
+    "id": "OHK-jvrxdqtd",
+    "max_retries": 0,
+    "name": "List Objects",
+    "resource_technologies": [],
+    "script_filename": "OHK-jvrxdqtd_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

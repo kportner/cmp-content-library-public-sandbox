@@ -1,0 +1,17 @@
+{
+    "action_input_default_values": [],
+    "allow_parallel_jobs": false,
+    "create_date": "2026-09-10 17:50:59.374779",
+    "dependencies": {
+        "hook": "plugins/OHK-w0x285ar"
+    },
+    "description": "\n            Refresh rates by downloading the rate files for GCE and AWS.\n        ",
+    "enabled": true,
+    "icon": "refresh.png",
+    "id": "RJB-nmwvjdmj",
+    "last_run": null,
+    "last_updated": null,
+    "name": "Refresh Server Rates",
+    "schedule": "",
+    "type": "orchestration_hook"
+}

@@ -1,0 +1,50 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "dependencies": {
+        "custom_form": "forms/FRM-9231rpri"
+    },
+    "deployment_items": [
+        {
+            "action_name": "Order Dominos Pizza",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-hbeb7ndj"
+            },
+            "deploy_seq": 1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-zkekarzt",
+            "name": "Order Dominos Pizza",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "<h3>PaaS - Pizzas as a Service</h3>\r\n\r\n<p>\r\nUsing your username, name, and email address, deliver pizza(s) to any address specified on the order form.\r\n</p>\r\n\r\n<strong>Prerequisite Installation:</strong>\r\n\r\n<ol>\r\n        <li>SSH into the CloudBolt server and switch to the root user: <code>sudo su -</code></li>\r\n    <li>Install usaddress: <code>pip install usaddress</code></li>\r\n    <li>Go to proserv dir: <code>cd /var/opt/cloudbolt/proserv/</code></li>\r\n    <li>Clone pizzapi: <code>git clone https://github.com/gamagori/pizzapi.git</code></li>\r\n    <li>Once the installation is complete, click <strong>Order</strong> to place your pizza order.</li>\r\n</ol>",
+    "favorited": false,
+    "has_custom_form": true,
+    "icon": "Domino-logo-880x660_uZu7PcC_eEI8Ls7_zZyooqV_tW0c3dc_xutVfi6_pVg6U5y.png",
+    "id": "BP-fiv5vp8t",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-rewiwv08",
+            "image": null,
+            "name": "Pizza",
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "Pizzas",
+    "resource_name_template": null,
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": []
+}

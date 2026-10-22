@@ -1,0 +1,11 @@
+{
+    "description": "Discovers RDS instances available on AWS.",
+    "id": "OHK-5vtc85pw",
+    "max_retries": 0,
+    "name": "AWS RDS Instance Discovery",
+    "resource_technologies": [],
+    "script_filename": "OHK-5vtc85pw_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

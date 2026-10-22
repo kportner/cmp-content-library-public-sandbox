@@ -1,0 +1,98 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "create_auto_scaling_group",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-oi0hz5xz"
+            },
+            "deploy_seq": 1,
+            "description": "",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-ems1ziv9",
+            "name": "Create Auto Scaling Group",
+            "parameter_defaults": [
+                {
+                    "label": "Desired Capacity",
+                    "name": "desired_capacity_a460",
+                    "value": "1"
+                },
+                {
+                    "label": "Health Check Period (In seconds)",
+                    "name": "health_check_period_a460",
+                    "value": "300"
+                },
+                {
+                    "label": "Max Size",
+                    "name": "max_size_a460",
+                    "value": "2"
+                },
+                {
+                    "label": "Metric Type",
+                    "name": "metric_type_a460",
+                    "value": "ASGAverageCPUUtilization"
+                },
+                {
+                    "label": "Min Size",
+                    "name": "min_size_a460",
+                    "value": "1"
+                },
+                {
+                    "label": "Target Value",
+                    "name": "target_value_a460",
+                    "value": "75"
+                }
+            ],
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "This CloudBolt plug-in creates auto-scaling group in VPC selected or created in\r\na region along with the needed load balancer. Instances will be deployed in only\r\nselected zones. Auto-scaling group is attached to a created Application\r\nLoad Balancer. Scaling Policy is also created as per user inputs of\r\nmetric type and target value.\r\n\r\nThis plug-in creates following resources:\r\n- Autoscaling Group\r\n- Launch Template\r\n- Load Balancer\r\n- Target Group\r\n- Listener\r\n- Scaling Policy",
+    "favorited": false,
+    "icon": "AWS_AutoScaling_Group_fFIh0zR_GQ6JLes.png",
+    "id": "BP-1aax4g16",
+    "is_orderable": true,
+    "labels": [],
+    "last_updated": "2026-09-15",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "AWS Auto Scaling Group",
+    "resource_name_template": null,
+    "resource_type": {
+        "icon": "fas fa-layer-group",
+        "id": "RT-jy4fp2o3",
+        "internal_only": false,
+        "label": "Auto Scaling Group",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "jw_autoscalinggroup",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Teardown Auto Scaling Group",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-cxwfjxc3"
+            },
+            "deploy_seq": -1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-kezjpl7o",
+            "name": "Teardown Auto Scaling Group",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": false,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

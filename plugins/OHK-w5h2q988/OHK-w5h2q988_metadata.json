@@ -1,0 +1,13 @@
+{
+    "description": "",
+    "id": "OHK-w5h2q988",
+    "max_retries": 0,
+    "name": "Azure Cache for Redis Teardown",
+    "resource_technologies": [
+        "Azure"
+    ],
+    "script_filename": "OHK-w5h2q988_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

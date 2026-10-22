@@ -1,0 +1,44 @@
+{
+    "action_input_default_values": [
+        {
+            "label": "Threshold Days",
+            "name": "threshold_days_a701",
+            "value": "365"
+        }
+    ],
+    "action_inputs": [
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": null,
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": false,
+            "id": "CF-d7s5dn6n",
+            "label": "Threshold Days",
+            "name": "threshold_days",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        }
+    ],
+    "allow_parallel_jobs": false,
+    "create_date": "2026-09-10 17:50:58.808516",
+    "dependencies": {
+        "hook": "plugins/OHK-lanywwdn"
+    },
+    "description": "Delete Old Historical Server Records",
+    "enabled": false,
+    "icon": "cloudbolt_2EP3Eyg.jpg",
+    "id": "RJB-2po9ye96",
+    "last_run": null,
+    "last_updated": null,
+    "name": "Delete Old Historical Server Records",
+    "schedule": "",
+    "type": "orchestration_hook"
+}

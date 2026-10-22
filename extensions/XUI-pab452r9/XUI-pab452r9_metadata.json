@@ -1,0 +1,18 @@
+{
+    "description": null,
+    "enabled": true,
+    "icon": "system_status_icon.png",
+    "icon_url": "",
+    "id": "XUI-pab452r9",
+    "label": "System Status Widget",
+    "last_updated": "2026-09-15",
+    "maximum_version_required": "",
+    "minimum_version_required": "2026.2.29",
+    "name": "io_cloudbolt_status_widget",
+    "package_contents": [
+        "__init__.py",
+        "views.py",
+        "templates/index.html"
+    ],
+    "version": ""
+}

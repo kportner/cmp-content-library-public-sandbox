@@ -1,0 +1,55 @@
+{
+    "action_inputs": [
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-ghvn5hz5",
+            "label": "OS Build Name",
+            "maximum": "1000.00",
+            "minimum": "3.00",
+            "name": "os_build_name",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-q11jjaea",
+            "label": "New Template Name",
+            "name": "template_name",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": false,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        }
+    ],
+    "description": "Clones a vCenter VM to a template and then imports that into CloudBolt so it can be used as an OS Build choice.\r\n\r\nThe template is placed in the same data store and folder as the source VM. Its name is derived from the VM's OS Build name but can be customized at run time.",
+    "id": "OHK-vsvol4f2",
+    "max_retries": 0,
+    "name": "Clone VM to Template",
+    "resource_technologies": [
+        "VMware vCenter"
+    ],
+    "script_filename": "OHK-vsvol4f2_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

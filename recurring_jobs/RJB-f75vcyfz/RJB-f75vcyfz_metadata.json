@@ -1,0 +1,17 @@
+{
+    "action_input_default_values": [],
+    "allow_parallel_jobs": false,
+    "create_date": "2025-03-09 20:19:03.863538",
+    "dependencies": {
+        "hook": "plugins/OHK-h3lq1vdr"
+    },
+    "description": "Get list of current pending orders and check the statusin ServiceNow. If status has changed to \"approved\" or \"rejected\",change CB order status accordingly.",
+    "enabled": false,
+    "icon": "cloudbolt_tRjxbla.jpg",
+    "id": "RJB-f75vcyfz",
+    "last_run": null,
+    "last_updated": null,
+    "name": "Sync CloudBolt Order Status with ServiceNow Catalog Request Status",
+    "schedule": "*/15 * * * *",
+    "type": "orchestration_hook"
+}

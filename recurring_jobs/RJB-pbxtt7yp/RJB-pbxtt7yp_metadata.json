@@ -1,0 +1,44 @@
+{
+    "action_input_default_values": [
+        {
+            "label": "Only Change Default Portal",
+            "name": "only_change_default_portal_a705",
+            "value": "True"
+        }
+    ],
+    "action_inputs": [
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": "If set to True, only the default portal will be changed. Otherwise the colors for all portals on this CB will be changed.",
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": false,
+            "id": "CF-2brrsrxu",
+            "label": "Only Change Default Portal",
+            "name": "only_change_default_portal",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "BOOL",
+            "value-pattern-string": null
+        }
+    ],
+    "allow_parallel_jobs": false,
+    "create_date": "2026-09-10 17:50:59.223950",
+    "dependencies": {
+        "hook": "plugins/OHK-ysd7u85n"
+    },
+    "description": "Not extremely practical, except for learning a bit about interacting with Django's Object Relational Model (ORM), which underlies CloudBolt, and for punking your friends' CloudBolt's on April 1st.",
+    "enabled": false,
+    "icon": "imgbin-web-colors-web-page-color-picker-desktop-color-picker-icon-PrkLxj_R99kThX.jpg",
+    "id": "RJB-pbxtt7yp",
+    "last_run": null,
+    "last_updated": null,
+    "name": "Randomly Change CloudBolt Colors",
+    "schedule": "",
+    "type": "orchestration_hook"
+}

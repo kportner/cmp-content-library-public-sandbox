@@ -1,0 +1,92 @@
+"""
+This service action is intended to be used as a management action on the AWS
+PostgreSQL database Instance blueprint. Importing the blueprint from the CloudBolt Content
+Library will automatically import this action.
+"""
+
+from common.methods import set_progress
+from infrastructure.models import Environment
+from resourcehandlers.aws.models import AWSHandler
+from utilities.logger import ThreadLogger
+
+logger = ThreadLogger(__name__)
+
+
+def get_aws_rh_and_region(resource):
+    rh_aws_id = resource.aws_rh_id
+    aws_region =  resource.aws_region
+    rh_aws = None
+
+    if rh_aws_id != "" or rh_aws_id is not None:
+        rh_aws = AWSHandler.objects.get(id=rh_aws_id)
+
+    return aws_region, rh_aws
+    
+def boto_instance_to_dict(boto_instance, region, handler):
+    """
+    Create a pared-down representation of an PostgreSQL database from the full boto
+    dictionary.
+    """
+    instance = {
+        'aws_region': region,
+        'aws_rh_id': handler.id,
+        'db_identifier': boto_instance['DBInstanceIdentifier'],
+        'db_engine': boto_instance['Engine'],
+        'db_status': boto_instance['DBInstanceStatus'],
+        'db_username': boto_instance['MasterUsername'],
+        'db_publicly_accessible': boto_instance['PubliclyAccessible'],
+        'db_availability_zone': boto_instance['AvailabilityZone']
+    }
+
+    # get subnet object
+    subnet_group = boto_instance.get("DBSubnetGroup", {})
+
+    # Endpoint may not be returned if networking is not set up yet
+    endpoint = boto_instance.get('Endpoint', {})
+
+    instance.update({'db_endpoint_address': endpoint.get('Address'), 
+        'db_endpoint_port': endpoint.get('Port'), 
+        'db_subnet_group': subnet_group.get("DBSubnetGroupName"),
+        'db_subnets': [xx['SubnetIdentifier'] for xx in subnet_group.get("Subnets", [])]})
+
+    logger.info(f"Updates PostgreSQL database: {instance}")
+
+    return instance
+    
+def run(job, resource, logger=None, **kwargs):
+    # The Environment ID and PostgreSQL database data dict were stored as attributes on
+    # this service by a build action.
+    postgresql_instance_identifier = resource.db_identifier
+
+    # get aws region and resource handler object
+    aws: AWSHandler
+    region, aws, = get_aws_rh_and_region(resource)
+
+    if aws is None or aws == "":
+        return  "WARNING", f"PostgreSQL database instance {postgresql_instance_identifier} not found, it may have already been deleted", ""
+
+    set_progress('Connecting to Amazon RDS')
+    
+    # initialize boto3 client
+    client = aws.get_boto3_client(region, 'rds')
+
+    job.set_progress('Refreshing PostgreSQL database connection info {0}...'.format(postgresql_instance_identifier))
+
+    # fetch PostgreSQL database instance
+    postgresql_rsp = client.describe_db_instances(DBInstanceIdentifier=postgresql_instance_identifier)['DBInstances']
+
+    if not postgresql_rsp:
+        return  "WARNING", f"PostgreSQL database instance {postgresql_instance_identifier} not found, it may have already been deleted", ""
+
+
+    # convert PostgreSQL database instance to dict
+    postgresql_instance = boto_instance_to_dict(postgresql_rsp[0], region, aws)
+
+    for key, value in postgresql_instance.items():
+        setattr(resource, key, value) # set custom field value
+
+    resource.save()
+
+    job.set_progress('PostgreSQL database instance {0} updated.'.format(postgresql_instance_identifier))
+
+    return 'SUCCESS', f'PostgreSQL database instance {postgresql_instance_identifier} updated successfully.', ''

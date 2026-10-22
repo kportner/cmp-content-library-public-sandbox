@@ -1,0 +1,319 @@
+{% extends "kumo_integration_kit/templates/widget_base_page.html" %}
+{% load static %}
+{% block card_id %}expensive-services{% endblock %}
+
+{% block heading %}Most Expensive Cloud Services{% endblock %}
+
+{% block child_div %}
+
+<div class="exp-ser">
+    <div id="expensive_services_whole_content">
+        <div style="display: flex;justify-content: space-between;">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-secondary change-expense-graph" data-graph_type="column">
+                    <i class="fa fa-chart-bar"></i>
+                </button>
+                <button type="button" class="btn btn-active change-expense-graph" data-graph_type="line">
+                    <i class="fa fa-chart-line" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="days-label-div">
+                <label class="days-label">Last 30 Days</label>
+            </div>
+            <!-- <div class="btn-group" role="group" style="margin-right: 10px;">
+             <button type="button" class="btn btn-active filter-expensive-service" data-days_value="30">30 Days</button>
+             <button type="button" class="btn btn-secondary filter-expensive-service" data-days_value="60">60 Days</button>
+             <button type="button" class="btn btn-secondary filter-expensive-service" data-days_value="90">90 Days</button>
+             <button type="button" class="btn btn-secondary filter-expensive-service" data-days_value="120">120 Days</button>
+          </div> -->
+        </div>
+        <div id="col_expensive_service" style="width: 55%; float: left; margin-top: 25px;"></div>
+        <div id="pie_expensive_service" style="width: 45%;"></div>
+        <div class="custom-legend-widgets" id="custom_legend_expensive_services"></div>
+    </div>
+    <div id="expensive_services_exception_message">
+        <img src="{% static 'kumo_integration_kit/images/most_expensive_cloud_services.png' %}" class="grayed-out-images">
+        <div class="error-container-nodata">
+            <div class="col-sm-12">
+                <i class="fas fa-exclamation-triangle"></i>
+                Please sync to gather data!
+                <a class="spend_recurring_link" href="/recurring_jobs/" target="_blank">Sync</a>
+             </div>
+        </div>
+    </div>
+    <div id="expensive_services_currency_message" class="col-sm-12" style="position: relative;">
+        <div class="error-container-noconv">
+            <div class="col-sm-12">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span id="esCurrencyText">* Conversion rates not set for all resource handlers.</span>
+                <a href="/extensions/admin/kumo_integration_kit/display_admin" class="set-rates" id="esSetRates" target="_blank">Set Rates</a>
+             </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var widget_currency_es = '{{ widget_currency }}';
+    var currency_error_es = (widget_currency_es == "") ? "*": "";
+    var sort_by = (field, reverse, primer) => {
+        const key = primer ?
+            function(x) {
+            return primer(x[field])
+            } :
+            function(x) {
+            return x[field]
+            };
+
+        reverse = !reverse ? 1 : -1;
+
+        return function(a, b) {
+            return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+        }
+    }
+    var response_data_es = JSON.parse('{{ response_data | escapejs }}');
+    var barchart_series_data_es = JSON.parse('{{ barchart_series_data | escapejs }}');
+    var message_status_es = '{{ message_status }}';
+    var series_colors_es = ['#5F6AAF', '#5FAFA5', '#F16B3D', '#55D3C5', '#7C5538',
+                        '#3F387C', '#387C70', '#6456D9', '#E1528C', '#830D3D',
+                        '#A7AC38', '#771BBF'];
+    var expensive_chart_type_es = "line";
+    var bar_series_es;
+    var pie_series_es;
+    bar_series_es = []
+    pie_series_es = []
+    var countit_es = 0;
+    var job_id_es = '{{ job_id }}';
+    var first_run_es = '{{ first_run }}';
+    var last_job_status_es = '{{ last_job_status }}';
+
+    $.each(response_data_es, function( key, val ) {
+        let bar_data = {};
+        bar_data["name"] = val['name']
+        bar_data["color"] = series_colors_es[countit_es]
+        bar_data["data"] = []
+        $.each(val['data'], function( key, val ) {
+            bar_data["data"].push([val['label'], parseFloat(val['value'].toFixed(2))])
+        });
+        bar_series_es.push(bar_data);
+        pie_series_es.push({
+            name: val['name'],
+            color: series_colors_es[countit_es],
+            y: parseFloat(val['value'].toFixed(2))
+        });
+        countit_es += 1;
+    });
+
+    bar_series_es = bar_series_es.sort(sort_by('y', true, parseFloat));
+    pie_series_es = pie_series_es.sort(sort_by('y', true, parseFloat));
+
+    if ((message_status_es == "False") && (last_job_status_es == "")) {
+        $("#expensive_services_whole_content").show();
+        $("#expensive_services_exception_message").hide();
+        $("#expensive_services_currency_message").hide();
+        // Initial Charts settings
+        expensive_service_column_chart(expensive_chart_type_es, bar_series_es, barchart_series_data_es);
+        expensive_service_pie_chart(pie_series_es);
+    }
+    else {
+        if ((first_run_es == "True") || (message_status_es == "True")) {
+            $("#expensive_services_whole_content").hide();
+            $("#expensive_services_exception_message").show();
+            $("#expensive_services_currency_message").hide();
+            $(".spend_recurring_link").attr({"href": "/recurring_jobs/"+job_id_es+"/"});
+        }
+        else {
+            expensive_service_column_chart(expensive_chart_type_es, bar_series_es, barchart_series_data_es);
+            expensive_service_pie_chart(pie_series_es);
+            if ((message_status_es == "not unified") && (last_job_status_es == "")) {
+                $("#expensive_services_whole_content").show();
+                $("#expensive_services_exception_message").hide();
+                $("#expensive_services_currency_message").show();
+                $("#esCurrencyText").text(`* Conversion rates not set for all resource handlers.`);
+                $("#esSetRates").text("Set Rates");
+                $("#esSetRates").attr({"href": "/extensions/admin/kumo_integration_kit/display_admin"});
+            }
+            else if (last_job_status_es != "") {
+                $("#expensive_services_whole_content").show();
+                $("#expensive_services_exception_message").hide();
+                $("#expensive_services_currency_message").show();
+                $("#esCurrencyText").text(`* Data last updated on ${last_job_status_es}, Sync job failed.`);
+                $("#esSetRates").text("See Job");
+                $("#esSetRates").attr({"href": "/recurring_jobs/"+job_id_es+"/"});
+            }
+            else {
+                null;
+            }
+        }
+    }
+
+    // Range selector operation
+    //$(".filter-expensive-service").on('click', function(){
+    //    expensive_days_value = $(this).data('days_value');
+    //    expensive_service_column_chart(expensive_chart_type_es, data_rh1[expensive_days_value], data_rh2[expensive_days_value], data_rh3[expensive_days_value]);
+    //    $(".filter-expensive-service").removeClass('btn-active').addClass('btn-secondary');
+    //    $(this).addClass('btn-active').removeClass('btn-secondary');
+    //});
+
+    // Change type of graph
+    $(".change-expense-graph").on('click', function () {
+        expensive_chart_type_es = $(this).data('graph_type');
+        expensive_service_column_chart(expensive_chart_type_es, bar_series_es, barchart_series_data_es);
+        $(".change-expense-graph").removeClass('btn-active').addClass('btn-secondary');
+        $(this).addClass('btn-active').removeClass('btn-secondary');
+    });
+
+    function expensive_service_column_chart(chart_type, data_series, barchart_series_data_es) {
+        let chart = {
+            type: chart_type,
+            height: 330,
+        };
+        let title = {
+            text: ''
+        };
+        let xAxis = {
+            categories: barchart_series_data_es,
+            labels: {
+                enabled: true,
+                step: 2,
+                rotation: 300
+            }
+        }
+        let colors = ['#3366CC', '#DC3912', '#FF9900', '#109618',
+            '#990099', '#0099C6', '#DD4477', '#66AA00',
+            '#B82E2E'];
+        let yAxis = {
+            min: 0,
+            title: {
+                text: ''
+            },
+            stackLabels: {
+                enabled: false,
+            }
+        };
+        let legend = {
+            enabled: false,
+        }
+        let plotOptions = {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: false
+                },
+            },
+            line: {
+                marker: {
+                    radius: 2
+                }
+            }
+        };
+        let credits = {
+            enabled: false
+        };
+        let series = data_series;
+
+        let json = {};
+        json.chart = chart;
+        json.colors = colors;
+        json.title = title;
+        json.yAxis = yAxis;
+        json.xAxis = xAxis;
+        json.plotOptions = plotOptions;
+        json.legend = legend;
+        json.credits = credits;
+        json.series = series;
+        $('#col_expensive_service').highcharts(json);
+    }
+
+    function expensive_service_pie_chart(pie_series_es) {
+        let chart = {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            height: 350,
+        };
+        let plotOptions = {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    style: {
+                        textOverflow: 'clip'
+                    },
+                    softConnector: false,
+                    distance: 15,
+                    formatter: function () {
+                        return `${this.percentage.toFixed(2)} %`
+                    },
+                },
+                showInLegend: true,
+                startAngle: 0,
+                size: 170,
+            }
+        };
+        let legend = {
+            align: 'left',
+            labelFormatter: function () {
+                let nf = new Intl.NumberFormat();
+
+                return '<div><div>' + this.name + ': </div><div>'+widget_currency_es+' '
+                    + nf.format(this.options.y.toFixed(2)) + ' ' + currency_error_es +'</div>'
+                    + '</div>'
+            },
+            maxHeight: 72,
+            enabled: false,
+        };
+        let series = [{
+            type: 'pie',
+            name: 'Cost',
+            data: pie_series_es
+        }];
+        let title = {
+            text: '',
+        };
+        let credits = {
+            enabled: false
+        };
+        let xAxis = {
+            categories: "",
+            labels: {
+                enabled: true
+            }
+        }
+        let json = {};
+        json.title = title;
+        json.chart = chart;
+        json.xAxis = xAxis;
+        json.series = series;
+        json.credits = credits;
+        json.plotOptions = plotOptions;
+        json.legend = legend;
+        $('#pie_expensive_service').highcharts(json,  function (chart) {
+            let legend = $('#custom_legend_expensive_services');
+            let nf = new Intl.NumberFormat();
+            $.each(chart.series[0].data, function (j, data) {
+                legend.append('<div class="item"><span class="serieName"><span class="symbol" style="background-color:' + data.color + '"></span>' + `${data.name}: ${widget_currency_es} ${nf.format(data.y.toFixed(2))} ${currency_error_es}` + '</span></div>');
+            });
+
+            $('#custom_legend_expensive_services .item').click(function () {
+                let inx = $(this).index(),
+                point = chart.series[0].data[inx];
+                line_point = $("#col_expensive_service").highcharts().series[inx];
+
+                if (point.visible) {
+                    point.setVisible(false);
+                    line_point.setVisible(false);
+                    $(this).css("color","#afa9a9");
+                }
+                else {
+                    point.setVisible(true);
+                    line_point.setVisible(true);
+                    $(this).css("color","#333333");
+                }
+            });
+        });
+    }
+
+</script>
+{% endblock child_div %}

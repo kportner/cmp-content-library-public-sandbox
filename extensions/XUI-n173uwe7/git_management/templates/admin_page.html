@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% load helper_tags %}
+{% load tab_tags %}
+{% block topnav %}Git Management{% endblock %}
+{% block title %}Git Management{% endblock %}
+
+{% block uplink %}
+<li class="breadcrumb-item flex-shrink-0">
+    <a href="{% url 'admin_home' %}">Admin</a>
+</li>
+{% endblock uplink %}
+
+{% block breadcrumb-item %}
+<h1>Git Management</h1>
+{% endblock breadcrumb-item %}
+
+{% block content %}
+    <blockquote>The Git Management XUI allows you to export content from CloudBolt to a Git Repo.</blockquote>
+    {% draw_tabs tabs %}
+{% endblock content %}

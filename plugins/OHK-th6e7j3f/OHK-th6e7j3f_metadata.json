@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-th6e7j3f",
+    "max_retries": 0,
+    "name": "Delete OpenShift Project",
+    "resource_technologies": [],
+    "script_filename": "OHK-th6e7j3f_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

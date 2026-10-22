@@ -1,0 +1,36 @@
+{% load i18n %}
+<style>
+    #ce-jobs td.dt-type-date, #ce-jobs th.dt-type-date { text-align: left; }
+</style>
+<p>Refresh this page to see up-to date job status</p>
+
+    <table id="ce-jobs" class="table table-hover" data-table>
+        <thead>
+            <tr>
+                <th>{% trans 'ID' %}</th>
+                <th>{% trans 'Status' %}</th>
+                <th>{% trans 'Type' %}</th>
+                <th>{%trans 'Creation Date' %}</th>
+                <th>{%trans 'End Date' %}</th>
+                <th>{%trans 'Participating Machine' %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in jobs  %}
+            <tr>
+                <td>{{job.id}}</td>
+                {% if job.status == "COMPLETED" %}
+                    <td><span class="badge bg-success">{{job.status}}</span></td>
+                {% elif job.status == "FAILED" %}
+                    <td><span class="badge bg-danger">{{job.status}}</span></td>
+                {% else %}
+                    <td><span class="badge bg-warning text-dark">{{job.status}}</span></td>
+                {% endif %}
+                <td>{{job.type}}</td>
+                <td>{{job.creationDateTime}}</td>
+                <td>{{job.endDateTime}}</td>
+                <td>{{job.participatingMachines}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>

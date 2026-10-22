@@ -1,0 +1,11 @@
+{
+    "description": "List EC2 volumes snapshots",
+    "id": "OHK-ipptaxsc",
+    "max_retries": 0,
+    "name": "list-snapshots",
+    "resource_technologies": [],
+    "script_filename": "OHK-ipptaxsc_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

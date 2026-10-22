@@ -1,0 +1,64 @@
+<style>
+    .status {
+        width: 20px; height: 20px;
+        padding: 0px;
+        margin: 0px;
+        border-radius: 10px;  
+    }
+    {# Orange #}
+    .status_3 {
+        background-color: var(--bs-orange);
+    }
+    {# Yellow #}
+    .status_2 {
+        background-color: var(--bs-yellow);
+    }
+    {# Green #}
+    .status_1 {
+        background-color: var(--bs-success);
+    }
+    {# Red #}
+    .status_0 {
+        background-color: var(--bs-danger);
+    }
+</style>
+
+<table class="dataTable small">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Service</th>
+            <th>Status</th>
+            {% if verbose %}
+                <th>Duration</th>
+            {% endif %}
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for plugin in plugins %}
+        <tr>
+            <td>
+                <div class="status status_{{ plugin.status }}">&nbsp;</div>
+            </td>
+            <td>{{ plugin.identifier }}</td>
+            <td>{{ plugin.pretty_status }}</td>
+            {% if verbose %}
+                <td>{{ plugin.time_taken|floatformat:4 }} seconds</td>
+            {% endif %}
+            <td>
+                {% comment %}
+                <!-- {% if plugin.can_restart %}
+                    <a class="btn btn-light" href="{% url 'health_check:restart' plugin.service_name %}">
+                        <i class="fa fa-refresh"></i>
+                        Restart
+                    </a>
+                {% endif %} -->
+                {% endcomment %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+

@@ -1,0 +1,88 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Create an Azure Redis Cache",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-63gkid6k"
+            },
+            "deploy_seq": 1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-ny3x57ll",
+            "name": "Create an Azure Redis Cache",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-x47c93cr"
+        },
+        "href": "/api/v3/cmp/actions/OHK-x47c93cr/",
+        "title": "Azure cache for Redis Discovery"
+    },
+    "favorited": false,
+    "icon": "azure_redis_cache_f1FXhlB_XtLtvaM_18kj1K7_g60bXS4.png",
+    "id": "BP-f2rl6n06",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-wh49tcv0",
+            "image": null,
+            "name": "Azure",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "Azure Cache for Redis",
+    "resource_name_template": "",
+    "resource_type": {
+        "icon": "",
+        "id": "RT-wtoyrbjm",
+        "internal_only": false,
+        "label": "Service",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "service",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Azure Cache for Redis Teardown",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-w5h2q988"
+            },
+            "deploy_seq": 2,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-pfsaviml",
+            "name": "Azure Cache for Redis Teardown",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

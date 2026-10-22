@@ -1,0 +1,18 @@
+<table role="table" class="table b-table table-striped table-hover table-sm">
+    <thead role="rowgroup">
+        <tr role="row">
+            <th role="columnheader" aria-colindex="1">Username</th>
+            <th role="columnheader" aria-colindex="2">Name</th>
+            <th role="columnheader" aria-colindex="3">Last Login</th>
+        </tr>
+    </thead>
+    <tbody role="rowgroup">
+        {% for user in users %}
+        <tr role="row">
+            <td role="cell" aria-colindex="1">{{ user.username }}</td>
+            <td role="cell" aria-colindex="2">{{ user.full_name }}</td>
+            <td role="cell" aria-colindex="3">{{ user.last_activity_time }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

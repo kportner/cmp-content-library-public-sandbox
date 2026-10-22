@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-urw7wdqr",
+    "max_retries": 0,
+    "name": "Sync table backup",
+    "resource_technologies": [],
+    "script_filename": "OHK-urw7wdqr_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

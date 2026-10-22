@@ -1,0 +1,115 @@
+<div class="container-fluid">
+    <div class="btn-toolbar gap-2 mb-3 justify-content-end">
+        <a class="btn btn-sm btn-light" href="https://docs.cloudbolt.io/articles/onefuse-latest/cloudbolt-cmp-xui-getting-started" target="_blank"><i class="fas fa-book"></i> OneFuse XUI Docs</a>
+    </div>
+    <div class="card cb-surface-card">
+        <div class="card-body pt-4">
+    <p>
+        <i class="fas fa-info-circle me-2"></i> The OneFuse XUI relies on the <a href="https://pypi.org/project/onefuse/">OneFuse Python Plugin</a>, which is installed during setup.
+    </p>
+            <h3>OneFuse XUI Setup</h3>
+                <br/>
+                <ol>
+                    <li>
+                        <p>1. <b>Once the OneFuse XUI is installed</b> in CloudBolt via <a href="/extensions/manage_extensions">UI Extensions</a>, the <code>onefuse</code> directory should be at:</p>
+                        <ul><li><code>/var/opt/cloudbolt/proserv/xui/onefuse</code></li></ul><br/>
+                    </li>
+                    <li>
+                        <p>2. <b>Restart Apache from each CloudBolt Appliance</b></p>
+                        <ul><li><code>systemctl restart httpd</code></li></ul><br/>
+                    </li>
+                    <li>
+                        <p>3. <b>Create a <a class="open-dialog" href="{% url 'add_connectioninfo' %}">Connection Info</a></b> for OneFuse.</p>
+                        <ul><li>*Add <code>OneFuse</code> in <b>Labels</b> field.</li></ul><br/>
+                    </li>
+                    <li>
+                        <p>4. <b>Add OneFuse Parameters to CloudBolt Blueprints as shown below. </b></p>
+                    </li>
+                </ol><br>
+            <h3>OneFuse Parameters</h3><br/>
+            <p>Quick Start list of all OneFuse Parameters to execute OneFuse Modules that can be applied to CloudBolt Environments, Blueprints, Groups, etc.</p>
+            <p><b>Usage Format</b> is <code>'name' : 'value_format'</code>, replacing <code>{ string }</code> with the actual value.</p><br/>
+                <table class="dataTable no-footer table table-hover">
+                    <thead><tr><th>OneFuse Module</th><th>Parameter Name and Value Format</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <th>Ansible Tower</th>
+                            <td><code>'OneFuse_AnsibleTowerPolicy_{executionstring}_{customId}' : '{onefusehost}:{policyname}:{hosts}:{limit}'</code></td>
+                        </tr>
+                        <tr>
+                            <th>DNS</th>
+                            <td><p><code>'OneFuse_DnsPolicy_Nic{#}' : '{onefusehost}:{policyname}:{dnszones}'</code></p><p>*Multple DNS Zones are comma separated</p></td>
+                        </tr>
+                        <tr>
+                            <th>IPAM</th>
+                            <td><code>'OneFuse_IpamPolicy_Nic{#}' : '{onefusehost}:{policyname}'</code></td>
+                        </tr>
+                        <tr>
+                            <th>Microsoft Active Directory</th>
+                            <td><code>'OneFuse_ADPolicy' : '{onefusehost}:{policyname}'</code></td>
+                        </tr>
+                        <tr>
+                            <th>Naming</th>
+                            <td><code>'OneFuse_NamingPolicy' : '{onefusehost}:{policyname}'</code></td>
+                        </tr>
+                        <tr>
+                            <th>Pluggable Modules</th>
+                            <td><code>'OneFuse_PluggableModulePolicy_{executionstring}_{customId}' : '{onefusehost}:{policyname}'</code></td>
+                        </tr>
+                        <tr>
+                            <th>Scripting</th>
+                            <td><code>'OneFuse_ScriptingPolicy_{executionstring}_{customId}' : '{onefusehost}:{policyname}'</code></td>
+                        </tr>
+                        <tr>
+                            <th>ServiceNow CMDB</th>
+                            <td><code>'OneFuse_ServiceNowCmdbPolicy' : '{onefusehost}:{policyname}'</code></td>
+                        </tr>
+                        <tr>
+                            <th colspan="2" class="text-center">Property Toolkit</th>
+                        </tr>
+                        <tr>
+                            <th>Property Toolkit</th>
+                            <td>
+                                <p>*Trigger property for <b>Static Property Sets</b> and <b>Create Properties</b></p>
+                                <code>'OneFuse_PropertyToolkit' : '{onefusehost}:true'</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Static Property Sets</th>
+                            <td><code>'OneFuse_SPS_{customId}' : '{staticpropertysetname}'</code></td>
+                        </tr>
+                        <tr>
+                            <th>Create Properties</th>
+                            <td><code>'OneFuse_CreateProperties_{customId}' : '{"key":"{key}","value":"{value}"}'</code></td>
+                        </tr>
+                    </tbody>
+                </table><br/>
+            <h4><b>Valid Execution Strings</b></h4>
+                <p>The following is a list of valid <code>{executionstring}</code> options for OneFuse Modules Ansible Tower and Scripting, and Pluggable Modules:</p>
+                <table class="dataTable no-footer table table-hover">
+                    <thead><tr><th>Execution String</th><th>Notes</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <th><code>HostnameOverwrite</code></th>
+                            <td>Execute OneFuse Module during hostname overwrite.</td>
+                        </tr>
+                        <tr>
+                            <th><code>PreCreateResource</code></th>
+                            <td>Execute OneFuse Module prior to creating the resource.</td>
+                        </tr>
+                        <tr>
+                            <th><code>PreApplication</code></th>
+                            <td>Only valid when using native CloudBolt Configuration Manager - will execute OneFuse Module prior to the Configuration Manager running.</td>
+                        </tr>
+                        <tr>
+                            <th><code>PostProvision</code></th>
+                            <td>Execute OneFuse Module after provisioning the resource.</td>
+                        </tr>
+                    </tbody>
+                </table>
+        <div class="border-top pt-3 mt-3">
+            <p>Learn more at <a class="btn btn-sm btn-light" href="https://docs.cloudbolt.io/articles/onefuse-latest/cloudbolt-cmp-xui-getting-started" target="_blank"><i class="fas fa-book"></i> OneFuse XUI Docs</a></p>
+        </div>
+        </div>
+    </div>
+</div>

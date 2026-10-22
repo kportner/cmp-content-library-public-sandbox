@@ -1,0 +1,258 @@
+{% load static %}
+
+<div class="modal-body">
+    <i class="fa fa-chevron-left" id="arrow-prev"></i>
+    <div class="slider api-key-guide d-none">
+        <div class="slides">
+            <div id="slide-1" class="active-img">
+                <div class="guide-label">
+                    <label>Step-1: Log in to your CSMP instance</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/Step-1.png' %}">
+            </div>
+            <div id="slide-2">
+                <div class="guide-label">
+                    <label>Step-2: Navigate to domain name and click on My Profile</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/Step-2.png' %}">
+            </div>
+            <div id="slide-3">
+                <div class="guide-label">
+                    <label>Step-3: Under My Profile click on Access Keys</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/Step-3.png' %}">
+            </div>
+            <div id="slide-4">
+                <div class="guide-label">
+                    <label>Step-4: Enter description (name of the key), click on Never option for expiry and hit save</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/Step-4.png' %}">
+            </div>
+            <div id="slide-5">
+                <div class="guide-label">
+                    <label>Step-5: Copy the access key generated in the box and save it</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/Step-5.png' %}">
+            </div>
+        </div>
+        <a class="fa fa-circle-o" href="#slide-1">1</a>
+        <a class="fa fa-circle-o" href="#slide-2">2</a>
+        <a class="fa fa-circle-o" href="#slide-3">3</a>
+        <a class="fa fa-circle-o" href="#slide-4">4</a>
+        <a class="fa fa-circle-o" href="#slide-5">5</a>
+    </div>
+
+    <div class="slider aws-guide d-none">
+        <div class="slides">
+            <div id="aws-1" class="active-img">
+                <div class="guide-label">
+                    <label>Step-1: Log in to your CSMP instance</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/1.png' %}">
+            </div>
+            <div id="aws-2">
+                <div class="guide-label">
+                    <label>Step-2: Once logged in, go to the navigation on the top</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/2.png' %}">
+            </div>
+            <div id="aws-3">
+                <div class="guide-label">
+                    <label>Step-3: Find the 3x3 dot matrix icon which is of Quick Actions and click on it</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/3.png' %}">
+            </div>
+            <div id="aws-4">
+                <div class="guide-label">
+                    <label>Step-4: Inside Quick Actions, click on Adapters & Integration</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/4.png' %}">
+            </div>
+            <div id="aws-5">
+                <div class="guide-label">
+                    <label>Step-5: Please click on Add Cloud Adapter button to create new adapter</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/5.png' %}">
+            </div>
+            <div id="aws-6">
+                <div class="guide-label">
+                    <label>Step-6: Please select Adapters::AWS to create AWS adapter</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/6.png' %}">
+            </div>
+            <div id="aws-7">
+                <div class="guide-label">
+                    <label>Step-7: Please fill the form fields. Firstly create Consolidated Billing adapter and hit next</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/7.png' %}">
+            </div>
+            <div id="aws-8">
+                <div class="guide-label">
+                    <label>Step-8: If you want to create adapter using IAM Role, tick the box and fill the details then hit next</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/8.png' %}">
+            </div>
+            <div id="aws-9">
+                <div class="guide-label">
+                    <label>Step-9: If you want to create adapter using AWS credentials, untick the box and fill the details then hit next</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/9.png' %}">
+            </div>
+            <div id="aws-10">
+                <div class="guide-label">
+                    <label>Step-10: If you have master billing account for all your child accounts and you want automatic setup for you organization, Select Yes, fill the form fields and hit next</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/10.png' %}">
+            </div>
+            <div id="aws-11">
+                <div class="guide-label">
+                    <label>Step-11: If you have existing report in AWS console, please click on fetch button and select from dropdown, Otherwise if you want to create new report, please fill all form fields and hit Create (This report will be created in AWS account). Once you are done, hit next</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/11.png' %}">
+            </div>
+            <div id="aws-12">
+                <div class="guide-label">
+                    <label>Step-12: Fill the details in Discount Configuration fields if applicable, then hit submit button. This will create Billing adapter in you CSMP instance</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/12.png' %}">
+            </div>
+            <div id="aws-13">
+                <div class="guide-label">
+                    <label>Step-13: For creating AWS normal adapter, select Adapter type to be Normal and hit next</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/13.png' %}">
+            </div>
+            <div id="aws-14">
+                <div class="guide-label">
+                    <label>Step-14: Again, If you want to create adapter using IAM Role, tick the box and fill the details then hit next</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/14.png' %}">
+            </div>
+            <div id="aws-15">
+                <div class="guide-label">
+                    <label>Step-15: Again, If you want to create adapter using AWS credentials, untick the box and fill the details then hit next</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/15.png' %}">
+            </div>
+            <div id="aws-16">
+                <div class="guide-label">
+                    <label>Step-16: On the Adapters & Integrations page, you will find both the adapters which you just created. You might also see list of child accounts if you have opted for automatic setup for organization</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/16.png' %}">
+            </div>
+        </div>
+        <a class="fa fa-circle-o" href="#aws-1">1</a>
+        <a class="fa fa-circle-o" href="#aws-2">2</a>
+        <a class="fa fa-circle-o" href="#aws-3">3</a>
+        <a class="fa fa-circle-o" href="#aws-4">4</a>
+        <a class="fa fa-circle-o" href="#aws-5">5</a>
+        <a class="fa fa-circle-o" href="#aws-6">6</a>
+        <a class="fa fa-circle-o" href="#aws-7">7</a>
+        <a class="fa fa-circle-o" href="#aws-8">8</a>
+        <a class="fa fa-circle-o" href="#aws-9">9</a>
+        <a class="fa fa-circle-o" href="#aws-10">10</a>
+        <a class="fa fa-circle-o" href="#aws-11">11</a>
+        <a class="fa fa-circle-o" href="#aws-12">12</a>
+        <a class="fa fa-circle-o" href="#aws-13">13</a>
+        <a class="fa fa-circle-o" href="#aws-14">14</a>
+        <a class="fa fa-circle-o" href="#aws-15">15</a>
+        <a class="fa fa-circle-o" href="#aws-16">16</a>
+    </div>
+
+    <div class="slider azure-guide d-none">
+        <div class="slides">
+            <div id="azure-1" class="active-img">
+                <div class="guide-label">
+                    <label>Step-1: Log in to your CSMP instance</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/1.png' %}">
+            </div>
+            <div id="azure-2">
+                <div class="guide-label">
+                    <label>Step-2: Once logged in, go to the navigation on the top</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/2.png' %}">
+            </div>
+            <div id="azure-3">
+                <div class="guide-label">
+                    <label>Step-3: Find the 3x3 dot matrix icon which is of Quick Actions and click on it</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/3.png' %}">
+            </div>
+            <div id="azure-4">
+                <div class="guide-label">
+                    <label>Step-4: Inside Quick Actions, click on Adapters & Integration</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/4.png' %}">
+            </div>
+            <div id="azure-5">
+                <div class="guide-label">
+                    <label>Step-5: Please click on Add Cloud Adapter button to create new adapter</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/5.png' %}">
+            </div>
+            <div id="azure-17">
+                <div class="guide-label">
+                    <label>Step-6: Click on Add Cloud Adapter button and select Adapters::Azure to create Azure adapter</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/17.png' %}">
+            </div>
+            <div id="azure-18">
+                <div class="guide-label">
+                    <label>Step-7: Firstly create a Consolidated Billing adapter with Single Subscription option selected and hit next</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/18.png' %}">
+            </div>
+            <div id="azure-19">
+                <div class="guide-label">
+                    <label>Step-8: Fill the details for Azure credentials and validate them. After successful validation, hit next</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/19.png' %}">
+            </div>
+            <div id="azure-20">
+                <div class="guide-label">
+                    <label>Step-9: Click yes if you wish to automatically setup the adapters using Azure AD, otherwise select No and hit next</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/20.png' %}">
+            </div>
+            <div id="azure-21">
+                <div class="guide-label">
+                    <label>Step-10: If you have existing report in Azure account, please click on fetch button and select from dropdown, Otherwise if want to create new report, please fill all form fields and hit Create Export (This report will be created in Azure account). Once you are done, hit Submit</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/21.png' %}">
+            </div>
+            <div id="azure-22">
+                <div class="guide-label">
+                    <label>Step-11: For creating Azure normal adapter, select Adapter type to be Normal and hit next</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/22.png' %}">
+            </div>
+            <div id="azure-23">
+                <div class="guide-label">
+                    <label>Step-12: Fill the details for Azure credentials and validate them. After successful validation, hit Submit</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/23.png' %}">
+            </div>
+            <div id="azure-24">
+                <div class="guide-label">
+                    <label>Step-13: After successful creation of both the adapters, they will appear in the Adapters & Integrations page</label>
+                </div>
+                <img src="{% static 'kumo_integration_kit/images/24.png' %}">
+            </div>
+        </div>
+        <a class="fa fa-circle-o" href="#azure-1">1</a>
+        <a class="fa fa-circle-o" href="#azure-2">2</a>
+        <a class="fa fa-circle-o" href="#azure-3">3</a>
+        <a class="fa fa-circle-o" href="#azure-4">4</a>
+        <a class="fa fa-circle-o" href="#azure-5">5</a>
+        <a class="fa fa-circle-o" href="#azure-17">6</a>
+        <a class="fa fa-circle-o" href="#azure-18">7</a>
+        <a class="fa fa-circle-o" href="#azure-19">8</a>
+        <a class="fa fa-circle-o" href="#azure-20">9</a>
+        <a class="fa fa-circle-o" href="#azure-21">10</a>
+        <a class="fa fa-circle-o" href="#azure-22">11</a>
+        <a class="fa fa-circle-o" href="#azure-23">12</a>
+        <a class="fa fa-circle-o" href="#azure-24">13</a>
+    </div>
+    <i class="fa fa-chevron-right" id="arrow-next"></i>
+</div>

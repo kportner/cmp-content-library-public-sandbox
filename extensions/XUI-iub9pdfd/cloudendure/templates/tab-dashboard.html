@@ -1,0 +1,44 @@
+{% load i18n %}
+
+<div class="btn-toolbar gap-2 mb-3">
+            {% if cloudendure_ci %}
+                <a class="open-dialog btn btn-light"
+                   href="{% url 'edit_cloudendure_endpoint' %}">
+                    <span class="icon-edit"></span>
+                    Edit
+                </a>
+                <a class="btn btn-light open-dialog"
+                    href="{% url 'verify_cloudendure_connection' %}">
+                    <span class="icon-verify-connection"></span>
+                    Verify Connection
+                </a>
+                <a class="btn btn-light open-dialog"
+                    href="{% url 'delete_cloudendure_endpoint' %}">
+                    <span class="icon-delete"></span>
+                    Delete
+                </a>
+            {% else %}
+                <a class="open-dialog btn btn-light"
+                    href="{% url 'add_cloudendure_endpoint' %}">
+                    <span class="icon-add"></span>
+                    Add Endpoint
+                </a>
+            {% endif %}
+</div>
+
+{% if cloudendure_ci %}
+<div class="card cb-surface-card">
+    <div class="card-body pt-4">
+        <dl>
+            <dt>{% trans "URL" %}:</dt>
+            <dd>{{ cloudendure_ci.protocol }}://{{ cloudendure_ci.ip }}</dd>
+            <dt>{% trans "Username" %}:</dt>
+            <dd>{{ cloudendure_ci.username }} </dd>
+        </dl>
+    </div>
+</div>
+{% else %}
+<div class="alert alert-info w-75">
+    <p><i class="fas fa-info-circle me-2"></i> No CloudEndure Management Endpoint configured.</p>
+</div>
+{% endif %}

@@ -1,0 +1,401 @@
+{% extends "kumo_integration_kit/templates/widget_base_page.html" %}
+{% load static %}
+{% block card_id %}rh-cost{% endblock %}
+
+{% block heading %}Cloud Provider's Spend Details{% endblock %}
+
+{% block child_div %}
+
+<div class="spe-det" style="width: 100%; float: left;">
+    <div id="spend_details_whole_content">
+        <div style="display: flex;margin-bottom: 20px;justify-content: space-between;">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-active change-rh-cost-graph" data-graph_type="column">
+                    <i class="fa fa-chart-bar"></i>
+                </button>
+                <button type="button" class="btn btn-secondary change-rh-cost-graph" data-graph_type="line">
+                    <i class="fa fa-chart-line" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="days-label-div">
+                <label class="days-label">Last 30 Days</label>
+            </div>
+            <!-- <div class="btn-group" role="group" style="margin-right: 10px;">
+                <button type="button" class="btn btn-active filter-rh-cost" data-days_value="30">30 Days</button>
+                <button type="button" class="btn btn-secondary filter-rh-cost" data-days_value="60">60 Days</button>
+                <button type="button" class="btn btn-secondary filter-rh-cost" data-days_value="90">90 Days</button>
+                <button type="button" class="btn btn-secondary filter-rh-cost" data-days_value="120">120 Days</button>
+            </div> -->
+        </div>
+        <div id="col_rh_cost" style="float: left; width: 60%;"></div>
+        <div id="pie_rh_cost" style="float: left; width: 40%; margin-bottom: 10px;"></div>
+        <div class="wrapper-legend-spend-details">
+            <div class="custom-legend-widgets" id="custom_legend_spend_details"></div>
+        </div>
+    </div>
+    <div id="spend_details_bottom_buttons" style="text-align: center;clear: both; padding-top: 15px;">
+        <div class="btn-group" role="group" style="margin-right: 10px;">
+            <button type="button" class="btn btn-active change-graph-data" data-data_type="resource_handler">Resource Handlers</button>
+            <button type="button" class="btn btn-secondary change-graph-data" data-data_type="services">Services</button>
+            <button type="button" class="btn btn-secondary change-graph-data" data-data_type="locations_regions">Locations/Regions</button>
+            <!-- <button type="button" class="btn btn-secondary change-graph-data" data-data_type="labels_tags">Labels/Tags</button> -->
+        </div>
+    </div>
+    <div id="spend_details_exception_message">
+        <img src="{% static 'kumo_integration_kit/images/cloud_provider_spend_details.png' %}" class="grayed-out-images">
+        <div class="error-container-nodata">
+            <div class="col-sm-12">
+                <i class="fas fa-exclamation-triangle"></i>
+                Please sync to gather data!
+                <a class="spend_recurring_link" href="/recurring_jobs/{{ job_id_sd }}" target="_blank">Sync</a>
+             </div>
+        </div>
+    </div>
+    <div id="spend_details_currency_message" class="col-sm-12" style="position: relative;">
+        <div class="error-container-noconv">
+            <div class="col-sm-12">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span id="sdCurrencyText">* Conversion rates not set for all resource handlers.</span>
+                <a href="/extensions/admin/kumo_integration_kit/display_admin" class="set-rates" id="sdSetRates" target="_blank">Set Rates</a>
+             </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var widget_currency_sd;
+    var currency_error_sd;
+    var sort_by = (field, reverse, primer) => {
+        const key = primer ?
+            function(x) {
+            return primer(x[field])
+            } :
+            function(x) {
+            return x[field]
+            };
+
+        reverse = !reverse ? 1 : -1;
+
+        return function(a, b) {
+            return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+        }
+    }
+
+    setTimeout(() => {
+        $("#spend_details_whole_content").hide();
+        $("#spend_details_bottom_buttons").hide();
+        $("#spend_details_exception_message").show();
+        $("#spend_details_currency_message").hide();
+    }, 500);
+
+    async function getCostData(rh_cost_data_type_sd, rh_cost_chart_type_sd) {
+        $("#custom_legend_spend_details").empty();
+        const URL = "/xui/get_spend_data/";
+        let payload = {
+            'data_type': rh_cost_data_type_sd
+        };
+        await $.post(URL, payload, (response) => {
+            var message_status_sd = response['message_status'];
+            var job_id_sd = response['job_id'];
+            var first_run_sd = response["first_run"];
+            var last_job_status_sd = response["last_job_status"];
+
+            if ((message_status_sd == false) && (last_job_status_sd == "")) {
+                $("#spend_details_whole_content").show();
+                $("#spend_details_bottom_buttons").show();
+                $("#spend_details_exception_message").hide();
+                $("#spend_details_currency_message").hide();
+                let response_data = response['response_data'];
+                let barchart_series_data = response['barchart_series_data'];
+                let series_colors = [
+                    '#5F6AAF', '#5FAFA5', '#F16B3D', '#55D3C5', '#7C5538', '#3F387C',
+                    '#387C70', '#6456D9', '#E1528C', '#830D3D', '#A7AC38', '#771BBF'
+                ];
+                let bar_series = [];
+                let pie_series = [];
+                let counter = 0;
+
+                $.each(response_data, function( key, val ) {
+                    let bar_data = {};
+                    bar_data["name"] = val['name']
+                    bar_data["color"] = series_colors[counter]
+                    bar_data["data"] = []
+                    $.each(val['data'], function( key, val ) {
+                        bar_data["data"].push([val['label'], parseFloat(val['value'].toFixed(2))])
+                    });
+
+                    bar_series.push(bar_data);
+                    pie_series.push({
+                        name: val['name'],
+                        color: series_colors[counter],
+                        y: parseFloat(val['value'].toFixed(2))
+                    });
+                    counter += 1;
+                });
+
+                bar_series = bar_series.sort(sort_by('y', true, parseFloat));
+                pie_series = pie_series.sort(sort_by('y', true, parseFloat));
+
+                // Initial chart calls
+                rh_cost_column_chart(rh_cost_chart_type_sd, bar_series, barchart_series_data);
+                rh_cost_pie_chart(pie_series);
+            }
+            else {
+                if ((first_run_sd == "True") || (message_status_sd == true)) {
+                    $("#spend_details_whole_content").hide();
+                    $("#spend_details_bottom_buttons").hide();
+                    $("#spend_details_exception_message").show();
+                    $("#spend_details_currency_message").hide();
+                    $(".spend_recurring_link").attr({"href": "/recurring_jobs/"+job_id_sd+"/"});
+                }
+                else {
+                    let response_data = response['response_data'];
+                    let barchart_series_data = response['barchart_series_data'];
+                    let series_colors = [
+                        '#5F6AAF', '#5FAFA5', '#F16B3D', '#55D3C5', '#7C5538', '#3F387C',
+                        '#387C70', '#6456D9', '#E1528C', '#830D3D', '#A7AC38', '#771BBF'
+                    ];
+                    let bar_series = [];
+                    let pie_series = [];
+                    let counter = 0;
+
+                    $.each(response_data, function( key, val ) {
+                        let bar_data = {};
+                        bar_data["name"] = val['name']
+                        bar_data["color"] = series_colors[counter]
+                        bar_data["data"] = []
+                        $.each(val['data'], function( key, val ) {
+                            bar_data["data"].push([val['label'], parseFloat(val['value'].toFixed(2))])
+                        });
+
+                        bar_series.push(bar_data);
+                        pie_series.push({
+                            name: val['name'],
+                            color: series_colors[counter],
+                            y: parseFloat(val['value'].toFixed(2))
+                        });
+                        counter += 1;
+                    });
+
+                    bar_series = bar_series.sort(sort_by('y', true, parseFloat));
+                    pie_series = pie_series.sort(sort_by('y', true, parseFloat));
+
+                    // Initial chart calls
+                    rh_cost_column_chart(rh_cost_chart_type_sd, bar_series, barchart_series_data);
+                    rh_cost_pie_chart(pie_series);
+                    if ((message_status_sd == "not unified") && (last_job_status_sd == "")) {
+                        $("#spend_details_whole_content").show();
+                        $("#spend_details_exception_message").hide();
+                        $("#spend_details_bottom_buttons").show();
+                        $("#spend_details_currency_message").show();
+                        $("#sdCurrencyText").text(`* Conversion rates not set for all resource handlers.`);
+                        $("#sdSetRates").text("Set Rates");
+                        $("#sdSetRates").attr({"href": "/extensions/admin/kumo_integration_kit/display_admin"});
+                    }
+                    else if (last_job_status_sd != "") {
+                        $("#spend_details_whole_content").show();
+                        $("#spend_details_bottom_buttons").show();
+                        $("#spend_details_exception_message").hide();
+                        $("#spend_details_currency_message").show();
+                        $("#sdCurrencyText").text(`* Data last updated on ${last_job_status_sd}, Sync job failed.`);
+                        $("#sdSetRates").text("See Job");
+                        $("#sdSetRates").attr({"href": "/recurring_jobs/"+job_id_sd+"/"});
+                    }
+                    else {
+                        null;
+                    }
+                }
+            }
+
+        })
+    }
+
+    function rh_cost_column_chart(chart_type, data_series, barchart_series_data) {
+        let chart = {
+            type: chart_type,
+            height: 330,
+        };
+        let title = {
+            text: ''
+        };
+        let xAxis = {
+            categories: barchart_series_data,
+            labels: {
+                enabled: true,
+                step: 2,
+                rotation: 300
+            }
+        }
+        let yAxis = {
+            min: 0,
+            title: {
+                text: ''
+            },
+            stackLabels: {
+                enabled: false,
+            }
+        };
+        let legend = {
+            enabled: true,
+            maxHeight: 70,
+            margin: 30,
+            enabled: false,
+        }
+
+        let plotOptions = {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: false
+                },
+            },
+            line: {
+                marker: {
+                    radius: 2
+                }
+            }
+        };
+        let credits = {
+            enabled: false
+        };
+        let series = data_series;
+
+        let json = {};
+        json.chart = chart;
+        json.title = title;
+        json.yAxis = yAxis;
+        json.xAxis = xAxis;
+        json.plotOptions = plotOptions;
+        json.legend = legend;
+        json.credits = credits;
+        json.series = series;
+        $('#col_rh_cost').highcharts(json);
+    }
+
+    function rh_cost_pie_chart(pie_series) {
+        let chart = {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            height: 330,
+        };
+        let plotOptions = {
+            pie: {
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    style: {
+                        textOverflow: 'clip'
+                    },
+                    softConnector: false,
+                    distance: 15,
+                    formatter: function () {
+                        return `${this.percentage.toFixed(2) } %`
+                    },
+                },
+                showInLegend: true,
+                startAngle: 0,
+                size: 170
+            }
+        }
+        let legend = {
+            align: 'center',
+            labelFormatter: function () {
+                let nf = new Intl.NumberFormat();
+                return '<div><div>' + this.name + ': </div><div>' + widget_currency_sd
+                    + ' ' + nf.format(this.options.y.toFixed(2)) + ' ' + currency_error_sd
+                    + '</div>' + '</div>'
+            },
+            maxHeight: 70,
+            margin: 30,
+            enabled: false,
+        };
+        let series = [{
+            type: 'pie',
+            name: 'Cost',
+            data: pie_series
+        }];
+        let title = {
+            text: '',
+        };
+        let credits = {
+            enabled: false
+        };
+        let xAxis = {
+            categories: "",
+            labels: {
+                enabled: true
+            }
+        }
+        let json = {};
+        json.chart = chart;
+        json.title = title;
+        json.xAxis = xAxis;
+        json.series = series;
+        json.credits = credits;
+        json.plotOptions = plotOptions;
+        json.legend = legend;
+        // $('#pie_cost_rh').highcharts(json);
+        $('#pie_rh_cost').highcharts(json,  function (chart) {
+            $("#custom_legend_spend_details").empty();
+            let legend = $('#custom_legend_spend_details');
+            let nf = new Intl.NumberFormat();
+            $.each(chart.series[0].data, function (j, data) {
+                legend.append('<div class="item"><span class="serieName"><span class="symbol" style="background-color:' + data.color + '"></span>' + `${data.name}: ${widget_currency_sd} ${nf.format(data.y.toFixed(2))} ${currency_error_sd}` + '</span></div>');
+            });
+
+            $('#custom_legend_spend_details .item').click(function () {
+                let inx = $(this).index(),
+                point = chart.series[0].data[inx];
+                line_point = $("#col_rh_cost").highcharts().series[inx];
+
+                if (point.visible) {
+                    point.setVisible(false);
+                    line_point.setVisible(false);
+                    $(this).css("color","#afa9a9");
+                }
+                else {
+                    point.setVisible(true);
+                    line_point.setVisible(true);
+                    $(this).css("color","#333333");
+                }
+            });
+        });
+    }
+
+    $(document).ready(function () {
+        var rh_cost_chart_type_sd = "column";
+        var rh_cost_data_type_sd = "resource_handler";
+        widget_currency_sd = '{{ widget_currency }}';
+        currency_error_sd = (widget_currency_sd == "") ? "*": "";
+        setTimeout(() => {
+            getCostData(rh_cost_data_type_sd, rh_cost_chart_type_sd);
+        }, 700);
+
+        // $(".filter-rh-cost").on('click', function(){
+        //     rh_cost_days_value = $(this).data('days_value');
+        //     rh_cost_column_chart(rh_cost_chart_type_sd, data_rh1[rh_cost_days_value], data_rh2[rh_cost_days_value], data_rh3[rh_cost_days_value]);
+        //     $(".filter-rh-cost").removeClass('btn-active').addClass('btn-secondary');
+        //     $(this).addClass('btn-active').removeClass('btn-secondary');
+        // });
+
+        $(".change-graph-data").on('click', function(){
+            $("#custom_legend_spend_details").empty();
+            rh_cost_data_type_sd = $(this).data('data_type');
+            getCostData(rh_cost_data_type_sd, rh_cost_chart_type_sd);
+            $(".change-graph-data").removeClass('btn-active').addClass('btn-secondary');
+            $(this).addClass('btn-active').removeClass('btn-secondary');
+        });
+
+        $(".change-rh-cost-graph").on('click', function(){
+            $("#custom_legend_spend_details").empty();
+            rh_cost_chart_type_sd = $(this).data('graph_type');
+            getCostData(rh_cost_data_type_sd, rh_cost_chart_type_sd);
+            $(".change-rh-cost-graph").removeClass('btn-active').addClass('btn-secondary');
+            $(this).addClass('btn-active').removeClass('btn-secondary');
+        });
+    });
+
+</script>
+{% endblock child_div %}

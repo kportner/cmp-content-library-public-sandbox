@@ -1,0 +1,131 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Create AWS Dynamo DB",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-l43i8g0a"
+            },
+            "deploy_seq": 1,
+            "description": "This plugin will create a Dynamo Database on AWS Cloud and resource on the CMP Instance.",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-qiorj40z",
+            "name": "Create AWS Dynamo DB",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Blueprint for AWS Dynamo DB",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-c2kkr739"
+        },
+        "href": "/api/v3/cmp/actions/OHK-c2kkr739/",
+        "title": "Discover AWS DynamoDb Tables"
+    },
+    "favorited": false,
+    "icon": "aws_dynamo_db_LyZDFQ4_KNsAvJy.png",
+    "id": "BP-karkee9v",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-6spb5ltg",
+            "image": null,
+            "name": "AWS",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        },
+        {
+            "color": null,
+            "id": "TAG-76xnylxw",
+            "image": null,
+            "name": "NoSQL",
+            "parent": {
+                "color": null,
+                "id": "TAG-fpdjl8eu",
+                "image": null,
+                "name": "Databases",
+                "parent": {
+                    "color": null,
+                    "id": "TAG-d7rehwzt",
+                    "image": null,
+                    "name": "Public Cloud Services",
+                    "sequence": 0
+                },
+                "sequence": 0
+            },
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-fa5ikreh"
+            },
+            "enabled": true,
+            "label": "Sync table backup"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-jh9g6b5f"
+            },
+            "enabled": true,
+            "label": "Create table backup"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-zn3jt7vm"
+            },
+            "enabled": true,
+            "label": "Delete table backup"
+        }
+    ],
+    "metadata_version": "2026.1.0",
+    "name": "Dynamo DB",
+    "resource_name_template": null,
+    "resource_type": {
+        "icon": "fas fa-database",
+        "id": "RT-h0npsxst",
+        "internal_only": false,
+        "label": "Database",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "database",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Teardown for Dynamo DB table",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-g52psnh3"
+            },
+            "deploy_seq": 1,
+            "description": "This plugin will delete a Dynamo Database from AWS Cloud and resource from the CMP Instance.",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-rtz0oq8j",
+            "name": "Teardown for Dynamo DB table",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

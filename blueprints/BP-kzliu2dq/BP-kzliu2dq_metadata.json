@@ -1,0 +1,110 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Create ElastiCache Cluster",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-ihe2d8fr"
+            },
+            "deploy_seq": 1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-5tn0h66t",
+            "name": "Create ElastiCache Cluster",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Amazon ElastiCache is a fully managed, in-memory caching service supporting flexible, real-time use cases. You can use ElastiCache for caching, which accelerates application and database performance, or as a primary data store for use cases that don't require durability like session stores, gaming leaderboards, streaming, and analytics. ElastiCache is compatible with Redis and Memcached.",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-dbcwkv0y"
+        },
+        "href": "/api/v3/cmp/actions/OHK-dbcwkv0y/",
+        "title": "Discover ElastiCache Clusters"
+    },
+    "favorited": false,
+    "icon": "AWS_ElastiCache_gWDCgzy.png",
+    "id": "BP-kzliu2dq",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-6spb5ltg",
+            "image": null,
+            "name": "AWS",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-k6yfn7ka"
+            },
+            "enabled": true,
+            "label": "Delete Cache Node"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-ra567o3z"
+            },
+            "enabled": true,
+            "label": "Add Cache Node"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-ck62gush"
+            },
+            "enabled": true,
+            "label": "Reboot Cache Node"
+        }
+    ],
+    "metadata_version": "2026.1.0",
+    "name": "AWS ElastiCache",
+    "resource_name_template": null,
+    "resource_type": {
+        "icon": "",
+        "id": "RT-t3u2amy4",
+        "internal_only": false,
+        "label": "Cluster",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "cluster",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Delete ElastiCache Cluster",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-hm435klp"
+            },
+            "deploy_seq": 2,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-rvpy5pb1",
+            "name": "Delete ElastiCache Cluster",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

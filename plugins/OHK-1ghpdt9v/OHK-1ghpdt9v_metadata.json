@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-1ghpdt9v",
+    "max_retries": 0,
+    "name": "Discover Cisco UCS service profiles",
+    "resource_technologies": [],
+    "script_filename": "OHK-1ghpdt9v_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

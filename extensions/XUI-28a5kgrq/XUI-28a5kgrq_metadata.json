@@ -1,0 +1,26 @@
+{
+    "description": "A CloudBolt New Relic is a real-time monitoring tool that tracks and provides information about your web app performance. It helps you quickly catch and fix any performance issues more efficiently.",
+    "enabled": true,
+    "icon": "new_relic_PvOn9qp_3R4JPWF.png",
+    "id": "XUI-28a5kgrq",
+    "label": "New Relic",
+    "last_updated": "2026-09-15",
+    "maximum_version_required": "",
+    "minimum_version_required": "2026.2.29",
+    "name": "new_relic",
+    "package_contents": [
+        "forms.py",
+        "__init__.py",
+        "install_agent.py",
+        "new_relic_helper.py",
+        "new_relic_scripts.py",
+        "uninstall_agent.py",
+        "urls.py",
+        "views.py",
+        "templates/admin_page.html",
+        "templates/new_relic_server_tab.html",
+        "templates/tab-dashboard.html",
+        "static/images/new_relic_logo.png"
+    ],
+    "version": ""
+}

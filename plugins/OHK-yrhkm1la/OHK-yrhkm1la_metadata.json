@@ -1,0 +1,11 @@
+{
+    "description": "Discover Aws Mysql",
+    "id": "OHK-yrhkm1la",
+    "max_retries": 0,
+    "name": "Discover AWS MySQL",
+    "resource_technologies": [],
+    "script_filename": "OHK-yrhkm1la_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

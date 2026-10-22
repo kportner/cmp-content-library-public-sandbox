@@ -1,0 +1,11 @@
+{
+    "description": "Get list of current pending orders and check the statusin ServiceNow. If status has changed to \"approved\" or \"rejected\",change CB order status accordingly.",
+    "id": "OHK-h3lq1vdr",
+    "max_retries": 0,
+    "name": "Sync CloudBolt Order Status with ServiceNow Catalog Request Status",
+    "resource_technologies": [],
+    "script_filename": "OHK-h3lq1vdr_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

@@ -1,0 +1,323 @@
+{% extends "kumo_integration_kit/templates/widget_base_page.html" %}
+{% load static %}
+{% block card_id %}cost-summary{% endblock %}
+
+{% block heading %}Cost in Cloud Providers{% endblock %}
+
+{% block heading_right %}
+    {# This content is pulled right. #}
+    <a href="/admin/resourcehandlers/">See all Resource Handlers</a>
+{% endblock %}
+
+{% block child_div %}
+
+<div class="cost-sum">
+    <div id="cost_summary_whole_content">
+        <div style="display: flex;margin-bottom: 20px;justify-content: space-between;">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn change-cost-graph" data-graph_type="column">
+                    <i class="fa fa-chart-bar"></i>
+                </button>
+                <button type="button" class="btn btn-active btn-secondary change-cost-graph" data-graph_type="line">
+                    <i class="fa fa-chart-line" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="days-label-div">
+                <label class="days-label">Last 30 Days</label>
+            </div>
+            <!-- <div class="btn-group" role="group">
+                <button type="button" class="btn btn-active filter-cost" data-days_value="30">30 Days</button>
+                <button type="button" class="btn btn-secondary filter-cost" data-days_value="60">60 Days</button>
+                <button type="button" class="btn btn-secondary filter-cost" data-days_value="90">90 Days</button>
+                <button type="button" class="btn btn-secondary filter-cost" data-days_value="120">120 Days</button>
+            </div> -->
+        </div>
+        <div id="col_cost_rh" style="width: 55%; float: left;"></div>
+        <div id="pie_cost_rh" style="width: 45%;"></div>
+        <div class="custom-legend-widgets" id="custom_legend_cost_summary"></div>
+    </div>
+    <div id="cost_summary_exception_message">
+        <img src="{% static 'kumo_integration_kit/images/cost_in_cloud_providers.png' %}" class="grayed-out-images">
+        <div class="error-container-nodata">
+            <div class="col-sm-12">
+                <i class="fas fa-exclamation-triangle"></i>
+                Please sync to gather data!
+                <a class="spend_recurring_link" href="/recurring_jobs/" target="_blank">Sync</a>
+             </div>
+        </div>
+    </div>
+    <div id="cost_summary_currency_message" class="col-sm-12" style="position: relative;">
+        <div class="error-container-noconv">
+            <div class="col-sm-12">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span id="csCurrencyText">* Conversion rates not set for all resource handlers.</span>
+                <a href="/extensions/admin/kumo_integration_kit/display_admin" class="set-rates" id="csSetRates" target="_blank">Set Rates</a>
+             </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var widget_currency_cs = '{{ widget_currency }}';
+    var currency_error_cs = (widget_currency_cs == "") ? "*": "";
+    var sort_by = (field, reverse, primer) => {
+        const key = primer ?
+            function(x) {
+            return primer(x[field])
+            } :
+            function(x) {
+            return x[field]
+            };
+
+        reverse = !reverse ? 1 : -1;
+
+        return function(a, b) {
+            return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+        }
+    }
+    var piechart_data_cs = JSON.parse('{{ piechart_data | escapejs }}');
+    var barchart_data_cs = JSON.parse('{{ barchart_data | escapejs }}');
+    var barchart_series_data_cs = JSON.parse('{{ barchart_series_data | escapejs }}');
+    var piechart_series_data_cs = JSON.parse('{{ piechart_series_data | escapejs }}');
+    var message_status_cs = '{{ message_status }}';
+    var first_run_cs = '{{ first_run }}';
+    var last_job_status_cs = '{{ last_job_status }}';
+    var cost_days_value = "30";
+    var cost_chart_type = "line";
+    var series_colors_cs = {'AWS':'#fca503', 'Azure':'#007FFF', 'GCP':'#ff8243'};
+    var bar_series_cs;
+    var pie_series_cs;
+    bar_series_cs = [];
+    pie_series_cs = [];
+    var job_id_cs = '{{ job_id }}';
+    barchart_data_cs = Object.keys(barchart_data_cs).sort().reduce((r, k) => (r[k] = barchart_data_cs[k], r), {});
+    piechart_data_cs = Object.keys(piechart_data_cs).sort().reduce((r, k) => (r[k] = piechart_data_cs[k], r), {});
+    
+    $.each(barchart_data_cs, function( key, val ) {
+        let bar_data = {};
+        let temp_bar_val = [];
+        bar_data["name"] = key
+        bar_data["color"] = series_colors_cs[key]
+        Object.values(val).forEach(item => {
+            temp_bar_val.push(parseFloat(item.toFixed(2)))
+        })
+        bar_data["data"] = temp_bar_val
+        bar_series_cs.push(bar_data);
+    });
+
+    $.each(piechart_data_cs, function( key, val ) {
+        pie_series_cs.push({
+            name: key,
+            y: parseFloat(val.toFixed(2)),
+            color: series_colors_cs[key]
+        });
+    });
+
+    bar_series_cs = bar_series_cs.sort(sort_by('data', true, (elem) =>  elem.reduce((a, b) => a + b, 0)));
+    pie_series_cs = pie_series_cs.sort(sort_by('y', true, parseFloat));
+
+    if ((message_status_cs == "False") && (last_job_status_cs == "")) {
+        $("#cost_summary_whole_content").show();
+        $("#cost_summary_exception_message").hide();
+        $("#cost_summary_currency_message").hide();
+        // Initial chart calls
+        cost_rh_column_chart(cost_chart_type, bar_series_cs, barchart_series_data_cs);
+        cost_rh_pie_chart(pie_series_cs, piechart_series_data_cs);
+    }
+    else {
+        if ((first_run_cs == "True") || (message_status_cs == "True")) {
+            $("#cost_summary_whole_content").hide();
+            $("#cost_summary_exception_message").show();
+            $("#cost_summary_currency_message").hide();
+            $(".spend_recurring_link").attr({"href": "/recurring_jobs/"+job_id_cs+"/"});
+        }
+        else {
+            cost_rh_column_chart(cost_chart_type, bar_series_cs, barchart_series_data_cs);
+            cost_rh_pie_chart(pie_series_cs, piechart_series_data_cs);
+            if ((message_status_cs == "not unified") && (last_job_status_cs == "")) {
+                $("#cost_summary_whole_content").show();
+                $("#cost_summary_exception_message").hide();
+                $("#cost_summary_currency_message").show();
+                $("#csCurrencyText").text(`* Conversion rates not set for all resource handlers.`);
+                $("#csSetRates").text("Set Rates");
+                $("#csSetRates").attr({"href": "/extensions/admin/kumo_integration_kit/display_admin"});
+            }
+            else if (last_job_status_cs != "") {
+                $("#cost_summary_whole_content").show();
+                $("#cost_summary_exception_message").hide();
+                $("#cost_summary_currency_message").show();
+                $("#csCurrencyText").text(`* Data last updated on ${last_job_status_cs}, Sync job failed.`);
+                $("#csSetRates").text("See Job");
+                $("#csSetRates").attr({"href": "/recurring_jobs/"+job_id_cs+"/"});
+            }
+            else {
+                null;
+            }
+        }
+    }
+    // Range selector operation
+    // $(".filter-cost").on('click', function(){
+    //     cost_days_value = $(this).data('days_value');
+    //     cost_rh_column_chart(cost_chart_type, data_series);
+    //     $(".filter-cost").removeClass('btn-active').addClass('btn-secondary');
+    //     $(this).addClass('btn-active').removeClass('btn-secondary');
+    // });
+
+    // Change type of graph
+    $(".change-cost-graph").on('click', function(){
+        cost_chart_type = $(this).data('graph_type');
+        cost_rh_column_chart(cost_chart_type, bar_series_cs, barchart_series_data_cs);
+        $(".change-cost-graph").removeClass('btn-active').addClass('btn-secondary');
+        $(this).addClass('btn-active').removeClass('btn-secondary');
+    });
+
+    function cost_rh_column_chart(chart_type, data_series, barchart_series_data_cs) {
+        let chart = {
+            type: chart_type,
+            height: 300,
+        };
+        let title = {
+            text: ''
+        };
+        let xAxis = {
+            categories: barchart_series_data_cs,
+            labels: {
+                enabled: true,
+                step: 2,
+                rotation: 300
+            }
+        }
+        let yAxis = {
+            min: 0,
+            title: {
+                text: ''
+            },
+            stackLabels: {
+                enabled: false,
+            }
+        };
+        let legend = {
+            enabled: false
+        }
+
+        let plotOptions = {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: false
+                },
+            },
+            line: {
+                marker: {
+                    radius: 2
+                }
+            }
+        };
+        let credits = {
+            enabled: false
+        };
+        let series = data_series;
+
+        let json = {};
+        json.chart = chart;
+        json.title = title;
+        json.yAxis = yAxis;
+        json.xAxis = xAxis;
+        json.plotOptions = plotOptions;
+        json.legend = legend;
+        json.credits = credits;
+        json.series = series;
+        $('#col_cost_rh').highcharts(json);
+    }
+
+    function cost_rh_pie_chart(pie_series_cs, piechart_series_data_cs) {
+        let chart = {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            height: 300,
+        };
+        let plotOptions = {
+            pie: {
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    style: {
+                        textOverflow: 'clip'
+                    },
+                    softConnector: false,
+                    distance: 15,
+                    formatter: function () {
+                        return `${this.percentage.toFixed(2) } %`
+                    },
+                },
+                showInLegend: true,
+                startAngle: 0,
+                size: 170
+            }
+        }
+        let legend = {
+            align: 'center',
+            labelFormatter: function () {
+                let nf = new Intl.NumberFormat();
+
+                return '<div><div>'+this.name+': </div><div>'
+                    +widget_currency_cs+' '+nf.format(this.options.y.toFixed(2))+' '
+                    +currency_error_cs+'</div></div>'
+            },
+            enabled:false,
+        };
+        let series = [{
+            type: 'pie',
+            name: 'Cost',
+            data: pie_series_cs
+        }];
+        let title = {
+            text: '',
+        };
+        let credits = {
+            enabled: false
+        };
+        let xAxis = {
+            categories: piechart_series_data_cs,
+            labels: {
+                enabled: true
+            }
+        }
+        let json = {};
+        json.chart = chart;
+        json.title = title;
+        json.xAxis = xAxis;
+        json.series = series;
+        json.credits = credits;
+        json.plotOptions = plotOptions;
+        json.legend = legend;
+        $('#pie_cost_rh').highcharts(json,  function (chart) {
+            let legend = $('#custom_legend_cost_summary');
+            let nf = new Intl.NumberFormat();
+            $.each(chart.series[0].data, function (j, data) {
+                legend.append('<div class="item"><span class="serieName"><span class="symbol" style="background-color:' + data.color + '"></span>' + `${data.name}: ${widget_currency_cs} ${nf.format(data.y.toFixed(2))} ${currency_error_cs}` + '</span></div>');
+            });
+
+            $('#custom_legend_cost_summary .item').click(function () {
+                let inx = $(this).index()
+                point = chart.series[0].data[inx];
+                line_point = $("#col_cost_rh").highcharts().series[inx];
+
+                if (point.visible) {
+                    point.setVisible(false);
+                    line_point.setVisible(false);
+                    $(this).css("color","#afa9a9");
+                }
+                else {
+                    point.setVisible(true);
+                    line_point.setVisible(true);
+                    $(this).css("color","#333333");
+                }
+            });
+        });
+    }
+
+</script>
+{% endblock child_div %}

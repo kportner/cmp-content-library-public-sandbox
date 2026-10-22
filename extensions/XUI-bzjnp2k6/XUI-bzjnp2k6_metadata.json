@@ -1,0 +1,29 @@
+{
+    "description": null,
+    "enabled": true,
+    "icon": "azure-arm-template-logo.jpeg",
+    "id": "XUI-bzjnp2k6",
+    "label": "Azure ARM Templates",
+    "last_updated": "2026-09-15",
+    "maximum_version_required": "",
+    "minimum_version_required": "2026.2.29",
+    "name": "arm_templates",
+    "package_contents": [
+        "__init__.py",
+        "forms.py",
+        "shared.py",
+        "urls.py",
+        "views.py",
+        "actions/deploy_arm_template.py",
+        "actions/generate_options_for_env_id.py",
+        "actions/generate_options_for_resource_group.py",
+        "actions/get_environment_location.py",
+        "actions/teardown_arm_template.py",
+        "templates/admin.html",
+        "templates/tab-blueprints.html",
+        "templates/tab-sourcecontrol.html",
+        "icons/templates.png",
+        "README.rst"
+    ],
+    "version": ""
+}

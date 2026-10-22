@@ -1,0 +1,26 @@
+{
+    "description": "\nThis UI Extension will be used for managing and automating ServiceNow Approval process.\n\n\nUsing this tool you can download sample workflow, create a predefined configurations, this tool will be automatically managing the requests on the CMP orders.\n\n\nCurrent Version: v1.0\n",
+    "enabled": true,
+    "icon": "servicenow_SX3nmFH.jpg",
+    "id": "XUI-q62ajt14",
+    "label": "ServiceNow Approval",
+    "last_updated": "2026-09-15",
+    "maximum_version_required": "",
+    "minimum_version_required": "2026.2.29",
+    "name": "service_now_approval",
+    "package_contents": [
+        "static/css/common.css",
+        "static/images/image.png",
+        "__init__.py",
+        "urls.py",
+        "utils.py",
+        "views.py",
+        "recurring_jobs/servicenow_change_order_status.py",
+        "recurring_jobs/servicenow_close_request.py",
+        "recurring_jobs/servicenow_create_request.py",
+        "templates/admin_page.html",
+        "static/files/service_catalog_request.xml",
+        "static/files/default_data.json"
+    ],
+    "version": "v1.0"
+}

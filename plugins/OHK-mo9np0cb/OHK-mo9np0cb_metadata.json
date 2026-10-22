@@ -1,0 +1,11 @@
+{
+    "description": "For any Blueprint that is configured to be populated from a definition stored in a remote source location, refresh that Blueprint using the Remote Source URL that is set on it.",
+    "id": "OHK-mo9np0cb",
+    "max_retries": 0,
+    "name": "Refresh Blueprints from Remote Source",
+    "resource_technologies": [],
+    "script_filename": "OHK-mo9np0cb_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

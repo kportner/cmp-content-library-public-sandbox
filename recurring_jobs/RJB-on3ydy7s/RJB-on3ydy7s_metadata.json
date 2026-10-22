@@ -1,0 +1,17 @@
+{
+    "action_input_default_values": [],
+    "allow_parallel_jobs": false,
+    "create_date": "2025-03-09 20:19:03.851787",
+    "dependencies": {
+        "hook": "plugins/OHK-nd0nh7oy"
+    },
+    "description": "Download last month's billing data for the pub cloud providers and add any server-related costs to the CB DB.",
+    "enabled": true,
+    "icon": "invoice_ElpX4lw.jpg",
+    "id": "RJB-on3ydy7s",
+    "last_run": null,
+    "last_updated": null,
+    "name": "Import Public Cloud Billing Data",
+    "schedule": "0 2 1 * *",
+    "type": "orchestration_hook"
+}

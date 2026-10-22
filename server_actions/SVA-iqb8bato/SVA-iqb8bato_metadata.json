@@ -1,0 +1,32 @@
+{
+    "action_input_default_values": [],
+    "allow_scheduling": false,
+    "always_allow_to_run": false,
+    "auto_submit_order": false,
+    "dangerous": false,
+    "dependencies": {
+        "hook": "plugins/OHK-bwhiylxg"
+    },
+    "dialog_message": "",
+    "dialog_title_template": "",
+    "enabled": true,
+    "extra_classes": "fas fa-level-up-alt",
+    "hide_from_mcp": false,
+    "icon": "VMTools_WP_Featured_Image-1.png",
+    "id": "SVA-iqb8bato",
+    "is_synchronous": false,
+    "label": "Upgrade VM Tools and Hardware Version",
+    "last_updated": null,
+    "list_view_visible": true,
+    "mcp_destructive_hint": null,
+    "mcp_idempotent_hint": null,
+    "mcp_open_world_hint": null,
+    "mcp_read_only_hint": null,
+    "mcp_tool_description": "",
+    "mcp_tool_name": "",
+    "mcp_tool_title": "",
+    "new_tab_url": null,
+    "requires_approval": false,
+    "sequence": null,
+    "submit_button_label": ""
+}

@@ -1,0 +1,125 @@
+<div id="s3-dash-widget" data-widget-url="{% url 's3_mgmt_widget_browser' 0 %}"
+     data-job-url="{% url 'job_detail' 0 %}">
+    <div class="d-flex align-items-center flex-wrap gap-2 mb-2">
+        <label for="s3-dash-bucket" class="mb-0">Bucket:</label>
+        <select id="s3-dash-bucket" class="flex-grow-1" style="min-width: 150px;">
+            <option value="">Select S3 Bucket</option>
+            {% for bucket in buckets %}
+            <option value="{{ bucket.id }}">{{ bucket.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="button" id="s3-dash-create-btn" class="btn btn-sm btn-light"
+                data-blueprint-id="{{ s3_blueprint_id|default:'' }}"
+                title="Order a new S3 bucket from the Service Catalog">
+            <i class="bi bi-plus-lg"></i> Create S3 Bucket
+        </button>
+        <button type="button" id="s3-dash-sync-btn" class="btn btn-sm btn-light"
+                title="Run the 'Sync Resources' recurring job to fetch new/updated S3 buckets from AWS">
+            <i class="bi bi-arrow-repeat"></i> Sync from AWS
+        </button>
+    </div>
+    <div id="s3-dash-sync-result"></div>
+    {% if not buckets %}
+    <div class="alert alert-info mb-0">
+        {% if not resource_type_exists %}
+        <p><strong>No S3 bucket resource type found.</strong></p>
+        <p class="mb-0">To use this widget:</p>
+        <ol class="mb-0">
+            <li>Import the <a href="/library/?sort_by=display_name&sort=asc&type=all&search=AWS+S3+Bucket" target="_blank"><strong>"AWS S3 Bucket"</strong></a> blueprint from the Content Library. This creates the resource type the widget looks for.</li>
+            <li>Use the <strong>"Sync from AWS"</strong> button above to fetch your existing S3 buckets, or <strong>"Create S3 Bucket"</strong> to order a new one.</li>
+        </ol>
+        {% else %}
+        <p class="mb-0">
+            <strong>No S3 buckets found yet.</strong> Use the <strong>"Sync from AWS"</strong> button
+            above to fetch your existing buckets, or <strong>"Create S3 Bucket"</strong> to order a new one.
+        </p>
+        {% endif %}
+    </div>
+    {% else %}
+    <div id="s3-dash-content"></div>
+    {% endif %}
+</div>
+<script>
+(function () {
+    "use strict";
+    var root = document.getElementById("s3-dash-widget");
+    if (!root || !window.jQuery) { return; }
+    var $ = window.jQuery;
+    // The url tag above resolves the pattern with a placeholder id (0);
+    // swap that back out for the bucket actually picked.
+    var urlTemplate = root.dataset.widgetUrl;
+
+    function load(id) {
+        // Looked up fresh on every call (not cached in a closure) so this
+        // still targets the right element even if the widget's own DOM was
+        // torn down and rebuilt (e.g. a dashboard-wide refresh) while a
+        // previous request was still in flight.
+        var $content = $("#s3-dash-content", root);
+        if (!$content.length) { return; }
+        if (!id) { $content.empty(); return; }
+        $content.html('<p class="text-body-secondary">Loading…</p>');
+        $.get(urlTemplate.replace("/0/", "/" + id + "/")).done(function (html) {
+            // jQuery's .html() executes any embedded <script> tags itself,
+            // so the browser panel's own DataTables setup runs normally.
+            $("#s3-dash-content", root).html(html);
+        }).fail(function () {
+            $("#s3-dash-content", root).html('<p class="text-danger">Failed to load this bucket.</p>');
+        });
+    }
+
+    var $select = $("#s3-dash-bucket", root);
+    if ($select.selectize) {
+        // allowEmptyOption: true - without it Selectize drops the blank
+        // "Select S3 Bucket" placeholder entirely and silently auto-selects
+        // the first real bucket on init, firing onChange (and this
+        // widget's own load()) before the user has picked anything.
+        $select.selectize({dropdownParent: "body", allowEmptyOption: true, onChange: load});
+    } else {
+        $select.on("change", function () { load($(this).val()); });
+    }
+
+    function alertHtml(kind, message) {
+        return '<div class="alert alert-' + kind + ' alert-dismissible mt-2">' + message +
+            '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+    }
+
+    $("#s3-dash-create-btn", root).on("click", function () {
+        var blueprintId = $(this).data("blueprint-id");
+        if (blueprintId) {
+            window.open("/catalog/" + blueprintId + "/order/", "_blank");
+            return;
+        }
+        $("#s3-dash-sync-result", root).html(alertHtml("warning",
+            'Please import the <a href="/library/?sort_by=display_name&sort=asc&type=all&search=AWS+S3+Bucket" target="_blank"><strong>"AWS S3 Bucket"</strong></a> blueprint from the Content Library to enable creating new S3 buckets.'));
+    });
+
+    $("#s3-dash-sync-btn", root).on("click", function () {
+        var $btn = $(this);
+        $btn.prop("disabled", true);
+        $.ajax({
+            url: "/xui/s3_file_manager/sync-buckets/",
+            type: "POST",
+            success: function (data) {
+                $btn.prop("disabled", false);
+                if (data && data.status) {
+                    // root.dataset.jobUrl resolves the "job_detail" url pattern
+                    // with a placeholder id (0); swap in the real one.
+                    var jobUrl = root.dataset.jobUrl.replace("/0/", "/" + data.job_id + "/");
+                    var jobLink = '<a href="' + jobUrl + '" target="_blank">' +
+                        data.job_id + '</a>';
+                    $("#s3-dash-sync-result", root).html(alertHtml("success",
+                        "Sync Resources from AWS has been created using job id " + jobLink));
+                } else {
+                    $("#s3-dash-sync-result", root).html(alertHtml("danger",
+                        $("<div>").text((data && data.message) || "Failed to trigger sync.").html()));
+                }
+            },
+            error: function () {
+                $btn.prop("disabled", false);
+                $("#s3-dash-sync-result", root).html(alertHtml("danger",
+                    "Failed to trigger the S3 bucket sync."));
+            }
+        });
+    });
+}());
+</script>

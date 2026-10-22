@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-27oemiwb",
+    "max_retries": 0,
+    "name": "AKS Cluster Teardown",
+    "resource_technologies": [],
+    "script_filename": "OHK-27oemiwb_script.py",
+    "shared": true,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

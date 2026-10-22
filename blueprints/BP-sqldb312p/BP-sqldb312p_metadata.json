@@ -1,0 +1,109 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Create Azure SQL Database",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-sqldb312c"
+            },
+            "deploy_seq": 1,
+            "description": "",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-sqldb312d",
+            "name": "Create Azure SQL",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Deploys Azure SQL Database (Python 3.12 / azure-mgmt-sql compatible)",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-sqldb312o"
+        },
+        "href": "/api/v3/cmp/actions/OHK-sqldb312o/",
+        "title": "Azure SQL Database Discovery"
+    },
+    "favorited": false,
+    "icon": "asure-sql_10xnIKb_2A9EsoL_tYVaczR_VLMzcVo_DyekfWu_m4CJU6j_HxA3p3L_sSwwXQk.png",
+    "id": "BP-sqldb312p",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-wh49tcv0",
+            "image": null,
+            "name": "Azure",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        },
+        {
+            "color": null,
+            "id": "TAG-neqgy5g5",
+            "image": null,
+            "name": "Azure SQL",
+            "parent": {
+                "color": null,
+                "id": "TAG-fpdjl8eu",
+                "image": null,
+                "name": "Databases",
+                "parent": {
+                    "color": null,
+                    "id": "TAG-d7rehwzt",
+                    "image": null,
+                    "name": "Public Cloud Services",
+                    "sequence": 0
+                },
+                "sequence": 0
+            },
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "Azure SQL Database",
+    "resource_name_template": "",
+    "resource_type": {
+        "icon": "fas fa-database",
+        "id": "RT-h0npsxst",
+        "internal_only": false,
+        "label": "Database",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "database",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Delete Azure SQL Database",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-sqldb312x"
+            },
+            "deploy_seq": -1,
+            "description": "",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-sqldb312t",
+            "name": "Delete Azure SQL",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

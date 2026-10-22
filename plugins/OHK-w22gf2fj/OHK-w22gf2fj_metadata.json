@@ -1,0 +1,19 @@
+{
+    "commandline_args": "",
+    "credentials": "YOUR_CREDENTIALS",
+    "description": "",
+    "execution_timeout": 600,
+    "id": "OHK-w22gf2fj",
+    "max_retries": 0,
+    "name": "Install Jenkins (1)",
+    "remove_after_run": true,
+    "resource_technologies": [],
+    "run_with_sudo": true,
+    "script_filename": "OHK-w22gf2fj_script.sh",
+    "shared": false,
+    "target_os_families": [
+        "Linux -> CentOS",
+        "Linux -> Red Hat"
+    ],
+    "type": "Remote Script"
+}

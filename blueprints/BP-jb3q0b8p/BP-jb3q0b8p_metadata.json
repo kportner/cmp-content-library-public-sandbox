@@ -1,0 +1,88 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Create an Azure Storage account",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-eqbdhjbc"
+            },
+            "deploy_seq": 1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-nvxbr76e",
+            "name": "Create an Azure Storage account",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-d0wquvbz"
+        },
+        "href": "/api/v3/cmp/actions/OHK-d0wquvbz/",
+        "title": "Discover Azure Storage Records"
+    },
+    "favorited": false,
+    "icon": "Monitor_StorageAccount_Logo_IsP9Ea2_u1fZI6a.jpg",
+    "id": "BP-jb3q0b8p",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-wh49tcv0",
+            "image": null,
+            "name": "Azure",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "Azure Storage",
+    "resource_name_template": null,
+    "resource_type": {
+        "icon": "",
+        "id": "RT-wtoyrbjm",
+        "internal_only": false,
+        "label": "Service",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "service",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Deletes Storage Account from Azure",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-qm6nymbq"
+            },
+            "deploy_seq": 2,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-d3894kx4",
+            "name": "Deletes Storage Account from Azure",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

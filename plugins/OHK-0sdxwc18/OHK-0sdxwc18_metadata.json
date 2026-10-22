@@ -1,0 +1,13 @@
+{
+    "description": "",
+    "id": "OHK-0sdxwc18",
+    "max_retries": 0,
+    "name": "Delete GCP Storage bucket",
+    "resource_technologies": [
+        "Google Compute Engine"
+    ],
+    "script_filename": "OHK-0sdxwc18_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

@@ -1,0 +1,11 @@
+{
+    "description": "Refresh the data on an RDS instance. Used to get the DNS address, which doesn't get set up until a few minutes after initial creation.",
+    "id": "OHK-c9if72nl",
+    "max_retries": 0,
+    "name": "Refresh AWS RDS Instance Data",
+    "resource_technologies": [],
+    "script_filename": "OHK-c9if72nl_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

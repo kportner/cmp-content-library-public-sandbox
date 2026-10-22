@@ -1,0 +1,208 @@
+.cost-sum .btn-active,
+.exp-ser .btn-active,
+.spe-det .btn-active {
+    border: 0.5px solid #17659d;
+    background: #335b83;
+    color: white !important;
+}
+
+.cost-sum .days-label-div,
+.exp-ser .days-label-div,
+.spe-det .days-label-div {
+    width: 60%;
+}
+
+.cost-sum .days-label,
+.exp-ser .days-label,
+.spe-det .days-label {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.main-div .square {
+    height: 10px;
+    width: 10px;
+    border-radius: 2px;
+    margin-inline: 5px;
+}
+.main-div .progress {
+    height: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-color: #00aa49;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px rgb(0 0 0 / 10%);
+}
+.main-div .padding-class {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+.main-div .compliant-class {
+    padding-inline: 0px !important;
+}
+.main-div .compliant-class label {
+    font-size: 12px;
+    color: gray;
+    margin-bottom: 0px !important;
+}
+.main-div .overall-percent h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+.main-div {
+    border-bottom: 1px solid lightgray;
+    padding: 10px;
+}
+.main-div .select-dropdown {
+    padding: 10px;
+    background: white;
+}
+#compliance_summary_whole_content .dropdown-label {
+    width: 205px;
+    padding: 5px;
+    font-size: 15px;
+}
+.main-div option:hover {
+  background-color: #d2562e !important;
+}
+
+.exceptionDiv {
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 0;
+    padding: 0px;
+    position: relative;
+    /* display: grid; */
+}
+
+.dummy-images {
+    width: 100%;
+    filter: blur(2px);
+}
+
+.grayed-out-images {
+    width: 100%;
+    opacity: 0.3;
+}
+
+.error-container-noconv {
+    margin-left: -31px;
+    border-radius: 4px;
+    width: 100%;
+    color: #d2562e;
+    height: 40px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    background: white;
+}
+
+.error-container-nodata {
+    position: absolute;
+    margin-top: -40%;
+    width: 100%;
+    margin-left: -16px;
+    height: 43px;
+    text-align: center;
+    border-radius: 4px;
+    color: white;
+    background: #d2562e;
+}
+
+.error-container-nodata div,
+.error-container-noconv div {
+    padding: 10px !important;
+}
+
+.exceptionMessageIcon {
+    font-size: 36px !important;
+    color: #d13212;
+}
+.exceptionMessage {
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.custom-legend-widgets .serieName {
+    float: left;
+    margin-left: 10%;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 50px;
+    text-indent: 5px;
+    font-family: "Lucida Grande",
+                 "Lucida Sans Unicode",
+                 Arial, Helvetica,
+                 sans-serif;
+}
+
+.custom-legend-widgets .item {
+    color: #333333;
+    fill: #333333;
+    float: left;
+    width: 50%;
+}
+
+.custom-legend-widgets {
+    margin-top: 15px;
+    margin-left: 15px;
+    column-count: 3;
+    display: table;
+    clear: both;
+}
+
+.wrapper-legend-spend-details {
+    height: 115px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: inline-block;
+}
+
+/* .serieName {
+    float: left;
+    cursor: pointer;
+    font-size: 12px;
+    padding-top: 5px;
+
+} */
+
+.custom-legend-widgets .symbol {
+    width: 12px;
+    height: 12px;
+    margin-top: 2px;
+    float:left;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.fa-exclamation-triangle {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.spend_recurring_link {
+    color: white;
+    text-decoration: underline;
+    margin-left: 5px;
+}
+
+.set-rates {
+    color: #d2562e;
+    text-decoration: underline;
+    margin-left: 5px;
+}
+
+#spend_details_exception_message,
+#spend_details_currency_message,
+#cost_efficiency_exception_message,
+#cost_efficiency_currency_message,
+#cost_summary_exception_message,
+#cost_summary_currency_message,
+#expensive_services_exception_message,
+#expensive_services_currency_message,
+#compliance_summary_exception_message,
+#compliance_summary_currency_message {
+    display: none;
+}

@@ -1,0 +1,131 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "AWS MariaDB Database Create Service",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-7iiq6sdi"
+            },
+            "deploy_seq": 1,
+            "description": "",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-jg97ime3",
+            "name": "Create AWS MariaDB Database",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Creates an AWS MariaDB database. Deleting the resultant service deletes the bucket.",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-9zz2i5r3"
+        },
+        "href": "/api/v3/cmp/actions/OHK-9zz2i5r3/",
+        "title": "Discover AWS Maria-DB"
+    },
+    "favorited": false,
+    "icon": "aws_mariadb_tKxRlxS_4ad9ZZt.png",
+    "id": "BP-imt2yw1y",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-6spb5ltg",
+            "image": null,
+            "name": "AWS",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        },
+        {
+            "color": null,
+            "id": "TAG-n5zsmir8",
+            "image": null,
+            "name": "MariaDB",
+            "parent": {
+                "color": null,
+                "id": "TAG-fpdjl8eu",
+                "image": null,
+                "name": "Databases",
+                "parent": {
+                    "color": null,
+                    "id": "TAG-d7rehwzt",
+                    "image": null,
+                    "name": "Public Cloud Services",
+                    "sequence": 0
+                },
+                "sequence": 0
+            },
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-0l0i2kx5"
+            },
+            "enabled": true,
+            "label": "Create MariaDb Snapshot"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-ntbrua5l"
+            },
+            "enabled": true,
+            "label": "Delete Maria Db Snapshot"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-pw5uynmi"
+            },
+            "enabled": true,
+            "label": "List Snapshots"
+        }
+    ],
+    "metadata_version": "2026.1.0",
+    "name": "AWS MariaDB",
+    "resource_name_template": "AWS MariaDB Database",
+    "resource_type": {
+        "icon": "fas fa-database",
+        "id": "RT-h0npsxst",
+        "internal_only": false,
+        "label": "Database",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "database",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "AWS MariaDB Database Delete Service",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-7jfgk1zq"
+            },
+            "deploy_seq": -1,
+            "description": "",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-ovv8h1ib",
+            "name": "Delete AWS MariaDB Database Service",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

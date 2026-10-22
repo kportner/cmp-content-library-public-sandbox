@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-u7pwvka8",
+    "max_retries": 0,
+    "name": "Discover Data Factory Workspace",
+    "resource_technologies": [],
+    "script_filename": "OHK-u7pwvka8_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

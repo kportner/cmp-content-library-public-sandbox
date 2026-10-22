@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-el7188yd",
+    "max_retries": 0,
+    "name": "Start MySQL Database Instance",
+    "resource_technologies": [],
+    "script_filename": "OHK-el7188yd_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

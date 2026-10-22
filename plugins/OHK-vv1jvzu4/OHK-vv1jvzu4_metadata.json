@@ -1,0 +1,14 @@
+{
+    "description": "",
+    "id": "OHK-vv1jvzu4",
+    "max_retries": 0,
+    "name": "Azure Queues Teardown",
+    "resource_technologies": [
+        "Azure",
+        "Azure Stack"
+    ],
+    "script_filename": "OHK-vv1jvzu4_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

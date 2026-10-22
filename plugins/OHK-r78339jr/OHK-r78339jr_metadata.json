@@ -1,0 +1,11 @@
+{
+    "description": "This will delete a given Resource Group, VNet, and its subnets",
+    "id": "OHK-r78339jr",
+    "max_retries": 0,
+    "name": "Azure LZ Delete",
+    "resource_technologies": [],
+    "script_filename": "OHK-r78339jr_script.py",
+    "shared": true,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

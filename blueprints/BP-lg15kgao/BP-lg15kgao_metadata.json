@@ -1,0 +1,167 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Create Azure Storage Container",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-ua1u9hg7"
+            },
+            "deploy_seq": 1,
+            "description": "",
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-j9o5vu5y",
+            "name": "Create Azure Storage Container",
+            "parameter_defaults": [
+                {
+                    "label": "Permissions",
+                    "name": "permissions_a599",
+                    "value": "off"
+                }
+            ],
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Azure Container Storage for Blobs",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-et4spkgl"
+        },
+        "href": "/api/v3/cmp/actions/OHK-et4spkgl/",
+        "title": "Sync Azure Storage Container"
+    },
+    "favorited": false,
+    "icon": "Storage-Icon-Azure-Storage-_RbebFgo_cVpn77u_XaZkU82_3LKZDui_JNfIKFJ.png",
+    "id": "BP-lg15kgao",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-wh49tcv0",
+            "image": null,
+            "name": "Azure",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-qa4j3wqz"
+            },
+            "enabled": true,
+            "label": "List Blob"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-zw782yoj"
+            },
+            "enabled": true,
+            "label": "Add Blob"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-oqc5qfv2"
+            },
+            "enabled": false,
+            "label": "Download Blob"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-a9fjn0qy"
+            },
+            "enabled": false,
+            "label": "Delete Blob"
+        }
+    ],
+    "metadata_version": "2026.1.0",
+    "name": "Azure Storage Container",
+    "resource_name_template": null,
+    "resource_type": {
+        "icon": "fas fa-box",
+        "id": "RT-rxia8yp0",
+        "internal_only": false,
+        "label": "Storage",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [
+            {
+                "allow_multiple": false,
+                "available_all_servers": false,
+                "description": null,
+                "field_dependency_controlling_set": [],
+                "field_dependency_dependent_set": [],
+                "global_options": [],
+                "id": "CF-f9s7e15x",
+                "label": "CPUs",
+                "name": "cpu_cnt",
+                "placeholder": null,
+                "relevant_osfamilies": [],
+                "required": true,
+                "show_as_attribute": false,
+                "show_on_servers": false,
+                "type": "INT",
+                "value_pattern_string": null
+            },
+            {
+                "allow_multiple": false,
+                "available_all_servers": false,
+                "description": null,
+                "field_dependency_controlling_set": [],
+                "field_dependency_dependent_set": [],
+                "gen_options_hooks": [
+                    {
+                        "enabled": true,
+                        "name": "Internal CloudBolt Hook"
+                    }
+                ],
+                "global_options": [],
+                "id": "CF-43jm6wpq",
+                "label": "Time Zone",
+                "name": "time_zone",
+                "placeholder": null,
+                "relevant_osfamilies": [],
+                "required": false,
+                "show_as_attribute": false,
+                "show_on_servers": false,
+                "type": "STR",
+                "value_pattern_string": null
+            }
+        ],
+        "name": "storage_1af413d972ac482d974e1262c9b6b7b7",
+        "plural_label": "Storage"
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Delete Azure Storage Container",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-to9sgk5z"
+            },
+            "deploy_seq": -1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-jrhm0in2",
+            "name": "Delete Azure Storage Container",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

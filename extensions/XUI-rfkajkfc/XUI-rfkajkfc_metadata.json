@@ -1,0 +1,27 @@
+{
+    "description": "Datadog in CloudBolt is used for to determine performance metrics as well as event monitoring for infrastructure and cloud services. The software can monitor services such as servers, databases and tools.",
+    "enabled": true,
+    "icon": "data_dog_vEMljt4_xowrcqp.png",
+    "id": "XUI-rfkajkfc",
+    "label": "Datadog",
+    "last_updated": "2026-09-15",
+    "maximum_version_required": "",
+    "minimum_version_required": "2026.2.29",
+    "name": "data_dog",
+    "package_contents": [
+        "data_dog_helper.py",
+        "data_dog_scripts.py",
+        "forms.py",
+        "__init__.py",
+        "install_agent.py",
+        "uninstall_agent.py",
+        "urls.py",
+        "views.py",
+        "templates/admin_page.html",
+        "templates/data_dog_server_tab.html",
+        "templates/tab-dashboard.html",
+        "templates/tab-servers.html",
+        "static/images/data_dog_logo.png"
+    ],
+    "version": ""
+}

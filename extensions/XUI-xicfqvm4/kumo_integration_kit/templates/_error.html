@@ -1,0 +1,76 @@
+<div class="go-to-admin d-none">
+  <div class="modal-header">
+    <h5 class="modal-title">Kumolus Kit</h5>
+  </div>
+  <div class="modal-body">
+    <p>It seems that you have not added CSMP sub-domain and API key in extension admin or may be API key is expired. Please update it!</p>
+  </div>
+  <div class="modal-footer">
+    <a href="/extensions/admin/kumo_integration_kit/display_admin">
+      <button class="btn btn-primary js-submit-form" data-loading-text="redirecting...">
+        Ok
+      </button>
+    </a>
+  </div>
+</div>
+
+<div class="go-to-rh d-none">
+  <div class="modal-header">
+    <h5 class="modal-title">Kumolus Kit</h5>
+  </div>
+  <div class="modal-body">
+    <p>It seems that you haven't added this resource handler/Projects if GCP to CSMP account, Please add it or select from list on Admin Page.</p>
+  </div>
+  <div class="modal-footer">
+    <a href="/admin/resourcehandlers/">
+      <button class="btn btn-primary js-submit-form" data-loading-text="redirecting...">
+        Ok
+      </button>
+    </a>
+  </div>
+</div>
+
+<div class="no-data d-none">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-exclamation-circle text-danger"></i> No data found!</h5>
+    <button type="button" class="btn-close d-none closeModal" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body generalError">
+    <p>Data is not available or is in sync if added new adapter in CSMP account. Please check CSMP account or try after sometime!</p>
+  </div>
+  <div class="modal-footer overviewButton">
+    <button class="btn btn-primary js-submit-form" data-loading-text="redirecting...">
+      Overview
+    </button>
+  </div>
+</div>
+
+<div class="no-server-rh d-none">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-exclamation-circle text-danger"></i> No resource handler found!</h5>
+    <button type="button" class="btn-close d-none closeModal" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body generalError">
+    <p>The resource handler to which this server is linked is not been added in CSMP account. Please add it and try again!</p>
+    <p><strong>OR</strong></p>
+    <p>Please check if billing adapter is present in CSMP account.</p>
+  </div>
+  <div class="modal-footer">
+    <a id="go-to-details">
+      <button class="btn btn-primary js-submit-form" data-loading-text="redirecting...">
+        Ok
+      </button>
+    </a>
+  </div>
+</div>
+
+<div class="no-normal-comp d-none">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-exclamation-circle text-danger"></i> No normal resource handler found!</h5>
+    <button type="button" class="btn-close d-none closeModal" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body generalError">
+    <p>No normal adapter found in CSMP. Please create one in CSMP account and try again later!</p>
+  </div>
+  <div class="modal-footer d-none"></div>
+</div>

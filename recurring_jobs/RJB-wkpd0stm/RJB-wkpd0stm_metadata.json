@@ -1,0 +1,16 @@
+{
+    "action_input_default_values": [],
+    "allow_parallel_jobs": false,
+    "create_date": "2025-03-09 20:19:03.856524",
+    "dependencies": {
+        "hook": "plugins/OHK-e3nslbjh"
+    },
+    "description": "Download the latest exchange rates for supported currencies.",
+    "enabled": false,
+    "id": "RJB-wkpd0stm",
+    "last_run": null,
+    "last_updated": null,
+    "name": "Download Currency Exchange Rates",
+    "schedule": "0 2 * * *",
+    "type": "orchestration_hook"
+}

@@ -1,0 +1,114 @@
+<div class="card mb-3">
+    <div class="card-header">
+        <h4>Cost Summary</h4>
+    </div>
+    <div class="card-body">
+        <dl>
+            <dt>Hardware:</dt>
+            <dd>{{ costs.summary.hw_rate_display }}</dd>
+            <dt>Software:</dt>
+            <dd>{{ costs.summary.sw_rate_display }}</dd>
+            <dt>Extra:</dt>
+            <dd>{{ costs.summary.extra_rate_display }}</dd>
+            <dt>Total:</dt>
+            <dd><strong>{{ costs.summary.total_rate_display }}</strong></dd>
+        </dl>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h4>Cost Details</h4>
+    </div>
+    <div class="card-body">
+
+        <table class="table table-hover" style="width:100%">
+            <thead>
+            <tr>
+                <th>Class</th>
+                <th>Component</th>
+                <th>Unit Cost</th>
+                <th>Quantity</th>
+                <th>Multiplier</th>
+                <th>Ext. Cost</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if costs.detail.custom %}
+            <tr>
+                <td>Hardware</td>
+                <td>Custom</td>
+                <td>{{ costs.detail.custom.unit_cost_display }}</td>
+                <td>{{ costs.detail.custom.qty | floatformat:0 }}</td>
+                <td>-</td>
+                <td>{{ costs.detail.custom.ext_cost_display }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td>Hardware</td>
+                <td>CPU</td>
+                <td>{{ costs.detail.cpu.unit_cost_display }}</td>
+                <td>{{ costs.detail.cpu.qty | floatformat:0 }}</td>
+                <td>-</td>
+                <td>{{ costs.detail.cpu.ext_cost_display }}</td>
+            </tr>
+            <tr>
+                <td>Hardware</td>
+                <td>RAM</td>
+                <td>{{ costs.detail.mem.unit_cost_display }}</td>
+                <td>{{ costs.detail.mem.qty | floatformat:2 }}</td>
+                <td>-</td>
+                <td>{{ costs.detail.mem.ext_cost_display }}</td>
+            </tr>
+            {% for disk in costs.disks %}
+                <tr>
+                    <td>Hardware</td>
+                    <td>{{ disk.name }}</td>
+                    <td>{{ costs.detail.disk.unit_cost_display }}</td>
+                    <td>{{ disk.size | floatformat:2 }}</td>
+                    <td>{{ disk.multiplier | floatformat:2 }}</td>
+                    <td>{{ disk.ext_cost_display }}</td>
+                </tr>
+            {% endfor %}
+            {% endif %}
+            {% if costs.os_build %}
+            <tr>
+                <td>Software</td>
+                <td>{{ costs.os_build.name }}</td>
+                <td>{{ costs.os_build.unit_cost_display }}</td>
+                <td>{{ costs.os_build.qty }}</td>
+                <td>-</td>
+                <td>{{ costs.os_build.ext_cost_display }}</td>
+            </tr>
+            {% endif %}
+            {% for app in costs.apps %}
+                <tr>
+                    <td>Software</td>
+                    <td>{{ app.name }}</td>
+                    <td>{{ app.unit_cost_display }}</td>
+                    <td>{{ app.qty }}</td>
+                    <td>-</td>
+                    <td>{{ app.ext_cost_display }}</td>
+                </tr>
+            {% endfor %}
+            {% for param in costs.params %}
+                <tr>
+                    <td>Extra</td>
+                    <td>{{ param.name }}</td>
+                    <td>{{ param.unit_cost_display }}</td>
+                    <td>{{ param.qty }}</td>
+                    <td>-</td>
+                    <td>{{ param.ext_cost_display }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="5"></td>
+                <th>{{ costs.totals.ext_cost_display }}</th>
+            </tr>
+            </tfoot>
+        </table>
+
+    </div>
+</div>

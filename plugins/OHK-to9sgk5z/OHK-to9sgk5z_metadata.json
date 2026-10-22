@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-to9sgk5z",
+    "max_retries": 0,
+    "name": "Delete Azure Storage Container",
+    "resource_technologies": [],
+    "script_filename": "OHK-to9sgk5z_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

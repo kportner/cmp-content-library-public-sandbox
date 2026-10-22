@@ -1,0 +1,17 @@
+{
+    "description": "A CloudBolt Hello World Dashboard Extension shows 'Hello World' in different Indian languages on the dashboard.",
+    "enabled": true,
+    "icon": "hello_world_dashboard_ext.png",
+    "id": "XUI-fb4i8avg",
+    "label": "Hello World Dashboard Extension",
+    "last_updated": "2026-09-15",
+    "maximum_version_required": "",
+    "minimum_version_required": "2026.2.29",
+    "name": "hello_world_dashboard_ext",
+    "package_contents": [
+        "__init__.py",
+        "views.py",
+        "templates/hello.html"
+    ],
+    "version": ""
+}

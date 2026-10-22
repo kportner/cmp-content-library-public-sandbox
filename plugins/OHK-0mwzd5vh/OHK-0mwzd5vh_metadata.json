@@ -1,0 +1,192 @@
+{
+    "action_inputs": [
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Public hostname for the route. If not specified, a hostname is generated.",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "create_route_a675"
+                    },
+                    "custom-field-options": [
+                        "True"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "application_hostname_a675"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-ygde8faz",
+            "label": "Hostname",
+            "maximum": "250.00",
+            "name": "application_hostname",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": false,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Path that the router watches to route traffic to the service.",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "create_route_a675"
+                    },
+                    "custom-field-options": [
+                        "True"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "application_path_a675"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-kr3cn8sp",
+            "label": "Path",
+            "maximum": "250.00",
+            "name": "application_path",
+            "placeholder": "/",
+            "regex_constraint": "^/",
+            "relevant_osfamilies": [],
+            "required": false,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "STR",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Target port for traffic.",
+            "field_dependency_controlling_set": [
+                {
+                    "controlling-field": {
+                        "name": "create_route_a675"
+                    },
+                    "custom-field-options": [
+                        "True"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "application_target_port_a675"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-fhwz38tu",
+            "label": "Target Port",
+            "name": "application_target_port",
+            "placeholder": "8080",
+            "relevant_osfamilies": [],
+            "required": false,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "INT",
+            "value_pattern_string": null
+        },
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "Exposes your Application at a public URL",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [
+                {
+                    "controlling-field": {
+                        "name": "create_route_a675"
+                    },
+                    "custom-field-options": [
+                        "True"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "application_hostname_a675"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                },
+                {
+                    "controlling-field": {
+                        "name": "create_route_a675"
+                    },
+                    "custom-field-options": [
+                        "True"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "application_path_a675"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                },
+                {
+                    "controlling-field": {
+                        "name": "create_route_a675"
+                    },
+                    "custom-field-options": [
+                        "True"
+                    ],
+                    "dependency-type": "SHOWHIDE",
+                    "dependent-field": {
+                        "name": "application_target_port_a675"
+                    },
+                    "maximum": null,
+                    "minimum": null,
+                    "regex": ""
+                }
+            ],
+            "global_options": [],
+            "hide_if_default_value": false,
+            "id": "CF-v1nvy0nc",
+            "label": "Create a Route to the Application",
+            "name": "create_route",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "BOOL",
+            "value_pattern_string": null
+        }
+    ],
+    "action_inputs_sequence": [
+        "create_route",
+        "application_hostname",
+        "application_path",
+        "application_target_port"
+    ],
+    "description": "",
+    "id": "OHK-0mwzd5vh",
+    "max_retries": 0,
+    "name": "Advanced options",
+    "resource_technologies": [],
+    "script_filename": "OHK-0mwzd5vh_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

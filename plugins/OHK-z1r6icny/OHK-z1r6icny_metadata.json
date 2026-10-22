@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-z1r6icny",
+    "max_retries": 0,
+    "name": "Email Notifications for Openstack VM Details",
+    "resource_technologies": [],
+    "script_filename": "OHK-z1r6icny_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

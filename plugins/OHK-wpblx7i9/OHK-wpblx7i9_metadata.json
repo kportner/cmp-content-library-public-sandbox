@@ -1,0 +1,19 @@
+{
+    "commandline_args": null,
+    "credentials": "YOUR_CREDENTIALS",
+    "description": "Stop a MSSql Server. Since the stop command doesn't return any output, the status command is executed to show that the server has been stoped.",
+    "execution_timeout": 120,
+    "id": "OHK-wpblx7i9",
+    "max_retries": 0,
+    "name": "Stop MSSql Server",
+    "remove_after_run": true,
+    "resource_technologies": [],
+    "run_with_sudo": false,
+    "script_filename": "OHK-wpblx7i9_script.sh",
+    "shared": false,
+    "target_os_families": [
+        "Linux -> Oracle Enterprise Linux",
+        "Linux -> Red Hat"
+    ],
+    "type": "Remote Script"
+}

@@ -1,0 +1,124 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "Create Data Factory Workspace",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-cmxgvnc2"
+            },
+            "deploy_seq": 1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-9s575pvg",
+            "name": "Create Data Factory Workspace",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Blueprint for Creating the Data Factory workspace on Azure portal.",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-u7pwvka8"
+        },
+        "href": "/api/v3/cmp/actions/OHK-u7pwvka8/",
+        "title": "Discover Data Factory Workspace"
+    },
+    "favorited": false,
+    "icon": "azure_data_factory_bp_vRPZPJ9_vAhMjeC_YVHwoPM_tUxMmqp_WUkwy5Q.png",
+    "id": "BP-d077k2gb",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-wh49tcv0",
+            "image": null,
+            "name": "Azure",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-6rhfzpoe"
+            },
+            "enabled": true,
+            "label": "Delete Pipelines"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-knkh0u65"
+            },
+            "enabled": true,
+            "label": "List Pipelines"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-luai9bee"
+            },
+            "enabled": true,
+            "label": "Cancel Pipelines"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-umlfvvxd"
+            },
+            "enabled": true,
+            "label": "Run Pipelines"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-yu938yi1"
+            },
+            "enabled": true,
+            "label": "Rerun Pipelines"
+        }
+    ],
+    "metadata_version": "2026.1.0",
+    "name": "Azure Data Factory",
+    "resource_name_template": null,
+    "resource_type": {
+        "icon": "",
+        "id": "RT-wtoyrbjm",
+        "internal_only": false,
+        "label": "Service",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "service",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "Delete Data Factory Workspace",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-5jxjnwgi"
+            },
+            "deploy_seq": -1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-sws635he",
+            "name": "Delete Data Factory Workspace",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

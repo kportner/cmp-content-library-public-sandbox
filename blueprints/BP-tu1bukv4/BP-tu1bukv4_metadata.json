@@ -1,0 +1,53 @@
+{
+    "any_group_can_deploy": false,
+    "auto_historical_resources": false,
+    "blueprint_image": null,
+    "deployment_items": [
+        {
+            "action_name": "Create GCP Project",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-rgkdo6kf"
+            },
+            "deploy_seq": 1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-7jc3g5o1",
+            "name": "GCP Project",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "",
+    "favorited": false,
+    "id": "BP-tu1bukv4",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-skmuqdvr",
+            "image": null,
+            "name": "GCP",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "Create GCP Project",
+    "resource_name_template": "",
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": []
+}

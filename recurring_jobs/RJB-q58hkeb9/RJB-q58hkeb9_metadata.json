@@ -1,0 +1,56 @@
+{
+    "action_input_default_values": [],
+    "action_inputs": [
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": null,
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": false,
+            "id": "CF-ifpf3nkm",
+            "label": "Job Id",
+            "name": "job_id",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        },
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": null,
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": false,
+            "id": "CF-ijaghand",
+            "label": "Order Id",
+            "name": "order_id",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        }
+    ],
+    "allow_parallel_jobs": false,
+    "create_date": "2026-09-10 17:50:58.576543",
+    "dependencies": {
+        "hook": "plugins/OHK-0esooy8g"
+    },
+    "description": "",
+    "enabled": true,
+    "id": "RJB-q58hkeb9",
+    "last_run": null,
+    "last_updated": null,
+    "name": "Cancel hung jobs from cloudbolt",
+    "schedule": "",
+    "type": "orchestration_hook"
+}

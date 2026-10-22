@@ -1,0 +1,11 @@
+{
+    "description": "Download the latest monthly invoice for all Azure ARM Resource Handlers.",
+    "id": "OHK-7j68lvva",
+    "max_retries": 0,
+    "name": "Download Azure Resource Manager Invoice",
+    "resource_technologies": [],
+    "script_filename": "OHK-7j68lvva_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

@@ -1,0 +1,20 @@
+{
+    "description": null,
+    "enabled": true,
+    "icon": "scheduled_snapshots_logo_9fDRUQ4.jpeg",
+    "id": "XUI-9o6al7y7",
+    "label": "Scheduled Snapshots",
+    "last_updated": "2026-09-15",
+    "maximum_version_required": "",
+    "minimum_version_required": "2026.2.29",
+    "name": "scheduled_snapshots",
+    "package_contents": [
+        "__init__.py",
+        "forms.py",
+        "urls.py",
+        "views.py",
+        "actions/take_scheduled_snapshots.py",
+        "templates/server_tab.html"
+    ],
+    "version": ""
+}

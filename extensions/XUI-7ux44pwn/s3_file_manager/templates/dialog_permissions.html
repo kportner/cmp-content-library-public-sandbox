@@ -1,0 +1,46 @@
+{# The read-only half of the permissions dialog: AWS's verdict, owner, grants. #}
+<div class="card bg-body-tertiary border-0 mb-3">
+    <div class="card-body py-2 px-3 small">
+        <div class="d-flex align-items-center flex-wrap gap-2 mb-1">
+            <span class="fw-semibold">Policy status:</span>
+            {% if public_error %}
+                <span class="text-body-secondary">unavailable — {{ public_error }}</span>
+            {% elif public %}
+                <span class="badge text-bg-danger">Public</span>
+            {% elif public is False %}
+                <span class="badge text-bg-success">Not public</span>
+            {% else %}
+                <span class="badge text-bg-secondary">No policy</span>
+            {% endif %}
+            {% if not acl_error and not acls_enabled %}
+                <span class="badge text-bg-secondary">ACLs disabled</span>
+            {% endif %}
+        </div>
+        {% if acl_error %}
+            <div class="text-body-secondary">ACL unavailable: {{ acl_error }}</div>
+        {% else %}
+            <div class="d-flex align-items-center flex-wrap gap-2">
+                <span class="fw-semibold">Owner:</span>
+                <code title="{{ acl.owner }}">{{ acl.owner|truncatechars:20 }}</code>
+            </div>
+            <div class="d-flex align-items-center flex-wrap gap-2">
+                <span class="fw-semibold">Grants:</span>
+                {% for grant in acl.grants %}
+                    <span class="badge bg-body-secondary text-body border"
+                          title="{{ grant.grantee }} ({{ grant.grantee_type }})">
+                        {{ grant.grantee|truncatechars:20 }} — {{ grant.permission }}
+                    </span>
+                {% empty %}
+                    <span class="text-body-secondary">none</span>
+                {% endfor %}
+            </div>
+            {% if not acls_enabled %}
+                <div class="text-body-secondary mt-1">
+                    ACLs are disabled on this bucket (Object Ownership is
+                    "Bucket owner enforced"), so canned ACLs cannot be applied —
+                    use the policy below.
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>

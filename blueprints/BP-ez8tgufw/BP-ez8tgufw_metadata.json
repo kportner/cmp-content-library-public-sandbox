@@ -1,0 +1,95 @@
+{
+    "any_group_can_deploy": true,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "AWS Security Group Build",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-6hrkm9ht"
+            },
+            "deploy_seq": 1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-f61mc3bq",
+            "name": "AWS Security Group Build",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "An Amazon EC2 security group acts as a virtual firewall that controls the traffic for one or more instances. You add rules to each security group to allow traffic to or from its associated instances. You can modify the rules for a security group at any time; the new rules are automatically applied to all instances that are associated with the security group.",
+    "discovery_plugin": {
+        "dependencies": {
+            "hook": "plugins/OHK-24uh4sir"
+        },
+        "href": "/api/v3/cmp/actions/OHK-24uh4sir/",
+        "title": "AWS Security Group Discovery"
+    },
+    "favorited": false,
+    "icon": "Aws_Secuirity_Group_logo_JfSCRXu_gSz6RCs.jpg",
+    "id": "BP-ez8tgufw",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-6spb5ltg",
+            "image": null,
+            "name": "AWS",
+            "parent": {
+                "color": null,
+                "id": "TAG-rgqwsw74",
+                "image": null,
+                "name": "Technology Type",
+                "sequence": 0
+            },
+            "sequence": 0
+        },
+        {
+            "color": null,
+            "id": "TAG-i8c78zbl",
+            "image": null,
+            "name": "New in 8.7",
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "AWS Security Groups",
+    "resource_name_template": null,
+    "resource_type": {
+        "icon": "",
+        "id": "RT-v1c78hz7",
+        "internal_only": false,
+        "label": "Security Group",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "security_group",
+        "plural_label": "Security Groups"
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": [
+        {
+            "action_name": "AWS Security Group",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-yhn3hrat"
+            },
+            "deploy_seq": 2,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-9ejbbr9m",
+            "name": "AWS Security Group",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": true,
+            "tier_type": "teardown_plugin"
+        }
+    ]
+}

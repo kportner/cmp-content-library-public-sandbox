@@ -1,0 +1,362 @@
+{% comment %}
+S3 File Manager tab.
+
+CloudBolt fetches this shell over its own XHR when the tab is opened
+(Tab.render emits <div data-include="...">), so it carries no page state. The
+rows come from objects.json through CMP's DataTables integration
+(class="v5-datatable" + data-table-source), which supplies search, sorting,
+paging and the refresh button; browsing state lives in the script below and the
+URL never changes. Writes go through CloudBolt's own dialogs (open-dialog +
+@dialog_view + C2Form), so this template holds no forms of its own.
+{% endcomment %}
+
+<div id="s3-bucket-management-tab"
+     data-resource-id="{{ resource.id }}"
+     data-objects-url="{{ objects_url }}"
+     data-dialog-url="{{ dialog_url }}">
+
+    <nav aria-label="bucket path" class="mb-2 d-flex align-items-center gap-2">
+        <ol class="breadcrumb mb-0 flex-grow-1" id="s3b-breadcrumb">
+            <li class="breadcrumb-item active">{{ resource.name }}</li>
+        </ol>
+        <span id="s3b-note" class="text-body-secondary small fw-bold"></span>
+        <a class="btn btn-sm btn-light open-dialog d-none" id="s3b-note-edit"
+           href="{{ dialog_url }}?action=edit-note" title="Edit note">
+            <i class="bi bi-pencil"></i>
+        </a>
+        <button class="btn btn-sm btn-light d-none" id="s3b-note-edit-disabled" type="button"
+                disabled title="Only a CB Admin or Super Admin can edit this note">
+            <i class="bi bi-pencil"></i>
+        </button>
+    </nav>
+
+    <div class="d-flex align-items-center flex-wrap gap-2 mb-3">
+        {# Object operations first: what people do most, in the order they do it. #}
+        <a class="btn btn-sm btn-primary open-dialog"
+           href="{{ dialog_url }}?action=upload">
+            <i class="bi bi-upload"></i> Upload
+        </a>
+        <a class="btn btn-sm btn-outline-secondary open-dialog"
+           href="{{ dialog_url }}?action=new-folder">
+            <i class="bi bi-folder-plus"></i> New folder
+        </a>
+        <button class="btn btn-sm btn-outline-danger" type="button" id="s3b-delete-btn"
+                disabled>
+            <i class="bi bi-trash"></i> Delete<span id="s3b-delete-count"></span>
+        </button>
+
+        {# How the list is shown. #}
+        <button class="btn btn-sm btn-light" type="button" id="s3b-flat-toggle"
+                aria-pressed="false"
+                title="List every object beneath this folder by full key">
+            <i class="bi bi-list-nested"></i> Flat view
+        </button>
+        <button class="btn btn-sm btn-light" type="button" id="s3b-deleted-toggle"
+                aria-pressed="false"
+                title="Include objects whose latest version is a delete marker">
+            <i class="bi bi-eye"></i> Show deleted
+        </button>
+
+        {% comment %}
+        Bucket-level, right-aligned and away from the object actions. The
+        versioning control is the state as well as the action: it reads
+        "Versioning: enabled" and is inert once versioning is on, because S3 can
+        never switch it back off.
+        {% endcomment %}
+        <a class="btn btn-sm btn-light ms-auto open-dialog" id="s3b-versioning-btn"
+           href="{{ dialog_url }}?action=enable-versioning">
+            <i class="bi bi-clock-history"></i>
+            <span id="s3b-versioning-label">Versioning</span>
+        </a>
+        {% if can_edit_permissions %}
+        <a class="btn btn-sm btn-light open-dialog"
+           href="{{ dialog_url }}?action=permissions">
+            <i class="bi bi-shield-lock"></i> Permissions
+        </a>
+        {% endif %}
+        {% if is_super_admin %}
+        <a class="btn btn-sm btn-light open-dialog"
+           href="{{ dialog_url }}?action=assign-group">
+            <i class="bi bi-people"></i> Assign to group
+        </a>
+        {% endif %}
+        {% if can_delete_bucket %}
+        <a class="btn btn-sm btn-outline-danger open-dialog"
+           href="{{ dialog_url }}?action=delete-bucket">
+            <i class="bi bi-x-circle"></i> Delete bucket
+        </a>
+        {% endif %}
+    </div>
+
+    <div id="s3b-error" class="alert alert-danger d-none" role="alert">
+        <span id="s3b-error-text"></span>
+        <a class="btn btn-sm btn-outline-danger open-dialog ms-2 d-none" id="s3b-remove-missing-btn"
+           href="{{ dialog_url }}?action=remove-missing-bucket">
+            Remove from CloudBolt
+        </a>
+    </div>
+
+    {% comment %}
+    Empty on purpose: c2.dataTables fills it from data-table-source, exactly as
+    CMP's own Jobs tab does. With a URL source the rows are positional lists of
+    cells, one per <th> below (objects_json builds them in this order).
+    {% endcomment %}
+    <table id="s3b-table"
+           class="v5-datatable"
+           data-table
+           data-table-no-auto-init
+           data-table-refresh-btn
+           data-table-sort="1,asc"
+           data-table-sort-disabled="0,6"
+           data-table-source="{{ objects_url }}">
+        <thead>
+            <tr>
+                <th><input class="form-check-input" type="checkbox" id="s3b-select-all"
+                           aria-label="Select all"></th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Last modified</th>
+                <th>Size</th>
+                <th>Storage class</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<script>
+(function () {
+    "use strict";
+    var root = document.getElementById("s3-bucket-management-tab");
+    if (!root || !window.jQuery || !window.c2 || !c2.dataTables) { return; }
+    var $ = window.jQuery;
+    var $table = $("#s3b-table");
+
+    // Where the user is. Kept here rather than in the URL because CloudBolt owns
+    // the tab's URL (the tab is fetched via data-include), and remembered per
+    // resource so the page reload a dialog triggers comes back to this folder.
+    var memoryKey = "s3b.state." + root.dataset.resourceId;
+    var state = {path: "", flat: false, deleted: false};
+    try {
+        state = $.extend(state, JSON.parse(sessionStorage.getItem(memoryKey) || "{}"));
+    } catch (err) { /* ignore a corrupt entry */ }
+
+    function remember() {
+        try { sessionStorage.setItem(memoryKey, JSON.stringify(state)); }
+        catch (err) { /* private browsing */ }
+    }
+
+    // c2.dataTables wraps data-table-source into DataTables' server-side ajax and
+    // sends CloudBolt's legacy parameters; table-fnServerParams is its documented
+    // hook for adding our own, so the wrapper (and its paging/search/sort
+    // translation) stays intact and navigation is just a reload.
+    $table.data("table-fnServerParams", function (aoData) {
+        aoData.push({name: "path", value: state.path});
+        if (state.flat) { aoData.push({name: "flat", value: "1"}); }
+        if (state.deleted) { aoData.push({name: "deleted", value: "1"}); }
+    });
+
+    // Refresh the chrome from the same response that filled the table.
+    $table.on("xhr.dt", function (e, settings, json) {
+        var meta = (json && json.meta) || {};
+        $("#s3b-error").toggleClass("d-none", !meta.error);
+        $("#s3b-error-text").text(meta.error || "");
+        $("#s3b-remove-missing-btn").toggleClass("d-none", !meta.bucket_missing);
+
+        var note = meta.note || "";
+        $("#s3b-note").text(note).attr("title", note)
+            .css(note && note.length <= 4 ? {"font-size": "1.1rem"} : {"font-size": ""});
+        $("#s3b-note-edit").toggleClass("d-none", !meta.can_edit_note);
+        $("#s3b-note-edit-disabled").toggleClass("d-none", !!meta.can_edit_note);
+
+        // One control for both the state and the action: inert once versioning
+        // is on (S3 cannot turn it off again), a live dialog trigger otherwise.
+        var $ver = $("#s3b-versioning-btn");
+        $("#s3b-versioning-label").text(meta.versioning_enabled
+            ? "Versioning: enabled"
+            : meta.versioning === "Suspended" ? "Versioning: suspended — re-enable"
+            : "Enable versioning");
+        $ver.toggleClass("disabled", !!meta.versioning_enabled)
+            .toggleClass("open-dialog", !meta.versioning_enabled)
+            .attr("aria-disabled", meta.versioning_enabled ? "true" : "false");
+        // A pressed toggle reads as active, the way CMP's filter buttons do.
+        $("#s3b-flat-toggle").toggleClass("active btn-secondary", state.flat)
+            .toggleClass("btn-light", !state.flat)
+            .attr("aria-pressed", state.flat ? "true" : "false");
+        $("#s3b-deleted-toggle").toggleClass("active btn-secondary", state.deleted)
+            .toggleClass("btn-light", !state.deleted)
+            .attr("aria-pressed", state.deleted ? "true" : "false");
+
+        var $bc = $("#s3b-breadcrumb").empty();
+        $bc.append($("<li>")
+            .addClass("breadcrumb-item" + (meta.path ? "" : " active"))
+            .append(meta.path
+                ? $("<a>").attr("href", "#").text(meta.bucket || "").data("path", "")
+                : document.createTextNode(meta.bucket || "")));
+        (meta.crumbs || []).forEach(function (crumb, i, all) {
+            var last = i === all.length - 1;
+            $bc.append($("<li>")
+                .addClass("breadcrumb-item" + (last ? " active" : ""))
+                .append(last
+                    ? document.createTextNode(crumb.name)
+                    : $("<a>").attr("href", "#").text(crumb.name)
+                        .data("path", crumb.path)));
+        });
+    });
+
+    // c2.dataTables.init() calls $table.DataTable(options) inside an .each() and
+    // returns nothing, so take the API object from the table afterwards.
+    c2.dataTables.init("#s3b-table");
+    var dt = $table.DataTable();
+
+    function go(next) {
+        state.path = next;
+        remember();
+        dt.ajax.reload();
+    }
+
+    $table.on("click", "a.s3b-folder", function (e) {
+        e.preventDefault();
+        go(String($(this).data("s3-key")));
+    });
+    $("#s3b-breadcrumb").on("click", "a", function (e) {
+        e.preventDefault();
+        go(String($(this).data("path") || ""));
+    });
+    $("#s3b-flat-toggle").on("click", function () {
+        state.flat = !state.flat;
+        remember();
+        dt.ajax.reload();
+    });
+    $("#s3b-deleted-toggle").on("click", function () {
+        state.deleted = !state.deleted;
+        remember();
+        dt.ajax.reload();
+    });
+
+    // Selection drives Delete; the keys go into the dialog's form as hidden
+    // fields, which keeps them out of the URL however many are ticked.
+    function selected() {
+        return $table.find("input.s3b-item:checked").map(function () {
+            return this.value;
+        }).get();
+    }
+
+    function selectionChanged() {
+        var n = selected().length;
+        $("#s3b-delete-btn").prop("disabled", n === 0);
+        $("#s3b-delete-count").text(n ? " (" + n + ")" : "");
+    }
+
+    $table.on("change", "input.s3b-item", selectionChanged);
+    $table.on("draw.dt", function () {
+        $("#s3b-select-all").prop("checked", false);
+        selectionChanged();
+    });
+    $("#s3b-select-all").on("change", function () {
+        $table.find("input.s3b-item").prop("checked", this.checked);
+        selectionChanged();
+    });
+    $("#s3b-delete-btn").on("click", function () {
+        var keys = selected();
+        if (!keys.length) { return; }
+        $("#dialog-modal").one("shown.bs.modal", function () {
+            var $form = $(this).find("form");
+            keys.forEach(function (key) {
+                $("<input>").attr({type: "hidden", name: "keys", value: key})
+                    .appendTo($form);
+            });
+        });
+        c2.dialogs.displayJqXHR($.get(root.dataset.dialogUrl, {
+            action: "delete", path: state.path, count: keys.length
+        }));
+    });
+
+    // Every dialog acts on the folder currently shown.
+    $(root).on("click", "a.open-dialog", function () {
+        var href = this.getAttribute("href");
+        if (href.indexOf("path=") === -1) {
+            this.setAttribute("href", href + "&path=" + encodeURIComponent(state.path));
+        }
+    });
+
+    // Upload dialog: chosen count + size, then a live progress bar. CMP's dialog
+    // hands the submit to customFormSubmissionHandler; jQuery's own submit has
+    // no upload progress, and Django accepts at most {{ upload_max_files }}
+    // files per request, so files go up in batches of that size with one bar.
+    var fmtBytes = function (n) {
+        var units = ["B", "KB", "MB", "GB", "TB"], i = 0;
+        while (n >= 1024 && i < units.length - 1) { n /= 1024; i += 1; }
+        return (i ? n.toFixed(1) : n) + " " + units[i];
+    };
+    var queue = [], queueBytes = 0;
+    $(document).on("change", "#dialog-modal input[type='file']", function () {
+        queue = []; queueBytes = 0;
+        $(this).closest("form").find("input[type='file']").each(function () {
+            Array.prototype.push.apply(queue, this.files);
+        });
+        queue.forEach(function (file) { queueBytes += file.size; });
+        $("#s3b-upload-meta").text(queue.length
+            ? queue.length + " file(s), " + fmtBytes(queueBytes) + " in total"
+            : "Choose files or a folder.");
+    });
+    $(document).on("shown.bs.modal", "#dialog-modal", function () {
+        var $dialog = $(this), $form = $dialog.find("form[action*='action=upload']");
+        if (!$form.length) { return; }
+        queue = []; queueBytes = 0;
+        $dialog.data("customFormSubmissionHandler", function (e) {
+            e.preventDefault();
+            var $meta = $("#s3b-upload-meta"), $bar = $("#s3b-upload-progress .progress-bar"),
+                $button = $dialog.find(".modal-footer .js-submit-form"),
+                batch = {{ upload_max_files }}, sent = 0, xhr;
+            if (!queue.length) { $meta.text("Choose at least one file."); return; }
+            $button.prop("disabled", true);
+            $bar.parent().removeClass("d-none");
+            $dialog.one("hidden.bs.modal", function () { if (xhr) { xhr.abort(); } });
+            var show = function (done, note) {
+                var pct = Math.round(done * 100 / (queueBytes || 1));
+                $bar.css("width", pct + "%").text(pct + "%")
+                    .toggleClass("progress-bar-striped progress-bar-animated", !!note);
+                $meta.text(fmtBytes(done) + " of " + fmtBytes(queueBytes) + (note || ""));
+            };
+            var send = function (start) {
+                var files = queue.slice(start, start + batch), bytes = 0, data = new FormData();
+                data.append("csrfmiddlewaretoken", $form.find("[name='csrfmiddlewaretoken']").val());
+                files.forEach(function (file) {
+                    bytes += file.size;
+                    data.append("files", file, file.name);
+                    data.append("paths", file.webkitRelativePath || file.name);
+                });
+                xhr = new XMLHttpRequest();
+                xhr.open("POST", $form.attr("action"));
+                xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+                xhr.upload.onprogress = function (ev) {
+                    show(sent + (ev.lengthComputable ? bytes * ev.loaded / ev.total : 0));
+                };
+                xhr.upload.onload = function () { show(sent + bytes, " — writing to S3…"); };
+                xhr.onerror = function () { fail("Upload failed: network error."); };
+                xhr.onload = function () {
+                    var res = {};
+                    try { res = JSON.parse(xhr.responseText); } catch (ignore) { /* not JSON */ }
+                    if (xhr.status !== 200 || res.error) {
+                        return fail(res.error || "Upload failed (HTTP " + xhr.status + ").");
+                    }
+                    sent += bytes;
+                    if (start + batch < queue.length) { return send(start + batch); }
+                    window.onbeforeunload = null;
+                    window.location = res.redirect_url || window.location.href;
+                };
+                xhr.send(data);
+            };
+            var fail = function (text) {
+                $meta.addClass("text-danger").text(text);
+                $bar.parent().addClass("d-none");
+                $button.prop("disabled", false);
+            };
+            send(0);
+        });
+    });
+
+}());
+</script>

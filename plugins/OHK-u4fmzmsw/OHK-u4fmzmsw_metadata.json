@@ -1,0 +1,15 @@
+{
+    "description": "",
+    "id": "OHK-u4fmzmsw",
+    "max_retries": 0,
+    "name": "Setup EC2 Security Group Inbound and Outbound Rules",
+    "resource_technologies": [
+        "Amazon Web Services",
+        "AWS GovCloud (US)",
+        " AWS China - \u4e9a\u9a6c\u900a"
+    ],
+    "script_filename": "OHK-u4fmzmsw_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

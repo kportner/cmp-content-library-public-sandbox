@@ -1,0 +1,11 @@
+{
+    "description": "Delete the Aws lambda function",
+    "id": "OHK-b52c2ylc",
+    "max_retries": 0,
+    "name": "Teardown AWS lambda",
+    "resource_technologies": [],
+    "script_filename": "OHK-b52c2ylc_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

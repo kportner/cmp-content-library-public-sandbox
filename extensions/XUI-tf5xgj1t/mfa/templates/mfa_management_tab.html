@@ -1,0 +1,21 @@
+{% load i18n %}
+{% load helper_tags %}
+
+
+
+
+{% if mfa_enabled %}
+
+<div>
+    <p> This will remove all MFA devices from the user and the user will need to re-enroll a new device at next login</p>
+    <form action="{% url 'mfa_delete' %}" method="POST">
+        {% csrf_token %}
+        <input id="id_user_id" name="user_id" type="hidden" value="{{ user_id }}">
+        <button class="btn btn-danger" type="submit">Remove</button>
+    </form>
+</div>
+{% else %}
+<div>
+    <p>No MFA devices found</p>
+</div>
+{% endif %}

@@ -1,0 +1,56 @@
+<div class="mb-3 d-none" id="custom_tab">
+  <h3 for="custom_type">View by Type</h3>
+  <select class="form-control selectize" name="custom_type" id="custom_type">
+    <option value="overview" data-dimension="date" selected="selected">Overview</option>
+    <option value="service" data-dimension="service">Services</option>
+    <option value="region" data-dimension="region">Regions</option>
+    <option value="tags" data-dimension="tag_aws:createdBy">Tags</option>
+    <option value="usage_type" data-dimension="date">API Operations</option>
+    <option value="purchase_option" data-dimension="date">Purchase Options</option>
+  </select>
+</div>
+
+<div class="mb-3 d-none" id="compute_tab">
+  <h3 for="compute_type">View by Type</h3>
+  <select class="form-control selectize" name="compute_type" id="compute_type">
+    <option value="overview" data-dimension="date" selected="selected">Overview</option>
+    <option value="region" data-dimension="region">Regions</option>
+    <option value="tags" data-dimension="tag_aws:createdBy">Tags</option>
+    <option value="usage_type" data-dimension="date">API Operations</option>
+    <option value="instance_type" data-dimension="instance_size">Instance Sizes</option>
+  </select>
+</div>
+
+<div class="mb-3 d-none" id="database_tab">
+  <h3 for="database_type">View by Type</h3>
+  <select class="form-control selectize" name="database_type" id="database_type">
+    <option value="overview" data-dimension="date" selected="selected">Overview</option>
+    <option value="database_engine" data-dimension="db_engine">DB Engines</option>
+    <option value="tags" data-dimension="tag_aws:createdBy">Tags</option>
+    <option value="sub_services" data-dimension="service">Sub Services</option>
+    <option value="instance_type" data-dimension="instance_size">Instance Sizes</option>
+  </select>
+</div>
+
+<div class="mb-3 d-none" id="storage_tab">
+  <h3 for="storage_type">View by Type</h3>
+  <select class="form-control selectize" name="storage_type" id="storage_type">
+    <option value="overview" data-dimension="date" selected="selected">Overview</option>
+    <option value="region" data-dimension="region">Regions</option>
+    <option value="tags" data-dimension="tag_aws:createdBy">Tags</option>
+    <option value="bucket" data-dimension="date">Buckets</option>
+    <option value="sub_services" data-dimension="service">Sub Services</option>
+  </select>
+</div>
+
+<div class="mb-3 d-none" id="data_transfer_tab">
+  <h3 for="data_transfer_type">View by Type</h3>
+  <select class="form-control selectize" name="data_transfer_type" id="data_transfer_type">
+    <option value="overview" data-dimension="date" selected="selected">Overview</option>
+    <option value="region" data-dimension="region">Regions</option>
+    <option value="tags" data-dimension="tag_aws:createdBy">Tags</option>
+    <option value="sub_services" data-dimension="service">Services</option>
+    <option value="bucket" data-dimension="date">Resources</option>
+    <option value="source" data-dimension="date">Sources</option>
+  </select>
+</div>

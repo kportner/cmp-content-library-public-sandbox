@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-ef90bh84",
+    "max_retries": 0,
+    "name": "S3 Bucket Delete Service",
+    "resource_technologies": [],
+    "script_filename": "OHK-ef90bh84_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

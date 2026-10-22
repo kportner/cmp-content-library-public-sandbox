@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-vt2ld5c4",
+    "max_retries": 0,
+    "name": "aws_shared_file_system",
+    "resource_technologies": [],
+    "script_filename": "OHK-vt2ld5c4_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

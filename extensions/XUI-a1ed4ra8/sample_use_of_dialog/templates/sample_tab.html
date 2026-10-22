@@ -1,0 +1,29 @@
+{% load i18n %}
+<div class="btn-toolbar gap-2 mb-3">
+    <a href="/add_sample_message/{{server.id}}/" class="btn btn-light open-dialog">
+        {% trans 'Add Message' %}</a>
+</div>
+<div class="card cb-surface-card">
+    <div class="card-body pt-4">
+        <table width="100%" class="table table-hover">
+            <thead>
+                <tr>
+                    <th>{% trans 'Messages' %}</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for m in messages %}
+            <tr>
+                <td>{{ m.txt_value }}</td>
+                <td>
+                    <a title="{% trans 'Delete this sample message' %}"
+                       href="/delete_sample_message/{{ server.id }}/message/{{ m.id }}/"
+                       class="icon-delete open-dialog"></a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

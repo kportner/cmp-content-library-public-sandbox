@@ -1,0 +1,257 @@
+{% extends "kumo_integration_kit/templates/widget_base_page.html" %}
+{% load static %}
+{% block card_id %}cost-efficiency{% endblock %}
+
+{% block heading %}Cost Efficiency in Cloud Providers{% endblock %}
+
+{% block child_div %}
+<div style="width: 100%; float: left;">
+   <div id="cost_efficiency_first" style="float: left; width: 47%;"></div>
+   <div id="cost_efficiency_second" style="float: left; width: 53%;"></div>
+   <div id="cost_efficiency_exception_message">
+        <img src="{% static 'kumo_integration_kit/images/cost_efficiency_in_cloud_providers.png' %}" class="grayed-out-images">
+        <div class="error-container-nodata">
+            <div class="col-sm-12">
+                <i class="fas fa-exclamation-triangle"></i>
+                Please sync to gather data!
+                <a class="spend_recurring_link" href="/recurring_jobs/" target="_blank">Sync</a>
+             </div>
+        </div>
+    </div>
+    <div id="cost_efficiency_currency_message" class="col-sm-12" style="position: relative;">
+        <div class="error-container-noconv">
+            <div class="col-sm-12">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span id="ceCurrencyText">* Conversion rates not set for all resource handlers.</span>
+                <a href="/extensions/admin/kumo_integration_kit/display_admin" class="set-rates" id="ceSetRates" target="_blank">Set Rates</a>
+             </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var widget_currency_ce = '{{ widget_currency }}';
+    var currency_error_ce = (widget_currency_ce == "") ? "*": "";
+    var data_across_all_rh_ce = JSON.parse('{{ potential_data | escapejs }}');
+    var data_across_rh_ce = JSON.parse('{{ benefits_across_rh | escapejs }}');
+    var total_benefits_ce = '{{ total_potential_benefits | escapejs }}';
+    var message_status_ce = '{{ message_status }}';
+    var data_series_rh_ce;
+    var data_series_across_rh_ce;
+    var job_id_ce = '{{ job_id }}';
+    var first_run_ce = '{{ first_run }}';
+    var last_job_status_ce = '{{ last_job_status }}';
+
+    setTimeout(() => {
+        data_series_rh_ce = [];
+        data_series_across_rh_ce = [];
+
+        $.each(data_across_all_rh_ce, function( key, val ) {
+            let bar_data = {};
+            bar_data["name"] = val[0]
+            bar_data["y"] = val[1]
+            bar_data["extraValue"] = val[2]
+            bar_data["totalCost"] = val[3].toFixed(2)
+            data_series_rh_ce.push(bar_data);
+        });
+
+
+        $.each(data_across_rh_ce, function( key, val ) {
+            data_series_across_rh_ce.push([val[0], parseFloat(val[1].toFixed(2))]);
+        });
+
+        data_series_across_rh_ce = data_series_across_rh_ce.sort(
+            (a, b) => { return b[1]-a[1] }
+        );
+
+        if ((message_status_ce == "False") && (last_job_status_ce == "")) {
+            $("#cost_efficiency_exception_message").hide();
+            $("#cost_efficiency_currency_message").hide();
+            cost_efficiency_first(total_benefits_ce, data_series_rh_ce);
+            cost_efficiency_second(data_series_across_rh_ce);
+        }
+        else {
+            if ((first_run_ce == "True") || (message_status_ce == "True")) {
+                $("#cost_efficiency_exception_message").show();
+                $("#cost_efficiency_currency_message").hide();
+                $("#cost_efficiency_first").hide();
+                $("#cost_efficiency_second").hide();
+                $(".spend_recurring_link").attr({"href": "/recurring_jobs/"+job_id_ce+"/"});
+            }
+            else {
+                cost_efficiency_first(total_benefits_ce, data_series_rh_ce);
+                cost_efficiency_second(data_series_across_rh_ce);
+                if ((message_status_ce == "not unified") && (last_job_status_ce == "")) {
+                    $("#cost_efficiency_first").show();
+                    $("#cost_efficiency_second").show();
+                    $("#cost_efficiency_whole_content").hide();
+                    $("#cost_efficiency_exception_message").hide();
+                    $("#cost_efficiency_currency_message").show();
+                    $("#ceCurrencyText").text(`* Conversion rates not set for all resource handlers.`);
+                    $("#ceSetRates").text("Set Rates");
+                    $("#ceSetRates").attr({"href": "/extensions/admin/kumo_integration_kit/display_admin"});
+                }
+                else if (last_job_status_ce != "") {
+                    $("#cost_efficiency_whole_content").show();
+                    $("#cost_efficiency_exception_message").hide();
+                    $("#cost_efficiency_currency_message").show();
+                    $("#ceCurrencyText").text(`* Data last updated on ${last_job_status_ce}, Sync job failed.`);
+                    $("#ceSetRates").text("See Job");
+                    $("#ceSetRates").attr({"href": "/recurring_jobs/"+job_id_ce+"/"});
+                }
+                else {
+                    null;
+                }
+            }
+        }
+
+    }, 500);
+
+    function cost_efficiency_first(total_benefits_ce, data_across_all_rh_ce) {
+        let chart = {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        height: 420,
+    };
+        let plotOptions = {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                style: {
+                    textOverflow: 'clip'
+                },
+                softConnector: false,
+                distance: 15,
+                formatter: function () {
+                    return `${this.point.options.extraValue } `
+                },
+            },
+            showInLegend: true,
+            startAngle: 0,
+            size: 170
+        }
+    };
+        let colors = ['#5F6AAF', '#5FAFA5', '#F16B3D'];
+        let legend = {
+        align: 'left',
+        labelFormatter: function () {
+            let nf = new Intl.NumberFormat();
+            return '<div><div>'+this.name+'</div>'+
+                '</div>'
+        },
+        maxHeight: 72
+    };
+        let series = [{
+            type: 'pie',
+            name: '',
+            data: data_across_all_rh_ce
+        }];
+        let tooltip = {
+            formatter: function () {
+                let nf = new Intl.NumberFormat();
+                if (this.point.options.extraValue) return 'Name: ' + this.key
+                    + ' <br/>Total Cost: ' + nf.format(this.point.options.totalCost)
+                    + '<br/>Service Count: ' + this.point.options.extraValue;
+                else return 'Name: ' + this.key + ' <br/>Total Cost: ' + this.y + ' <br/>Service Count: '+ this.y;
+            }
+        };
+        let title = {
+        text: `Potential Benefits: ${widget_currency_ce} ${total_benefits_ce} ${currency_error_ce}`,
+        align: 'left',
+        style: {
+            color: 'grey',
+            fontSize: '15px',
+        }
+        };
+        let credits = {
+            enabled: false
+        };
+
+        let json = {};
+        json.colors = colors;
+        json.chart = chart;
+        json.title = title;
+        json.series = series;
+        json.credits = credits;
+        json.plotOptions = plotOptions;
+        json.legend = legend;
+        json.tooltip = tooltip;
+        $('#cost_efficiency_first').highcharts(json);
+    }
+
+    function cost_efficiency_second(data_across_rh_ce) {
+        let chart = {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            height: 420,
+        };
+        let plotOptions = {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    style: {
+                        textOverflow: 'clip'
+                    },
+                    softConnector: false,
+                    distance: 15,
+                    formatter: function () {
+                        return `${this.key} `
+                    },
+                },
+                showInLegend: true,
+                startAngle: 0,
+                size: 170
+            }
+        };
+        let colors = [
+            '#5F6AAF', '#5FAFA5', '#F16B3D', '#55D3C5', '#7C5538', '#3F387C',
+            '#387C70', '#6456D9', '#E1528C', '#830D3D', '#A7AC38', '#771BBF'
+        ];
+        let legend = {
+            align: 'left',
+            labelFormatter: function () {
+                let nf = new Intl.NumberFormat();
+                return '<div><div>' + this.name + ': </div><div>'+widget_currency_ce+' '
+                    + nf.format(this.options.y.toFixed(2)) + ' ' + currency_error_ce
+                    + '</div>' + '</div>'
+            },
+            maxHeight: 72
+        };
+        let series = [{
+            type: 'pie',
+            name: 'Cost',
+            data: data_across_rh_ce
+            }];
+        let title = {
+            text: 'Benefits Across Resource Handlers',
+            align: 'left',
+            style: {
+                color: 'grey',
+                fontSize: '15px',
+                }
+            };
+        let credits = {
+            enabled: false
+        };
+
+        let json = {};
+        json.title = title;
+        json.colors = colors;
+        json.chart = chart;
+        json.series = series;
+        json.credits = credits;
+        json.plotOptions = plotOptions;
+        json.legend = legend;
+        $('#cost_efficiency_second').highcharts(json);
+    }
+
+</script>
+
+{% endblock child_div %}

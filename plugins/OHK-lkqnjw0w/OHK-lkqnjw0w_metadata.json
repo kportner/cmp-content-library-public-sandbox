@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-lkqnjw0w",
+    "max_retries": 0,
+    "name": "Lock Workspace",
+    "resource_technologies": [],
+    "script_filename": "OHK-lkqnjw0w_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

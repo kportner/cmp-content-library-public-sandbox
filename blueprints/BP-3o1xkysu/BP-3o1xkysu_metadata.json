@@ -1,0 +1,75 @@
+{
+    "any_group_can_deploy": false,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "all_environments_enabled": true,
+            "allowed_os_families": [
+                "CentOS"
+            ],
+            "applications": null,
+            "deploy_seq": 1,
+            "description": "",
+            "environment_selection_orchestration": null,
+            "execute_in_parallel": false,
+            "hostname_template": "jenkins00X",
+            "id": "BDI-56c4g5cu",
+            "name": "Jenkins Server",
+            "os_build": null,
+            "rate": null,
+            "restrict_applications": false,
+            "show_on_order_form": true,
+            "tier_type": "server"
+        },
+        {
+            "action_name": "Install Jenkins (1)",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-w22gf2fj"
+            },
+            "deploy_seq": 2,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-1ye6scwo",
+            "name": "Install Jenkins",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": false,
+            "tier_type": "script"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "<p>\r\nThis Blueprint deploys a CentOS or RedHat server and installs the latest version of Jenkins on it.\r\n</p>\r\n<p>\r\nAfter deployment, by default Jenkins will be accessible at <b>http://IP_OF_NEW_SERVER:8080/</b>.\r\n</p>\r\n<p>\r\nFrom this basic foundation, CB admins could create Service Actions that enable end users to run remote scripts on Jenkins or make REST API calls to run jobs, trigger builds, make queries, etc.\r\n</p>",
+    "favorited": false,
+    "icon": "JenkinsLogo_BA09XMq_7L9RSvZ_v5tbJwc_sindhPW.png",
+    "id": "BP-3o1xkysu",
+    "is_orderable": true,
+    "labels": [
+        {
+            "color": null,
+            "id": "TAG-xtbmqo5v",
+            "image": null,
+            "name": "Jenkins",
+            "sequence": 0
+        }
+    ],
+    "last_updated": "2026-09-15",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "Jenkins",
+    "resource_name_template": "Jenkins Service 00X",
+    "resource_type": {
+        "icon": "",
+        "id": "RT-wtoyrbjm",
+        "internal_only": false,
+        "label": "Service",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "service",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "teardown_items": []
+}

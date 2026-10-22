@@ -1,0 +1,17 @@
+{% extends "dashboard/card.html" %}
+{% load static %}
+
+<!-- {% block card_id %}rh-cost{% endblock %}
+
+{% block heading %}Resource Handler Cost{% endblock %} -->
+
+{% block card_body %}
+    <link rel="stylesheet" href="{% static 'kumo_integration_kit/css/dashboard_widget.css' %}">
+    <!-- <script src="{% static 'kumo_integration_kit/js/widget_expensive_services.js' %}" type="text/javascript"></script> -->
+    <!-- <script src="{% static 'kumo_integration_kit/js/widget_cost_efficiency.js' %}" type="text/javascript"></script> -->
+    <!-- <script src="{% static 'kumo_integration_kit/js/widget_cost_summary.js' %}" type="text/javascript"></script> -->
+    <!-- <script src="{% static 'kumo_integration_kit/js/widget_spend_details.js' %}" type="text/javascript"></script> -->
+    <!-- <script src="{% static 'kumo_integration_kit/js/widget_compliance_summary.js' %}" type="text/javascript"></script> -->
+    {% block child_div %}
+    {% endblock %}
+{% endblock card_body %}

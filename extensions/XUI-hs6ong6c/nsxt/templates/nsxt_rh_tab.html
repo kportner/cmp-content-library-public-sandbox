@@ -1,0 +1,32 @@
+{% load i18n %}
+<div class="btn-toolbar gap-2">
+    {% comment %} <a href="/add_security_tag/{{server.id}}/" class="btn btn-light open-dialog">
+        {% trans 'Add NSX Security Tag' %}</a> {% endcomment %}
+</div>
+<div class="card mb-3">
+    <div class="card-header">NSX-T Manager</div>
+    <div class="card-body">
+        <table width="100%" class="table table-striped">
+            <tbody>
+                <a href="/network_virtualization/{{nv.network_virtualization_id}}/">{{ nv.display_name }}</a>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="card mb-3">
+    <div class="card-header">Current Tags</div>
+    <div class="card-body">
+        <table width="100%" class="table table-striped">
+            <thead>
+            <th>All Security Tags</th>
+            <th>&nbsp;</th>
+            </thead>
+            <tbody>
+            {% for tag in tags %}
+            <tr>
+                <td>{{ tag }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>

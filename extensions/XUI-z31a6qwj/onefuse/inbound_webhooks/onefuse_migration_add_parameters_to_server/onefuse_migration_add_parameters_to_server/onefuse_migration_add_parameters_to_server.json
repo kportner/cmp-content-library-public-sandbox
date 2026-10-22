@@ -1,0 +1,14 @@
+{
+    "description": null,
+    "id": "OHK-2u28b9cg",
+    "last_updated": "2023-01-10",
+    "max_retries": 0,
+    "maximum_version_required": "2026.1.74",
+    "minimum_version_required": "2024.3.93",
+    "name": "OneFuse Migration - Add Parameters to Server",
+    "resource_technologies": [],
+    "script_filename": "onefuse_migration_add_parameters_to_server.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

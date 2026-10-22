@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "id": "OHK-zk3sravl",
+    "max_retries": 0,
+    "name": "Google Cloud Firewall Teardown",
+    "resource_technologies": [],
+    "script_filename": "OHK-zk3sravl_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

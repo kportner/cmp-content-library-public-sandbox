@@ -1,0 +1,32 @@
+{% extends 'registration/login.html' %}
+{% block content %}
+    <form accept-charset="UTF-8" action="{% url 'verify_second_factor_totp' %}" method="post">
+        {% csrf_token %}
+        {% if next_url %}
+        <input name="next" type="hidden" value="{{next_url}}">
+        {% endif %}
+        <div class="p-3 text-center">
+            <div class="">
+                {% include "common/login_banner.html" %}
+            </div>
+            <label for="two-factor-code">	Enter the six-digit code from the application from the two-factor
+                app on your mobile device. If you've lost your device, contact your {{ portal }} administrator and request an MFA reset
+            </label>
+
+            <div class="input-group dead-center-container p-3 text-center ">
+                <input autocomplete="off" class="form-control dead-center text-center" id="two-factor-code"
+                       name="verification_code"
+                       placeholder="Enter six digit code."
+                       type="text" value="">
+                <input name="next" type="hidden" value="{{ next }}">
+            </div>
+            {% if error_message %}
+            <p>{{ error_message }}</p>
+            {% endif %}
+
+            <button class="btn btn-primary mb-3" type="submit">
+                Submit
+            </button>
+        </div>
+    </form>
+{% endblock %}
