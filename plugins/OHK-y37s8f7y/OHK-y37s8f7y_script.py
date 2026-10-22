@@ -3,7 +3,7 @@ from common.methods import set_progress
 
 def run(job, logger=None, *args, **kwargs):
     """
-    Resize the AWS VM
+    Resize the AWS VM  -- UPDATED
     """
     new_size = kwargs.get('new_size', None)
     if not new_size:
