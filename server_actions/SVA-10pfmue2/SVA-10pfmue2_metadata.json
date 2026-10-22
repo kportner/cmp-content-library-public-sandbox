@@ -24,19 +24,26 @@
     "allow_scheduling": false,
     "always_allow_to_run": false,
     "auto_submit_order": false,
+    "changelog": [
+        {
+            "author": "Kotter",
+            "date": "2026-10-22",
+            "note": "UPDATED"
+        }
+    ],
     "dangerous": false,
     "dependencies": {
         "hook": "plugins/OHK-y37s8f7y"
     },
     "dialog_message": "",
-    "dialog_title_template": "",
+    "dialog_title_template": "Run {{action.label}} on {{server.hostname}}",
     "enabled": true,
     "extra_classes": "fas fa-arrows",
     "hide_from_mcp": false,
     "icon": "ec2-logo.png",
     "id": "SVA-10pfmue2",
     "is_synchronous": false,
-    "label": "Change EC2 Instance Type",
+    "label": "Change EC2 Instance Type -- UPDATED",
     "last_updated": null,
     "list_view_visible": true,
     "mcp_destructive_hint": null,
@@ -49,5 +56,6 @@
     "new_tab_url": null,
     "requires_approval": false,
     "sequence": null,
-    "submit_button_label": ""
+    "submit_button_label": "",
+    "tags": []
 }
