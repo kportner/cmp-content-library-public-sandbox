@@ -1,6 +1,11 @@
 {
     "action_input_default_values": [
         {
+            "label": "Min Nodes",
+            "name": "min_nodes_a485",
+            "value": "2"
+        },
+        {
             "label": "Desired Nodes",
             "name": "desired_nodes_a485",
             "value": "2"
@@ -13,11 +18,6 @@
         {
             "label": "Max Nodes",
             "name": "max_nodes_a485",
-            "value": "2"
-        },
-        {
-            "label": "Min Nodes",
-            "name": "min_nodes_a485",
             "value": "2"
         }
     ],
