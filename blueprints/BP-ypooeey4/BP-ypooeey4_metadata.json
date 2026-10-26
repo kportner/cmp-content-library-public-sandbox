@@ -11,6 +11,11 @@
             "author": "Kotter",
             "date": "2026-10-26",
             "note": "Removed updates and README"
+        },
+        {
+            "author": "Kotter",
+            "date": "2026-10-26",
+            "note": "Init"
         }
     ],
     "deployment_items": [
@@ -82,13 +87,6 @@
     "management_actions": [
         {
             "dependencies": {
-                "resource_action": "resource_actions/RSA-zqfmt8p5"
-            },
-            "enabled": true,
-            "label": "List EKS Node Group"
-        },
-        {
-            "dependencies": {
                 "resource_action": "resource_actions/RSA-bp8z8eei"
             },
             "enabled": true,
@@ -107,6 +105,13 @@
             },
             "enabled": true,
             "label": "Delete EKS Node Group"
+        },
+        {
+            "dependencies": {
+                "resource_action": "resource_actions/RSA-zqfmt8p5"
+            },
+            "enabled": true,
+            "label": "List EKS Node Group"
         }
     ],
     "metadata_version": "2026.1.0",
@@ -126,7 +131,9 @@
     },
     "sequence": 0,
     "show_recipient_field_on_order_form": false,
-    "tags": [],
+    "tags": [
+        "GitDiff"
+    ],
     "teardown_items": [
         {
             "action_name": "Delete AWS EKS Cluster",
