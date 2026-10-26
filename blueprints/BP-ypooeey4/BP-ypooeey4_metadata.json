@@ -1,6 +1,13 @@
 {
-    "any_group_can_deploy": true,
+    "any_group_can_deploy": false,
     "auto_historical_resources": false,
+    "changelog": [
+        {
+            "author": "Kotter",
+            "date": "2026-10-26",
+            "note": "TEST"
+        }
+    ],
     "deployment_items": [
         {
             "action_name": "Create AWS EKS Cluster",
@@ -38,7 +45,7 @@
         }
     ],
     "deployment_permissions": [],
-    "description": "Amazon Elastic Kubernetes Service\r\nProvided resource action feature to add Node Group with autoscaling,  Sync Node Group, delete Node Group, Update Kubernetes version, and Deploying containerized Grafana Web Application/Service.\r\n\r\nWhile Deploying the blueprint need to add the parameters carefully, Select the Instance Type  Large, xLarge if nodes need to be created more than 2. \r\n\r\nUseful details, Always select Desired nodes less than max nodes and Min nodes always less than the Desired Nodes.\r\n\r\nAlways add the disk size relevant to the selection of instance Types. Ideally more than 20 GB.\r\n \r\ne.g Desired Nodes: 3, Min Nodes: 2, Max Nodes: 5",
+    "description": "UPDATED\r\n\r\nAmazon Elastic Kubernetes Service\r\nProvided resource action feature to add Node Group with autoscaling,  Sync Node Group, delete Node Group, Update Kubernetes version, and Deploying containerized Grafana Web Application/Service.\r\n\r\nWhile Deploying the blueprint need to add the parameters carefully, Select the Instance Type  Large, xLarge if nodes need to be created more than 2. \r\n\r\nUseful details, Always select Desired nodes less than max nodes and Min nodes always less than the Desired Nodes.\r\n\r\nAlways add the disk size relevant to the selection of instance Types. Ideally more than 20 GB.\r\n \r\ne.g Desired Nodes: 3, Min Nodes: 2, Max Nodes: 5",
     "discovery_plugin": {
         "dependencies": {
             "hook": "plugins/OHK-nj7kuc0b"
@@ -66,7 +73,7 @@
             "sequence": 0
         }
     ],
-    "last_updated": "2026-09-15",
+    "last_updated": "2026-10-26",
     "management_actions": [
         {
             "dependencies": {
@@ -87,7 +94,7 @@
                 "resource_action": "resource_actions/RSA-dvfob0tu"
             },
             "enabled": true,
-            "label": "Update EKS Cluster Kubernetes Version"
+            "label": "Update EKS Cluster Kubernetes Version - UPDATED"
         },
         {
             "dependencies": {
@@ -98,9 +105,11 @@
         }
     ],
     "metadata_version": "2026.1.0",
-    "name": "AWS EKS with Grafana",
+    "name": "AWS EKS with Grafana - UPDATED",
     "resource_name_template": null,
     "resource_type": {
+        "categories": [],
+        "description": null,
         "icon": "",
         "id": "RT-t3u2amy4",
         "internal_only": false,
@@ -112,6 +121,9 @@
     },
     "sequence": 0,
     "show_recipient_field_on_order_form": false,
+    "tags": [
+        "GitDiff"
+    ],
     "teardown_items": [
         {
             "action_name": "Delete AWS EKS Cluster",
