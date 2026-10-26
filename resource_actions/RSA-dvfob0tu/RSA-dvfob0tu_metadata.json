@@ -41,7 +41,7 @@
     "hide_from_mcp": false,
     "id": "RSA-dvfob0tu",
     "is_synchronous": false,
-    "label": "Update EKS Cluster Kubernetes Version - UPDATED",
+    "label": "Update EKS Cluster Kubernetes Version",
     "last_updated": null,
     "list_view_visible": true,
     "mcp_destructive_hint": null,
