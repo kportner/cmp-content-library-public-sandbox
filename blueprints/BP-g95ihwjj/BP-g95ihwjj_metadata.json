@@ -1,5 +1,5 @@
 {
-    "any_group_can_deploy": false,
+    "any_group_can_deploy": true,
     "auto_historical_resources": false,
     "changelog": [
         {
@@ -11,6 +11,11 @@
             "author": "Kotter",
             "date": "2026-10-27",
             "note": "Added Action"
+        },
+        {
+            "author": "Kotter",
+            "date": "2026-10-27",
+            "note": "After update available fix."
         }
     ],
     "dependencies": {
@@ -91,7 +96,7 @@
         }
     ],
     "deployment_permissions": [],
-    "description": "",
+    "description": "Added desc",
     "favorited": false,
     "has_custom_form": true,
     "icon": "accept.png",
@@ -101,7 +106,7 @@
     "last_updated": "2026-10-27",
     "management_actions": [],
     "metadata_version": "2026.1.0",
-    "name": "OCI Multiple Server Tiers - UPDATED",
+    "name": "OCI Multiple Server Tiers",
     "resource_name_template": null,
     "resource_type": {
         "categories": [],
