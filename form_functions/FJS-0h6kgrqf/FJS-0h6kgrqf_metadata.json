@@ -1,0 +1,7 @@
+{
+    "asynchronous": false,
+    "code": "function myFunc(params) {\r\n    // Your custom function must optionally accept only one array-like parameter that will contain all the passed arguments.\r\n    // Access Survey Elements Within a Custom Function\r\n    const questionInstance = this.survey.getQuestionByName(params[0]);\r\n    // ...\r\n}",
+    "description": "",
+    "id": "FJS-0h6kgrqf",
+    "name": "myFunc"
+}

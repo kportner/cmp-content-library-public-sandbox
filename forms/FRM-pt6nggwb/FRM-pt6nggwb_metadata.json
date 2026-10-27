@@ -1,0 +1,13 @@
+{
+    "created": "2026-03-12 19:56:05.457580",
+    "dependencies": {
+        "form_functions": [
+            "form_functions/FJS-d82oo6nu",
+            "form_functions/FJS-0h6kgrqf"
+        ]
+    },
+    "id": "FRM-pt6nggwb",
+    "json": "{\"title\": \"vCenter - Custom Forms\", \"description\": \"Provisioning Information: https://cloudbolt.atlassian.net/wiki/spaces/ISL/pages/2038956034/OVH+Customer+Success+Lab+vCenter+Information\", \"completedHtml\": \"<p class=\\\"custom-order-form-completed\\\">Your order is being processed.</p>\", \"loadingHtml\": \"<p class=\\\"custom-order-form-loading\\\">Loading order form...</p>\", \"pages\": [{\"name\": \"order_details\", \"elements\": [{\"type\": \"text\", \"name\": \"custom_form_id\", \"visible\": false, \"defaultValue\": \"FRM-pt6nggwb\", \"readOnly\": true}, {\"type\": \"text\", \"name\": \"blueprint_id\", \"visible\": false, \"defaultValue\": \"BP-dw5uohc4\", \"readOnly\": true}, {\"type\": \"dropdown\", \"name\": \"group\", \"title\": \"Group\", \"isRequired\": true, \"choicesByUrl\": {\"url\": \"/api/v3/cmp/blueprints/{blueprint_id}/\", \"path\": \"_links,groupsThatCanDeploy\", \"valueName\": \"href\", \"titleName\": \"title\"}}], \"title\": \"Order Details\"}, {\"name\": \"bp_params\", \"elements\": [{\"type\": \"text\", \"name\": \"bp-param.vmware_cores_per_socket\", \"title\": \"VMware Cores Per Socket\", \"validators\": [{\"type\": \"numeric\", \"minValue\": 1}], \"inputType\": \"number\"}], \"title\": \"vCenter - Custom Forms\"}, {\"name\": \"vCenter Instance\", \"elements\": [{\"type\": \"dropdown\", \"name\": \"server-bdi-exy6a9v9.environment\", \"title\": \"Environment\", \"isRequired\": true, \"choicesByUrl\": {\"url\": \"/api/v3/cmp/blueprints/{blueprint_id}/tierItems/BDI-2qpoqor2/enabledEnvironments?group={group}&fields=name,id\", \"path\": \"environments\", \"valueName\": \"id\", \"titleName\": \"name\"}}, {\"type\": \"panel\", \"name\": \"server-bdi-exy6a9v9.environment_panel\"}], \"title\": \"vCenter Instance\"}], \"showQuestionNumbers\": \"off\", \"clearInvisibleValues\": \"none\", \"checkErrorsMode\": \"onComplete\", \"completeText\": \"Order\"}",
+    "modified": "2026-03-13 19:32:22.969946",
+    "supported_languages": ""
+}

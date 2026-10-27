@@ -1,0 +1,7 @@
+{
+    "asynchronous": false,
+    "code": "function greeting(params) {\r\n    return params[0]\r\n}",
+    "description": "",
+    "id": "FJS-d82oo6nu",
+    "name": "greeting"
+}
