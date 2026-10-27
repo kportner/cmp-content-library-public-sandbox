@@ -1,0 +1,91 @@
+{
+    "any_group_can_deploy": false,
+    "auto_historical_resources": false,
+    "changelog": [
+        {
+            "author": "Kotter",
+            "date": "2026-10-27",
+            "note": "OCI"
+        }
+    ],
+    "dependencies": {
+        "custom_form": "forms/FRM-bd9jobzy"
+    },
+    "deployment_items": [
+        {
+            "all_environments_enabled": false,
+            "allowed_os_families": [
+                "Oracle Enterprise Linux"
+            ],
+            "applications": null,
+            "deploy_seq": 1,
+            "description": "",
+            "environment_selection_orchestration": null,
+            "execute_in_parallel": false,
+            "hostname_template": "kportnerOCI-00X",
+            "id": "BDI-w147c0xo",
+            "name": "Server Tier 1",
+            "os_build": {
+                "href": "/api/v3/cmp/osBuilds/OSB-5aoenl9h/",
+                "title": "Oracle-Linux-9.6-2025.11.20-0"
+            },
+            "rate": null,
+            "restrict_applications": false,
+            "show_on_order_form": false,
+            "tier_type": "server"
+        },
+        {
+            "all_environments_enabled": false,
+            "allowed_os_families": [
+                "Oracle Enterprise Linux"
+            ],
+            "applications": null,
+            "deploy_seq": 2,
+            "description": "",
+            "environment_selection_orchestration": null,
+            "execute_in_parallel": false,
+            "hostname_template": "kportnerOCI-00X",
+            "id": "BDI-0ons6z4z",
+            "name": "Server Tier 2",
+            "os_build": {
+                "href": "/api/v3/cmp/osBuilds/OSB-5aoenl9h/",
+                "title": "Oracle-Linux-9.6-2025.11.20-0"
+            },
+            "rate": null,
+            "restrict_applications": false,
+            "show_on_order_form": false,
+            "tier_type": "server"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "",
+    "favorited": false,
+    "has_custom_form": true,
+    "icon": "accept.png",
+    "id": "BP-g95ihwjj",
+    "is_orderable": true,
+    "labels": [],
+    "last_updated": "2026-10-27",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "OCI Multiple Server Tiers - UPDATED",
+    "resource_name_template": null,
+    "resource_type": {
+        "categories": [],
+        "description": null,
+        "icon": "",
+        "id": "RT-wtoyrbjm",
+        "internal_only": false,
+        "label": "Service",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "service",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "tags": [
+        "GitDiff"
+    ],
+    "teardown_items": []
+}
