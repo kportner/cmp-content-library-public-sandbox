@@ -6,6 +6,11 @@
             "author": "Kotter",
             "date": "2026-10-27",
             "note": "OCI"
+        },
+        {
+            "author": "Kotter",
+            "date": "2026-10-27",
+            "note": "Added Action"
         }
     ],
     "dependencies": {
@@ -17,20 +22,25 @@
             "allowed_os_families": [
                 "Oracle Enterprise Linux"
             ],
-            "applications": null,
+            "applications": [
+                {
+                    "href": "/api/v3/cmp/applications/APP-mzuc8k64/",
+                    "title": "TEST_CHEFCONF_cookbook_app_01"
+                }
+            ],
             "deploy_seq": 1,
             "description": "",
             "environment_selection_orchestration": null,
             "execute_in_parallel": false,
-            "hostname_template": "kportnerOCI-00X",
+            "hostname_template": "kportnerOCI1-00X",
             "id": "BDI-w147c0xo",
             "name": "Server Tier 1",
             "os_build": {
-                "href": "/api/v3/cmp/osBuilds/OSB-5aoenl9h/",
-                "title": "Oracle-Linux-9.6-2025.11.20-0"
+                "href": "/api/v3/cmp/osBuilds/OSB-h01amcan/",
+                "title": "Oracle-Linux-9.7-2026.06.15-1"
             },
             "rate": null,
-            "restrict_applications": false,
+            "restrict_applications": true,
             "show_on_order_form": false,
             "tier_type": "server"
         },
@@ -39,22 +49,45 @@
             "allowed_os_families": [
                 "Oracle Enterprise Linux"
             ],
-            "applications": null,
+            "applications": [
+                {
+                    "configuration_manager_name": "TEST_ANSIBLECONF_conf_03",
+                    "href": "/api/v3/cmp/applications/APP-641dyfv1/",
+                    "title": "TEST_ANSIBLECONF_conf_03: TEST_ANSIBLECONF_group_03"
+                }
+            ],
             "deploy_seq": 2,
             "description": "",
             "environment_selection_orchestration": null,
             "execute_in_parallel": false,
-            "hostname_template": "kportnerOCI-00X",
+            "hostname_template": "kportnerOCI2-00X",
             "id": "BDI-0ons6z4z",
             "name": "Server Tier 2",
             "os_build": {
-                "href": "/api/v3/cmp/osBuilds/OSB-5aoenl9h/",
-                "title": "Oracle-Linux-9.6-2025.11.20-0"
+                "href": "/api/v3/cmp/osBuilds/OSB-h01amcan/",
+                "title": "Oracle-Linux-9.7-2026.06.15-1"
             },
             "rate": null,
-            "restrict_applications": false,
+            "restrict_applications": true,
             "show_on_order_form": false,
             "tier_type": "server"
+        },
+        {
+            "action_name": "My Generate Options Action",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-nxzwyge3"
+            },
+            "deploy_seq": 3,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-jywvjxlp",
+            "name": "My Generate Options Action",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": false,
+            "tier_type": "plugin"
         }
     ],
     "deployment_permissions": [],
