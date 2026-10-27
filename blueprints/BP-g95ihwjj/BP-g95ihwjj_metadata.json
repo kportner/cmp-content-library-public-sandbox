@@ -16,6 +16,11 @@
             "author": "Kotter",
             "date": "2026-10-27",
             "note": "After update available fix."
+        },
+        {
+            "author": "Kotter",
+            "date": "2026-10-27",
+            "note": "Renamed"
         }
     ],
     "dependencies": {
@@ -96,7 +101,7 @@
         }
     ],
     "deployment_permissions": [],
-    "description": "Added desc",
+    "description": "",
     "favorited": false,
     "has_custom_form": true,
     "icon": "accept.png",
@@ -106,7 +111,7 @@
     "last_updated": "2026-10-27",
     "management_actions": [],
     "metadata_version": "2026.1.0",
-    "name": "OCI Multiple Server Tiers - CLAUDE UPDATED",
+    "name": "OCI Multiple Server Tiers",
     "resource_name_template": null,
     "resource_type": {
         "categories": [],
