@@ -8,21 +8,28 @@
             "author": "Kotter",
             "date": "2026-10-27",
             "note": "Init Push"
+        },
+        {
+            "author": "Kotter",
+            "date": "2026-10-27",
+            "note": "Updated"
         }
     ],
     "dangerous": false,
     "dependencies": {
+        "custom_form": "forms/FRM-1hc4sc58",
         "hook": "plugins/OHK-wvt5oua8"
     },
     "dialog_message": "",
-    "dialog_title_template": "",
+    "dialog_title_template": "Run {{action.label}} on {{server.hostname}}",
     "enabled": true,
     "extra_classes": "fas fa-bolt",
+    "has_custom_form": true,
     "hide_from_mcp": false,
     "icon": "auggy.png",
     "id": "SVA-tq51i2l2",
     "is_synchronous": false,
-    "label": "CL Test",
+    "label": "CL Test - UPDATE",
     "last_updated": null,
     "list_view_visible": true,
     "mcp_destructive_hint": null,
