@@ -1,0 +1,97 @@
+{
+    "any_group_can_deploy": false,
+    "auto_historical_resources": false,
+    "changelog": [
+        {
+            "author": "Kotter",
+            "date": "2026-10-27",
+            "note": "Again"
+        }
+    ],
+    "dependencies": {
+        "custom_form": "forms/FRM-hgf32lqd"
+    },
+    "deployment_items": [
+        {
+            "all_environments_enabled": false,
+            "allowed_os_families": [
+                "Oracle Enterprise Linux"
+            ],
+            "applications": null,
+            "deploy_seq": 1,
+            "description": "",
+            "environment_selection_orchestration": null,
+            "execute_in_parallel": false,
+            "hostname_template": "kportnerVC-00X",
+            "id": "BDI-exy6a9v9",
+            "name": "vCenter Instance",
+            "os_build": {
+                "href": "/api/v3/cmp/osBuilds/OSB-3mpmhv0y/",
+                "title": "OEL8_9 (GO TO)"
+            },
+            "rate": null,
+            "restrict_applications": false,
+            "show_on_order_form": false,
+            "tier_type": "server"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "Provisioning Information: https://cloudbolt.atlassian.net/wiki/spaces/ISL/pages/2038956034/OVH+Customer+Success+Lab+vCenter+Information",
+    "favorited": false,
+    "global_parameter_constraints": {
+        "vmware_cores_per_socket": {
+            "minimum": "1.00"
+        }
+    },
+    "has_custom_form": true,
+    "icon": "plugin.png",
+    "id": "BP-dw5uohc4",
+    "is_orderable": true,
+    "labels": [],
+    "last_updated": "2026-10-27",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "vCenter - Custom Forms",
+    "parameters": [
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "constraints": "Unconstrained",
+            "description": "Number of cores per virtual CPU socket in a VMware VM. e.g. 8 vCPUs, 4 Cores per socket, gives 2 sockets in the VM. This is often set as CPUs/2 for a Windows Desktop OS which (licensing) limits sockets to 2",
+            "destination": "Both",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "id": "CF-qnvluua9",
+            "label": "VMware Cores Per Socket",
+            "name": "vmware_cores_per_socket",
+            "options": [],
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": false,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "INT",
+            "value_pattern_string": ""
+        }
+    ],
+    "resource_name_template": null,
+    "resource_type": {
+        "categories": [],
+        "description": null,
+        "icon": "",
+        "id": "RT-wtoyrbjm",
+        "internal_only": false,
+        "label": "Service",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "service",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "tags": [
+        "GitDiff"
+    ],
+    "teardown_items": []
+}
