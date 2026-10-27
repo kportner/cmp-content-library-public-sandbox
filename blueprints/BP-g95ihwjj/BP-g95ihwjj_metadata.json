@@ -1,28 +1,6 @@
 {
     "any_group_can_deploy": true,
     "auto_historical_resources": false,
-    "changelog": [
-        {
-            "author": "Kotter",
-            "date": "2026-10-27",
-            "note": "OCI"
-        },
-        {
-            "author": "Kotter",
-            "date": "2026-10-27",
-            "note": "Added Action"
-        },
-        {
-            "author": "Kotter",
-            "date": "2026-10-27",
-            "note": "After update available fix."
-        },
-        {
-            "author": "Kotter",
-            "date": "2026-10-27",
-            "note": "Renamed"
-        }
-    ],
     "dependencies": {
         "custom_form": "forms/FRM-bd9jobzy"
     },
