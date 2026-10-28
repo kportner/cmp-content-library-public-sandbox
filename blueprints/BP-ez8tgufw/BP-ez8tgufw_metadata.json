@@ -56,12 +56,14 @@
             "sequence": 0
         }
     ],
-    "last_updated": "2026-09-15",
+    "last_updated": "2026-10-28",
     "management_actions": [],
     "metadata_version": "2026.1.0",
     "name": "AWS Security Groups",
     "resource_name_template": null,
     "resource_type": {
+        "categories": [],
+        "description": null,
         "icon": "",
         "id": "RT-v1c78hz7",
         "internal_only": false,
@@ -73,6 +75,7 @@
     },
     "sequence": 0,
     "show_recipient_field_on_order_form": false,
+    "tags": [],
     "teardown_items": [
         {
             "action_name": "AWS Security Group",
