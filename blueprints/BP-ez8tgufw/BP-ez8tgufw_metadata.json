@@ -75,7 +75,9 @@
     },
     "sequence": 0,
     "show_recipient_field_on_order_form": false,
-    "tags": [],
+    "tags": [
+        "GitDiff"
+    ],
     "teardown_items": [
         {
             "action_name": "AWS Security Group",
