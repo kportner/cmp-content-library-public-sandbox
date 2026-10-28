@@ -106,7 +106,8 @@
     "sequence": 0,
     "show_recipient_field_on_order_form": false,
     "tags": [
-        "GitDiff"
+        "GitDiff",
+        "ScenarioRun1"
     ],
     "teardown_items": []
 }
