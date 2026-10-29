@@ -1,0 +1,58 @@
+{
+    "action_inputs": [
+        {
+            "allow_multiple": false,
+            "available_all_servers": false,
+            "description": "The contents of the ad hoc script you would like to run",
+            "field_dependency_controlling_set": [],
+            "field_dependency_dependent_set": [],
+            "global_options": [],
+            "hide_if_default_value": true,
+            "id": "CF-2r8kyfdi",
+            "label": "Script Contents",
+            "name": "script_contents",
+            "placeholder": null,
+            "relevant_osfamilies": [],
+            "required": true,
+            "show_as_attribute": false,
+            "show_on_servers": false,
+            "type": "CODE",
+            "value_pattern_string": null
+        }
+    ],
+    "action_inputs_sequence": [
+        "script_contents"
+    ],
+    "commandline_args": null,
+    "credentials": "YOUR_CREDENTIALS",
+    "description": "An action that supports running ad hoc scripts on servers",
+    "execution_timeout": 3600,
+    "id": "OHK-cfhuoxh1",
+    "max_retries": 0,
+    "name": "Ad Hoc Script",
+    "remove_after_run": true,
+    "resource_technologies": [],
+    "run_with_sudo": false,
+    "script_filename": "OHK-cfhuoxh1_script",
+    "shared": false,
+    "target_os_families": [
+        "Linux -> Amazon Linux",
+        "b281e8d2-9fe2-4382-a3ed-729b910fb6d0",
+        "c0a58bcc-842d-45d1-8c0c-9ca261f91136",
+        "Linux -> CentOS",
+        "Linux -> Debian",
+        "Linux -> ESXi",
+        "Linux -> Fedora",
+        "Linux",
+        "Unix -> macOS",
+        "Linux -> Oracle Enterprise Linux",
+        "Linux -> Red Hat",
+        "Linux -> Rocky Linux",
+        "Unix -> Solaris",
+        "Linux -> SUSE",
+        "Linux -> Ubuntu",
+        "Unix",
+        "Windows"
+    ],
+    "type": "Remote Script"
+}
