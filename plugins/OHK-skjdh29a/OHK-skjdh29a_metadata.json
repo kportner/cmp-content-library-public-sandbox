@@ -1,0 +1,11 @@
+{
+    "description": "Applies the appropriate Ansible Automation Configurations to the Server being provisioned, based on the value of any Parameters of that type.",
+    "id": "OHK-skjdh29a",
+    "max_retries": 0,
+    "name": "Apply Ansible Automation Configurations",
+    "resource_technologies": [],
+    "script_filename": "OHK-skjdh29a_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

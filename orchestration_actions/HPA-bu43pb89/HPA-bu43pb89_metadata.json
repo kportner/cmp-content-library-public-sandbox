@@ -1,0 +1,16 @@
+{
+    "action_input_default_values": [],
+    "continue_on_failure": false,
+    "dependencies": {
+        "hook": "plugins/OHK-skjdh29a"
+    },
+    "description": null,
+    "enabled": true,
+    "hook_point": "Ansible Automation Configuration",
+    "id": "HPA-bu43pb89",
+    "last_updated": null,
+    "name": "Apply Ansible Automation Configurations",
+    "run_on_statuses": "",
+    "run_seq": 1,
+    "tags": []
+}
