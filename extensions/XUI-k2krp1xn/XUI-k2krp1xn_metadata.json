@@ -1,7 +1,7 @@
 {
     "description": "\nSample Tab Extension\n\nAdds a \"Sample\" tab to the detail view of every model that supports tab\nextensions:  Server, Environment, Resource, Group, UserProfile,\nResourceHandler, and ServiceBlueprint.\n\nThis XUI is intended as a starting point for extension authors.  Each\ntab simply renders a short message confirming which object is being viewed.\n",
     "enabled": true,
-    "icon": "flag.jpeg",
+    "icon": "marines.jpeg",
     "id": "XUI-k2krp1xn",
     "label": "Sample",
     "last_updated": "2026-10-29",
@@ -14,7 +14,8 @@
         "templates/tab-sample.html"
     ],
     "tags": [
-        "GitDiff"
+        "GitDiff",
+        "ScenarioRun1"
     ],
     "version": ""
 }
