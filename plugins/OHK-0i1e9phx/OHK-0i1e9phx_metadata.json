@@ -1,0 +1,11 @@
+{
+    "description": "Pings the IP from the CB server and checks whether a reply is received.",
+    "id": "OHK-0i1e9phx",
+    "max_retries": 0,
+    "name": "Ping Test",
+    "resource_technologies": [],
+    "script_filename": "OHK-0i1e9phx_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}
