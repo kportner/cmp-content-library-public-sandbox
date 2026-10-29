@@ -1,20 +1,21 @@
 {
-    "description": "A CloudBolt generate Sample Report of Server Counts by Group(Bar and Pie) charts and also shows servers added between the date range in Environment Server Stats report.",
+    "description": null,
     "enabled": true,
     "icon": "sample_report_extensions.jpg",
     "id": "XUI-mvsj4az6",
     "label": "Sample Report Extensions",
-    "last_updated": "2026-09-15",
+    "last_updated": "2026-10-29",
     "maximum_version_required": "",
     "minimum_version_required": "2026.2.29",
     "name": "sample_report_extensions",
     "package_contents": [
-        "__init__.py",
-        "forms.py",
         "views.py",
+        "forms.py",
+        "__init__.py",
+        "reports/table.html",
         "reports/bar.html",
-        "reports/pie.html",
-        "reports/table.html"
+        "reports/pie.html"
     ],
+    "tags": [],
     "version": ""
 }
