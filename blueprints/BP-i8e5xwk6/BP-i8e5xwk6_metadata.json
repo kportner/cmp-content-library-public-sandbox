@@ -32,10 +32,9 @@
     "description": "",
     "favorited": false,
     "has_custom_form": true,
-    "icon": "flag.jpeg",
+    "icon": "marines.jpeg",
     "id": "BP-i8e5xwk6",
     "is_orderable": true,
-    "labels": [],
     "last_updated": "2026-10-29",
     "management_actions": [],
     "metadata_version": "2026.1.0",
@@ -88,7 +87,8 @@
     "sequence": 0,
     "show_recipient_field_on_order_form": false,
     "tags": [
-        "GitDiff"
+        "GitDiff",
+        "ScenarioRun1"
     ],
     "teardown_items": []
 }
