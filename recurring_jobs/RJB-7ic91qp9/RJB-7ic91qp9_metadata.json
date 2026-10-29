@@ -12,8 +12,6 @@
     "last_updated": null,
     "name": "My Recurring Job - Service",
     "schedule": "",
-    "tags": [
-        "GitDiff"
-    ],
+    "tags": [],
     "type": "orchestration_hook"
 }
