@@ -1,0 +1,21 @@
+{
+    "action_input_default_values": [],
+    "allow_parallel_jobs": false,
+    "create_date": "2026-03-25 20:33:22.327183",
+    "dependencies": {
+        "hook": "plugins/OHK-kijboyv5"
+    },
+    "description": "",
+    "enabled": true,
+    "icon": "auggy.png",
+    "id": "RJB-7ic91qp9",
+    "last_run": null,
+    "last_updated": null,
+    "name": "My Recurring Job - Service",
+    "schedule": "",
+    "tags": [
+        "mytag",
+        "mytag2"
+    ],
+    "type": "orchestration_hook"
+}
