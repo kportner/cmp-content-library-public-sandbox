@@ -1,0 +1,11 @@
+{
+    "description": "Find servers that have expired and execute appropriate orchestration action",
+    "id": "OHK-resp4aco",
+    "max_retries": 0,
+    "name": "Expire Servers",
+    "resource_technologies": [],
+    "script_filename": "OHK-resp4aco_script.py",
+    "shared": false,
+    "target_os_families": [],
+    "type": "CloudBolt Plug-in"
+}

@@ -1,0 +1,17 @@
+{
+    "action_input_default_values": [],
+    "allow_parallel_jobs": false,
+    "create_date": "2025-03-10 00:19:03.870686",
+    "dependencies": {
+        "hook": "plugins/OHK-resp4aco"
+    },
+    "description": "Find servers that have expired and execute appropriate orchestration action",
+    "enabled": false,
+    "id": "RJB-7py5sj89",
+    "last_run": null,
+    "last_updated": null,
+    "name": "Expire Servers",
+    "schedule": "0 0 * * *",
+    "tags": [],
+    "type": "orchestration_hook"
+}
