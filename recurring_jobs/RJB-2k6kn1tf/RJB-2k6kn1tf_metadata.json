@@ -58,14 +58,15 @@
     },
     "description": "",
     "enabled": true,
-    "icon": "flag.jpeg",
+    "icon": "marines.jpeg",
     "id": "RJB-2k6kn1tf",
     "last_run": "2026-10-02 10:00:00.489632",
     "last_updated": null,
     "name": "Recurring Job Action",
     "schedule": "0 10 * * *",
     "tags": [
-        "GitDiff"
+        "GitDiff",
+        "ScenarioRun1"
     ],
     "type": "orchestration_hook"
 }
