@@ -1,0 +1,7 @@
+{
+    "created": "2025-07-01 15:54:28.001178",
+    "id": "FRM-pjbhlxe8",
+    "json": "{\"title\": \"CMP-3077 - Alibaba Custom Form\", \"description\": \"\", \"showPageNumbers\": false, \"showQuestionNumbers\": false, \"clearInvisibleValues\": \"none\", \"completeText\": \"Order\", \"completedHtml\": \"<p class=\\\"custom-order-form-completed\\\">Your order is being processed.</p>\", \"loadingHtml\": \"<p class=\\\"custom-order-form-loading\\\">Loading order form...</p>\", \"pages\": [{\"name\": \"order_details\", \"title\": \"Order Details\", \"elements\": [{\"type\": \"text\", \"name\": \"blueprint_id\", \"visible\": false, \"defaultValue\": \"BP-lmtrindq\", \"readOnly\": true}, {\"type\": \"dropdown\", \"name\": \"group\", \"title\": \"Group\", \"isRequired\": true, \"choicesByUrl\": {\"url\": \"/api/v3/cmp/blueprints/{blueprint_id}/\", \"path\": \"_links,groupsThatCanDeploy\", \"valueName\": \"href\", \"titleName\": \"title\"}}]}, {\"name\": \"Ubuntu  24.04 64 bit\", \"title\": \"Ubuntu  24.04 64 bit\", \"elements\": [{\"type\": \"dropdown\", \"name\": \"server-bdi-rlnr6cj0.environment\", \"title\": \"Environment\", \"isRequired\": true, \"choicesByUrl\": {\"url\": \"/api/v3/cmp/blueprints/{blueprint_id}/tierItems/BDI-rlnr6cj0/enabledEnvironments?group={group}&fields=name,id\", \"path\": \"environments\", \"valueName\": \"id\", \"titleName\": \"name\"}}, {\"type\": \"panel\", \"name\": \"server-bdi-rlnr6cj0.environment_panel\", \"elements\": []}]}]}",
+    "modified": "2025-07-07 14:28:40.694415",
+    "supported_languages": ""
+}
