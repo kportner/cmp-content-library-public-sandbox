@@ -7,15 +7,13 @@
     },
     "description": "",
     "enabled": true,
-    "icon": "auggy.png",
     "id": "RJB-7ic91qp9",
     "last_run": null,
     "last_updated": null,
     "name": "My Recurring Job - Service",
     "schedule": "",
     "tags": [
-        "mytag",
-        "mytag2"
+        "GitDiff"
     ],
     "type": "orchestration_hook"
 }
