@@ -92,7 +92,7 @@
     "enabled": true,
     "extra_classes": "fas fa-bolt",
     "hide_from_mcp": false,
-    "icon": "flag.jpeg",
+    "icon": "marines.jpeg",
     "id": "RSA-t8ud5ddm",
     "is_synchronous": false,
     "label": "My Resource Action",
@@ -110,6 +110,7 @@
     "sequence": null,
     "submit_button_label": "",
     "tags": [
-        "GitDiff"
+        "GitDiff",
+        "ScenarioRun1"
     ]
 }
