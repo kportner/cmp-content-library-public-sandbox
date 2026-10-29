@@ -39,7 +39,7 @@
     "enabled": true,
     "extra_classes": "fas fa-bolt",
     "hide_from_mcp": false,
-    "icon": "flag.jpeg",
+    "icon": "marines.jpeg",
     "id": "SVA-ukqo6kbf",
     "is_synchronous": false,
     "label": "My Server Action",
@@ -57,6 +57,7 @@
     "sequence": null,
     "submit_button_label": "",
     "tags": [
-        "GitDiff"
+        "GitDiff",
+        "ScenarioRun1"
     ]
 }
