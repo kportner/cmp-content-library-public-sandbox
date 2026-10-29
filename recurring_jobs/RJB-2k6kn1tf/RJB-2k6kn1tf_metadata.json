@@ -1,0 +1,71 @@
+{
+    "action_input_default_values": [
+        {
+            "label": "Requestor",
+            "name": "requestor_a297",
+            "value": "Karl Portner"
+        },
+        {
+            "label": "Server Hostname",
+            "name": "server_hostname_a297",
+            "value": "somehost.com"
+        }
+    ],
+    "action_inputs": [
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": null,
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": true,
+            "id": "CF-8jny8hri",
+            "label": "Requestor",
+            "name": "requestor",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        },
+        {
+            "allow-multiple": false,
+            "available-all-servers": false,
+            "description": null,
+            "field-dependency-controlling-set": [],
+            "field-dependency-dependent-set": [],
+            "global-options": [],
+            "hide-if-default-value": true,
+            "id": "CF-y8o6pzgp",
+            "label": "Server Hostname",
+            "name": "server_hostname",
+            "placeholder": null,
+            "relevant-osfamilies": [],
+            "required": true,
+            "show-as-attribute": false,
+            "show-on-servers": false,
+            "type": "STR",
+            "value-pattern-string": null
+        }
+    ],
+    "allow_parallel_jobs": false,
+    "create_date": "2025-10-03 16:01:20.217898",
+    "dependencies": {
+        "hook": "plugins/OHK-lx2ymbjr"
+    },
+    "description": "",
+    "enabled": true,
+    "icon": "flag.jpeg",
+    "id": "RJB-2k6kn1tf",
+    "last_run": "2026-10-02 10:00:00.489632",
+    "last_updated": null,
+    "name": "Recurring Job Action",
+    "schedule": "0 10 * * *",
+    "tags": [
+        "GitDiff"
+    ],
+    "type": "orchestration_hook"
+}
