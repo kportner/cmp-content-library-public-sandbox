@@ -1,4 +1,4 @@
-# Markdown Preview Validation - UPDATEdfdfd
+# Markdown Preview Validation
 
 Tests for `fenced_code`, `codehilite`, `tables`, `nl2br`, `sane_lists`, and `footnotes`.
 
