@@ -86,6 +86,7 @@
     },
     "description": "",
     "id": "OHK-mjyghp5b",
+    "last_updated": "2026-11-13",
     "max_retries": 0,
     "name": "My Resource Action Plugin",
     "resource_technologies": [],
