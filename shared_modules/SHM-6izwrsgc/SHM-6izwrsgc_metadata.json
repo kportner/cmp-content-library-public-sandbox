@@ -2,6 +2,7 @@
     "description": "",
     "id": "SHM-6izwrsgc",
     "label": "Test Shared Module",
+    "last_updated": "2026-11-13",
     "max_retries": 0,
     "module_name": "test_shared_module",
     "name": "test_shared_module",

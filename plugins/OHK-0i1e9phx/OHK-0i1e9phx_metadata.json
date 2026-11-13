@@ -1,6 +1,7 @@
 {
     "description": "Pings the IP from the CB server and checks whether a reply is received.",
     "id": "OHK-0i1e9phx",
+    "last_updated": "2026-11-13",
     "max_retries": 0,
     "name": "Ping Test",
     "resource_technologies": [],

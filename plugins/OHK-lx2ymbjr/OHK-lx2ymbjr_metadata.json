@@ -41,6 +41,7 @@
     ],
     "description": "Some action description.",
     "id": "OHK-lx2ymbjr",
+    "last_updated": "2026-11-13",
     "max_retries": 1,
     "name": "Recurring Job Action",
     "resource_technologies": [],
