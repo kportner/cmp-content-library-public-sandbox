@@ -45,6 +45,8 @@
     },
     "sequence": 0,
     "show_recipient_field_on_order_form": false,
-    "tags": [],
+    "tags": [
+        "Blueprint"
+    ],
     "teardown_items": []
 }
