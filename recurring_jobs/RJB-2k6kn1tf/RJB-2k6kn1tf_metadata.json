@@ -2,12 +2,12 @@
     "action_input_default_values": [
         {
             "label": "Requestor",
-            "name": "requestor_a297",
+            "name": "requestor",
             "value": "Karl Portner"
         },
         {
             "label": "Server Hostname",
-            "name": "server_hostname_a297",
+            "name": "server_hostname",
             "value": "somehost.com"
         }
     ],
@@ -52,7 +52,7 @@
         }
     ],
     "allow_parallel_jobs": false,
-    "create_date": "2025-10-03 16:01:20.217898",
+    "create_date": "2026-11-18 17:09:59.919723",
     "dependencies": {
         "hook": "plugins/OHK-lx2ymbjr"
     },
@@ -60,8 +60,8 @@
     "enabled": true,
     "icon": "marines.jpeg",
     "id": "RJB-2k6kn1tf",
-    "last_run": "2026-10-02 10:00:00.489632",
-    "last_updated": "2026-11-12",
+    "last_run": null,
+    "last_updated": "2026-11-18",
     "name": "Recurring Job Action",
     "schedule": "0 10 * * *",
     "tags": [
