@@ -23,7 +23,7 @@
     "deployment_permissions": [],
     "description": "",
     "favorited": false,
-    "icon": "marines.jpeg",
+    "icon": "airforce.jpg",
     "id": "BP-sof8xja3",
     "is_orderable": true,
     "last_updated": "2026-11-18",
@@ -46,7 +46,7 @@
     "sequence": 0,
     "show_recipient_field_on_order_form": false,
     "tags": [
-        "GitDiff"
+        "Blurprint"
     ],
     "teardown_items": []
 }
