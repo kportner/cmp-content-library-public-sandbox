@@ -1,0 +1,50 @@
+{
+    "any_group_can_deploy": false,
+    "auto_historical_resources": false,
+    "deployment_items": [
+        {
+            "action_name": "My Simple Action",
+            "continue_on_failure": false,
+            "dependencies": {
+                "hook": "plugins/OHK-ttgwmdo0"
+            },
+            "deploy_seq": 1,
+            "description": null,
+            "enabled": true,
+            "execute_in_parallel": false,
+            "id": "BDI-c29qenv4",
+            "name": "My Simple Action",
+            "rate": null,
+            "run_on_scale_up": true,
+            "show_on_order_form": false,
+            "tier_type": "plugin"
+        }
+    ],
+    "deployment_permissions": [],
+    "description": "",
+    "favorited": false,
+    "icon": "servers.png",
+    "id": "BP-2kd6id6j",
+    "is_orderable": true,
+    "last_updated": "2026-11-18",
+    "management_actions": [],
+    "metadata_version": "2026.1.0",
+    "name": "My Simple Blueprint",
+    "resource_name_template": null,
+    "resource_type": {
+        "categories": [],
+        "description": null,
+        "icon": "",
+        "id": "RT-wtoyrbjm",
+        "internal_only": false,
+        "label": "Service",
+        "lifecycle": "ACTIVE",
+        "list_view_columns": [],
+        "name": "service",
+        "plural_label": null
+    },
+    "sequence": 0,
+    "show_recipient_field_on_order_form": false,
+    "tags": [],
+    "teardown_items": []
+}
